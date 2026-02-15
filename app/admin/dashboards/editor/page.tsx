@@ -2,6 +2,9 @@
 
 import { useState, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+
+// Force dynamic rendering to avoid prerender issues with useSearchParams
+export const dynamic = 'force-dynamic';
 import GridLayout, { Layout } from "react-grid-layout";
 import {
   Save,
