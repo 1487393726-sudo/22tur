@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useLanguage } from "@/lib/i18n/context";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
 import { 
   TrendingUp,
   Building2,
