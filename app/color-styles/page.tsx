@@ -6,16 +6,19 @@ import { colorStyles } from '@/lib/website/color-system';
 type ColorStyle = keyof typeof colorStyles;
 
 export default function ColorStylesPage() {
-  const [selectedStyle, setSelectedStyle] = useState<ColorStyle>('black-white');
+  const [selectedStyle, setSelectedStyle] = useState<ColorStyle>('website-default');
   const palette = colorStyles[selectedStyle];
 
   const styles: { id: ColorStyle; name: string; description: string }[] = [
-    { id: 'black-white', name: '黑白专业', description: '干净、极简、专业' },
-    { id: 'blue', name: '蓝色专业', description: '商务、信任、稳定' },
-    { id: 'green', name: '绿色生态', description: '生态、健康、可持续' },
-    { id: 'purple', name: '紫色创意', description: '创意、创新、高端' },
-    { id: 'red', name: '红色现代', description: '活力、热情、现代' },
-    { id: 'cyan', name: '青色科技', description: '科技、创新、未来' },
+    { id: 'website-default', name: '官网默认', description: '深蓝 + 橙色' },
+    { id: 'deep-blue', name: '深蓝增强', description: '更深的蓝色系' },
+    { id: 'bright-blue', name: '蓝色活力', description: '亮蓝 + 橙色' },
+    { id: 'fresh-green', name: '绿色清新', description: '绿色 + 橙色' },
+    { id: 'elegant-purple', name: '紫色优雅', description: '紫色 + 橙色' },
+    { id: 'vibrant-red', name: '红色热烈', description: '红色 + 橙色' },
+    { id: 'tech-cyan', name: '青色科技', description: '青色 + 橙色' },
+    { id: 'bw-light', name: '黑白浅色', description: '极简浅色' },
+    { id: 'bw-dark', name: '黑白深色', description: '极简深色' },
   ];
 
   return (
