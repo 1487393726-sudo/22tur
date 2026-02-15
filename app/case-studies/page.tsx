@@ -565,7 +565,7 @@ export default function CaseStudiesPage() {
                 href="/investment-opportunities"
                 className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors"
               >
-                {locale === "en"  "Explore Investments" : ""}
+                {locale === "en" ? "Explore Investments" : "探索投资"}
                 <TrendingUp className="w-5 h-5" />
               </Link>
             </div>
@@ -579,7 +579,7 @@ export default function CaseStudiesPage() {
             {/* Modal Header */}
             <div className="p-6 border-b border-white/10 flex items-center justify-between">
               <h2 className="text-2xl font-bold text-white">
-                {locale === "en"  selectedCase.titleEn : selectedCase.title}
+                {locale === "en" ? selectedCase.titleEn : selectedCase.title}
               </h2>
               <button
                 onClick={() => setSelectedCase(null)}
@@ -597,23 +597,23 @@ export default function CaseStudiesPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="text-lg font-semibold text-white mb-3">
-                    {locale === "en"  "Project Overview" : ""}
+                    {locale === "en" ? "Project Overview" : "项目概览"}
                   </h3>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-gray-400">{locale === "en"  "Client:" : ""}</span>
-                      <span className="text-white">{locale === "en"  selectedCase.clientEn : selectedCase.client}</span>
+                      <span className="text-gray-400">{locale === "en" ? "Client:" : "客户："}</span>
+                      <span className="text-white">{locale === "en" ? selectedCase.clientEn : selectedCase.client}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-400">{locale === "en"  "Industry:" : ""}</span>
-                      <span className="text-white">{locale === "en"  selectedCase.industryEn : selectedCase.industry}</span>
+                      <span className="text-gray-400">{locale === "en" ? "Industry:" : "行业："}</span>
+                      <span className="text-white">{locale === "en" ? selectedCase.industryEn : selectedCase.industry}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-400">{locale === "en"  "Timeline:" : ""}</span>
-                      <span className="text-white">{locale === "en"  selectedCase.timelineEn : selectedCase.timeline}</span>
+                      <span className="text-gray-400">{locale === "en" ? "Timeline:" : "时间线："}</span>
+                      <span className="text-white">{locale === "en" ? selectedCase.timelineEn : selectedCase.timeline}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-400">{locale === "en"  "Investment:" : ""}</span>
+                      <span className="text-gray-400">{locale === "en" ? "Investment:" : "投资："}</span>
                       <span className="text-white">${selectedCase.investment.toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between">
@@ -625,10 +625,10 @@ export default function CaseStudiesPage() {
 
                 <div>
                   <h3 className="text-lg font-semibold text-white mb-3">
-                    {locale === "en"  "Services Provided" : ""}
+                    {locale === "en" ? "Services Provided" : "提供的服务"}
                   </h3>
                   <div className="flex flex-wrap gap-2">
-                    {(locale === "en"  selectedCase.servicesEn : selectedCase.services).map((service, index) => (
+                    {(locale === "en" ? selectedCase.servicesEn : selectedCase.services).map((service, index) => (
                       <span 
                         key={index}
                         className="px-3 py-1 bg-white/10 text-white text-sm rounded-full"
@@ -644,19 +644,19 @@ export default function CaseStudiesPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="text-lg font-semibold text-white mb-3">
-                    {locale === "en"  "Challenge" : ""}
+                    {locale === "en" ? "Challenge" : "挑战"}
                   </h3>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    {locale === "en"  selectedCase.challengeEn : selectedCase.challenge}
+                    {locale === "en" ? selectedCase.challengeEn : selectedCase.challenge}
                   </p>
                 </div>
 
                 <div>
                   <h3 className="text-lg font-semibold text-white mb-3">
-                    {locale === "en"  "Solution" : ""}
+                    {locale === "en" ? "Solution" : "解决方案"}
                   </h3>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    {locale === "en"  selectedCase.solutionEn : selectedCase.solution}
+                    {locale === "en" ? selectedCase.solutionEn : selectedCase.solution}
                   </p>
                 </div>
               </div>
@@ -664,7 +664,7 @@ export default function CaseStudiesPage() {
               {/* Results */}
               <div>
                 <h3 className="text-lg font-semibold text-white mb-4">
-                  {locale === "en"  "Results Achieved" : ""}
+                  {locale === "en" ? "Results Achieved" : "取得的成果"}
                 </h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {selectedCase.results.map((result, index) => (
@@ -673,7 +673,7 @@ export default function CaseStudiesPage() {
                         {result.value}
                       </div>
                       <div className="text-xs text-gray-400 mb-1">
-                        {locale === "en"  result.metricEn : result.metric}
+                        {locale === "en" ? result.metricEn : result.metric}
                       </div>
                       <div className="text-xs text-green-400">
                         {result.improvement}
@@ -687,10 +687,10 @@ export default function CaseStudiesPage() {
               {selectedCase.testimonial && (
                 <div className="bg-white/5 rounded-lg p-6">
                   <h3 className="text-lg font-semibold text-white mb-4">
-                    {locale === "en"  "Client Testimonial" : ""}
+                    {locale === "en" ? "Client Testimonial" : "客户评价"}
                   </h3>
                   <blockquote className="text-gray-300 italic mb-4">
-                    "{locale === "en"  selectedCase.testimonial.quoteEn : selectedCase.testimonial.quote}"
+                    "{locale === "en" ? selectedCase.testimonial.quoteEn : selectedCase.testimonial.quote}"
                   </blockquote>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
@@ -703,7 +703,7 @@ export default function CaseStudiesPage() {
                         {selectedCase.testimonial.author}
                       </div>
                       <div className="text-gray-400 text-sm">
-                        {locale === "en"  selectedCase.testimonial.positionEn : selectedCase.testimonial.position}
+                        {locale === "en" ? selectedCase.testimonial.positionEn : selectedCase.testimonial.position}
                       </div>
                     </div>
                   </div>

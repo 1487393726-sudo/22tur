@@ -822,15 +822,15 @@ export default function ReportBuilderPage() {
       case "preview":
         return (
           <div className="space-y-6">
-            {/*  */}
+            {/* 报告预览 */}
             <Card className="purple-gradient-card">
               <CardHeader className="purple-gradient-card">
-                <CardTitle className="purple-gradient-title purple-gradient-card"></CardTitle>
-                <CardDescription className="purple-gradient-card">?/CardDescription>
+                <CardTitle className="purple-gradient-title purple-gradient-card">报告预览</CardTitle>
+                <CardDescription className="purple-gradient-card">查看报告配置摘要</CardDescription>
               </CardHeader>
               <CardContent className="purple-gradient-card">
                 <div className="bg-gray-50 rounded-lg p-4">
-                  <h4 className="font-medium mb-2"></h4>
+                  <h4 className="font-medium mb-2">配置摘要</h4>
                   <dl className="space-y-2 text-sm">
                     <div className="flex gap-2">
                       <dt className="text-gray-600 w-24">?</dt>
@@ -840,12 +840,12 @@ export default function ReportBuilderPage() {
                       </dd>
                     </div>
                     <div className="flex gap-2">
-                      <dt className="text-gray-600 w-24">:</dt>
-                      <dd className="font-medium">{reportConfig.fields.length} ?/dd>
+                      <dt className="text-gray-600 w-24">字段数量:</dt>
+                      <dd className="font-medium">{reportConfig.fields.length} 个</dd>
                     </div>
                     <div className="flex gap-2">
-                      <dt className="text-gray-600 w-24">?</dt>
-                      <dd className="font-medium">{reportConfig.filters.length} ?/dd>
+                      <dt className="text-gray-600 w-24">筛选条件:</dt>
+                      <dd className="font-medium">{reportConfig.filters.length} 个</dd>
                     </div>
                     <div className="flex gap-2">
                       <dt className="text-gray-600 w-24">:</dt>

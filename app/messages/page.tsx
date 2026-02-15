@@ -272,7 +272,7 @@ export default function MessagesPage() {
                   </div>
                 </div>
 
-                {/*  */}
+                {/* 消息线程 */}
                 <MessageThread
                   messages={messages}
                   currentUserId="me"
@@ -281,7 +281,7 @@ export default function MessagesPage() {
                   isLoading={messagesLoading}
                 />
 
-                {/* ?*/}
+                {/* 消息输入框 */}
                 <MessageInput
                   onSendMessage={handleSendMessage}
                   onSelectEmoji={() => console.log("Emoji selected")}

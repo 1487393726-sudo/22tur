@@ -501,7 +501,7 @@ export default function ConsultationPage() {
                   {/* Date Selection */}
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-4">
-                      {locale === "en"  "Choose Date" : ""}
+                      {locale === "en" ? "Choose Date" : "选择日期"}
                     </h3>
                     <input
                       type="date"
@@ -515,7 +515,7 @@ export default function ConsultationPage() {
                   {/* Time Selection */}
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-4">
-                      {locale === "en"  "Choose Time" : ""}
+                      {locale === "en" ? "Choose Time" : "选择时间"}
                     </h3>
                     <div className="grid grid-cols-2 gap-2">
                       {timeSlots.map((slot) => (
@@ -525,9 +525,9 @@ export default function ConsultationPage() {
                           disabled={!slot.available}
                           className={`p-3 rounded-lg font-medium transition-all ${
                             selectedTime === slot.time
-                               "bg-gradient-to-r from-primary to-secondary text-white"
+                              ? "bg-gradient-to-r from-primary to-secondary text-white"
                               : slot.available
-                               "bg-white/10 text-white hover:bg-white/20"
+                              ? "bg-white/10 text-white hover:bg-white/20"
                               : "bg-gray-600 text-gray-400 cursor-not-allowed"
                           }`}
                         >
@@ -543,14 +543,14 @@ export default function ConsultationPage() {
                     onClick={prevStep}
                     className="bg-white/10 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/20 transition-colors"
                   >
-                    {locale === "en"  "Back" : ""}
+                    {locale === "en" ? "Back" : "返回"}
                   </button>
                   <button
                     onClick={nextStep}
                     disabled={!selectedDate || !selectedTime}
                     className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                   >
-                    {locale === "en"  "Continue" : ""}
+                    {locale === "en" ? "Continue" : "继续"}
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -560,14 +560,14 @@ export default function ConsultationPage() {
             {step === 4 && (
               <div>
                 <h2 className="text-2xl font-bold text-white mb-6 text-center">
-                  {locale === "en"  "Contact Information" : ""}
+                  {locale === "en" ? "Contact Information" : "联系信息"}
                 </h2>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-white text-sm font-medium mb-2">
-                        {locale === "en"  "Full Name *" : " *"}
+                        {locale === "en" ? "Full Name *" : "姓名 *"}
                       </label>
                       <input
                         type="text"
@@ -575,13 +575,13 @@ export default function ConsultationPage() {
                         value={formData.name}
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
                         className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-primary"
-                        placeholder={locale === "en"  "Enter your name" : ""}
+                        placeholder={locale === "en" ? "Enter your name" : "输入您的姓名"}
                       />
                     </div>
 
                     <div>
                       <label className="block text-white text-sm font-medium mb-2">
-                        {locale === "en"  "Email *" : " *"}
+                        {locale === "en" ? "Email *" : "邮箱 *"}
                       </label>
                       <input
                         type="email"
@@ -589,40 +589,40 @@ export default function ConsultationPage() {
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                         className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-primary"
-                        placeholder={locale === "en"  "Enter your email" : ""}
+                        placeholder={locale === "en" ? "Enter your email" : "输入您的邮箱"}
                       />
                     </div>
 
                     <div>
                       <label className="block text-white text-sm font-medium mb-2">
-                        {locale === "en"  "Phone" : ""}
+                        {locale === "en" ? "Phone" : "电话"}
                       </label>
                       <input
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
                         className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-primary"
-                        placeholder={locale === "en"  "Enter your phone" : ""}
+                        placeholder={locale === "en" ? "Enter your phone" : "输入您的电话"}
                       />
                     </div>
 
                     <div>
                       <label className="block text-white text-sm font-medium mb-2">
-                        {locale === "en"  "Company" : ""}
+                        {locale === "en" ? "Company" : "公司"}
                       </label>
                       <input
                         type="text"
                         value={formData.company}
                         onChange={(e) => setFormData({...formData, company: e.target.value})}
                         className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-primary"
-                        placeholder={locale === "en"  "Enter your company" : ""}
+                        placeholder={locale === "en" ? "Enter your company" : "输入您的公司"}
                       />
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-white text-sm font-medium mb-2">
-                      {locale === "en"  "Meeting Type" : ""}
+                      {locale === "en" ? "Meeting Type" : "会议类型"}
                     </label>
                     <div className="flex gap-4">
                       <label className="flex items-center gap-2 cursor-pointer">
@@ -636,7 +636,7 @@ export default function ConsultationPage() {
                         />
                         <Video className="w-4 h-4 text-gray-400" />
                         <span className="text-white">
-                          {locale === "en"  "Video Call" : ""}
+                          {locale === "en" ? "Video Call" : "视频通话"}
                         </span>
                       </label>
                       <label className="flex items-center gap-2 cursor-pointer">
@@ -650,7 +650,7 @@ export default function ConsultationPage() {
                         />
                         <Phone className="w-4 h-4 text-gray-400" />
                         <span className="text-white">
-                          {locale === "en"  "Phone Call" : ""}
+                          {locale === "en" ? "Phone Call" : "电话"}
                         </span>
                       </label>
                       <label className="flex items-center gap-2 cursor-pointer">
@@ -664,7 +664,7 @@ export default function ConsultationPage() {
                         />
                         <MapPin className="w-4 h-4 text-gray-400" />
                         <span className="text-white">
-                          {locale === "en"  "In Person" : ""}
+                          {locale === "en" ? "In Person" : "面对面"}
                         </span>
                       </label>
                     </div>
@@ -672,14 +672,14 @@ export default function ConsultationPage() {
 
                   <div>
                     <label className="block text-white text-sm font-medium mb-2">
-                      {locale === "en"  "Message" : ""}
+                      {locale === "en" ? "Message" : "留言"}
                     </label>
                     <textarea
                       rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({...formData, message: e.target.value})}
                       className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-primary resize-none"
-                      placeholder={locale === "en"  "Tell us about your goals and what you'd like to discuss..." : "..."}
+                      placeholder={locale === "en" ? "Tell us about your goals and what you'd like to discuss..." : "告诉我们您的目标和想讨论的内容..."}
                     />
                   </div>
 
@@ -689,13 +689,13 @@ export default function ConsultationPage() {
                       onClick={prevStep}
                       className="bg-white/10 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/20 transition-colors"
                     >
-                      {locale === "en"  "Back" : ""}
+                      {locale === "en" ? "Back" : "返回"}
                     </button>
                     <button
                       type="submit"
                       className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all flex items-center gap-2"
                     >
-                      {locale === "en"  "Book Consultation" : ""}
+                      {locale === "en" ? "Book Consultation" : "预约咨询"}
                       <Calendar className="w-4 h-4" />
                     </button>
                   </div>
@@ -709,35 +709,35 @@ export default function ConsultationPage() {
                   <CheckCircle className="w-10 h-10 text-white" />
                 </div>
                 <h2 className="text-2xl font-bold text-white mb-4">
-                  {locale === "en"  "Consultation Booked!" : ""}
+                  {locale === "en" ? "Consultation Booked!" : "咨询已预约！"}
                 </h2>
                 <p className="text-gray-300 mb-6">
                   {locale === "en" 
-                     "Your consultation has been successfully scheduled. You will receive a confirmation email shortly."
-                    : ""
+                    ? "Your consultation has been successfully scheduled. You will receive a confirmation email shortly."
+                    : "您的咨询已成功预约。您将很快收到确认邮件。"
                   }
                 </p>
                 
                 {/* Booking Summary */}
                 <div className="bg-white/5 rounded-lg p-6 mb-6 text-left max-w-md mx-auto">
                   <h3 className="text-lg font-semibold text-white mb-4">
-                    {locale === "en"  "Booking Details" : ""}
+                    {locale === "en" ? "Booking Details" : "预约详情"}
                   </h3>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-gray-400">{locale === "en"  "Type:" : ""}</span>
-                      <span className="text-white">{locale === "en"  selectedType?.nameEn : selectedType?.name}</span>
+                      <span className="text-gray-400">{locale === "en" ? "Type:" : "类型："}</span>
+                      <span className="text-white">{locale === "en" ? selectedType?.nameEn : selectedType?.name}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-400">{locale === "en"  "Expert:" : ""}</span>
-                      <span className="text-white">{locale === "en"  selectedExpert?.nameEn : selectedExpert?.name}</span>
+                      <span className="text-gray-400">{locale === "en" ? "Expert:" : "专家："}</span>
+                      <span className="text-white">{locale === "en" ? selectedExpert?.nameEn : selectedExpert?.name}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-400">{locale === "en"  "Date:" : ""}</span>
+                      <span className="text-gray-400">{locale === "en" ? "Date:" : "日期："}</span>
                       <span className="text-white">{selectedDate}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-400">{locale === "en"  "Time:" : ""}</span>
+                      <span className="text-gray-400">{locale === "en" ? "Time:" : "时间："}</span>
                       <span className="text-white">{selectedTime}</span>
                     </div>
                   </div>
@@ -748,13 +748,13 @@ export default function ConsultationPage() {
                     onClick={() => window.location.href = "/"}
                     className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all"
                   >
-                    {locale === "en"  "Back to Home" : ""}
+                    {locale === "en" ? "Back to Home" : "返回首页"}
                   </button>
                   <button
                     onClick={() => window.location.href = "/investor-portal"}
                     className="bg-white/10 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/20 transition-colors"
                   >
-                    {locale === "en"  "Go to Portal" : ""}
+                    {locale === "en" ? "Go to Portal" : "前往门户"}
                   </button>
                 </div>
               </div>

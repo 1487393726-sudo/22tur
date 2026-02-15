@@ -421,7 +421,7 @@ export default function NotificationsPage() {
             data-oid="dsr:k8l"
           />
           <p className="text-gray-600" data-oid="1b4f.2_">
-            ...
+            加载中...
           </p>
         </div>
       </div>
