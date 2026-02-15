@@ -27,6 +27,9 @@ function CheckoutContent() {
     postalCode: '',
   });
 
+  // 计算优惠金额
+  const discount = subtotal - total;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     

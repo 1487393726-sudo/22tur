@@ -514,9 +514,8 @@ export default function NotificationsPage() {
                 return (
                   <Card
                     key={notification.id}
-                    className={`transition-all hover:shadow-md ${!notification.isRead ? "border-l-4 border-l-blue-500" : ""}`}
-                    data-oid=":dja998"
-                   className="purple-gradient-card">
+                    className={`purple-gradient-card transition-all hover:shadow-md ${!notification.isRead ? "border-l-4 border-l-blue-500" : ""}`}
+                    data-oid=":dja998">
                     <CardContent className="purple-gradient-card p-4" data-oid="7sjscs6">
                       <div
                         className="flex items-start justify-between"
@@ -622,9 +621,8 @@ export default function NotificationsPage() {
               {filteredMessages.map((message) => (
                 <Card
                   key={message.id}
-                  className={`transition-all hover:shadow-md ${!message.isRead ? "border-l-4 border-l-green-500" : ""}`}
-                  data-oid="6h-l91l"
-                 className="purple-gradient-card">
+                  className={`purple-gradient-card transition-all hover:shadow-md ${!message.isRead ? "border-l-4 border-l-green-500" : ""}`}
+                  data-oid="6h-l91l">
                   <CardContent className="purple-gradient-card p-4" data-oid=":_ebe6b">
                     <div
                       className="flex items-start justify-between"
