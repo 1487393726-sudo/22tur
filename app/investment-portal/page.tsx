@@ -1,9 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
-// Force dynamic rendering to prevent prerender errors with context
-export const dynamic = 'force-dynamic';
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
