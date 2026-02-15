@@ -7,9 +7,6 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-
-// Force dynamic rendering to avoid prerender issues with useSearchParams
-export const dynamic = 'force-dynamic';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -28,7 +25,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { AlertTriangle, CheckCircle, Loader2, Save } from 'lucide-react';
 import { AIConfig } from '@/lib/ai-assistant/types';
 
-export default function ConfigPage() {
+// Force dynamic rendering to avoid prerender issues with useSearchParams
+export const dynamic = 'force-dynamic';
+
+function ConfigPageContent() {
   const searchParams = useSearchParams();
   const projectId = searchParams.get('projectId');
 
@@ -360,5 +360,20 @@ export default function ConfigPage() {
         </Button>
       </div>
     </div>
+  );
+}
+
+export default function ConfigPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center h-screen">
+        <div className="text-center">
+          <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4" />
+          <p>Loading configuration...</p>
+        </div>
+      </div>
+    }>
+      <ConfigPageContent />
+    </Suspense>
   );
 }
