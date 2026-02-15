@@ -1,0 +1,67 @@
+{
+  "version": "2.6",
+  "name": "Login Logs Dashboard",
+  "description": "登录日志管理 - 过滤、导出、分页",
+  "children": [{
+    "type": "frame",
+    "id": "main",
+    "x": 0,
+    "y": 0,
+    "width": 1920,
+    "height": 1200,
+    "fill": "#0f172a",
+    "children": [{
+      "type": "text",
+      "id": "title",
+      "x": 60,
+      "y": 40,
+      "width": 600,
+      "height": 60,
+      "text": "登录日志管理",
+      "fontSize": 36,
+      "fontWeight": "bold",
+      "fill": "#ffffff"
+    },{
+      "type": "rectangle",
+      "id": "table",
+      "x": 60,
+      "y": 140,
+      "width": 1800,
+      "height": 600,
+      "fill": "#1e293b",
+      "cornerRadius": 12
+    },{
+      "type": "rectangle",
+      "id": "features",
+      "x": 60,
+      "y": 780,
+      "width": 580,
+      "height": 380,
+      "fill": "#1e293b",
+      "cornerRadius": 12,
+      "children": [{
+        "type": "text",
+        "id": "f-title",
+        "x": 24,
+        "y": 24,
+        "width": 532,
+        "height": 32,
+        "text": "功能特性",
+        "fontSize": 24,
+        "fontWeight": "bold",
+        "fill": "#ffffff"
+      },{
+        "type": "text",
+        "id": "features-list",
+        "x": 24,
+        "y": 72,
+        "width": 532,
+        "height": 280,
+        "text": "✓ 多条件过滤（用户/结果/方法/日期）\n✓ CSV/JSON 导出\n✓ 分页显示（每页20条）\n✓ 实时刷新\n✓ 设备信息显示\n✓ 地理位置追踪\n✓ 失败原因分析\n✓ 多语言支持",
+        "fontSize": 16,
+        "fill": "#d1d5db",
+        "lineHeight": 1.8
+      }]
+    }]
+  }]
+}

@@ -1,0 +1,29 @@
+# robots.txt for production
+
+User-agent: *
+Allow: /
+
+# 禁止爬取后台管理页面
+Disallow: /dashboard/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /client/
+
+# 禁止爬取用户相关页面
+Disallow: /auth/
+Disallow: /login
+Disallow: /register
+Disallow: /reset-password
+
+# 允许爬取公开页面
+Allow: /
+Allow: /about
+Allow: /services
+Allow: /cases
+Allow: /blog
+Allow: /contact
+Allow: /partners
+Allow: /pricing
+
+# Sitemap 位置
+Sitemap: https://your-domain.com/sitemap.xml

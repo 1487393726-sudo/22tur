@@ -1,0 +1,63 @@
+{
+  "title": "Blog",
+  "subtitle": "Read our latest articles on design, development, and digital marketing trends",
+  "search": {
+    "placeholder": "Search articles...",
+    "label": "Search blog articles"
+  },
+  "categories": {
+    "all": "All",
+    "design": "Design",
+    "development": "Development",
+    "marketing": "Marketing",
+    "branding": "Branding"
+  },
+  "readMore": "Read More",
+  "readTime": "min read",
+  "loading": "Loading more articles...",
+  "loadMore": "Load More",
+  "endOfResults": "You've reached the end of the articles",
+  "noResults": {
+    "title": "No Articles Found",
+    "description": "No articles match your search criteria. Try different keywords or clear the filters.",
+    "resetButton": "Clear Filters"
+  },
+  "subscribe": {
+    "title": "Subscribe to Our Blog",
+    "description": "Get the latest design, development, and marketing insights delivered to your inbox",
+    "placeholder": "Enter your email",
+    "button": "Subscribe"
+  },
+  "articles": {
+    "webDesignTrends": {
+      "title": "2024 Web Design Trends",
+      "excerpt": "Explore the hottest web design trends of 2024, including minimalism, dark mode, 3D elements, and more.",
+      "category": "design"
+    },
+    "react19": {
+      "title": "React 19 New Features Explained",
+      "excerpt": "React 19 brings many exciting new features. Let's explore how these improvements enhance the development experience.",
+      "category": "development"
+    },
+    "seoGuide": {
+      "title": "How to Improve Website SEO Rankings",
+      "excerpt": "Share practical SEO optimization tips to help your website achieve better search engine rankings.",
+      "category": "marketing"
+    },
+    "uiuxBestPractices": {
+      "title": "UI/UX Design Best Practices",
+      "excerpt": "Learn how to create user-friendly interfaces that enhance user experience and satisfaction.",
+      "category": "design"
+    },
+    "nextjsPerformance": {
+      "title": "Next.js Performance Optimization Guide",
+      "excerpt": "Deep dive into Next.js application performance optimization strategies, including code splitting and image optimization.",
+      "category": "development"
+    },
+    "brandBuilding": {
+      "title": "The Importance of Brand Building",
+      "excerpt": "Why is brand building crucial for businesses? How to build a successful brand?",
+      "category": "branding"
+    }
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "hero": {
+    "title": "Contact Us",
+    "subtitle": "Have a project in mind? Let's discuss how to make it happen. We look forward to working with you!"
+  },
+  "info": {
+    "title": "Get in Touch",
+    "subtitle": "We're here to help and answer any questions you might have",
+    "email": {
+      "title": "Email",
+      "value": "info@creativeagency.com"
+    },
+    "phone": {
+      "title": "Phone",
+      "value": "+86 10 8888 8888"
+    },
+    "address": {
+      "title": "Office Address",
+      "value": "No. 88 Jianguo Rd, Chaoyang District, Beijing, SOHO Xiandai Cheng Tower A, Room 2808"
+    }
+  },
+  "hours": {
+    "title": "Business Hours",
+    "subtitle": "We're available during the following hours",
+    "weekdays": "Monday - Friday",
+    "weekdaysTime": "9:00 AM - 6:00 PM",
+    "weekend": "Saturday - Sunday",
+    "weekendTime": "Closed",
+    "responseTime": "Response Time:",
+    "responseTimeValue": "Within 24 hours"
+  },
+  "why": {
+    "title": "Why Choose Us",
+    "subtitle": "We are committed to delivering an outstanding service experience",
+    "items": [
+      {"title": "Fast Response", "desc": "We reply within 24 hours to kick off your project quickly"},
+      {"title": "Expert Team", "desc": "Experienced designers and developers offering professional solutions"},
+      {"title": "End‑to‑End", "desc": "From discovery to delivery, we manage your project professionally"}
+    ]
+  },
+  "form": {
+    "title": "Send Us a Message",
+    "subtitle": "Tell us about your project and we'll get back to you soon",
+    "fields": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Enter your name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email address"
+      },
+      "phone": {
+        "label": "Phone (Optional)",
+        "placeholder": "Enter your phone number"
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "What is this regarding?"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Tell us about your project or inquiry..."
+      }
+    },
+    "submit": "Send Message"
+  },
+  "form": {
+    "title": "Send Us a Message",
+    "subtitle": "Tell us about your project and we'll get back to you soon",
+    "fields": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Enter your name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email address"
+      },
+      "phone": {
+        "label": "Phone (Optional)",
+        "placeholder": "Enter your phone number"
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "What is this regarding?"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Tell us about your project or inquiry..."
+      }
+    },
+    "validation": {
+      "nameRequired": "Name is required",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email address",
+      "subjectRequired": "Subject is required",
+      "messageRequired": "Message is required",
+      "messageMinLength": "Message must be at least 10 characters"
+    },
+    "submit": "Send Message",
+    "submitting": "Sending...",
+    "success": {
+      "title": "Message Sent Successfully!",
+      "message": "Thank you for contacting us. We'll get back to you within 24 hours.",
+      "button": "Send Another Message"
+    },
+    "error": {
+      "title": "Failed to Send Message",
+      "message": "Sorry, something went wrong. Please try again or contact us directly via email.",
+      "button": "Try Again"
+    }
+  }
+}

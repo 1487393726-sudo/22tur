@@ -1,0 +1,586 @@
+{
+  "version": "2.0",
+  "type": "design-specification",
+  "component": "ScreenEditor",
+  "lastModified": "2026-01-26",
+  "description": "大屏编辑器设计规范 - 可视化数据大屏设计工具，支持拖拽布局和实时预览",
+  "dimensions": {
+    "artboard": {
+      "width": 1600,
+      "height": 1000
+    },
+    "components": {
+      "sidebar": {
+        "width": 256,
+        "padding": 16
+      },
+      "canvas": {
+        "defaultWidth": 1920,
+        "defaultHeight": 1080,
+        "minScale": 0.2,
+        "maxScale": 1.0
+      },
+      "properties": {
+        "width": 288,
+        "padding": 16
+      },
+      "toolbar": {
+        "height": 56,
+        "padding": "0 16px"
+      },
+      "widget": {
+        "minWidth": 100,
+        "minHeight": 60,
+        "handleSize": 16,
+        "borderWidth": 2
+      }
+    }
+  },
+  "colorScheme": {
+    "canvas": {
+      "background": "#1a1a2e",
+      "grid": "rgba(255,255,255,0.1)",
+      "screenBg": "#0a1929"
+    },
+    "sidebar": {
+      "background": "#f9fafb",
+      "darkBackground": "#111827",
+      "itemBg": "#ffffff",
+      "itemHover": "#f3f4f6",
+      "itemActive": "#dbeafe"
+    },
+    "widget": {
+      "default": "rgba(255,255,255,0.05)",
+      "selected": "#3b82f6",
+      "hover": "rgba(59,130,246,0.1)",
+      "border": "rgba(255,255,255,0.1)",
+      "handle": "#3b82f6"
+    },
+    "toolbar": {
+      "background": "#ffffff",
+      "darkBackground": "#1f2937",
+      "border": "#e5e7eb",
+      "darkBorder": "#374151"
+    },
+    "preview": {
+      "overlay": "rgba(0,0,0,0.9)",
+      "controls": "rgba(255,255,255,0.1)"
+    }
+  },
+  "layout": {
+    "structure": "三栏布局 + 顶部工具栏",
+    "toolbar": {
+      "position": "top",
+      "height": "56px",
+      "zIndex": 10
+    },
+    "sidebar": {
+      "position": "left",
+      "width": "256px",
+      "overflow": "auto"
+    },
+    "canvas": {
+      "position": "center",
+      "flex": 1,
+      "overflow": "auto",
+      "padding": "32px"
+    },
+    "properties": {
+      "position": "right",
+      "width": "288px",
+      "overflow": "auto"
+    }
+  },
+  "interactions": {
+    "widgetCatalog": {
+      "categories": {
+        "chart": "图表类组件",
+        "data": "数据类组件", 
+        "display": "展示类组件"
+      },
+      "addWidget": {
+        "trigger": "click widget item",
+        "action": "add to canvas center",
+        "feedback": "auto select + toast"
+      }
+    },
+    "dragDrop": {
+      "initiate": {
+        "trigger": "mousedown on widget",
+        "cursor": "grabbing",
+        "preview": "semi-transparent"
+      },
+      "move": {
+        "constraints": "canvas boundaries",
+        "snap": "grid alignment",
+        "feedback": "position tooltip"
+      },
+      "complete": {
+        "action": "update position",
+        "animation": "smooth settle"
+      }
+    },
+    "resize": {
+      "handles": {
+        "positions": ["nw", "ne", "sw", "se", "n", "s", "e", "w"],
+        "size": "16px",
+        "color": "#3b82f6"
+      },
+      "constraints": {
+        "minWidth": "widget.minWidth",
+        "minHeight": "widget.minHeight",
+        "aspectRatio": "optional lock"
+      },
+      "feedback": {
+        "cursor": "resize cursors",
+        "dimensions": "tooltip display"
+      }
+    },
+    "selection": {
+      "single": {
+        "trigger": "click widget",
+        "feedback": "blue border + handles",
+        "properties": "show in right panel"
+      },
+      "multiple": {
+        "trigger": "ctrl+click",
+        "feedback": "multiple selection",
+        "operations": "group actions"
+      }
+    },
+    "preview": {
+      "fullscreen": {
+        "trigger": "preview button",
+        "animation": "fade in overlay",
+        "controls": "floating toolbar"
+      },
+      "exit": {
+        "trigger": "escape or exit button",
+        "animation": "fade out"
+      }
+    }
+  },
+  "widgetTypes": {
+    "charts": [
+      {
+        "type": "line-chart",
+        "name": "折线图",
+        "icon": "LineChart",
+        "defaultSize": { "width": 400, "height": 300 }
+      },
+      {
+        "type": "bar-chart", 
+        "name": "柱状图",
+        "icon": "BarChart3",
+        "defaultSize": { "width": 400, "height": 300 }
+      },
+      {
+        "type": "pie-chart",
+        "name": "饼图", 
+        "icon": "PieChart",
+        "defaultSize": { "width": 300, "height": 300 }
+      },
+      {
+        "type": "gauge",
+        "name": "仪表盘",
+        "icon": "Gauge", 
+        "defaultSize": { "width": 250, "height": 250 }
+      }
+    ],
+    "data": [
+      {
+        "type": "number",
+        "name": "数字卡片",
+        "icon": "Hash",
+        "defaultSize": { "width": 200, "height": 120 }
+      },
+      {
+        "type": "progress",
+        "name": "进度条",
+        "icon": "TrendingUp",
+        "defaultSize": { "width": 300, "height": 80 }
+      }
+    ],
+    "display": [
+      {
+        "type": "list",
+        "name": "列表",
+        "icon": "List", 
+        "defaultSize": { "width": 300, "height": 250 }
+      },
+      {
+        "type": "table",
+        "name": "表格",
+        "icon": "Table",
+        "defaultSize": { "width": 500, "height": 300 }
+      },
+      {
+        "type": "text",
+        "name": "文本",
+        "icon": "Type",
+        "defaultSize": { "width": 200, "height": 60 }
+      }
+    ]
+  },
+  "responsive": {
+    "mobile": {
+      "maxWidth": "768px",
+      "layout": "single column",
+      "sidebar": "bottom drawer",
+      "properties": "modal dialog"
+    },
+    "tablet": {
+      "maxWidth": "1024px", 
+      "sidebar": "collapsible",
+      "canvas": "reduced padding",
+      "scale": "auto fit"
+    },
+    "desktop": {
+      "minWidth": "1025px",
+      "layout": "full three column",
+      "scale": "user controlled"
+    }
+  },
+  "accessibility": {
+    "keyboard": {
+      "navigation": "tab through widgets",
+      "selection": "arrow keys",
+      "actions": "enter/space activate",
+      "shortcuts": "ctrl+z undo, ctrl+s save"
+    },
+    "screenReader": {
+      "widgets": "type and position announced",
+      "actions": "operation feedback",
+      "states": "selection and mode changes"
+    },
+    "visual": {
+      "focus": "clear focus indicators",
+      "contrast": "WCAG AA compliance",
+      "motion": "respect prefers-reduced-motion"
+    }
+  },
+  "performance": {
+    "rendering": {
+      "virtualization": "large widget lists",
+      "debouncing": "drag/resize operations", 
+      "memoization": "widget components",
+      "batching": "state updates"
+    },
+    "canvas": {
+      "scaling": "CSS transforms",
+      "clipping": "viewport culling",
+      "layers": "GPU acceleration"
+    },
+    "data": {
+      "persistence": "incremental saves",
+      "undo": "command pattern",
+      "sync": "optimistic updates"
+    }
+  },
+  "errorHandling": {
+    "validation": {
+      "widgetConfig": "schema validation",
+      "canvasSize": "dimension limits",
+      "dataSource": "URL format check"
+    },
+    "recovery": {
+      "autoSave": "periodic backup",
+      "undo": "operation history",
+      "fallback": "default configurations"
+    },
+    "user": {
+      "feedback": "toast notifications",
+      "guidance": "contextual help",
+      "prevention": "constraint enforcement"
+    }
+  }
+}
+
+---
+
+# ScreenEditor 组件设计规范
+
+## 概述
+ScreenEditor 是一个可视化数据大屏编辑器，提供拖拽式布局设计、丰富的组件库和实时预览功能，用于创建专业的数据展示大屏。
+
+## 核心功能
+
+### 1. 组件库管理
+- **分类组织**: 图表、数据、展示三大类别
+- **拖拽添加**: 点击或拖拽添加到画布
+- **预览缩略图**: 显示组件外观预览
+- **搜索过滤**: 快速查找所需组件
+
+### 2. 可视化编辑
+- **拖拽布局**: 自由拖拽调整位置
+- **大小调整**: 8个方向的调整手柄
+- **多选操作**: 支持批量选择和操作
+- **对齐辅助**: 智能对齐和分布
+
+### 3. 属性配置
+- **基础属性**: 位置、大小、标题等
+- **样式设置**: 颜色、边框、圆角等
+- **数据源**: 配置数据接口和刷新
+- **交互设置**: 点击、悬停等行为
+
+### 4. 预览发布
+- **实时预览**: 所见即所得编辑
+- **全屏预览**: 真实大屏效果
+- **响应式**: 适配不同分辨率
+- **分享发布**: 生成分享链接
+
+## 视觉设计
+
+### 整体布局
+```
+┌─────────────────────────────────────────────────────────┐
+│                    工具栏 (Toolbar)                      │
+├─────────────┬─────────────────────────┬─────────────────┤
+│             │                         │                 │
+│  组件库      │        画布区域          │    属性面板      │
+│ (Sidebar)   │       (Canvas)          │ (Properties)    │
+│             │                         │                 │
+│ ┌─────────┐ │  ┌─────────────────────┐ │ ┌─────────────┐ │
+│ │图表类    │ │  │                     │ │ │基础信息     │ │
+│ │- 折线图  │ │  │      1920x1080      │ │ │- 标题       │ │
+│ │- 柱状图  │ │  │       画布          │ │ │- 位置       │ │
+│ │- 饼图    │ │  │                     │ │ │- 大小       │ │
+│ └─────────┘ │  │  [组件1] [组件2]     │ │ │             │ │
+│             │  │                     │ │ │样式设置     │ │
+│ ┌─────────┐ │  │  [组件3]            │ │ │- 背景色     │ │
+│ │数据类    │ │  │                     │ │ │- 边框       │ │
+│ │- 数字卡片│ │  └─────────────────────┘ │ │- 圆角       │ │
+│ │- 进度条  │ │                         │ │             │ │
+│ └─────────┘ │                         │ │数据源       │ │
+│             │                         │ │- URL        │ │
+│ ┌─────────┐ │                         │ │- 刷新间隔   │ │
+│ │展示类    │ │                         │ └─────────────┘ │
+│ │- 列表    │ │                         │                 │
+│ │- 表格    │ │                         │                 │
+│ │- 文本    │ │                         │                 │
+│ └─────────┘ │                         │                 │
+└─────────────┴─────────────────────────┴─────────────────┘
+```
+
+### 画布设计
+- **背景色**: #1a1a2e (深色主题)
+- **大屏背景**: #0a1929 (可配置)
+- **网格线**: rgba(255,255,255,0.1)
+- **缩放控制**: 20%-100% 可调节
+
+### 组件样式
+- **默认状态**: 半透明白色背景
+- **选中状态**: 蓝色边框 + 调整手柄
+- **悬停状态**: 浅蓝色背景高亮
+- **拖拽状态**: 半透明 + 虚线边框
+
+### 调整手柄
+- **位置**: 8个方向 (四角 + 四边)
+- **尺寸**: 16px × 16px
+- **颜色**: #3b82f6 (蓝色)
+- **形状**: 圆角正方形
+
+## 交互设计
+
+### 组件添加流程
+1. 用户点击组件库中的组件
+2. 在画布中央创建新组件
+3. 自动选中新组件
+4. 显示属性配置面板
+5. 显示添加成功提示
+
+### 拖拽操作流程
+1. 鼠标按下组件开始拖拽
+2. 显示拖拽预览和辅助线
+3. 实时更新组件位置
+4. 边界检测和约束
+5. 鼠标释放完成拖拽
+
+### 大小调整流程
+1. 选中组件显示调整手柄
+2. 拖拽手柄开始调整大小
+3. 显示尺寸提示信息
+4. 最小尺寸约束检查
+5. 释放鼠标完成调整
+
+### 预览模式切换
+1. 点击预览按钮
+2. 淡入全屏黑色遮罩
+3. 隐藏编辑界面元素
+4. 显示真实大屏效果
+5. 提供退出预览选项
+
+## 组件类型系统
+
+### 图表类组件
+- **折线图**: 趋势数据展示
+- **柱状图**: 对比数据展示  
+- **饼图**: 占比数据展示
+- **仪表盘**: 进度指标展示
+- **地图**: 地理数据展示
+
+### 数据类组件
+- **数字卡片**: 关键指标展示
+- **进度条**: 完成度展示
+- **统计面板**: 多指标展示
+
+### 展示类组件
+- **列表**: 排行数据展示
+- **表格**: 详细数据展示
+- **文本**: 标题说明展示
+
+## 响应式设计
+
+### 桌面端 (≥1025px)
+- 完整三栏布局
+- 组件库固定左侧 256px
+- 属性面板固定右侧 288px
+- 画布区域自适应缩放
+
+### 平板端 (769px-1024px)
+- 组件库可折叠
+- 属性面板底部抽屉
+- 画布自动适配缩放
+- 简化的工具栏
+
+### 移动端 (≤768px)
+- 单栏布局
+- 组件库底部抽屉
+- 属性面板全屏弹窗
+- 触摸友好的操作
+
+## 无障碍设计
+
+### 键盘导航
+- Tab 键遍历所有可交互元素
+- 箭头键在组件间导航
+- Enter/Space 激活选择
+- Ctrl+Z 撤销操作
+- Ctrl+S 保存配置
+
+### 屏幕阅读器
+- 组件类型和位置播报
+- 拖拽操作状态通知
+- 属性变化实时反馈
+- 错误信息清晰描述
+
+### 视觉辅助
+- 高对比度模式支持
+- 焦点指示器清晰可见
+- 减少动画选项
+- 颜色不是唯一信息载体
+
+## 性能优化
+
+### 渲染优化
+- 虚拟化大型组件列表
+- 防抖拖拽和调整操作
+- 组件懒加载和代码分割
+- 批量状态更新
+
+### 画布优化
+- CSS Transform 实现缩放
+- 视口裁剪减少渲染
+- GPU 硬件加速
+- 智能重绘区域
+
+### 内存管理
+- 及时清理事件监听器
+- 避免内存泄漏
+- 合理的组件卸载
+- 状态持久化
+
+## 数据管理
+
+### 配置结构
+```typescript
+interface DashboardScreenConfig {
+  id: string;
+  name: string;
+  width: number;
+  height: number;
+  backgroundColor: string;
+  widgets: WidgetConfig[];
+  createdAt: Date;
+  updatedAt?: Date;
+}
+```
+
+### 状态管理
+- 不可变状态更新
+- 操作历史记录 (撤销/重做)
+- 自动保存机制
+- 乐观更新策略
+
+### 持久化
+- 增量保存减少网络请求
+- 本地缓存提高响应速度
+- 冲突检测和解决
+- 版本控制支持
+
+## 错误处理
+
+### 输入验证
+- 组件配置参数验证
+- 画布尺寸边界检查
+- 数据源 URL 格式验证
+- 必填字段完整性检查
+
+### 异常恢复
+- 自动保存和恢复机制
+- 操作历史回滚
+- 默认配置回退
+- 用户友好的错误提示
+
+### 状态一致性
+- 并发操作冲突处理
+- 数据同步机制
+- 状态完整性验证
+- 错误边界保护
+
+## 技术实现
+
+### 核心依赖
+- React 18+ (Hooks)
+- TypeScript (类型安全)
+- Tailwind CSS (样式)
+- Lucide React (图标)
+
+### 拖拽实现
+- 原生 Mouse Events
+- 自定义拖拽逻辑
+- 边界约束检测
+- 性能优化处理
+
+### 状态管理
+- useState (本地状态)
+- useCallback (性能优化)
+- useRef (DOM 引用)
+- 自定义 Hooks
+
+## 使用示例
+
+### 基础用法
+```tsx
+<ScreenEditor
+  screenConfig={config}
+  onSave={handleSave}
+/>
+```
+
+### 只读模式
+```tsx
+<ScreenEditor
+  screenConfig={config}
+  readOnly={true}
+/>
+```
+
+### 自定义组件
+```tsx
+<ScreenEditor
+  screenConfig={config}
+  customWidgets={customWidgets}
+  onSave={handleSave}
+/>
+```

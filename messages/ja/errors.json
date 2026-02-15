@@ -1,0 +1,45 @@
+{
+  "network": {
+    "connectionError": "ネットワーク接続エラー、接続を確認してください",
+    "timeout": "リクエストがタイムアウトしました、後でもう一度お試しください",
+    "offline": "現在オフラインです"
+  },
+  "server": {
+    "internalError": "サーバー内部エラー",
+    "serviceUnavailable": "サービスは一時的に利用できません",
+    "maintenance": "システムはメンテナンス中です、後でもう一度お試しください"
+  },
+  "auth": {
+    "unauthorized": "認証されていません、先にログインしてください",
+    "forbidden": "この操作を実行する権限がありません",
+    "sessionExpired": "セッションが期限切れです、再度ログインしてください",
+    "invalidToken": "無効なトークン"
+  },
+  "resource": {
+    "notFound": "リクエストされたリソースが見つかりません",
+    "alreadyExists": "リソースは既に存在します",
+    "conflict": "リソースの競合、更新してもう一度お試しください"
+  },
+  "validation": {
+    "invalidInput": "入力データが無効です",
+    "missingRequired": "必須フィールドがありません",
+    "invalidFormat": "データ形式が無効です"
+  },
+  "file": {
+    "uploadFailed": "ファイルのアップロードに失敗しました",
+    "downloadFailed": "ファイルのダウンロードに失敗しました",
+    "fileTooLarge": "ファイルが大きすぎます",
+    "invalidType": "サポートされていないファイル形式"
+  },
+  "payment": {
+    "paymentFailed": "支払いに失敗しました",
+    "insufficientFunds": "残高不足",
+    "cardDeclined": "カードが拒否されました",
+    "transactionError": "取引エラー"
+  },
+  "generic": {
+    "unknownError": "不明なエラーが発生しました",
+    "tryAgain": "後でもう一度お試しください",
+    "contactSupport": "問題が続く場合は、サポートにお問い合わせください"
+  }
+}

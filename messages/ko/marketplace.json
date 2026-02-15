@@ -1,0 +1,123 @@
+{
+  "title": "라이브 스트리밍 장비 마켓",
+  "header": {
+    "search": "라이브 스트리밍 장비 검색...",
+    "cart": "장바구니",
+    "compare": "제품 비교"
+  },
+  "segments": {
+    "all": "전체",
+    "personal": "개인 사용자",
+    "professional": "전문 사용자",
+    "enterprise": "기업 사용자",
+    "personalDesc": "개인 라이브 스트리밍 입문용",
+    "professionalDesc": "전문 라이브 스트리밍 솔루션",
+    "enterpriseDesc": "기업급 라이브 스트리밍 룸 구성"
+  },
+  "categories": {
+    "all": "전체",
+    "lighting": "조명 장비",
+    "computer": "컴퓨터 장비",
+    "camera": "카메라",
+    "microphone": "마이크",
+    "audioInterface": "오디오 인터페이스",
+    "stand": "스탠드"
+  },
+  "product": {
+    "featured": "추천",
+    "addToCart": "장바구니에 추가",
+    "addToCompare": "비교에 추가",
+    "stock": "재고",
+    "outOfStock": "품절",
+    "specifications": "사양",
+    "description": "제품 설명",
+    "quantity": "수량"
+  },
+  "bundle": {
+    "hotBundle": "인기 패키지",
+    "includes": "포함",
+    "items": "개 장비",
+    "save": "절약"
+  },
+  "cart": {
+    "title": "장바구니",
+    "empty": "장바구니가 비어 있습니다",
+    "emptyDesc": "마음에 드는 라이브 스트리밍 장비를 선택해 보세요",
+    "goShopping": "쇼핑하러 가기",
+    "clear": "장바구니 비우기",
+    "subtotal": "상품 소계",
+    "shipping": "배송비",
+    "freeShipping": "무료 배송",
+    "total": "합계",
+    "checkout": "결제하기",
+    "continueShopping": "쇼핑 계속하기"
+  },
+  "checkout": {
+    "title": "주문 확인",
+    "shippingAddress": "배송 주소",
+    "recipient": "수령인",
+    "phone": "휴대폰 번호",
+    "province": "도/시",
+    "city": "시/군/구",
+    "district": "구/동",
+    "address": "상세 주소",
+    "paymentMethod": "결제 방법",
+    "alipay": "알리페이",
+    "wechat": "위챗페이",
+    "bank": "은행 송금",
+    "creditCard": "신용카드",
+    "orderSummary": "주문 요약",
+    "submit": "주문하기",
+    "submitting": "제출 중..."
+  },
+  "order": {
+    "title": "내 주문",
+    "detail": "주문 상세",
+    "orderNumber": "주문 번호",
+    "orderDate": "주문 일시",
+    "status": {
+      "pending": "결제 대기",
+      "paid": "결제 완료",
+      "processing": "처리 중",
+      "shipped": "배송 중",
+      "delivered": "배송 완료",
+      "cancelled": "취소됨"
+    },
+    "payNow": "지금 결제",
+    "viewDetail": "상세 보기",
+    "empty": "주문 내역이 없습니다",
+    "emptyDesc": "마음에 드는 라이브 스트리밍 장비를 선택해 보세요",
+    "logistics": "배송 정보",
+    "shippedAt": "발송 일시",
+    "deliveredAt": "배송 완료 일시",
+    "paymentInfo": "결제 정보",
+    "actualPayment": "실제 결제 금액"
+  },
+  "compare": {
+    "title": "제품 비교",
+    "empty": "비교할 제품이 없습니다",
+    "emptyDesc": "최대 4개 제품을 비교할 수 있습니다",
+    "selectProducts": "제품 선택하러 가기",
+    "clear": "비교 목록 비우기",
+    "price": "가격",
+    "brand": "브랜드",
+    "tier": "등급",
+    "stock": "재고",
+    "action": "작업"
+  },
+  "priceTier": {
+    "entry": "입문급",
+    "mid": "중급",
+    "high": "고급"
+  },
+  "common": {
+    "loading": "로딩 중...",
+    "noData": "데이터 없음",
+    "back": "뒤로",
+    "confirm": "확인",
+    "cancel": "취소",
+    "delete": "삭제",
+    "edit": "편집",
+    "save": "저장"
+  }
+}

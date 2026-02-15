@@ -1,0 +1,520 @@
+{
+  "version": "2.0",
+  "type": "design-specification",
+  "component": "Sidebar",
+  "lastModified": "2026-01-26",
+  "description": "仪表板侧边栏导航组件设计规范 - 渐变主题的多级导航系统",
+  "dimensions": {
+    "artboard": {
+      "width": 300,
+      "height": 1200
+    },
+    "components": {
+      "sidebar": {
+        "width": 256,
+        "padding": 16,
+        "borderRadius": 0
+      },
+      "brand": {
+        "height": 64,
+        "logoSize": 40,
+        "fontSize": 18
+      },
+      "navItem": {
+        "height": 44,
+        "padding": "12px",
+        "borderRadius": 12,
+        "iconSize": 20,
+        "fontSize": 14
+      },
+      "section": {
+        "marginTop": 16,
+        "titleHeight": 32,
+        "titleFontSize": 12
+      }
+    }
+  },
+  "colorScheme": {
+    "background": {
+      "gradient": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "overlay": "rgba(0,0,0,0.1)",
+      "glass": "backdrop-filter: blur(10px)"
+    },
+    "brand": {
+      "logo": "linear-gradient(135deg, #a855f7 0%, #3b82f6 100%)",
+      "text": "#ffffff",
+      "subtitle": "rgba(255,255,255,0.7)",
+      "accent": "#fbbf24"
+    },
+    "navigation": {
+      "item": {
+        "default": "transparent",
+        "hover": "rgba(255,255,255,0.1)",
+        "active": "rgba(255,255,255,0.2)"
+      },
+      "text": {
+        "default": "rgba(255,255,255,0.9)",
+        "hover": "#ffffff",
+        "active": "#ffffff"
+      },
+      "icon": {
+        "default": "rgba(255,255,255,0.8)",
+        "hover": "#ffffff", 
+        "active": "#ffffff"
+      }
+    },
+    "section": {
+      "title": "rgba(255,255,255,0.6)",
+      "divider": "rgba(255,255,255,0.1)",
+      "badge": {
+        "pro": "linear-gradient(90deg, #fbbf24 0%, #f97316 100%)",
+        "new": "linear-gradient(90deg, #10b981 0%, #059669 100%)"
+      }
+    },
+    "footer": {
+      "divider": "rgba(255,255,255,0.1)",
+      "version": "rgba(255,255,255,0.4)",
+      "copyright": "rgba(255,255,255,0.3)"
+    }
+  },
+  "layout": {
+    "structure": "固定侧边栏 + 响应式抽屉",
+    "brand": {
+      "display": "flex",
+      "alignItems": "center",
+      "gap": "12px",
+      "padding": "16px",
+      "marginBottom": "24px"
+    },
+    "navigation": {
+      "display": "flex",
+      "flexDirection": "column",
+      "gap": "4px",
+      "flex": 1,
+      "overflow": "auto"
+    },
+    "footer": {
+      "marginTop": "auto",
+      "paddingTop": "16px",
+      "borderTop": "1px solid rgba(255,255,255,0.1)"
+    }
+  },
+  "interactions": {
+    "mobileToggle": {
+      "trigger": "hamburger button",
+      "animation": "slide in from left",
+      "overlay": "backdrop click to close"
+    },
+    "navigation": {
+      "hover": {
+        "background": "rgba(255,255,255,0.1)",
+        "transition": "150ms ease"
+      },
+      "active": {
+        "background": "rgba(255,255,255,0.2)",
+        "fontWeight": "600"
+      },
+      "click": {
+        "navigation": "Next.js router",
+        "closeMobile": "auto close on mobile"
+      }
+    },
+    "sections": {
+      "collapse": "可折叠区块 (未实现)",
+      "badges": "PRO/NEW 标识显示",
+      "icons": "动态图标状态"
+    }
+  },
+  "navigationStructure": {
+    "main": [
+      { "label": "概览", "href": "/dashboard", "icon": "Home" },
+      { "label": "我的订单", "href": "/dashboard/orders", "icon": "Briefcase" },
+      { "label": "市场", "href": "/dashboard/market", "icon": "ShoppingBag" },
+      { "label": "支持", "href": "/dashboard/support", "icon": "MessagesSquare" },
+      { "label": "文件", "href": "/dashboard/files", "icon": "FileArchive" }
+    ],
+    "clientService": [
+      { "label": "服务订单", "href": "/client/orders", "icon": "Briefcase" },
+      { "label": "项目进度", "href": "/client/projects", "icon": "FolderKanban" },
+      { "label": "我的合同", "href": "/client/contracts", "icon": "FileText" },
+      { "label": "创建产品", "href": "/dashboard/create-product", "icon": "Package" },
+      { "label": "定制订单", "href": "/dashboard/custom-orders", "icon": "Zap" },
+      { "label": "工厂订单", "href": "/dashboard/factory-orders", "icon": "Factory" },
+      { "label": "项目需求", "href": "/dashboard/project-requirements", "icon": "ClipboardList" },
+      { "label": "购物车", "href": "/client/cart", "icon": "ShoppingCart" },
+      { "label": "预约", "href": "/appointments", "icon": "Calendar" }
+    ],
+    "investment": [
+      { "label": "投资概览", "href": "/dashboard/investment", "icon": "TrendingUp" },
+      { "label": "投资组合", "href": "/dashboard/investment/portfolio", "icon": "PieChart" },
+      { "label": "风险评估", "href": "/dashboard/investment/risk", "icon": "Shield" },
+      { "label": "收益分析", "href": "/dashboard/investment/returns", "icon": "LineChart" },
+      { "label": "投资策略", "href": "/dashboard/investment/strategy", "icon": "Target" },
+      { "label": "投资报告", "href": "/dashboard/investment/reports", "icon": "FileText" },
+      { "label": "投资钱包", "href": "/dashboard/investment/wallet", "icon": "Wallet" },
+      { "label": "投资机会", "href": "/investment-opportunities", "icon": "Building2" }
+    ]
+  },
+  "responsive": {
+    "mobile": {
+      "maxWidth": "768px",
+      "behavior": "overlay drawer",
+      "trigger": "hamburger button",
+      "backdrop": "click to close",
+      "animation": "slide transition"
+    },
+    "tablet": {
+      "maxWidth": "1024px",
+      "behavior": "collapsible sidebar",
+      "width": "collapsed: 64px, expanded: 256px"
+    },
+    "desktop": {
+      "minWidth": "1025px",
+      "behavior": "fixed sidebar",
+      "width": "256px",
+      "position": "relative"
+    }
+  },
+  "accessibility": {
+    "navigation": {
+      "role": "navigation",
+      "ariaLabel": "主导航",
+      "keyboard": "Tab 键遍历"
+    },
+    "links": {
+      "ariaCurrent": "page for active link",
+      "keyboard": "Enter 激活",
+      "focus": "visible focus ring"
+    },
+    "mobile": {
+      "button": "aria-expanded state",
+      "drawer": "focus trap when open",
+      "close": "Escape key support"
+    },
+    "sections": {
+      "headings": "proper heading hierarchy",
+      "landmarks": "navigation landmarks"
+    }
+  },
+  "theming": {
+    "gradientStyles": {
+      "purple": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+      "blue": "linear-gradient(135deg, #3b82f6 0%, #1e40af 100%)",
+      "green": "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+      "orange": "linear-gradient(135deg, #f97316 0%, #ea580c 100%)"
+    },
+    "toggle": {
+      "component": "GradientStyleToggle",
+      "position": "footer section",
+      "persistence": "localStorage"
+    }
+  },
+  "performance": {
+    "rendering": {
+      "memoization": "React.memo for nav items",
+      "virtualization": "not needed for nav size",
+      "lazyLoading": "icon components"
+    },
+    "navigation": {
+      "prefetch": "Next.js link prefetch",
+      "caching": "route caching",
+      "transitions": "smooth page transitions"
+    },
+    "mobile": {
+      "overlay": "efficient backdrop",
+      "animation": "CSS transitions",
+      "cleanup": "event listener removal"
+    }
+  }
+}
+
+---
+
+# Sidebar 组件设计规范
+
+## 概述
+Sidebar 是仪表板的主导航组件，采用现代渐变设计风格，提供多级导航结构和响应式交互体验。
+
+## 核心功能
+
+### 1. 品牌展示
+- **Logo 区域**: 渐变色圆角图标
+- **品牌名称**: "客户中心" 主标题
+- **副标题**: "投资者专属" 说明文字
+- **装饰元素**: 闪烁星星图标
+
+### 2. 导航结构
+- **主要导航**: 概览、订单、市场等核心功能
+- **客户服务**: 服务订单、项目管理等业务功能
+- **投资管理**: 投资组合、风险评估等专业功能
+- **设置区域**: 主题切换、系统设置等
+
+### 3. 响应式交互
+- **桌面端**: 固定侧边栏，256px 宽度
+- **平板端**: 可折叠侧边栏
+- **移动端**: 抽屉式导航，覆盖层显示
+
+## 视觉设计
+
+### 渐变背景
+- **主渐变**: linear-gradient(135deg, #667eea 0%, #764ba2 100%)
+- **玻璃效果**: backdrop-filter: blur(10px)
+- **透明度**: rgba(0,0,0,0.1) 叠加层
+- **边框**: 无边框设计
+
+### 品牌区域
+- **Logo**: 40px × 40px，渐变色背景
+- **标题**: 18px 白色粗体字
+- **副标题**: 12px 半透明白色
+- **装饰**: 黄色闪烁星星
+
+### 导航项目
+- **高度**: 44px
+- **内边距**: 12px
+- **圆角**: 12px
+- **图标**: 20px Lucide 图标
+- **文字**: 14px 中等字重
+
+### 状态样式
+- **默认**: 透明背景，90% 白色文字
+- **悬停**: 10% 白色背景，100% 白色文字
+- **激活**: 20% 白色背景，100% 白色文字，600 字重
+
+## 导航结构
+
+### 主要导航 (Main Navigation)
+```
+🏠 概览          /dashboard
+💼 我的订单      /dashboard/orders  
+🛍️ 市场          /dashboard/market
+💬 支持          /dashboard/support
+📁 文件          /dashboard/files
+```
+
+### 客户服务 (Client Service)
+```
+💼 服务订单      /client/orders
+📋 项目进度      /client/projects
+📄 我的合同      /client/contracts
+📦 创建产品      /dashboard/create-product
+⚡ 定制订单      /dashboard/custom-orders
+🏭 工厂订单      /dashboard/factory-orders
+📝 项目需求      /dashboard/project-requirements
+🛒 购物车        /client/cart
+📅 预约          /appointments
+```
+
+### 投资管理 (Investment) - PRO 功能
+```
+📈 投资概览      /dashboard/investment
+🥧 投资组合      /dashboard/investment/portfolio
+🛡️ 风险评估      /dashboard/investment/risk
+📊 收益分析      /dashboard/investment/returns
+🎯 投资策略      /dashboard/investment/strategy
+📋 投资报告      /dashboard/investment/reports
+💰 投资钱包      /dashboard/investment/wallet
+🏢 投资机会      /investment-opportunities
+```
+
+## 交互设计
+
+### 移动端导航
+1. 点击汉堡菜单按钮
+2. 侧边栏从左侧滑入
+3. 显示半透明背景遮罩
+4. 点击遮罩或导航项关闭
+
+### 导航激活
+1. 检测当前路由路径
+2. 匹配对应导航项
+3. 应用激活状态样式
+4. 支持子路径匹配
+
+### 主题切换
+1. 点击渐变样式切换器
+2. 切换不同的渐变主题
+3. 保存到本地存储
+4. 实时更新界面样式
+
+## 响应式设计
+
+### 桌面端 (≥1025px)
+- 固定位置侧边栏
+- 完整功能显示
+- 256px 固定宽度
+- 相对定位布局
+
+### 平板端 (769px-1024px)
+- 可折叠侧边栏
+- 保持主要功能
+- 折叠时显示图标
+- 展开时显示完整内容
+
+### 移动端 (≤768px)
+- 抽屉式导航
+- 覆盖层显示
+- 汉堡菜单触发
+- 触摸友好的交互
+
+## 状态管理
+
+### 导航状态
+```typescript
+interface NavigationState {
+  isOpen: boolean;        // 移动端展开状态
+  activeRoute: string;    // 当前激活路由
+  isRTL: boolean;        // 右到左布局
+}
+```
+
+### 路由检测
+```typescript
+const isActive = (href: string) => 
+  pathname === href || pathname.startsWith(`${href}/`);
+```
+
+## 无障碍设计
+
+### 语义化结构
+- 使用 nav 元素包装导航
+- 正确的 ARIA 标签
+- 清晰的层级结构
+- 有意义的链接文本
+
+### 键盘导航
+- Tab 键遍历所有链接
+- Enter 键激活导航
+- Escape 键关闭移动菜单
+- 焦点指示器清晰可见
+
+### 屏幕阅读器
+- 导航区域有明确标签
+- 当前页面状态播报
+- 展开/收起状态通知
+- 图标有替代文本
+
+## 性能优化
+
+### 渲染优化
+- 导航项使用 React.memo
+- 图标组件懒加载
+- 避免不必要的重渲染
+- 合理使用 useCallback
+
+### 导航优化
+- Next.js Link 预加载
+- 路由缓存机制
+- 平滑的页面切换
+- 智能的状态管理
+
+### 移动端优化
+- 高效的背景遮罩
+- CSS 过渡动画
+- 事件监听器清理
+- 内存泄漏防护
+
+## 主题系统
+
+### 渐变主题
+- **紫色**: linear-gradient(135deg, #667eea 0%, #764ba2 100%)
+- **蓝色**: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%)
+- **绿色**: linear-gradient(135deg, #10b981 0%, #059669 100%)
+- **橙色**: linear-gradient(135deg, #f97316 0%, #ea580c 100%)
+
+### 主题切换
+- GradientStyleToggle 组件
+- 本地存储持久化
+- 实时样式更新
+- 平滑过渡动画
+
+## 错误处理
+
+### 路由错误
+- 无效路由重定向
+- 权限检查
+- 404 页面处理
+- 错误边界保护
+
+### 状态错误
+- 导航状态同步
+- 移动端状态管理
+- 主题状态恢复
+- 默认值回退
+
+## 国际化支持
+
+### 多语言
+- useDashboardTranslations Hook
+- 动态文本翻译
+- RTL 布局支持
+- 文化适配
+
+### 文本键值
+```typescript
+const translations = {
+  "sidebar.overview": "概览",
+  "sidebar.myOrders": "我的订单",
+  "sidebar.market": "市场",
+  // ...更多翻译
+};
+```
+
+## 技术实现
+
+### 核心依赖
+- React 18+ (Hooks)
+- Next.js (路由)
+- Lucide React (图标)
+- Tailwind CSS (样式)
+
+### 自定义样式
+```css
+.dashboard-sidebar {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  backdrop-filter: blur(10px);
+}
+
+.dashboard-sidebar-nav-item {
+  transition: all 150ms ease;
+}
+
+.dashboard-sidebar-nav-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dashboard-sidebar-nav-item.active {
+  background: rgba(255, 255, 255, 0.2);
+  font-weight: 600;
+}
+```
+
+### 状态管理
+```typescript
+const [isOpen, setIsOpen] = useState(false);
+const pathname = usePathname();
+const { t, isRTL } = useDashboardTranslations();
+```
+
+## 使用示例
+
+### 基础用法
+```tsx
+<Sidebar />
+```
+
+### 自定义导航项
+```tsx
+<Sidebar 
+  customItems={[
+    { href: "/custom", labelKey: "custom", icon: Custom }
+  ]}
+/>
+```
+
+### 主题配置
+```tsx
+<Sidebar 
+  theme="blue"
+  showThemeToggle={true}
+/>
+```

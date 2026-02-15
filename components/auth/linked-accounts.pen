@@ -1,0 +1,703 @@
+{
+  "name": "关联账户管理",
+  "description": "第三方账户关联管理组件，支持查看、关联和解除关联第三方登录账户",
+  "type": "component",
+  "framework": "React",
+  "styling": "Tailwind CSS",
+  "layout": {
+    "container": {
+      "width": "100%",
+      "maxWidth": "600px",
+      "margin": "0 auto",
+      "padding": "24px"
+    },
+    "card": {
+      "width": "100%",
+      "borderRadius": "12px",
+      "border": "1px solid #e5e7eb",
+      "backgroundColor": "#ffffff",
+      "boxShadow": "0 1px 3px rgba(0, 0, 0, 0.1)"
+    }
+  },
+  "components": {
+    "header": {
+      "container": {
+        "padding": "24px 24px 0",
+        "borderBottom": "1px solid #f3f4f6"
+      },
+      "titleRow": {
+        "display": "flex",
+        "alignItems": "center",
+        "gap": "8px",
+        "marginBottom": "8px"
+      },
+      "icon": {
+        "width": "20px",
+        "height": "20px",
+        "color": "#6b7280"
+      },
+      "title": {
+        "fontSize": "20px",
+        "fontWeight": "600",
+        "color": "#111827"
+      },
+      "description": {
+        "fontSize": "14px",
+        "color": "#6b7280",
+        "marginBottom": "24px"
+      }
+    },
+    "providerList": {
+      "container": {
+        "padding": "24px",
+        "display": "flex",
+        "flexDirection": "column",
+        "gap": "16px"
+      },
+      "providerItem": {
+        "display": "flex",
+        "alignItems": "center",
+        "gap": "16px",
+        "padding": "16px",
+        "border": "1px solid #e5e7eb",
+        "borderRadius": "8px",
+        "backgroundColor": "#ffffff",
+        "transition": "all 0.2s ease"
+      },
+      "providerIcon": {
+        "width": "40px",
+        "height": "40px",
+        "display": "flex",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "flexShrink": "0"
+      },
+      "providerInfo": {
+        "flex": "1",
+        "minWidth": "0"
+      },
+      "providerName": {
+        "fontSize": "16px",
+        "fontWeight": "500",
+        "color": "#111827",
+        "display": "flex",
+        "alignItems": "center",
+        "gap": "8px",
+        "marginBottom": "4px"
+      },
+      "connectedBadge": {
+        "padding": "2px 8px",
+        "fontSize": "12px",
+        "backgroundColor": "#f0fdf4",
+        "color": "#166534",
+        "borderRadius": "12px",
+        "fontWeight": "500",
+        "display": "flex",
+        "alignItems": "center",
+        "gap": "4px"
+      },
+      "linkedDate": {
+        "fontSize": "14px",
+        "color": "#6b7280"
+      },
+      "actionButton": {
+        "padding": "8px 16px",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "borderRadius": "6px",
+        "cursor": "pointer",
+        "display": "flex",
+        "alignItems": "center",
+        "gap": "8px",
+        "transition": "all 0.2s ease",
+        "minWidth": "80px",
+        "justifyContent": "center"
+      }
+    },
+    "loadingState": {
+      "container": {
+        "padding": "24px",
+        "display": "flex",
+        "flexDirection": "column",
+        "gap": "16px"
+      },
+      "skeletonItem": {
+        "display": "flex",
+        "alignItems": "center",
+        "gap": "16px",
+        "padding": "16px",
+        "border": "1px solid #e5e7eb",
+        "borderRadius": "8px"
+      },
+      "skeletonIcon": {
+        "width": "40px",
+        "height": "40px",
+        "backgroundColor": "#f3f4f6",
+        "borderRadius": "50%",
+        "animation": "pulse 2s infinite"
+      },
+      "skeletonText": {
+        "height": "16px",
+        "backgroundColor": "#f3f4f6",
+        "borderRadius": "4px",
+        "animation": "pulse 2s infinite"
+      },
+      "skeletonButton": {
+        "width": "80px",
+        "height": "32px",
+        "backgroundColor": "#f3f4f6",
+        "borderRadius": "6px",
+        "animation": "pulse 2s infinite"
+      }
+    },
+    "confirmDialog": {
+      "overlay": {
+        "position": "fixed",
+        "inset": "0",
+        "backgroundColor": "rgba(0, 0, 0, 0.5)",
+        "zIndex": "50"
+      },
+      "content": {
+        "position": "fixed",
+        "top": "50%",
+        "left": "50%",
+        "transform": "translate(-50%, -50%)",
+        "width": "400px",
+        "maxWidth": "90vw",
+        "backgroundColor": "#ffffff",
+        "borderRadius": "12px",
+        "padding": "24px",
+        "boxShadow": "0 25px 50px rgba(0, 0, 0, 0.25)"
+      },
+      "title": {
+        "fontSize": "18px",
+        "fontWeight": "600",
+        "color": "#111827",
+        "marginBottom": "8px"
+      },
+      "description": {
+        "fontSize": "14px",
+        "color": "#6b7280",
+        "marginBottom": "24px",
+        "lineHeight": "1.5"
+      },
+      "actions": {
+        "display": "flex",
+        "gap": "12px",
+        "justifyContent": "flex-end"
+      },
+      "cancelButton": {
+        "padding": "8px 16px",
+        "fontSize": "14px",
+        "backgroundColor": "transparent",
+        "border": "1px solid #d1d5db",
+        "borderRadius": "6px",
+        "color": "#374151",
+        "cursor": "pointer"
+      },
+      "confirmButton": {
+        "padding": "8px 16px",
+        "fontSize": "14px",
+        "backgroundColor": "#dc2626",
+        "border": "1px solid #dc2626",
+        "borderRadius": "6px",
+        "color": "#ffffff",
+        "cursor": "pointer"
+      }
+    }
+  },
+  "providerStyles": {
+    "google": {
+      "icon": {
+        "color": "#dc2626"
+      },
+      "linkButton": {
+        "backgroundColor": "transparent",
+        "border": "1px solid #d1d5db",
+        "color": "#374151"
+      },
+      "unlinkButton": {
+        "backgroundColor": "transparent",
+        "border": "1px solid #d1d5db",
+        "color": "#374151"
+      }
+    },
+    "github": {
+      "icon": {
+        "color": "#111827"
+      },
+      "linkButton": {
+        "backgroundColor": "transparent",
+        "border": "1px solid #d1d5db",
+        "color": "#374151"
+      },
+      "unlinkButton": {
+        "backgroundColor": "transparent",
+        "border": "1px solid #d1d5db",
+        "color": "#374151"
+      }
+    },
+    "wechat": {
+      "icon": {
+        "color": "#22c55e"
+      },
+      "linkButton": {
+        "backgroundColor": "transparent",
+        "border": "1px solid #d1d5db",
+        "color": "#374151"
+      },
+      "unlinkButton": {
+        "backgroundColor": "transparent",
+        "border": "1px solid #d1d5db",
+        "color": "#374151"
+      }
+    },
+    "qq": {
+      "icon": {
+        "color": "#3b82f6"
+      },
+      "linkButton": {
+        "backgroundColor": "transparent",
+        "border": "1px solid #d1d5db",
+        "color": "#374151"
+      },
+      "unlinkButton": {
+        "backgroundColor": "transparent",
+        "border": "1px solid #d1d5db",
+        "color": "#374151"
+      }
+    }
+  },
+  "states": {
+    "default": {
+      "actionButton": {
+        "cursor": "pointer",
+        "opacity": "1"
+      }
+    },
+    "loading": {
+      "actionButton": {
+        "cursor": "not-allowed",
+        "opacity": "0.6"
+      },
+      "loadingSpinner": {
+        "display": "inline-block"
+      }
+    },
+    "linked": {
+      "providerItem": {
+        "backgroundColor": "#f9fafb"
+      },
+      "connectedBadge": {
+        "display": "flex"
+      }
+    },
+    "unlinked": {
+      "connectedBadge": {
+        "display": "none"
+      },
+      "linkedDate": {
+        "display": "none"
+      }
+    },
+    "hover": {
+      "providerItem": {
+        "backgroundColor": "#f9fafb",
+        "borderColor": "#d1d5db"
+      },
+      "linkButton": {
+        "backgroundColor": "#f3f4f6"
+      },
+      "unlinkButton": {
+        "backgroundColor": "#f3f4f6"
+      }
+    }
+  },
+  "interactions": {
+    "linkAccount": {
+      "trigger": "click",
+      "target": "linkButton",
+      "conditions": ["!linking", "!linked"],
+      "actions": [
+        "setState: linking",
+        "signIn: provider",
+        "refreshAccountList",
+        "setState: linked"
+      ],
+      "feedback": "loading spinner + button disabled"
+    },
+    "unlinkAccount": {
+      "trigger": "click",
+      "target": "unlinkButton",
+      "conditions": ["!unlinking", "linked"],
+      "actions": [
+        "showConfirmDialog",
+        "setState: unlinking",
+        "apiCall: DELETE /api/auth/linked-accounts/:provider",
+        "removeFromList",
+        "setState: unlinked"
+      ],
+      "feedback": "loading spinner + confirmation dialog"
+    },
+    "confirmUnlink": {
+      "trigger": "click",
+      "target": "confirmButton",
+      "action": "executeUnlink",
+      "feedback": "toast notification"
+    },
+    "itemHover": {
+      "trigger": "mouseenter",
+      "target": "providerItem",
+      "action": "setState: hover"
+    },
+    "itemLeave": {
+      "trigger": "mouseleave",
+      "target": "providerItem",
+      "action": "removeState: hover"
+    }
+  },
+  "responsive": {
+    "mobile": {
+      "breakpoint": "640px",
+      "changes": {
+        "container.padding": "16px",
+        "header.padding": "16px 16px 0",
+        "providerList.padding": "16px",
+        "providerItem.padding": "12px",
+        "providerItem.flexDirection": "column",
+        "providerItem.alignItems": "flex-start",
+        "providerInfo.marginBottom": "12px",
+        "actionButton.width": "100%"
+      }
+    },
+    "tablet": {
+      "breakpoint": "768px",
+      "changes": {
+        "container.maxWidth": "500px"
+      }
+    }
+  },
+  "accessibility": {
+    "keyboardNavigation": true,
+    "screenReader": {
+      "providerIcon": "第三方平台图标",
+      "linkButton": "关联账户",
+      "unlinkButton": "解除关联",
+      "connectedBadge": "已关联状态",
+      "confirmDialog": "确认解除关联对话框"
+    },
+    "focusManagement": {
+      "confirmDialog": "trap focus within dialog",
+      "buttons": "visible focus indicators"
+    },
+    "announcements": {
+      "accountLinked": "账户已关联",
+      "accountUnlinked": "账户已解除关联",
+      "linkingFailed": "关联失败"
+    }
+  },
+  "performance": {
+    "lazyLoading": false,
+    "virtualization": false,
+    "memoization": ["provider list", "provider icons", "account status"],
+    "bundleSize": "~18KB gzipped"
+  },
+  "errorHandling": {
+    "networkError": {
+      "display": "toast notification",
+      "message": "网络错误，请稍后重试",
+      "retry": true
+    },
+    "linkingError": {
+      "display": "toast notification",
+      "message": "关联失败，请稍后重试",
+      "retry": true
+    },
+    "unlinkingError": {
+      "display": "toast notification",
+      "message": "解除关联失败，请稍后重试",
+      "retry": true
+    },
+    "loadingError": {
+      "display": "error state",
+      "message": "获取关联账户失败",
+      "retry": true
+    },
+    "authError": {
+      "display": "toast notification",
+      "message": "授权失败，请重试",
+      "retry": true
+    }
+  },
+  "animations": {
+    "accountLink": {
+      "type": "fadeIn + slideUp",
+      "duration": "300ms",
+      "easing": "ease-out"
+    },
+    "accountUnlink": {
+      "type": "fadeOut + slideDown",
+      "duration": "300ms",
+      "easing": "ease-in"
+    },
+    "badgeAppear": {
+      "type": "scaleIn",
+      "duration": "200ms",
+      "easing": "ease-out"
+    },
+    "loading": {
+      "type": "pulse",
+      "duration": "2s",
+      "iteration": "infinite"
+    },
+    "dialogAppear": {
+      "type": "scaleIn + fadeIn",
+      "duration": "200ms",
+      "easing": "ease-out"
+    },
+    "itemHover": {
+      "type": "backgroundTransition",
+      "duration": "150ms",
+      "easing": "ease-out"
+    }
+  },
+  "security": {
+    "oauth": {
+      "redirectUri": "validated and whitelisted",
+      "state": "CSRF protection enabled",
+      "scope": "minimal required permissions"
+    },
+    "dataProtection": {
+      "tokenStorage": "secure HTTP-only cookies",
+      "dataEncryption": "sensitive data encrypted",
+      "auditLog": "account linking activities logged"
+    }
+  }
+}
+
+---
+
+# 关联账户管理组件设计文档
+
+## 概述
+关联账户管理组件用于管理用户的第三方登录账户，支持查看已关联账户、关联新账户和解除关联等功能。
+
+## 核心功能
+
+### 1. 账户状态显示
+- **关联状态**：清晰显示每个第三方平台的关联状态
+- **关联时间**：显示账户关联的具体时间
+- **平台识别**：使用官方图标和品牌色彩识别不同平台
+
+### 2. 账户关联操作
+- **新账户关联**：支持关联 Google、GitHub、微信、QQ 等平台
+- **OAuth 授权**：安全的第三方授权流程
+- **状态反馈**：实时显示关联进度和结果
+
+### 3. 账户解除关联
+- **安全确认**：解除关联前需要用户确认
+- **批量管理**：支持管理多个第三方账户
+- **影响说明**：清楚说明解除关联的影响
+
+### 4. 数据管理
+- **实时同步**：操作后立即更新账户列表
+- **错误处理**：友好处理网络错误和授权失败
+- **状态持久化**：关联状态的可靠存储
+
+## 视觉设计
+
+### 布局结构
+```
+┌─────────────────────────────────────────┐
+│ 🔗 关联账户                              │
+│ 管理您的第三方登录账户                    │
+├─────────────────────────────────────────┤
+│ [G] Google        [已关联] ✓  [解除关联] │
+│     关联于 2024年1月15日                 │
+├─────────────────────────────────────────┤
+│ [📱] GitHub                    [关联]    │
+├─────────────────────────────────────────┤
+│ [💬] 微信                      [关联]    │
+├─────────────────────────────────────────┤
+│ [Q] QQ                        [关联]    │
+└─────────────────────────────────────────┘
+```
+
+### 颜色方案
+- **背景色**：#ffffff (白色)
+- **边框色**：#e5e7eb (浅灰色)
+- **文本色**：#111827 (深灰色)
+- **次要文本**：#6b7280 (中灰色)
+- **成功色**：#10b981 (绿色，已关联状态)
+- **危险色**：#dc2626 (红色，解除关联)
+
+### 平台品牌色彩
+- **Google**：#dc2626 (红色)
+- **GitHub**：#111827 (黑色)
+- **微信**：#22c55e (绿色)
+- **QQ**：#3b82f6 (蓝色)
+
+### 图标系统
+- **关联图标**：Link2 (20px)
+- **解除图标**：Unlink (16px)
+- **成功图标**：Check (12px)
+- **加载图标**：Loader2 (16px, 旋转动画)
+
+## 交互设计
+
+### 用户操作流程
+1. **查看关联状态**
+   - 页面加载时获取所有平台的关联状态
+   - 显示已关联和未关联的平台
+
+2. **关联新账户**
+   - 点击"关联"按钮
+   - 跳转到第三方授权页面
+   - 授权成功后返回并更新状态
+
+3. **解除关联账户**
+   - 点击"解除关联"按钮
+   - 弹出确认对话框
+   - 确认后执行解除操作
+
+### 状态管理
+- **默认状态**：显示所有平台和当前关联状态
+- **关联中状态**：按钮禁用，显示加载图标
+- **解除中状态**：按钮禁用，显示加载图标
+- **成功状态**：更新列表，显示成功提示
+- **错误状态**：显示错误信息，保持可操作性
+
+## 响应式设计
+
+### 移动端适配 (< 640px)
+- 平台项改为垂直布局
+- 操作按钮全宽显示
+- 减少内边距节省空间
+- 优化触摸目标大小
+
+### 平板端适配 (768px - 1024px)
+- 保持桌面端布局
+- 适当调整容器宽度
+- 优化按钮和图标尺寸
+
+## 无障碍设计
+
+### 键盘导航
+- 所有按钮支持 Tab 键导航
+- 确认对话框的焦点管理
+- 明显的焦点指示器
+
+### 屏幕阅读器支持
+- 语义化的列表结构
+- 适当的 ARIA 标签
+- 状态变化的语音播报
+
+### 视觉辅助
+- 高对比度的颜色搭配
+- 清晰的状态指示
+- 足够大的点击目标
+
+## 性能优化
+
+### 数据处理
+- 平台列表和图标的记忆化
+- 关联状态的缓存处理
+- 避免不必要的重新渲染
+
+### 网络优化
+- 合理的错误重试机制
+- 请求去重处理
+- 适当的加载状态显示
+
+## 错误处理
+
+### 网络错误
+- 显示友好的错误提示
+- 提供重试选项
+- 保持界面可用性
+
+### 授权错误
+- **授权失败**：提示用户重试
+- **权限不足**：说明所需权限
+- **账户冲突**：处理已关联其他账户的情况
+
+### API 错误
+- 根据错误类型显示相应提示
+- 记录错误日志用于调试
+- 优雅降级处理
+
+## 安全考虑
+
+### OAuth 安全
+- 使用标准的 OAuth 2.0 流程
+- 验证 redirect_uri 防止重定向攻击
+- 使用 state 参数防止 CSRF 攻击
+
+### 数据保护
+- 最小权限原则，只请求必要的权限
+- 安全存储访问令牌
+- 定期清理过期的关联信息
+
+### 审计日志
+- 记录所有关联和解除关联操作
+- 包含时间戳、IP地址等信息
+- 支持安全审计和问题排查
+
+## 技术实现
+
+### 状态管理
+```typescript
+interface LinkedAccount {
+  provider: string;
+  providerAccountId: string;
+  linkedAt: string;
+}
+
+interface LinkedAccountsState {
+  accounts: LinkedAccount[];
+  loading: boolean;
+  unlinking: string | null;
+  linking: string | null;
+}
+```
+
+### 支持的平台
+```typescript
+const supportedProviders = [
+  'google',
+  'github', 
+  'wechat',
+  'qq'
+] as const;
+```
+
+### API 接口
+- `GET /api/auth/linked-accounts` - 获取关联账户列表
+- `DELETE /api/auth/linked-accounts/:provider` - 解除账户关联
+- OAuth 授权通过 NextAuth.js 的 signIn 方法处理
+
+### 平台配置
+每个平台都有独立的配置，包括：
+- 官方图标 SVG
+- 品牌颜色
+- 显示名称
+- OAuth 配置
+
+## 扩展性设计
+
+### 新平台支持
+- 模块化的平台配置
+- 统一的图标和样式接口
+- 可配置的 OAuth 参数
+
+### 自定义样式
+- 支持主题定制
+- 可配置的颜色方案
+- 灵活的布局选项
+
+### 功能扩展
+- 支持账户信息显示
+- 支持关联账户的权限管理
+- 支持批量操作
+
+这个关联账户管理组件提供了完整的第三方账户管理功能，具有良好的安全性、用户体验和扩展性，适合在各种需要第三方登录的应用中使用。

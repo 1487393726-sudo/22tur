@@ -1,0 +1,428 @@
+{
+  "version": "2.0",
+  "type": "design-specification",
+  "component": "Header",
+  "lastModified": "2026-01-26",
+  "description": "仪表板头部导航组件设计规范 - 包含搜索、通知、用户菜单等功能",
+  "dimensions": {
+    "artboard": {
+      "width": 1200,
+      "height": 200
+    },
+    "components": {
+      "header": {
+        "height": 64,
+        "padding": "0 32px"
+      },
+      "searchInput": {
+        "width": 300,
+        "height": 40,
+        "borderRadius": 8
+      },
+      "avatar": {
+        "width": 32,
+        "height": 32,
+        "borderRadius": "50%"
+      },
+      "dropdown": {
+        "width": 224,
+        "maxHeight": 300,
+        "borderRadius": 8
+      }
+    }
+  },
+  "colorScheme": {
+    "header": {
+      "background": "rgba(255, 255, 255, 0.5)",
+      "backdropFilter": "blur(12px)",
+      "border": "rgba(226, 232, 240, 0.8)",
+      "shadow": "0 1px 3px rgba(0,0,0,0.1)"
+    },
+    "search": {
+      "background": "rgba(255, 255, 255, 0.5)",
+      "border": "rgba(226, 232, 240, 0.8)",
+      "focusBorder": "rgba(59, 130, 246, 0.4)",
+      "placeholder": "#9ca3af",
+      "text": "#1f2937",
+      "icon": "#6b7280"
+    },
+    "avatar": {
+      "ring": "rgba(59, 130, 246, 0.2)",
+      "fallbackBg": "#3b82f6",
+      "fallbackText": "#ffffff"
+    },
+    "dropdown": {
+      "background": "rgba(255, 255, 255, 0.95)",
+      "backdropFilter": "blur(12px)",
+      "border": "rgba(226, 232, 240, 0.8)",
+      "shadow": "0 10px 25px rgba(0,0,0,0.15)",
+      "itemHover": "rgba(59, 130, 246, 0.1)",
+      "separator": "rgba(226, 232, 240, 0.8)",
+      "destructive": "#dc2626"
+    },
+    "notification": {
+      "button": "rgba(255, 255, 255, 0.1)",
+      "buttonHover": "rgba(255, 255, 255, 0.2)",
+      "icon": "#ffffff",
+      "badge": "#ef4444"
+    }
+  },
+  "layout": {
+    "structure": "flex justify-between items-center",
+    "leftSection": {
+      "display": "flex",
+      "alignItems": "center",
+      "gap": "16px"
+    },
+    "rightSection": {
+      "display": "flex",
+      "alignItems": "center",
+      "gap": "16px"
+    },
+    "searchContainer": {
+      "position": "relative",
+      "display": "flex",
+      "alignItems": "center"
+    },
+    "userMenu": {
+      "position": "relative"
+    }
+  },
+  "interactions": {
+    "search": {
+      "focus": {
+        "borderColor": "rgba(59, 130, 246, 0.4)",
+        "shadow": "0 0 0 3px rgba(59, 130, 246, 0.1)"
+      },
+      "placeholder": "搜索订单、文件...",
+      "keyboard": "支持 Ctrl+K 快捷键"
+    },
+    "notification": {
+      "hover": "背景色变化",
+      "click": "显示通知面板",
+      "badge": "未读数量显示"
+    },
+    "userMenu": {
+      "hover": "头像边框高亮",
+      "click": "显示下拉菜单",
+      "keyboard": "支持 Tab 和 Enter"
+    },
+    "dropdown": {
+      "open": "淡入动画 + 缩放",
+      "close": "淡出动画",
+      "itemHover": "背景色高亮",
+      "itemClick": "导航或执行操作"
+    }
+  },
+  "responsive": {
+    "mobile": {
+      "maxWidth": "768px",
+      "search": "隐藏",
+      "padding": "0 16px",
+      "avatar": { "width": 28, "height": 28 }
+    },
+    "tablet": {
+      "maxWidth": "1024px",
+      "search": { "width": 200 },
+      "padding": "0 24px"
+    },
+    "desktop": {
+      "minWidth": "1025px",
+      "search": { "width": 300 },
+      "padding": "0 32px"
+    }
+  },
+  "accessibility": {
+    "search": {
+      "label": "搜索",
+      "placeholder": "搜索订单、文件...",
+      "keyboard": "支持键盘导航"
+    },
+    "notification": {
+      "label": "通知",
+      "badge": "aria-label with count",
+      "keyboard": "Tab 键可达"
+    },
+    "userMenu": {
+      "label": "用户菜单",
+      "expanded": "aria-expanded state",
+      "keyboard": "完整键盘支持"
+    },
+    "dropdown": {
+      "role": "menu",
+      "items": "menuitem role",
+      "navigation": "arrow keys"
+    }
+  },
+  "performance": {
+    "rendering": {
+      "backdrop": "CSS backdrop-filter",
+      "animations": "CSS transitions",
+      "lazyLoading": "notification component"
+    },
+    "data": {
+      "userInfo": "cached after first load",
+      "notifications": "lazy loaded",
+      "search": "debounced input"
+    }
+  }
+}
+
+---
+
+# Header 组件设计规范
+
+## 概述
+Header 是仪表板的顶部导航组件，提供搜索功能、通知中心和用户菜单，采用毛玻璃效果和现代化设计。
+
+## 核心功能
+
+### 1. 搜索功能
+- **全局搜索**: 支持订单、文件等内容搜索
+- **快捷键**: Ctrl+K 快速聚焦搜索框
+- **实时建议**: 输入时显示搜索建议
+- **历史记录**: 保存最近搜索记录
+
+### 2. 通知中心
+- **动态加载**: 避免 hydration mismatch
+- **未读标识**: 红色数字徽章显示未读数量
+- **实时更新**: WebSocket 或轮询更新
+- **分类管理**: 不同类型通知分类显示
+
+### 3. 用户菜单
+- **用户信息**: 显示头像、姓名、邮箱
+- **快速导航**: 个人资料、设置、账单等
+- **退出登录**: 安全的登出流程
+- **状态管理**: 登录状态实时同步
+
+## 视觉设计
+
+### 整体布局
+```
+┌─────────────────────────────────────────────────────────┐
+│  [Logo] [搜索框]           [通知] [头像▼]                │
+└─────────────────────────────────────────────────────────┘
+```
+
+### 毛玻璃效果
+- **背景**: rgba(255, 255, 255, 0.5)
+- **模糊**: backdrop-filter: blur(12px)
+- **边框**: rgba(226, 232, 240, 0.8)
+- **阴影**: 0 1px 3px rgba(0,0,0,0.1)
+
+### 搜索框设计
+- **宽度**: 桌面300px，平板200px，移动端隐藏
+- **高度**: 40px
+- **圆角**: 8px
+- **图标**: 左侧搜索图标，16px
+- **占位符**: "搜索订单、文件..."
+
+### 头像设计
+- **尺寸**: 32px × 32px (移动端28px)
+- **形状**: 圆形
+- **边框**: 2px 蓝色光环
+- **回退**: 用户姓名首字母，蓝色背景
+
+### 下拉菜单设计
+- **宽度**: 224px
+- **背景**: rgba(255, 255, 255, 0.95) + 模糊
+- **阴影**: 0 10px 25px rgba(0,0,0,0.15)
+- **动画**: 淡入 + 轻微缩放
+
+## 交互设计
+
+### 搜索交互
+1. 点击搜索框或按 Ctrl+K 聚焦
+2. 输入时显示搜索建议下拉
+3. 选择建议或按 Enter 执行搜索
+4. 显示搜索结果页面
+
+### 通知交互
+1. 点击通知图标打开通知面板
+2. 显示最近通知列表
+3. 点击通知项查看详情
+4. 标记已读/未读状态
+
+### 用户菜单交互
+1. 点击头像显示下拉菜单
+2. 显示用户信息和导航选项
+3. 点击菜单项执行对应操作
+4. 点击外部区域关闭菜单
+
+### 退出登录流程
+1. 点击"退出登录"菜单项
+2. 显示确认对话框 (可选)
+3. 调用 signOut 函数
+4. 重定向到登录页面
+5. 显示成功提示
+
+## 响应式设计
+
+### 桌面端 (≥1025px)
+- 完整功能显示
+- 搜索框宽度 300px
+- 内边距 32px
+- 头像 32px
+
+### 平板端 (769px-1024px)
+- 搜索框宽度 200px
+- 内边距 24px
+- 保持主要功能
+
+### 移动端 (≤768px)
+- 隐藏搜索框
+- 内边距 16px
+- 头像 28px
+- 可考虑汉堡菜单
+
+## 状态管理
+
+### 用户状态
+```typescript
+interface User {
+  id: string;
+  username: string;
+  email: string;
+  firstName?: string;
+  lastName?: string;
+  avatar?: string;
+}
+```
+
+### 加载状态
+- **初始化**: 组件挂载后获取用户信息
+- **加载中**: 显示默认头像和占位符
+- **加载完成**: 显示真实用户信息
+- **错误处理**: 显示默认状态
+
+### 登出状态
+- **登出中**: 按钮显示加载状态
+- **登出成功**: 重定向到登录页
+- **登出失败**: 显示错误提示
+
+## 无障碍设计
+
+### 键盘导航
+- Tab 键遍历所有可交互元素
+- Enter/Space 激活按钮和菜单
+- Escape 关闭下拉菜单
+- 箭头键在菜单项间导航
+
+### 屏幕阅读器
+- 搜索框有明确的 label
+- 通知按钮包含未读数量信息
+- 用户菜单状态 (展开/收起) 播报
+- 菜单项角色和功能清晰
+
+### 视觉辅助
+- 焦点指示器清晰可见
+- 高对比度模式兼容
+- 颜色不是唯一信息载体
+- 支持用户字体大小设置
+
+## 性能优化
+
+### 组件加载
+- 通知组件动态导入避免 SSR 问题
+- 用户信息缓存减少重复请求
+- 搜索输入防抖避免频繁请求
+
+### 渲染优化
+- 使用 CSS backdrop-filter 实现毛玻璃
+- 避免不必要的重新渲染
+- 合理使用 React.memo
+
+### 网络优化
+- 用户信息本地缓存
+- 通知数据增量更新
+- 搜索结果分页加载
+
+## 错误处理
+
+### 网络错误
+- 用户信息获取失败显示默认状态
+- 搜索请求失败显示错误提示
+- 登出失败显示重试选项
+
+### 状态错误
+- 用户未登录重定向到登录页
+- 权限不足显示相应提示
+- 会话过期自动刷新
+
+### 输入验证
+- 搜索关键词长度限制
+- 特殊字符过滤
+- XSS 防护
+
+## 安全考虑
+
+### 用户信息
+- 敏感信息不在前端存储
+- 头像 URL 验证
+- 用户权限检查
+
+### 搜索安全
+- 输入内容转义
+- SQL 注入防护
+- 搜索频率限制
+
+### 登出安全
+- 清除本地存储
+- 撤销访问令牌
+- 安全重定向
+
+## 技术实现
+
+### 核心依赖
+- Next.js (App Router)
+- NextAuth.js (认证)
+- Lucide React (图标)
+- Tailwind CSS (样式)
+
+### 状态管理
+- useState (本地状态)
+- useEffect (副作用)
+- 自定义 Hook (用户信息)
+
+### 样式实现
+```css
+.header {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.search-input {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.search-input:focus {
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+```
+
+## 使用示例
+
+### 基础用法
+```tsx
+<Header />
+```
+
+### 自定义搜索
+```tsx
+<Header 
+  onSearch={handleSearch}
+  searchPlaceholder="搜索内容..."
+/>
+```
+
+### 自定义用户菜单
+```tsx
+<Header 
+  userMenuItems={[
+    { label: "自定义项", href: "/custom" }
+  ]}
+/>
+```

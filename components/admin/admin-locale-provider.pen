@@ -1,0 +1,420 @@
+{
+  "version": "2.6",
+  "name": "Admin Locale Provider Design",
+  "description": "管理后台国际化提供者设计 - Context架构",
+  "children": [
+    {
+      "type": "frame",
+      "id": "main-canvas",
+      "x": 0,
+      "y": 0,
+      "name": "Locale Provider Architecture",
+      "width": 1600,
+      "height": 1000,
+      "fill": "#0f172a",
+      "children": [
+        {
+          "type": "text",
+          "id": "title",
+          "x": 60,
+          "y": 40,
+          "width": 800,
+          "height": 60,
+          "text": "管理后台国际化提供者",
+          "fontSize": 36,
+          "fontWeight": "bold",
+          "fill": "#ffffff"
+        },
+        {
+          "type": "rectangle",
+          "id": "architecture-diagram",
+          "x": 60,
+          "y": 140,
+          "width": 700,
+          "height": 500,
+          "fill": "#1e293b",
+          "cornerRadius": 12,
+          "stroke": "rgba(255,255,255,0.1)",
+          "strokeWidth": 1,
+          "children": [
+            {
+              "type": "text",
+              "id": "arch-title",
+              "x": 24,
+              "y": 24,
+              "width": 652,
+              "height": 32,
+              "text": "架构流程",
+              "fontSize": 24,
+              "fontWeight": "bold",
+              "fill": "#ffffff"
+            },
+            {
+              "type": "rectangle",
+              "id": "layer-1",
+              "x": 150,
+              "y": 80,
+              "width": 400,
+              "height": 60,
+              "fill": "#3b82f6",
+              "cornerRadius": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "layer-1-text",
+                  "x": 0,
+                  "y": 20,
+                  "width": 400,
+                  "height": 20,
+                  "text": "AdminLocaleProvider",
+                  "fontSize": 16,
+                  "fontWeight": "bold",
+                  "fill": "#ffffff",
+                  "textAlign": "center"
+                }
+              ]
+            },
+            {
+              "type": "line",
+              "id": "arrow-1",
+              "x1": 350,
+              "y1": 140,
+              "x2": 350,
+              "y2": 180,
+              "stroke": "#94a3b8",
+              "strokeWidth": 2
+            },
+            {
+              "type": "rectangle",
+              "id": "layer-2",
+              "x": 150,
+              "y": 180,
+              "width": 400,
+              "height": 60,
+              "fill": "#8b5cf6",
+              "cornerRadius": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "layer-2-text",
+                  "x": 0,
+                  "y": 20,
+                  "width": 400,
+                  "height": 20,
+                  "text": "AdminLocaleContext",
+                  "fontSize": 16,
+                  "fontWeight": "bold",
+                  "fill": "#ffffff",
+                  "textAlign": "center"
+                }
+              ]
+            },
+            {
+              "type": "line",
+              "id": "arrow-2",
+              "x1": 350,
+              "y1": 240,
+              "x2": 350,
+              "y2": 280,
+              "stroke": "#94a3b8",
+              "strokeWidth": 2
+            },
+            {
+              "type": "rectangle",
+              "id": "layer-3",
+              "x": 150,
+              "y": 280,
+              "width": 400,
+              "height": 60,
+              "fill": "#ec4899",
+              "cornerRadius": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "layer-3-text",
+                  "x": 0,
+                  "y": 20,
+                  "width": 400,
+                  "height": 20,
+                  "text": "NextIntlClientProvider",
+                  "fontSize": 16,
+                  "fontWeight": "bold",
+                  "fill": "#ffffff",
+                  "textAlign": "center"
+                }
+              ]
+            },
+            {
+              "type": "line",
+              "id": "arrow-3",
+              "x1": 350,
+              "y1": 340,
+              "x2": 350,
+              "y2": 380,
+              "stroke": "#94a3b8",
+              "strokeWidth": 2
+            },
+            {
+              "type": "rectangle",
+              "id": "layer-4",
+              "x": 150,
+              "y": 380,
+              "width": 400,
+              "height": 60,
+              "fill": "#10b981",
+              "cornerRadius": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "layer-4-text",
+                  "x": 0,
+                  "y": 20,
+                  "width": 400,
+                  "height": 20,
+                  "text": "子组件 (useAdminLocale)",
+                  "fontSize": 16,
+                  "fontWeight": "bold",
+                  "fill": "#ffffff",
+                  "textAlign": "center"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "context-data",
+          "x": 820,
+          "y": 140,
+          "width": 720,
+          "height": 500,
+          "fill": "#1e293b",
+          "cornerRadius": 12,
+          "stroke": "rgba(255,255,255,0.1)",
+          "strokeWidth": 1,
+          "children": [
+            {
+              "type": "text",
+              "id": "context-title",
+              "x": 24,
+              "y": 24,
+              "width": 672,
+              "height": 32,
+              "text": "Context 数据结构",
+              "fontSize": 24,
+              "fontWeight": "bold",
+              "fill": "#ffffff"
+            },
+            {
+              "type": "rectangle",
+              "id": "code-block",
+              "x": 24,
+              "y": 72,
+              "width": 672,
+              "height": 400,
+              "fill": "#0f172a",
+              "cornerRadius": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "code",
+                  "x": 20,
+                  "y": 20,
+                  "width": 632,
+                  "height": 360,
+                  "text": "interface AdminLocaleContextType {\n  locale: AdminLocale;\n  setLocale: (locale: AdminLocale) => void;\n  isRTL: boolean;\n  localeNames: typeof ADMIN_LOCALE_NAMES;\n}\n\n// 支持的语言类型\ntype AdminLocale = \n  | 'zh'    // 简体中文\n  | 'zh-TW' // 繁体中文\n  | 'en'    // English\n  | 'ja'    // 日本語\n  | 'ko'    // 한국어\n  | 'ug';   // ئۇيغۇرچە",
+                  "fontSize": 14,
+                  "fill": "#94a3b8",
+                  "fontFamily": "monospace",
+                  "lineHeight": 1.6
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "features-panel",
+          "x": 60,
+          "y": 680,
+          "width": 480,
+          "height": 280,
+          "fill": "#1e293b",
+          "cornerRadius": 12,
+          "stroke": "rgba(255,255,255,0.1)",
+          "strokeWidth": 1,
+          "children": [
+            {
+              "type": "text",
+              "id": "features-title",
+              "x": 24,
+              "y": 24,
+              "width": 432,
+              "height": 32,
+              "text": "核心功能",
+              "fontSize": 24,
+              "fontWeight": "bold",
+              "fill": "#ffffff"
+            },
+            {
+              "type": "text",
+              "id": "feature-1",
+              "x": 24,
+              "y": 72,
+              "width": 432,
+              "height": 24,
+              "text": "✓ localStorage 持久化",
+              "fontSize": 16,
+              "fill": "#d1d5db"
+            },
+            {
+              "type": "text",
+              "id": "feature-2",
+              "x": 24,
+              "y": 104,
+              "width": 432,
+              "height": 24,
+              "text": "✓ 自动设置 HTML dir 属性",
+              "fontSize": 16,
+              "fill": "#d1d5db"
+            },
+            {
+              "type": "text",
+              "id": "feature-3",
+              "x": 24,
+              "y": 136,
+              "width": 432,
+              "height": 24,
+              "text": "✓ 防止 hydration 不匹配",
+              "fontSize": 16,
+              "fill": "#d1d5db"
+            },
+            {
+              "type": "text",
+              "id": "feature-4",
+              "x": 24,
+              "y": 168,
+              "width": 432,
+              "height": 24,
+              "text": "✓ RTL 语言支持",
+              "fontSize": 16,
+              "fill": "#d1d5db"
+            },
+            {
+              "type": "text",
+              "id": "feature-5",
+              "x": 24,
+              "y": 200,
+              "width": 432,
+              "height": 24,
+              "text": "✓ 集成 next-intl",
+              "fontSize": 16,
+              "fill": "#d1d5db"
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "storage-panel",
+          "x": 580,
+          "y": 680,
+          "width": 480,
+          "height": 280,
+          "fill": "#1e293b",
+          "cornerRadius": 12,
+          "stroke": "rgba(255,255,255,0.1)",
+          "strokeWidth": 1,
+          "children": [
+            {
+              "type": "text",
+              "id": "storage-title",
+              "x": 24,
+              "y": 24,
+              "width": 432,
+              "height": 32,
+              "text": "存储机制",
+              "fontSize": 24,
+              "fontWeight": "bold",
+              "fill": "#ffffff"
+            },
+            {
+              "type": "text",
+              "id": "storage-key",
+              "x": 24,
+              "y": 72,
+              "width": 432,
+              "height": 24,
+              "text": "Storage Key: 'admin-locale'",
+              "fontSize": 16,
+              "fill": "#94a3b8",
+              "fontFamily": "monospace"
+            },
+            {
+              "type": "text",
+              "id": "storage-flow",
+              "x": 24,
+              "y": 112,
+              "width": 432,
+              "height": 140,
+              "text": "1. 组件挂载时从 localStorage 读取\n2. 如果存在有效语言，设置为当前语言\n3. 用户切换语言时保存到 localStorage\n4. 同时更新 document.documentElement.dir\n5. 页面刷新后自动恢复用户选择",
+              "fontSize": 14,
+              "fill": "#d1d5db",
+              "lineHeight": 1.8
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "rtl-panel",
+          "x": 1100,
+          "y": 680,
+          "width": 440,
+          "height": 280,
+          "fill": "#1e293b",
+          "cornerRadius": 12,
+          "stroke": "rgba(255,255,255,0.1)",
+          "strokeWidth": 1,
+          "children": [
+            {
+              "type": "text",
+              "id": "rtl-title",
+              "x": 24,
+              "y": 24,
+              "width": 392,
+              "height": 32,
+              "text": "RTL 支持",
+              "fontSize": 24,
+              "fontWeight": "bold",
+              "fill": "#ffffff"
+            },
+            {
+              "type": "text",
+              "id": "rtl-desc",
+              "x": 24,
+              "y": 72,
+              "width": 392,
+              "height": 80,
+              "text": "维吾尔语 (ug) 使用从右到左的书写方向，系统自动检测并设置：",
+              "fontSize": 14,
+              "fill": "#d1d5db",
+              "lineHeight": 1.6
+            },
+            {
+              "type": "text",
+              "id": "rtl-code",
+              "x": 24,
+              "y": 160,
+              "width": 392,
+              "height": 80,
+              "text": "document.documentElement.dir = \n  isRTL(locale) ? 'rtl' : 'ltr';",
+              "fontSize": 14,
+              "fill": "#94a3b8",
+              "fontFamily": "monospace",
+              "lineHeight": 1.6
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

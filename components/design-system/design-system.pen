@@ -1,0 +1,633 @@
+{
+  "version": "2.0",
+  "type": "design-specification",
+  "component": "DesignSystem",
+  "lastModified": "2026-01-26",
+  "description": "设计系统组件库规范 - 统一的UI组件标准和设计语言",
+  "dimensions": {
+    "artboard": {
+      "width": 1200,
+      "height": 2000
+    },
+    "components": {
+      "button": {
+        "sm": { "height": 32, "padding": "8px 16px" },
+        "md": { "height": 40, "padding": "12px 24px" },
+        "lg": { "height": 48, "padding": "16px 32px" }
+      },
+      "input": {
+        "height": 40,
+        "padding": "8px 12px",
+        "borderWidth": 2,
+        "borderRadius": 6
+      },
+      "card": {
+        "padding": 24,
+        "borderRadius": 8,
+        "borderWidth": 1
+      }
+    }
+  },
+  "colorScheme": {
+    "primary": {
+      "50": "#eff6ff",
+      "100": "#dbeafe", 
+      "500": "#3b82f6",
+      "600": "#2563eb",
+      "700": "#1d4ed8"
+    },
+    "error": "#ef4444",
+    "text": {
+      "primary": "#111827",
+      "secondary": "#6b7280",
+      "tertiary": "#9ca3af",
+      "inverse": "#ffffff"
+    },
+    "background": {
+      "primary": "#ffffff",
+      "secondary": "#f9fafb",
+      "tertiary": "#f3f4f6"
+    },
+    "border": {
+      "light": "#f3f4f6",
+      "default": "#e5e7eb",
+      "dark": "#d1d5db"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "base": "system-ui, -apple-system, sans-serif"
+    },
+    "fontSize": {
+      "sm": "14px",
+      "base": "16px",
+      "lg": "18px"
+    },
+    "fontWeight": {
+      "normal": 400,
+      "medium": 500,
+      "semibold": 600
+    },
+    "lineHeight": {
+      "tight": 1.25,
+      "normal": 1.5,
+      "relaxed": 1.75
+    }
+  },
+  "spacing": {
+    "sm": "8px",
+    "md": "12px", 
+    "lg": "16px",
+    "xl": "24px",
+    "2xl": "32px"
+  },
+  "borderRadius": {
+    "button": "6px",
+    "input": "6px",
+    "card": "8px"
+  },
+  "shadows": {
+    "sm": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+    "md": "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+    "button": "0 1px 3px 0 rgba(0, 0, 0, 0.1)"
+  },
+  "transitions": {
+    "all": "all 150ms ease-in-out",
+    "colors": "color 150ms ease-in-out, background-color 150ms ease-in-out, border-color 150ms ease-in-out"
+  },
+  "components": {
+    "Button": {
+      "variants": {
+        "primary": {
+          "background": "var(--color-primary-500)",
+          "color": "var(--color-text-inverse)",
+          "hover": {
+            "background": "var(--color-primary-600)",
+            "transform": "translateY(-1px)",
+            "shadow": "var(--shadow-md)"
+          },
+          "active": {
+            "background": "var(--color-primary-700)",
+            "transform": "translateY(0)"
+          }
+        },
+        "secondary": {
+          "background": "transparent",
+          "color": "var(--color-primary-500)",
+          "border": "2px solid var(--color-primary-500)",
+          "hover": {
+            "background": "var(--color-primary-50)",
+            "borderColor": "var(--color-primary-600)"
+          }
+        },
+        "danger": {
+          "background": "var(--color-error)",
+          "color": "var(--color-text-inverse)",
+          "hover": {
+            "background": "#DC2626",
+            "transform": "translateY(-1px)"
+          }
+        },
+        "ghost": {
+          "background": "transparent",
+          "color": "var(--color-text-primary)",
+          "hover": {
+            "background": "var(--color-bg-secondary)"
+          }
+        }
+      },
+      "states": {
+        "loading": {
+          "spinner": "inline rotating border",
+          "disabled": true
+        },
+        "disabled": {
+          "opacity": 0.5,
+          "cursor": "not-allowed"
+        },
+        "focus": {
+          "outline": "2px solid var(--color-primary-500)",
+          "outlineOffset": "2px"
+        }
+      }
+    },
+    "Input": {
+      "structure": {
+        "container": "flex flex-col gap-sm",
+        "label": "font-medium text-sm",
+        "input": "border-2 rounded padding",
+        "helper": "text-sm text-secondary"
+      },
+      "states": {
+        "default": {
+          "border": "var(--color-border-light)",
+          "background": "var(--color-bg-primary)"
+        },
+        "hover": {
+          "border": "var(--color-border-default)"
+        },
+        "focus": {
+          "border": "var(--color-primary-500)",
+          "shadow": "0 0 0 3px rgba(var(--color-primary-500), 0.1)"
+        },
+        "error": {
+          "border": "var(--color-error)",
+          "shadow": "0 0 0 3px rgba(239, 68, 68, 0.1)"
+        },
+        "disabled": {
+          "background": "var(--color-bg-secondary)",
+          "opacity": 0.6,
+          "cursor": "not-allowed"
+        }
+      }
+    },
+    "Card": {
+      "structure": {
+        "card": "background border rounded padding shadow",
+        "header": "border-bottom margin-bottom",
+        "body": "main content area",
+        "footer": "border-top margin-top flex justify-end"
+      },
+      "variants": {
+        "default": {
+          "background": "var(--color-bg-primary)",
+          "border": "1px solid var(--color-border-light)",
+          "shadow": "var(--shadow-sm)"
+        },
+        "hoverable": {
+          "cursor": "pointer",
+          "hover": {
+            "border": "var(--color-border-default)",
+            "shadow": "var(--shadow-md)",
+            "transform": "translateY(-2px)"
+          }
+        },
+        "clickable": {
+          "cursor": "pointer",
+          "active": {
+            "transform": "translateY(0)"
+          }
+        }
+      }
+    }
+  },
+  "accessibility": {
+    "focusVisible": {
+      "outline": "2px solid var(--color-primary-500)",
+      "outlineOffset": "2px"
+    },
+    "colorContrast": {
+      "minimum": "4.5:1 for normal text",
+      "enhanced": "7:1 for better accessibility"
+    },
+    "keyboard": {
+      "navigation": "Tab key support",
+      "activation": "Enter/Space key support"
+    },
+    "screenReader": {
+      "labels": "meaningful labels for all inputs",
+      "states": "loading, error, disabled states announced",
+      "structure": "proper heading hierarchy"
+    }
+  },
+  "responsive": {
+    "mobile": {
+      "maxWidth": "768px",
+      "button": {
+        "fullWidth": "optional full width",
+        "minHeight": "44px for touch"
+      },
+      "input": {
+        "fontSize": "16px to prevent zoom",
+        "padding": "increased for touch"
+      }
+    },
+    "tablet": {
+      "maxWidth": "1024px",
+      "spacing": "standard spacing",
+      "sizing": "standard sizing"
+    },
+    "desktop": {
+      "minWidth": "1025px",
+      "hover": "full hover effects",
+      "spacing": "optimal spacing"
+    }
+  },
+  "performance": {
+    "cssModules": {
+      "scoped": "component-scoped styles",
+      "treeshaking": "unused styles removed",
+      "caching": "efficient CSS caching"
+    },
+    "rendering": {
+      "memoization": "React.memo for pure components",
+      "lazyLoading": "code splitting support",
+      "bundleSize": "minimal bundle impact"
+    }
+  }
+}
+
+---
+
+# 设计系统组件库规范
+
+## 概述
+设计系统是一套统一的UI组件标准，提供一致的视觉语言和交互体验，确保整个应用的设计一致性和开发效率。
+
+## 设计原则
+
+### 1. 一致性 (Consistency)
+- 统一的视觉风格
+- 一致的交互模式
+- 标准化的组件行为
+- 可预测的用户体验
+
+### 2. 可访问性 (Accessibility)
+- WCAG 2.1 AA 标准
+- 键盘导航支持
+- 屏幕阅读器兼容
+- 高对比度模式
+
+### 3. 可扩展性 (Scalability)
+- 模块化组件设计
+- 主题系统支持
+- 响应式布局
+- 国际化准备
+
+### 4. 性能优化 (Performance)
+- CSS Modules 作用域隔离
+- Tree-shaking 支持
+- 最小化包体积
+- 高效的样式加载
+
+## 核心组件
+
+### Button 组件
+
+#### 变体 (Variants)
+- **Primary**: 主要操作按钮，蓝色背景
+- **Secondary**: 次要操作按钮，透明背景 + 蓝色边框
+- **Danger**: 危险操作按钮，红色背景
+- **Ghost**: 幽灵按钮，透明背景
+
+#### 尺寸 (Sizes)
+- **Small**: 32px 高度，适用于紧凑空间
+- **Medium**: 40px 高度，标准尺寸
+- **Large**: 48px 高度，突出显示
+
+#### 状态 (States)
+- **Default**: 默认状态
+- **Hover**: 悬停效果，颜色加深 + 轻微上移
+- **Active**: 激活状态，颜色更深
+- **Loading**: 加载状态，显示旋转图标
+- **Disabled**: 禁用状态，50% 透明度
+
+#### 使用示例
+```tsx
+<Button variant="primary" size="md">
+  确认
+</Button>
+
+<Button variant="secondary" size="sm" isLoading>
+  保存中...
+</Button>
+
+<Button variant="danger" disabled>
+  删除
+</Button>
+```
+
+### Input 组件
+
+#### 结构组成
+- **Container**: 外层容器，控制布局
+- **Label**: 输入标签，语义化标识
+- **Input**: 输入框主体
+- **Helper/Error**: 辅助文字或错误提示
+
+#### 状态 (States)
+- **Default**: 浅灰色边框
+- **Hover**: 边框颜色加深
+- **Focus**: 蓝色边框 + 阴影效果
+- **Error**: 红色边框 + 错误提示
+- **Disabled**: 灰色背景 + 降低透明度
+
+#### 特性
+- **Full Width**: 可选的全宽模式
+- **Auto ID**: 自动生成唯一 ID
+- **Accessibility**: 完整的无障碍支持
+
+#### 使用示例
+```tsx
+<Input
+  label="用户名"
+  placeholder="请输入用户名"
+  helperText="用户名长度为3-20个字符"
+/>
+
+<Input
+  label="邮箱"
+  type="email"
+  error="邮箱格式不正确"
+  fullWidth
+/>
+```
+
+### Card 组件
+
+#### 组件结构
+- **Card**: 主容器，提供背景和边框
+- **CardHeader**: 头部区域，通常包含标题
+- **CardBody**: 主体内容区域
+- **CardFooter**: 底部区域，通常包含操作按钮
+
+#### 变体 (Variants)
+- **Default**: 基础卡片样式
+- **Hoverable**: 悬停效果，轻微上移 + 阴影
+- **Clickable**: 可点击，激活时下压效果
+
+#### 使用示例
+```tsx
+<Card hoverable>
+  <CardHeader>
+    <h3>卡片标题</h3>
+  </CardHeader>
+  <CardBody>
+    <p>卡片内容...</p>
+  </CardBody>
+  <CardFooter>
+    <Button variant="secondary">取消</Button>
+    <Button variant="primary">确认</Button>
+  </CardFooter>
+</Card>
+```
+
+## 设计令牌 (Design Tokens)
+
+### 颜色系统
+```css
+:root {
+  /* Primary Colors */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  
+  /* Error Color */
+  --color-error: #ef4444;
+  
+  /* Text Colors */
+  --color-text-primary: #111827;
+  --color-text-secondary: #6b7280;
+  --color-text-tertiary: #9ca3af;
+  --color-text-inverse: #ffffff;
+  
+  /* Background Colors */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f9fafb;
+  --color-bg-tertiary: #f3f4f6;
+  
+  /* Border Colors */
+  --color-border-light: #f3f4f6;
+  --color-border-default: #e5e7eb;
+  --color-border-dark: #d1d5db;
+}
+```
+
+### 间距系统
+```css
+:root {
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 32px;
+}
+```
+
+### 字体系统
+```css
+:root {
+  --font-family-base: system-ui, -apple-system, sans-serif;
+  
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+}
+```
+
+### 圆角系统
+```css
+:root {
+  --radius-button: 6px;
+  --radius-input: 6px;
+  --radius-card: 8px;
+}
+```
+
+### 阴影系统
+```css
+:root {
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-button: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+```
+
+### 过渡系统
+```css
+:root {
+  --transition-all: all 150ms ease-in-out;
+  --transition-colors: color 150ms ease-in-out, 
+                       background-color 150ms ease-in-out, 
+                       border-color 150ms ease-in-out;
+}
+```
+
+## 响应式设计
+
+### 断点系统
+- **Mobile**: ≤768px
+- **Tablet**: 769px-1024px  
+- **Desktop**: ≥1025px
+
+### 移动端适配
+- 按钮最小高度 44px (触摸友好)
+- 输入框字体大小 16px (防止缩放)
+- 增加触摸区域间距
+- 简化悬停效果
+
+### 平板端适配
+- 保持标准尺寸
+- 适度的悬停效果
+- 平衡的间距设计
+
+### 桌面端适配
+- 完整的悬停效果
+- 最佳的视觉体验
+- 丰富的交互反馈
+
+## 无障碍设计
+
+### 键盘导航
+- Tab 键遍历所有可交互元素
+- Enter/Space 激活按钮
+- 清晰的焦点指示器
+- 逻辑的 Tab 顺序
+
+### 屏幕阅读器
+- 有意义的标签文本
+- 状态变化播报
+- 错误信息清晰描述
+- 正确的语义结构
+
+### 视觉辅助
+- 4.5:1 最小对比度
+- 颜色不是唯一信息载体
+- 支持高对比度模式
+- 可调节的字体大小
+
+### 焦点管理
+- 清晰的焦点指示器
+- 合理的焦点顺序
+- 模态框焦点陷阱
+- 焦点恢复机制
+
+## 性能优化
+
+### CSS Modules
+- 组件作用域样式隔离
+- 自动生成唯一类名
+- 避免样式冲突
+- 支持 Tree-shaking
+
+### 代码分割
+- 按需加载组件
+- 减少初始包体积
+- 提高加载性能
+- 智能缓存策略
+
+### 渲染优化
+- React.memo 避免不必要渲染
+- 合理使用 useCallback
+- 最小化 DOM 操作
+- 高效的事件处理
+
+## 主题系统
+
+### CSS 变量
+- 动态主题切换
+- 运行时样式修改
+- 用户偏好支持
+- 品牌定制能力
+
+### 暗色模式
+- 自动检测系统偏好
+- 手动切换支持
+- 平滑过渡动画
+- 完整的颜色映射
+
+## 最佳实践
+
+### 组件设计
+- 单一职责原则
+- 可组合性设计
+- 合理的默认值
+- 灵活的扩展性
+
+### API 设计
+- 直观的属性命名
+- 一致的接口规范
+- 完整的 TypeScript 支持
+- 详细的文档说明
+
+### 样式管理
+- 语义化的类名
+- 模块化的样式结构
+- 可维护的 CSS 代码
+- 性能优化的选择器
+
+### 测试策略
+- 单元测试覆盖
+- 可访问性测试
+- 视觉回归测试
+- 性能基准测试
+
+## 使用指南
+
+### 安装使用
+```tsx
+import { Button, Input, Card } from '@/components/design-system';
+
+function MyComponent() {
+  return (
+    <Card>
+      <Input label="姓名" />
+      <Button variant="primary">提交</Button>
+    </Card>
+  );
+}
+```
+
+### 自定义样式
+```tsx
+<Button 
+  className="custom-button" 
+  style={{ marginTop: '16px' }}
+>
+  自定义按钮
+</Button>
+```
+
+### 主题定制
+```css
+:root {
+  --color-primary-500: #your-brand-color;
+  --font-family-base: 'Your Custom Font';
+}
+```

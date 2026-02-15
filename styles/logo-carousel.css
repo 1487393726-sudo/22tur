@@ -1,0 +1,174 @@
+/* LOGO轮播 - 简洁优雅设计 */
+
+@keyframes smooth-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes gentle-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.animate-smooth-scroll {
+  animation: smooth-scroll 30s linear infinite;
+}
+
+.animate-gentle-float {
+  animation: gentle-float 2s ease-in-out infinite;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .animate-smooth-scroll {
+    animation-duration: 20s;
+  }
+}
+
+@media (max-width: 480px) {
+  .animate-smooth-scroll {
+    animation-duration: 15s;
+  }
+}
+
+/* 简洁卡片样式 */
+.logo-card {
+  transition: all 0.3s ease;
+  background: hsl(var(--card) / 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid hsl(var(--border) / 0.5);
+}
+
+.logo-card:hover {
+  background: hsl(var(--card) / 0.8);
+  border-color: hsl(var(--primary) / 0.3);
+  box-shadow: 0 8px 25px hsl(var(--foreground) / 0.1);
+  transform: translateY(-2px);
+}
+
+/* 控制按钮简洁样式 */
+.control-btn {
+  transition: all 0.2s ease;
+  background: hsl(var(--card) / 0.7);
+  border: 1px solid hsl(var(--border) / 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.control-btn:hover {
+  background: hsl(var(--card));
+  border-color: hsl(var(--primary) / 0.5);
+  transform: scale(1.05);
+}
+
+.control-btn.primary {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border: none;
+}
+
+.control-btn.primary:hover {
+  background: hsl(var(--primary) / 0.9);
+}
+
+/* 进度指示器 */
+.progress-indicator {
+  transition: all 0.3s ease;
+  background: hsl(var(--muted-foreground) / 0.3);
+}
+
+.progress-indicator:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+.progress-indicator.active {
+  background: hsl(var(--primary));
+}
+
+/* 统计数字 */
+.stat-number {
+  color: hsl(var(--primary));
+  transition: transform 0.2s ease;
+}
+
+.stat-number:hover {
+  transform: scale(1.05);
+}
+
+/* 文字颜色确保清晰 */
+.text-primary-themed {
+  color: hsl(var(--primary));
+}
+
+.text-muted-themed {
+  color: hsl(var(--muted-foreground));
+}
+
+.text-foreground-themed {
+  color: hsl(var(--foreground));
+}
+
+/* 性能优化 */
+.logo-carousel-container {
+  will-change: transform;
+}
+
+.logo-carousel-item {
+  will-change: transform;
+}
+
+/* 移动端优化 */
+@media (max-width: 640px) {
+  .logo-card:hover {
+    transform: translateY(-1px);
+  }
+  
+  .control-btn:hover {
+    transform: scale(1.02);
+  }
+}
+
+/* 减少动画模式支持 */
+@media (prefers-reduced-motion: reduce) {
+  .animate-smooth-scroll,
+  .animate-gentle-float {
+    animation: none;
+  }
+  
+  .logo-card,
+  .control-btn,
+  .progress-indicator,
+  .stat-number {
+    transition: none;
+  }
+}
+
+/* 高对比度模式 */
+@media (prefers-contrast: high) {
+  .logo-card {
+    border-width: 2px;
+  }
+  
+  .logo-card:hover {
+    border-width: 2px;
+    border-color: hsl(var(--primary));
+  }
+}
+
+/* 主题适配 */
+[data-theme="dark"] .logo-card,
+[data-theme="tokyo"] .logo-card {
+  background: hsl(var(--card) / 0.4);
+}
+
+[data-theme="light"] .logo-card,
+[data-theme="solarized"] .logo-card {
+  background: hsl(var(--card) / 0.6);
+}

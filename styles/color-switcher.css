@@ -1,0 +1,173 @@
+/**
+ * Color Switcher CSS
+ * Defines CSS custom properties and transitions for color styles
+ */
+
+:root {
+  /* Default light theme colors */
+  --color-primary: #0066CC;
+  --color-secondary: #666666;
+  --color-background: #FFFFFF;
+  --color-text: #000000;
+  --color-border: #CCCCCC;
+  --color-surface: #F5F5F5;
+  --color-surfaceVariant: #EEEEEE;
+  --color-onPrimary: #FFFFFF;
+  --color-onSecondary: #FFFFFF;
+  --color-onBackground: #000000;
+  --color-onSurface: #000000;
+  --color-error: #D32F2F;
+  --color-success: #388E3C;
+  --color-warning: #F57C00;
+  --color-info: #1976D2;
+
+  /* Transition duration */
+  --transition-duration: 300ms;
+}
+
+/**
+ * Apply smooth transitions to color changes
+ */
+* {
+  transition: background-color var(--transition-duration) ease-in-out,
+    color var(--transition-duration) ease-in-out,
+    border-color var(--transition-duration) ease-in-out,
+    box-shadow var(--transition-duration) ease-in-out;
+}
+
+/**
+ * Exclude certain elements from transitions to prevent visual glitches
+ */
+input,
+textarea,
+select,
+button {
+  transition: background-color var(--transition-duration) ease-in-out,
+    color var(--transition-duration) ease-in-out,
+    border-color var(--transition-duration) ease-in-out;
+}
+
+/**
+ * Base element styles using CSS custom properties
+ */
+html,
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+a {
+  color: var(--color-primary);
+}
+
+a:visited {
+  color: var(--color-secondary);
+}
+
+button,
+input[type='button'],
+input[type='submit'] {
+  background-color: var(--color-primary);
+  color: var(--color-onPrimary);
+  border-color: var(--color-primary);
+}
+
+button:hover,
+input[type='button']:hover,
+input[type='submit']:hover {
+  opacity: 0.9;
+}
+
+input,
+textarea,
+select {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-primary);
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/**
+ * Card and container styles
+ */
+.card,
+.container,
+.panel {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+/**
+ * Header and navigation styles
+ */
+header,
+nav,
+.navbar {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+/**
+ * Error, success, warning, info styles
+ */
+.error,
+.alert-error {
+  background-color: var(--color-error);
+  color: var(--color-onPrimary);
+}
+
+.success,
+.alert-success {
+  background-color: var(--color-success);
+  color: var(--color-onPrimary);
+}
+
+.warning,
+.alert-warning {
+  background-color: var(--color-warning);
+  color: var(--color-onPrimary);
+}
+
+.info,
+.alert-info {
+  background-color: var(--color-info);
+  color: var(--color-onPrimary);
+}
+
+/**
+ * Focus visible for keyboard navigation
+ */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/**
+ * Scrollbar styling (for browsers that support it)
+ */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}

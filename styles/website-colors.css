@@ -1,0 +1,639 @@
+/**
+ * 官网系统统一颜色风格 CSS
+ * 新官网风格：深蓝 + 青绿 + 少量橙色，高级商务感
+ */
+
+:root {
+  /* 主色调 - 深海蓝 (Deep Ocean Blue) */
+  --color-primary-50: #f1f5ff;
+  --color-primary-100: #dde7ff;
+  --color-primary-200: #bed0ff;
+  --color-primary-300: #8fb0ff;
+  --color-primary-400: #5f8dff;
+  --color-primary-500: #2f66f5;
+  --color-primary-600: #234fcb;
+  --color-primary-700: #1b3da1;
+  --color-primary-800: #132b77;
+  --color-primary-900: #0c1c4f;
+
+  /* 次色调 - 青绿 (Teal) */
+  --color-secondary-50: #e6fff9;
+  --color-secondary-100: #c0fced;
+  --color-secondary-200: #8ff7dd;
+  --color-secondary-300: #55eec8;
+  --color-secondary-400: #1fd5aa;
+  --color-secondary-500: #00b48a;
+  --color-secondary-600: #009071;
+  --color-secondary-700: #006f57;
+  --color-secondary-800: #004f3d;
+  --color-secondary-900: #003429;
+
+  /* 强调色 - 柔和橙色 (Accent Orange) */
+  --color-accent-50: #fff7ed;
+  --color-accent-100: #ffedd5;
+  --color-accent-200: #fed7aa;
+  --color-accent-300: #fdba74;
+  --color-accent-400: #fb923c;
+  --color-accent-500: #f97316;
+  --color-accent-600: #ea580c;
+  --color-accent-700: #c2410c;
+  --color-accent-800: #9a3412;
+  --color-accent-900: #7c2d12;
+
+  /* 中性色 */
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-300: #d1d5db;
+  --color-neutral-400: #9ca3af;
+  --color-neutral-500: #6b7280;
+  --color-neutral-600: #4b5563;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1f2933;
+  --color-neutral-900: #111827;
+
+  /* 状态色 */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* 背景色 */
+  --color-bg-light: #ffffff;
+  --color-bg-dark: #f3f4f8;
+  --color-bg-darker: #e5e7f0;
+
+  /* 文本色 */
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #4b5563;
+  --color-text-tertiary: #9ca3af;
+  --color-text-light: #ffffff;
+
+  /* 边框色 */
+  --color-border-light: #e5e7eb;
+  --color-border-medium: #d1d5db;
+  --color-border-dark: #9ca3af;
+
+  /* 渐变色：深蓝 → 青绿，高级商务感 */
+  --gradient-primary: linear-gradient(135deg, #0c1c4f 0%, #2f66f5 40%, #00b48a 100%);
+  --gradient-secondary: linear-gradient(135deg, #1b3da1 0%, #2f66f5 50%, #1fd5aa 100%);
+  --gradient-accent: linear-gradient(135deg, #00b48a 0%, #2f66f5 50%, #f97316 100%);
+  --gradient-subtle: linear-gradient(135deg, #f1f5ff 0%, #e6fff9 100%);
+  --gradient-dark: linear-gradient(135deg, #020617 0%, #0c1c4f 40%, #1b3da1 100%);
+
+  /* 阴影：更贴近真实光影的柔和阴影 */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.12);
+  --shadow-lg: 0 18px 45px rgba(15, 23, 42, 0.18);
+  --shadow-xl: 0 28px 60px rgba(15, 23, 42, 0.22);
+  --shadow-2xl: 0 40px 80px rgba(15, 23, 42, 0.28);
+}
+
+/* 深色模式：保持深蓝科技感 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary-50: #0c1c4f;
+    --color-primary-100: #132b77;
+    --color-primary-200: #1b3da1;
+    --color-primary-300: #234fcb;
+    --color-primary-400: #2f66f5;
+    --color-primary-500: #5f8dff;
+    --color-primary-600: #8fb0ff;
+    --color-primary-700: #bed0ff;
+    --color-primary-800: #dde7ff;
+    --color-primary-900: #f1f5ff;
+
+    --color-bg-light: #020617;
+    --color-bg-dark: #020617;
+    --color-bg-darker: #020617;
+
+    --color-text-primary: #e5e7eb;
+    --color-text-secondary: #a3a3a3;
+    --color-text-tertiary: #737373;
+
+    --color-border-light: #1f2937;
+    --color-border-medium: #4b5563;
+    --color-border-dark: #6b7280;
+
+    --gradient-primary: linear-gradient(135deg, #020617 0%, #0c1c4f 40%, #2f66f5 100%);
+    --gradient-secondary: linear-gradient(135deg, #020617 0%, #1b3da1 50%, #00b48a 100%);
+    --gradient-accent: linear-gradient(135deg, #020617 0%, #00b48a 40%, #f97316 100%);
+  }
+}
+
+/* ============================================
+   按钮颜色
+   ============================================ */
+
+.btn-primary {
+  background-color: var(--color-primary-500);
+  color: var(--color-text-light);
+  border: 1px solid var(--color-primary-500);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-600);
+  border-color: var(--color-primary-600);
+}
+
+.btn-primary:active {
+  background-color: var(--color-primary-700);
+  border-color: var(--color-primary-700);
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary-500);
+  color: var(--color-text-light);
+  border: 1px solid var(--color-secondary-500);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-secondary-600);
+  border-color: var(--color-secondary-600);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-primary-500);
+  border: 1px solid var(--color-primary-500);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary-50);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid transparent;
+}
+
+.btn-ghost:hover {
+  background-color: var(--color-neutral-100);
+}
+
+/* ============================================
+   卡片颜色
+   ============================================ */
+
+.card {
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-md);
+}
+
+.card:hover {
+  background-color: var(--color-primary-50);
+  border-color: var(--color-primary-200);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-elevated {
+  background-color: var(--color-bg-light);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-flat {
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border-light);
+  box-shadow: none;
+}
+
+/* ============================================
+   输入框颜色
+   ============================================ */
+
+.input,
+input,
+textarea,
+select {
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border-light);
+  color: var(--color-text-primary);
+}
+
+.input::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.input:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-primary-500);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+}
+
+.input.error,
+input.error,
+textarea.error {
+  border-color: var(--color-error);
+}
+
+.input.success,
+input.success,
+textarea.success {
+  border-color: var(--color-success);
+}
+
+/* ============================================
+   标签颜色
+   ============================================ */
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.badge-primary {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-700);
+}
+
+.badge-secondary {
+  background-color: var(--color-secondary-100);
+  color: var(--color-secondary-700);
+}
+
+.badge-success {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.badge-warning {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.badge-error {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+/* ============================================
+   导航颜色
+   ============================================ */
+
+.nav {
+  background-color: var(--color-bg-light);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.nav-item {
+  color: var(--color-text-primary);
+}
+
+.nav-item:hover {
+  background-color: var(--color-primary-50);
+}
+
+.nav-item.active {
+  color: var(--color-primary-500);
+  border-bottom: 2px solid var(--color-primary-500);
+}
+
+/* ============================================
+   页脚颜色
+   ============================================ */
+
+.footer {
+  background-color: var(--color-primary-900);
+  color: var(--color-text-light);
+  border-top: 1px solid var(--color-neutral-800);
+}
+
+.footer a {
+  color: var(--color-primary-300);
+}
+
+.footer a:hover {
+  color: var(--color-primary-200);
+}
+
+/* ============================================
+   英雄区域颜色
+   ============================================ */
+
+.hero {
+  background: var(--gradient-dark);
+  color: var(--color-text-light);
+}
+
+.hero-accent {
+  color: var(--color-secondary-500);
+}
+
+/* ============================================
+   服务卡片颜色
+   ============================================ */
+
+.service-card {
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border-light);
+}
+
+.service-card:hover {
+  background-color: var(--color-primary-50);
+  border-color: var(--color-primary-200);
+}
+
+.service-card-icon {
+  color: var(--color-primary-500);
+}
+
+.service-card-title {
+  color: var(--color-text-primary);
+}
+
+.service-card-description {
+  color: var(--color-text-secondary);
+}
+
+/* ============================================
+   案例展示颜色
+   ============================================ */
+
+.case-showcase {
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border-light);
+}
+
+.case-showcase-overlay {
+  background-color: rgb(250, 250, 250);
+  color: var(--color-text-light);
+}
+
+.case-showcase-tag {
+  background-color: var(--color-secondary-500);
+  color: var(--color-text-light);
+}
+
+/* ============================================
+   推荐语颜色
+   ============================================ */
+
+.testimonial {
+  background-color: var(--color-bg-dark);
+  border: 1px solid var(--color-border-light);
+}
+
+.testimonial-text {
+  color: var(--color-text-primary);
+}
+
+.testimonial-author {
+  color: var(--color-text-secondary);
+}
+
+.testimonial-rating {
+  color: var(--color-accent-500);
+}
+
+/* ============================================
+   团队成员颜色
+   ============================================ */
+
+.team-member {
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border-light);
+}
+
+.team-member:hover {
+  background-color: var(--color-primary-50);
+  border-color: var(--color-primary-200);
+}
+
+.team-member-name {
+  color: var(--color-text-primary);
+}
+
+.team-member-role {
+  color: var(--color-text-secondary);
+}
+
+/* ============================================
+   博客颜色
+   ============================================ */
+
+.blog-card {
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border-light);
+}
+
+.blog-card:hover {
+  background-color: var(--color-primary-50);
+  border-color: var(--color-primary-200);
+}
+
+.blog-title {
+  color: var(--color-text-primary);
+}
+
+.blog-excerpt {
+  color: var(--color-text-secondary);
+}
+
+.blog-date {
+  color: var(--color-text-tertiary);
+}
+
+.blog-tag {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-700);
+}
+
+/* ============================================
+   表单颜色
+   ============================================ */
+
+.form-label {
+  color: var(--color-text-primary);
+}
+
+.form-required {
+  color: var(--color-error);
+}
+
+.form-helper {
+  color: var(--color-text-tertiary);
+}
+
+.form-error {
+  color: var(--color-error);
+}
+
+.form-success {
+  color: var(--color-success);
+}
+
+/* ============================================
+   分割线颜色
+   ============================================ */
+
+.divider {
+  border-color: var(--color-border-light);
+}
+
+/* ============================================
+   加载状态颜色
+   ============================================ */
+
+.loading {
+  color: var(--color-primary-500);
+}
+
+.spinner {
+  border-color: var(--color-border-light);
+  border-top-color: var(--color-primary-500);
+}
+
+/* ============================================
+   骨架屏颜色
+   ============================================ */
+
+.skeleton {
+  background-color: var(--color-neutral-200);
+  background-image: linear-gradient(
+    90deg,
+    var(--color-neutral-200) 0%,
+    var(--color-neutral-100) 50%,
+    var(--color-neutral-200) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ============================================
+   文本颜色
+   ============================================ */
+
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-tertiary {
+  color: var(--color-text-tertiary);
+}
+
+.text-light {
+  color: var(--color-text-light);
+}
+
+/* ============================================
+   背景颜色
+   ============================================ */
+
+.bg-light {
+  background-color: var(--color-bg-light);
+}
+
+.bg-dark {
+  background-color: var(--color-bg-dark);
+}
+
+.bg-darker {
+  background-color: var(--color-bg-darker);
+}
+
+.bg-primary {
+  background-color: var(--color-primary-500);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary-500);
+}
+
+.bg-accent {
+  background-color: var(--color-accent-500);
+}
+
+/* ============================================
+   边框颜色
+   ============================================ */
+
+.border-light {
+  border-color: var(--color-border-light);
+}
+
+.border-medium {
+  border-color: var(--color-border-medium);
+}
+
+.border-dark {
+  border-color: var(--color-border-dark);
+}
+
+.border-primary {
+  border-color: var(--color-primary-500);
+}
+
+/* ============================================
+   渐变背景
+   ============================================ */
+
+.gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.gradient-secondary {
+  background: var(--gradient-secondary);
+}
+
+.gradient-accent {
+  background: var(--gradient-accent);
+}
+
+.gradient-subtle {
+  background: var(--gradient-subtle);
+}
+
+.gradient-dark {
+  background: var(--gradient-dark);
+}
+
+/* ============================================
+   阴影
+   ============================================ */
+
+.shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+.shadow-md {
+  box-shadow: var(--shadow-md);
+}
+
+.shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+.shadow-xl {
+  box-shadow: var(--shadow-xl);
+}
+
+.shadow-2xl {
+  box-shadow: var(--shadow-2xl);
+}
+
+.shadow-inner {
+  box-shadow: inset 0 2px 4px 0 rgba(124, 58, 237, 0.05);
+}

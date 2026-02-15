@@ -1,0 +1,646 @@
+{
+  "name": "权限验证组件",
+  "description": "高阶组件，用于验证用户登录状态和权限，支持管理员权限检查和未授权重定向",
+  "type": "component",
+  "framework": "React",
+  "styling": "Tailwind CSS",
+  "layout": {
+    "fullScreen": {
+      "minHeight": "100vh",
+      "display": "flex",
+      "alignItems": "center",
+      "justifyContent": "center",
+      "backgroundColor": "#f9fafb"
+    },
+    "centerContainer": {
+      "maxWidth": "400px",
+      "width": "100%",
+      "padding": "24px"
+    }
+  },
+  "components": {
+    "loadingState": {
+      "container": {
+        "textAlign": "center",
+        "padding": "64px 24px"
+      },
+      "spinner": {
+        "width": "32px",
+        "height": "32px",
+        "color": "#3b82f6",
+        "margin": "0 auto 16px",
+        "animation": "spin 1s linear infinite"
+      },
+      "text": {
+        "fontSize": "16px",
+        "color": "#6b7280",
+        "fontWeight": "500"
+      }
+    },
+    "unauthorizedAlert": {
+      "container": {
+        "maxWidth": "400px",
+        "width": "100%",
+        "backgroundColor": "#ffffff",
+        "border": "1px solid #e5e7eb",
+        "borderRadius": "12px",
+        "padding": "24px",
+        "boxShadow": "0 4px 6px rgba(0, 0, 0, 0.05)"
+      },
+      "icon": {
+        "width": "48px",
+        "height": "48px",
+        "color": "#f59e0b",
+        "margin": "0 auto 16px"
+      },
+      "title": {
+        "fontSize": "18px",
+        "fontWeight": "600",
+        "color": "#111827",
+        "textAlign": "center",
+        "marginBottom": "8px"
+      },
+      "message": {
+        "fontSize": "14px",
+        "color": "#6b7280",
+        "textAlign": "center",
+        "lineHeight": "1.5",
+        "marginBottom": "24px"
+      },
+      "actions": {
+        "display": "flex",
+        "gap": "12px",
+        "justifyContent": "center"
+      },
+      "button": {
+        "padding": "10px 20px",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "borderRadius": "8px",
+        "cursor": "pointer",
+        "transition": "all 0.2s ease",
+        "textDecoration": "none",
+        "display": "inline-flex",
+        "alignItems": "center",
+        "justifyContent": "center"
+      },
+      "primaryButton": {
+        "backgroundColor": "#3b82f6",
+        "color": "#ffffff",
+        "border": "1px solid #3b82f6"
+      },
+      "secondaryButton": {
+        "backgroundColor": "transparent",
+        "color": "#6b7280",
+        "border": "1px solid #d1d5db"
+      }
+    },
+    "noPermissionAlert": {
+      "container": {
+        "maxWidth": "400px",
+        "width": "100%",
+        "backgroundColor": "#ffffff",
+        "border": "1px solid #e5e7eb",
+        "borderRadius": "12px",
+        "padding": "24px",
+        "boxShadow": "0 4px 6px rgba(0, 0, 0, 0.05)"
+      },
+      "icon": {
+        "width": "48px",
+        "height": "48px",
+        "color": "#dc2626",
+        "margin": "0 auto 16px"
+      },
+      "title": {
+        "fontSize": "18px",
+        "fontWeight": "600",
+        "color": "#dc2626",
+        "textAlign": "center",
+        "marginBottom": "8px"
+      },
+      "message": {
+        "fontSize": "14px",
+        "color": "#6b7280",
+        "textAlign": "center",
+        "lineHeight": "1.5",
+        "marginBottom": "24px"
+      },
+      "actions": {
+        "display": "flex",
+        "gap": "12px",
+        "justifyContent": "center"
+      }
+    },
+    "errorState": {
+      "container": {
+        "textAlign": "center",
+        "padding": "64px 24px"
+      },
+      "icon": {
+        "width": "48px",
+        "height": "48px",
+        "color": "#dc2626",
+        "margin": "0 auto 16px"
+      },
+      "title": {
+        "fontSize": "18px",
+        "fontWeight": "600",
+        "color": "#dc2626",
+        "marginBottom": "8px"
+      },
+      "message": {
+        "fontSize": "14px",
+        "color": "#6b7280",
+        "marginBottom": "24px"
+      },
+      "retryButton": {
+        "padding": "10px 20px",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "backgroundColor": "#3b82f6",
+        "color": "#ffffff",
+        "border": "1px solid #3b82f6",
+        "borderRadius": "8px",
+        "cursor": "pointer"
+      }
+    }
+  },
+  "states": {
+    "loading": {
+      "display": "loadingState",
+      "spinner": {
+        "animation": "spin 1s linear infinite"
+      }
+    },
+    "unauthenticated": {
+      "display": "unauthorizedAlert",
+      "redirect": "/admin-login"
+    },
+    "unauthorized": {
+      "display": "noPermissionAlert",
+      "actions": ["returnHome", "reLogin"]
+    },
+    "authenticated": {
+      "display": "children",
+      "wrapper": "none"
+    },
+    "error": {
+      "display": "errorState",
+      "retry": true
+    },
+    "buttonHover": {
+      "primaryButton": {
+        "backgroundColor": "#2563eb"
+      },
+      "secondaryButton": {
+        "backgroundColor": "#f9fafb"
+      },
+      "retryButton": {
+        "backgroundColor": "#2563eb"
+      }
+    }
+  },
+  "interactions": {
+    "authCheck": {
+      "trigger": "componentMount",
+      "conditions": ["session loading complete"],
+      "actions": [
+        "checkSessionStatus",
+        "validateUserRole",
+        "redirectOrRender"
+      ],
+      "feedback": "loading state + conditional rendering"
+    },
+    "loginRedirect": {
+      "trigger": "click",
+      "target": "loginButton",
+      "action": "navigate: /admin-login",
+      "feedback": "page navigation"
+    },
+    "homeRedirect": {
+      "trigger": "click",
+      "target": "homeButton",
+      "action": "navigate: /",
+      "feedback": "page navigation"
+    },
+    "retryAuth": {
+      "trigger": "click",
+      "target": "retryButton",
+      "actions": [
+        "setState: loading",
+        "refetchSession",
+        "recheckPermissions"
+      ],
+      "feedback": "loading state + retry logic"
+    },
+    "buttonHover": {
+      "trigger": "mouseenter",
+      "target": "button",
+      "action": "setState: buttonHover"
+    },
+    "buttonLeave": {
+      "trigger": "mouseleave",
+      "target": "button",
+      "action": "removeState: buttonHover"
+    }
+  },
+  "responsive": {
+    "mobile": {
+      "breakpoint": "640px",
+      "changes": {
+        "centerContainer.padding": "16px",
+        "unauthorizedAlert.padding": "20px",
+        "noPermissionAlert.padding": "20px",
+        "actions.flexDirection": "column",
+        "button.width": "100%"
+      }
+    },
+    "tablet": {
+      "breakpoint": "768px",
+      "changes": {
+        "centerContainer.maxWidth": "380px"
+      }
+    }
+  },
+  "accessibility": {
+    "keyboardNavigation": true,
+    "screenReader": {
+      "loadingState": "正在验证权限",
+      "unauthorizedAlert": "未登录提示",
+      "noPermissionAlert": "权限不足提示",
+      "loginButton": "前往登录",
+      "homeButton": "返回首页",
+      "retryButton": "重试验证"
+    },
+    "focusManagement": {
+      "buttons": "visible focus indicators",
+      "alertDialogs": "focus trap when displayed"
+    },
+    "announcements": {
+      "authStart": "开始权限验证",
+      "authSuccess": "权限验证成功",
+      "authFailed": "权限验证失败",
+      "redirecting": "正在跳转"
+    }
+  },
+  "performance": {
+    "lazyLoading": false,
+    "memoization": ["user data", "permission checks"],
+    "bundleSize": "~8KB gzipped"
+  },
+  "errorHandling": {
+    "sessionError": {
+      "display": "error state",
+      "message": "会话验证失败",
+      "retry": true
+    },
+    "networkError": {
+      "display": "error state",
+      "message": "网络连接失败",
+      "retry": true
+    },
+    "apiError": {
+      "display": "error state",
+      "message": "服务器错误",
+      "retry": true
+    },
+    "permissionError": {
+      "display": "no permission alert",
+      "message": "权限不足",
+      "retry": false
+    }
+  },
+  "animations": {
+    "loadingSpinner": {
+      "type": "rotate",
+      "duration": "1s",
+      "iteration": "infinite",
+      "timing": "linear"
+    },
+    "alertAppear": {
+      "type": "fadeIn + scaleUp",
+      "duration": "300ms",
+      "easing": "ease-out"
+    },
+    "buttonHover": {
+      "type": "backgroundTransition",
+      "duration": "150ms",
+      "easing": "ease-out"
+    },
+    "stateTransition": {
+      "type": "fadeInOut",
+      "duration": "200ms",
+      "easing": "ease-in-out"
+    }
+  },
+  "security": {
+    "sessionValidation": {
+      "method": "NextAuth.js session",
+      "tokenVerification": "JWT signature validation",
+      "expiration": "automatic session expiry"
+    },
+    "roleBasedAccess": {
+      "serverSideCheck": "API-based role validation",
+      "clientSideGuard": "UI access control",
+      "fallbackSecurity": "server-side enforcement"
+    },
+    "redirectSecurity": {
+      "validatedUrls": "whitelist-based redirects",
+      "csrfProtection": "state parameter validation"
+    }
+  },
+  "configuration": {
+    "props": {
+      "children": "React.ReactNode",
+      "adminOnly": "boolean (default: false)"
+    },
+    "routes": {
+      "loginPage": "/admin-login",
+      "homePage": "/",
+      "adminDashboard": "/admin"
+    },
+    "permissions": {
+      "adminRole": "ADMIN",
+      "userRole": "USER",
+      "guestRole": "GUEST"
+    }
+  }
+}
+
+---
+
+# 权限验证组件设计文档
+
+## 概述
+权限验证组件（RequireAuth）是一个高阶组件，用于保护需要身份验证和特定权限的页面和功能。它提供了完整的权限检查、用户友好的错误处理和自动重定向功能。
+
+## 核心功能
+
+### 1. 身份验证检查
+- **会话验证**：检查用户是否已登录
+- **令牌验证**：验证 JWT 令牌的有效性
+- **自动重定向**：未登录用户自动跳转到登录页
+
+### 2. 权限级别控制
+- **基础权限**：验证用户是否已登录
+- **管理员权限**：验证用户是否具有管理员角色
+- **角色检查**：支持多种用户角色的权限验证
+
+### 3. 用户体验优化
+- **加载状态**：权限验证过程中的加载提示
+- **错误处理**：友好的错误信息和重试选项
+- **操作引导**：清晰的操作按钮和导航选项
+
+## 视觉设计
+
+### 加载状态布局
+```
+┌─────────────────────────────────────────┐
+│                                         │
+│              🔄                         │
+│          正在验证权限...                 │
+│                                         │
+└─────────────────────────────────────────┘
+```
+
+### 未登录状态布局
+```
+┌─────────────────────────────────────────┐
+│              ⚠️                         │
+│            访问受限                      │
+│      请先登录访问此页面                   │
+│                                         │
+│        [前往登录]                       │
+└─────────────────────────────────────────┘
+```
+
+### 权限不足状态布局
+```
+┌─────────────────────────────────────────┐
+│              🚫                         │
+│            权限不足                      │
+│      您没有管理员权限访问此页面           │
+│                                         │
+│    [返回首页]  [重新登录]                │
+└─────────────────────────────────────────┘
+```
+
+### 颜色方案
+- **背景色**：#f9fafb (浅灰色)
+- **卡片背景**：#ffffff (白色)
+- **边框色**：#e5e7eb (浅灰色)
+- **主色调**：#3b82f6 (蓝色)
+- **警告色**：#f59e0b (橙色)
+- **错误色**：#dc2626 (红色)
+- **文本色**：#111827 (深灰色)
+- **次要文本**：#6b7280 (中灰色)
+
+### 图标系统
+- **加载图标**：Loader2 (32px, 旋转动画)
+- **警告图标**：AlertTriangle (48px)
+- **禁止图标**：XCircle (48px)
+- **错误图标**：AlertCircle (48px)
+
+## 交互设计
+
+### 权限验证流程
+1. **组件挂载**
+   - 开始权限验证
+   - 显示加载状态
+
+2. **会话检查**
+   - 检查用户登录状态
+   - 验证会话有效性
+
+3. **权限验证**
+   - 检查用户角色
+   - 验证访问权限
+
+4. **结果处理**
+   - 通过：渲染子组件
+   - 失败：显示相应错误状态
+
+### 用户操作选项
+- **前往登录**：跳转到登录页面
+- **返回首页**：跳转到应用首页
+- **重新登录**：清除当前会话并跳转登录
+- **重试验证**：重新执行权限检查
+
+## 响应式设计
+
+### 移动端适配 (< 640px)
+- 调整容器内边距
+- 按钮改为垂直布局
+- 优化触摸目标大小
+- 保持内容可读性
+
+### 平板端适配 (768px - 1024px)
+- 保持桌面端布局
+- 适当调整容器宽度
+- 优化按钮间距
+
+## 无障碍设计
+
+### 键盘导航
+- 所有按钮支持 Tab 键导航
+- 明显的焦点指示器
+- 支持 Enter 键激活
+
+### 屏幕阅读器支持
+- 语义化的错误提示结构
+- 适当的 ARIA 标签
+- 状态变化的语音播报
+
+### 视觉辅助
+- 高对比度的颜色搭配
+- 清晰的图标和文字
+- 足够大的点击目标
+
+## 性能优化
+
+### 组件优化
+- 用户数据和权限检查的记忆化
+- 避免不必要的重新渲染
+- 合理的状态更新策略
+
+### 网络优化
+- 权限检查的缓存机制
+- 合理的重试策略
+- 避免重复的API调用
+
+## 错误处理
+
+### 会话错误
+- **会话过期**：自动跳转到登录页
+- **令牌无效**：清除会话并重新登录
+- **会话丢失**：提示重新登录
+
+### 网络错误
+- **连接超时**：显示重试选项
+- **服务器错误**：显示错误信息
+- **API失败**：提供重试机制
+
+### 权限错误
+- **角色不匹配**：显示权限不足提示
+- **权限被撤销**：提示重新登录
+- **账户被禁用**：显示相应错误信息
+
+## 安全考虑
+
+### 客户端安全
+- 仅作为UI层面的访问控制
+- 不依赖客户端验证作为唯一安全措施
+- 敏感信息不在客户端存储
+
+### 服务端验证
+- 所有API请求都需要服务端权限验证
+- JWT令牌的服务端验证
+- 角色权限的数据库验证
+
+### 会话安全
+- 安全的会话管理
+- 自动会话过期
+- 安全的令牌存储
+
+## 技术实现
+
+### 组件属性
+```typescript
+interface RequireAuthProps {
+  children: React.ReactNode;
+  adminOnly?: boolean;
+}
+```
+
+### 权限检查逻辑
+```typescript
+const checkPermissions = async (adminOnly: boolean) => {
+  // 1. 检查会话状态
+  if (status === 'loading') return 'loading';
+  if (!session) return 'unauthenticated';
+  
+  // 2. 检查管理员权限
+  if (adminOnly) {
+    const userData = await fetch('/api/auth/me');
+    const user = await userData.json();
+    
+    if (user.role !== 'ADMIN') {
+      return 'unauthorized';
+    }
+  }
+  
+  return 'authenticated';
+};
+```
+
+### 状态管理
+```typescript
+interface AuthState {
+  status: 'loading' | 'authenticated' | 'unauthenticated' | 'unauthorized' | 'error';
+  userData: User | null;
+  error: string | null;
+}
+```
+
+## 配置选项
+
+### 路由配置
+- **登录页面**：`/admin-login`
+- **首页**：`/`
+- **管理后台**：`/admin`
+
+### 权限配置
+- **管理员角色**：`ADMIN`
+- **普通用户**：`USER`
+- **访客**：`GUEST`
+
+### 自定义选项
+- 自定义重定向路径
+- 自定义错误信息
+- 自定义权限检查逻辑
+
+## 使用示例
+
+### 基础权限保护
+```tsx
+<RequireAuth>
+  <UserDashboard />
+</RequireAuth>
+```
+
+### 管理员权限保护
+```tsx
+<RequireAuth adminOnly>
+  <AdminPanel />
+</RequireAuth>
+```
+
+### 嵌套权限保护
+```tsx
+<RequireAuth>
+  <Layout>
+    <RequireAuth adminOnly>
+      <AdminSettings />
+    </RequireAuth>
+  </Layout>
+</RequireAuth>
+```
+
+## 扩展性设计
+
+### 多角色支持
+- 支持更多用户角色
+- 灵活的权限配置
+- 角色继承机制
+
+### 自定义验证
+- 支持自定义权限检查函数
+- 支持异步权限验证
+- 支持条件权限检查
+
+### 国际化支持
+- 多语言错误信息
+- 本地化的用户提示
+- 可配置的文本内容
+
+这个权限验证组件提供了完整的访问控制功能，具有良好的用户体验、安全性和扩展性，适合在各种需要权限控制的应用中使用。

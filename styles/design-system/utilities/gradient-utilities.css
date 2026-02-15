@@ -1,0 +1,380 @@
+/* Gradient Utility Classes - Enterprise Admin Theme */
+
+/* ============================================================================
+   BACKGROUND GRADIENT UTILITY CLASS
+   ============================================================================ */
+
+/**
+ * .theme-gradient-bg
+ * 
+ * Applies a gradient background to an element.
+ * 
+ * Usage:
+ *   <div class="theme-gradient-bg">Content</div>
+ * 
+ * Features:
+ *   - Uses CSS variables for gradient definition
+ *   - Supports both light and dark modes
+ *   - Includes smooth transition effect (300ms)
+ *   - Uses cubic-bezier easing for natural motion
+ */
+.theme-gradient-bg {
+  background: var(--gradient-bg);
+  transition: background var(--gradient-transition-duration) var(--gradient-transition-timing);
+}
+
+/* Ensure gradient background works in all color schemes */
+@supports (background: linear-gradient(135deg, #2563eb, #9333ea)) {
+  .theme-gradient-bg {
+    background: var(--gradient-bg);
+  }
+}
+
+/* ============================================================================
+   TEXT GRADIENT UTILITY CLASS
+   ============================================================================ */
+
+/**
+ * .theme-gradient-text
+ * 
+ * Applies a gradient effect to text content.
+ * 
+ * Usage:
+ *   <h1 class="theme-gradient-text">Gradient Text</h1>
+ * 
+ * Features:
+ *   - Uses background-clip to create gradient text effect
+ *   - Supports both light and dark modes
+ *   - Includes smooth transition effect (300ms)
+ *   - Uses -webkit-text-fill-color for cross-browser compatibility
+ *   - Fallback to solid color for unsupported browsers
+ */
+.theme-gradient-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: background var(--gradient-transition-duration) var(--gradient-transition-timing);
+}
+
+/* Ensure gradient text works in all color schemes */
+@supports (-webkit-background-clip: text) {
+  .theme-gradient-text {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Fallback for browsers that don't support background-clip: text */
+@supports not (-webkit-background-clip: text) {
+  .theme-gradient-text {
+    color: var(--gradient-start);
+  }
+}
+
+/* ============================================================================
+   BORDER GRADIENT UTILITY CLASS
+   ============================================================================ */
+
+/**
+ * .theme-gradient-border
+ * 
+ * Applies a gradient effect to element borders.
+ * 
+ * Usage:
+ *   <div class="theme-gradient-border">Content</div>
+ * 
+ * Features:
+ *   - Uses background-image with border-box and padding-box for gradient border
+ *   - Supports both light and dark modes
+ *   - Includes smooth transition effect (300ms)
+ *   - Maintains element's background color
+ *   - Works with any border width
+ * 
+ * Note:
+ *   - Requires the element to have a defined background color
+ *   - Default border width is 2px (can be customized)
+ *   - The gradient is applied to the border area
+ */
+.theme-gradient-border {
+  position: relative;
+  border: 2px solid transparent;
+  background-image: 
+    linear-gradient(var(--color-bg-primary, white), var(--color-bg-primary, white)),
+    var(--gradient-border);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  transition: background var(--gradient-transition-duration) var(--gradient-transition-timing);
+}
+
+/* Ensure gradient border works in all color schemes */
+@supports (background-clip: border-box) {
+  .theme-gradient-border {
+    border: 2px solid transparent;
+    background-image: 
+      linear-gradient(var(--color-bg-primary, white), var(--color-bg-primary, white)),
+      var(--gradient-border);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+}
+
+/* Dark mode specific border background */
+:root[data-mode="dark"] .theme-gradient-border {
+  background-image: 
+    linear-gradient(var(--color-bg-primary, #1a1a1a), var(--color-bg-primary, #1a1a1a)),
+    var(--gradient-border);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+/* ============================================================================
+   COMBINED UTILITY CLASSES
+   ============================================================================ */
+
+/**
+ * .theme-gradient-bg-text
+ * 
+ * Combines background gradient with gradient text effect.
+ * Useful for creating prominent gradient sections with gradient text.
+ */
+.theme-gradient-bg-text {
+  background: var(--gradient-bg);
+  color: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: background var(--gradient-transition-duration) var(--gradient-transition-timing);
+}
+
+/**
+ * .theme-gradient-all
+ * 
+ * Applies gradient to background, text, and border.
+ * Creates a fully gradient-themed element.
+ */
+.theme-gradient-all {
+  background: var(--gradient-bg);
+  border: 2px solid transparent;
+  background-image: 
+    linear-gradient(var(--color-bg-primary, white), var(--color-bg-primary, white)),
+    var(--gradient-border);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  transition: background var(--gradient-transition-duration) var(--gradient-transition-timing);
+}
+
+/* ============================================================================
+   HOVER AND INTERACTIVE STATES
+   ============================================================================ */
+
+/**
+ * .theme-gradient-bg:hover
+ * 
+ * Enhanced hover state for gradient background elements.
+ * Increases opacity or applies additional effects on hover.
+ */
+.theme-gradient-bg:hover {
+  filter: brightness(1.1);
+  transition: filter var(--gradient-transition-duration) var(--gradient-transition-timing);
+}
+
+/**
+ * .theme-gradient-text:hover
+ * 
+ * Enhanced hover state for gradient text elements.
+ * Applies subtle effects on hover.
+ */
+.theme-gradient-text:hover {
+  filter: brightness(1.15);
+  transition: filter var(--gradient-transition-duration) var(--gradient-transition-timing);
+}
+
+/**
+ * .theme-gradient-border:hover
+ * 
+ * Enhanced hover state for gradient border elements.
+ * Increases border visibility on hover.
+ */
+.theme-gradient-border:hover {
+  border-width: 2px;
+  filter: brightness(1.05);
+  transition: filter var(--gradient-transition-duration) var(--gradient-transition-timing);
+}
+
+/* ============================================================================
+   FOCUS STATES FOR ACCESSIBILITY
+   ============================================================================ */
+
+/**
+ * Focus states for interactive elements with gradient utilities.
+ * Ensures keyboard navigation is visible and accessible.
+ */
+.theme-gradient-bg:focus,
+.theme-gradient-bg:focus-visible {
+  outline: 2px solid var(--gradient-start);
+  outline-offset: 2px;
+  transition: outline var(--gradient-transition-duration) var(--gradient-transition-timing);
+}
+
+.theme-gradient-text:focus,
+.theme-gradient-text:focus-visible {
+  outline: 2px solid var(--gradient-start);
+  outline-offset: 2px;
+  transition: outline var(--gradient-transition-duration) var(--gradient-transition-timing);
+}
+
+.theme-gradient-border:focus,
+.theme-gradient-border:focus-visible {
+  outline: 2px solid var(--gradient-start);
+  outline-offset: 2px;
+  transition: outline var(--gradient-transition-duration) var(--gradient-transition-timing);
+}
+
+/* ============================================================================
+   DISABLED STATES
+   ============================================================================ */
+
+/**
+ * Disabled states for gradient utility classes.
+ * Reduces opacity and removes interactive effects.
+ */
+.theme-gradient-bg:disabled,
+.theme-gradient-bg[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: none;
+}
+
+.theme-gradient-text:disabled,
+.theme-gradient-text[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: none;
+}
+
+.theme-gradient-border:disabled,
+.theme-gradient-border[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: none;
+}
+
+/* ============================================================================
+   ANIMATION SUPPORT
+   ============================================================================ */
+
+/**
+ * Keyframe animations for gradient effects.
+ * Can be used with animation property for dynamic gradient effects.
+ */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/**
+ * .theme-gradient-animate
+ * 
+ * Applies a subtle animation to gradient elements.
+ * Creates a flowing gradient effect.
+ */
+.theme-gradient-animate {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* ============================================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================================ */
+
+/**
+ * Mobile-specific adjustments for gradient utilities.
+ * Ensures gradient effects work well on smaller screens.
+ */
+@media (max-width: 768px) {
+  .theme-gradient-bg,
+  .theme-gradient-text,
+  .theme-gradient-border {
+    transition: background var(--gradient-transition-duration) var(--gradient-transition-timing);
+  }
+  
+  .theme-gradient-border {
+    border-width: 1px;
+  }
+}
+
+/* ============================================================================
+   PRINT STYLES
+   ============================================================================ */
+
+/**
+ * Print-specific styles for gradient utilities.
+ * Ensures gradients are handled appropriately in print media.
+ */
+@media print {
+  .theme-gradient-bg {
+    background: var(--gradient-start);
+  }
+  
+  .theme-gradient-text {
+    color: var(--gradient-start);
+    -webkit-text-fill-color: unset;
+    background: none;
+  }
+  
+  .theme-gradient-border {
+    border-color: var(--gradient-start);
+    background: none;
+  }
+}
+
+/* ============================================================================
+   REDUCED MOTION SUPPORT
+   ============================================================================ */
+
+/**
+ * Respects user's motion preferences.
+ * Disables animations for users who prefer reduced motion.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .theme-gradient-bg,
+  .theme-gradient-text,
+  .theme-gradient-border,
+  .theme-gradient-animate {
+    transition: none;
+    animation: none;
+  }
+}
+
+/* ============================================================================
+   HIGH CONTRAST MODE SUPPORT
+   ============================================================================ */
+
+/**
+ * Adjustments for high contrast mode.
+ * Ensures gradient utilities are visible in high contrast environments.
+ */
+@media (prefers-contrast: more) {
+  .theme-gradient-bg {
+    filter: contrast(1.2);
+  }
+  
+  .theme-gradient-text {
+    filter: contrast(1.2);
+  }
+  
+  .theme-gradient-border {
+    border-width: 3px;
+    filter: contrast(1.2);
+  }
+}

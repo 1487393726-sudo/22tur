@@ -1,0 +1,117 @@
+/* Animation Design Tokens */
+
+:root {
+  /* Transition Durations */
+  --transition-fast: 150ms;
+  --transition-base: 200ms;
+  --transition-slow: 300ms;
+
+  /* Easing Functions */
+  --easing-in: cubic-bezier(0.4, 0, 1, 1);
+  --easing-out: cubic-bezier(0, 0, 0.2, 1);
+  --easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-linear: linear;
+
+  /* Transition Shortcuts */
+  --transition-fast-in-out: var(--transition-fast) var(--easing-in-out);
+  --transition-base-in-out: var(--transition-base) var(--easing-in-out);
+  --transition-slow-in-out: var(--transition-slow) var(--easing-in-out);
+
+  /* Common transitions */
+  --transition-colors: color var(--transition-base-in-out), background-color var(--transition-base-in-out), border-color var(--transition-base-in-out);
+  --transition-transform: transform var(--transition-base-in-out);
+  --transition-opacity: opacity var(--transition-base-in-out);
+  --transition-all: all var(--transition-base-in-out);
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

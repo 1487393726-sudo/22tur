@@ -1,0 +1,39 @@
+/* Spacing Design Tokens - 8px Grid System */
+
+:root {
+  /* Base spacing unit: 8px */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+
+  /* Padding shortcuts */
+  --padding-xs: var(--spacing-xs);
+  --padding-sm: var(--spacing-sm);
+  --padding-md: var(--spacing-md);
+  --padding-lg: var(--spacing-lg);
+  --padding-xl: var(--spacing-xl);
+  --padding-2xl: var(--spacing-2xl);
+  --padding-3xl: var(--spacing-3xl);
+
+  /* Margin shortcuts */
+  --margin-xs: var(--spacing-xs);
+  --margin-sm: var(--spacing-sm);
+  --margin-md: var(--spacing-md);
+  --margin-lg: var(--spacing-lg);
+  --margin-xl: var(--spacing-xl);
+  --margin-2xl: var(--spacing-2xl);
+  --margin-3xl: var(--spacing-3xl);
+
+  /* Gap shortcuts */
+  --gap-xs: var(--spacing-xs);
+  --gap-sm: var(--spacing-sm);
+  --gap-md: var(--spacing-md);
+  --gap-lg: var(--spacing-lg);
+  --gap-xl: var(--spacing-xl);
+  --gap-2xl: var(--spacing-2xl);
+  --gap-3xl: var(--spacing-3xl);
+}

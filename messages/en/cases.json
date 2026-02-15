@@ -1,0 +1,134 @@
+{
+  "meta": {
+    "title": "Case Studies | Creative Studio",
+    "description": "View our successful case studies and learn how we help clients achieve their goals."
+  },
+  "hero": {
+    "title": "Case Studies",
+    "subtitle": "View our successful case studies and learn how we help clients achieve their goals"
+  },
+  "cases": [
+    {
+      "title": "E-commerce Platform Rebuild",
+      "client": "Leading Retail Brand",
+      "category": "Web Development",
+      "description": "Rebuilt e-commerce platform for client, improving user experience and conversion rates",
+      "results": [
+        "45% increase in conversion rate",
+        "60% faster page load speed",
+        "35% improvement in user satisfaction"
+      ],
+      "tags": ["React", "Next.js", "PostgreSQL"]
+    },
+    {
+      "title": "Corporate Brand Upgrade",
+      "client": "Technology Company",
+      "category": "Brand Design",
+      "description": "Comprehensive upgrade of corporate brand image, including Logo, VI system and brand guidelines",
+      "results": [
+        "50% increase in brand awareness",
+        "30% growth in market share",
+        "95% client satisfaction"
+      ],
+      "tags": ["Brand Strategy", "VI Design", "Logo Design"]
+    },
+    {
+      "title": "Mobile App Development",
+      "client": "Financial Services Company",
+      "category": "Mobile Application",
+      "description": "Developed native iOS and Android apps providing convenient financial services",
+      "results": [
+        "Over 1 million downloads",
+        "4.8 App Store rating",
+        "200,000+ daily active users"
+      ],
+      "tags": ["React Native", "iOS", "Android"]
+    },
+    {
+      "title": "Corporate Website Design",
+      "client": "Manufacturing Enterprise",
+      "category": "Web Design",
+      "description": "Designed modern corporate website showcasing company strength and products",
+      "results": [
+        "80% increase in traffic",
+        "60% growth in inquiries",
+        "40% reduction in bounce rate"
+      ],
+      "tags": ["UI/UX", "Responsive Design", "SEO"]
+    },
+    {
+      "title": "Digital Marketing Campaign",
+      "client": "Consumer Brand",
+      "category": "Digital Marketing",
+      "description": "Planned and executed omnichannel digital marketing campaign",
+      "results": [
+        "200% ROI improvement",
+        "150% social media follower growth",
+        "120% sales increase"
+      ],
+      "tags": ["Social Media", "SEO/SEM", "Content Marketing"]
+    },
+    {
+      "title": "Enterprise Management System",
+      "client": "Logistics Company",
+      "category": "System Development",
+      "description": "Developed customized enterprise management system to improve operational efficiency",
+      "results": [
+        "70% efficiency improvement",
+        "40% cost reduction",
+        "85% error rate reduction"
+      ],
+      "tags": ["Vue.js", "Node.js", "MongoDB"]
+    }
+  ],
+  "resultsLabel": "Results:",
+  "filters": {
+    "category": "Filter by Category",
+    "tag": "Filter by Technology",
+    "all": "All",
+    "showing": "Showing {count} cases",
+    "noResults": "No matching cases found",
+    "noResultsDescription": "Try adjusting your filters or clear all filters",
+    "clearFilters": "Clear Filters"
+  },
+  "detail": {
+    "timeline": "Project Timeline",
+    "duration": "Duration",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "keyMetrics": "Key Metrics",
+    "results": "Project Results",
+    "challenges": "Challenges",
+    "solution": "Solution",
+    "technologies": "Technologies Used",
+    "gallery": "Project Gallery",
+    "viewDetails": "View Details"
+  },
+  "mockData": {
+    "timeline": {
+      "duration": "3 months",
+      "startDate": "June 2023",
+      "endDate": "September 2023"
+    },
+    "metrics": [
+      {
+        "label": "User Growth",
+        "value": "+150%"
+      },
+      {
+        "label": "Performance Boost",
+        "value": "+60%"
+      },
+      {
+        "label": "Client Satisfaction",
+        "value": "95%"
+      },
+      {
+        "label": "ROI",
+        "value": "+200%"
+      }
+    ],
+    "challenges": "The client faced multiple challenges including poor performance of legacy systems, suboptimal user experience, and difficulties with mobile adaptation. The existing platform could not meet the rapidly growing business needs and required comprehensive upgrades.",
+    "solution": "We rebuilt the entire platform using modern technology stack, implemented responsive design to ensure consistent cross-device experience, optimized database queries to improve performance, and introduced automated testing to ensure code quality. Through agile development methodology, we completed the comprehensive platform upgrade within 3 months."
+  }
+}

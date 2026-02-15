@@ -1,0 +1,381 @@
+{
+  "version": "2.6",
+  "name": "Admin Language Switcher Design",
+  "description": "管理后台语言切换器设计 - 支持6种语言",
+  "children": [
+    {
+      "type": "frame",
+      "id": "main-canvas",
+      "x": 0,
+      "y": 0,
+      "name": "Language Switcher",
+      "width": 1440,
+      "height": 900,
+      "fill": "#0f172a",
+      "children": [
+        {
+          "type": "text",
+          "id": "title",
+          "x": 60,
+          "y": 40,
+          "width": 600,
+          "height": 60,
+          "text": "管理后台语言切换器",
+          "fontSize": 36,
+          "fontWeight": "bold",
+          "fill": "#ffffff"
+        },
+        {
+          "type": "rectangle",
+          "id": "switcher-closed",
+          "x": 60,
+          "y": 140,
+          "width": 140,
+          "height": 40,
+          "fill": "rgba(255,255,255,0.1)",
+          "cornerRadius": 6,
+          "children": [
+            {
+              "type": "text",
+              "id": "globe-icon",
+              "x": 12,
+              "y": 10,
+              "width": 20,
+              "height": 20,
+              "text": "🌐",
+              "fontSize": 16
+            },
+            {
+              "type": "text",
+              "id": "current-lang",
+              "x": 40,
+              "y": 10,
+              "width": 88,
+              "height": 20,
+              "text": "简体中文",
+              "fontSize": 14,
+              "fill": "#ffffff"
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "dropdown-menu",
+          "x": 60,
+          "y": 200,
+          "width": 200,
+          "height": 280,
+          "fill": "#1e293b",
+          "cornerRadius": 8,
+          "stroke": "rgba(255,255,255,0.1)",
+          "strokeWidth": 1,
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "menu-item-1",
+              "x": 8,
+              "y": 8,
+              "width": 184,
+              "height": 40,
+              "fill": "rgba(255,255,255,0.1)",
+              "cornerRadius": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lang-zh",
+                  "x": 12,
+                  "y": 10,
+                  "width": 160,
+                  "height": 20,
+                  "text": "简体中文",
+                  "fontSize": 14,
+                  "fill": "#ffffff"
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "menu-item-2",
+              "x": 8,
+              "y": 52,
+              "width": 184,
+              "height": 40,
+              "fill": "transparent",
+              "cornerRadius": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lang-tw",
+                  "x": 12,
+                  "y": 10,
+                  "width": 160,
+                  "height": 20,
+                  "text": "繁體中文",
+                  "fontSize": 14,
+                  "fill": "#d1d5db"
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "menu-item-3",
+              "x": 8,
+              "y": 96,
+              "width": 184,
+              "height": 40,
+              "fill": "transparent",
+              "cornerRadius": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lang-en",
+                  "x": 12,
+                  "y": 10,
+                  "width": 160,
+                  "height": 20,
+                  "text": "English",
+                  "fontSize": 14,
+                  "fill": "#d1d5db"
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "menu-item-4",
+              "x": 8,
+              "y": 140,
+              "width": 184,
+              "height": 40,
+              "fill": "transparent",
+              "cornerRadius": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lang-ja",
+                  "x": 12,
+                  "y": 10,
+                  "width": 160,
+                  "height": 20,
+                  "text": "日本語",
+                  "fontSize": 14,
+                  "fill": "#d1d5db"
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "menu-item-5",
+              "x": 8,
+              "y": 184,
+              "width": 184,
+              "height": 40,
+              "fill": "transparent",
+              "cornerRadius": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lang-ko",
+                  "x": 12,
+                  "y": 10,
+                  "width": 160,
+                  "height": 20,
+                  "text": "한국어",
+                  "fontSize": 14,
+                  "fill": "#d1d5db"
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "menu-item-6",
+              "x": 8,
+              "y": 228,
+              "width": 184,
+              "height": 40,
+              "fill": "transparent",
+              "cornerRadius": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lang-ug",
+                  "x": 12,
+                  "y": 10,
+                  "width": 160,
+                  "height": 20,
+                  "text": "ئۇيغۇرچە",
+                  "fontSize": 14,
+                  "fill": "#d1d5db"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "features-panel",
+          "x": 320,
+          "y": 140,
+          "width": 500,
+          "height": 340,
+          "fill": "#1e293b",
+          "cornerRadius": 12,
+          "stroke": "rgba(255,255,255,0.1)",
+          "strokeWidth": 1,
+          "children": [
+            {
+              "type": "text",
+              "id": "features-title",
+              "x": 24,
+              "y": 24,
+              "width": 452,
+              "height": 32,
+              "text": "功能特性",
+              "fontSize": 24,
+              "fontWeight": "bold",
+              "fill": "#ffffff"
+            },
+            {
+              "type": "text",
+              "id": "feature-1",
+              "x": 24,
+              "y": 72,
+              "width": 452,
+              "height": 24,
+              "text": "✓ 支持6种语言",
+              "fontSize": 16,
+              "fill": "#d1d5db"
+            },
+            {
+              "type": "text",
+              "id": "feature-2",
+              "x": 24,
+              "y": 104,
+              "width": 452,
+              "height": 24,
+              "text": "✓ RTL布局支持（维吾尔语）",
+              "fontSize": 16,
+              "fill": "#d1d5db"
+            },
+            {
+              "type": "text",
+              "id": "feature-3",
+              "x": 24,
+              "y": 136,
+              "width": 452,
+              "height": 24,
+              "text": "✓ 本地存储语言偏好",
+              "fontSize": 16,
+              "fill": "#d1d5db"
+            },
+            {
+              "type": "text",
+              "id": "feature-4",
+              "x": 24,
+              "y": 168,
+              "width": 452,
+              "height": 24,
+              "text": "✓ 响应式设计（移动端隐藏文字）",
+              "fontSize": 16,
+              "fill": "#d1d5db"
+            },
+            {
+              "type": "text",
+              "id": "feature-5",
+              "x": 24,
+              "y": 200,
+              "width": 452,
+              "height": 24,
+              "text": "✓ 深色主题适配",
+              "fontSize": 16,
+              "fill": "#d1d5db"
+            },
+            {
+              "type": "text",
+              "id": "langs-title",
+              "x": 24,
+              "y": 248,
+              "width": 452,
+              "height": 28,
+              "text": "支持语言",
+              "fontSize": 20,
+              "fontWeight": "bold",
+              "fill": "#ffffff"
+            },
+            {
+              "type": "text",
+              "id": "langs-list",
+              "x": 24,
+              "y": 284,
+              "width": 452,
+              "height": 40,
+              "text": "zh, zh-TW, en, ja, ko, ug",
+              "fontSize": 14,
+              "fill": "#94a3b8",
+              "fontFamily": "monospace"
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "mobile-view",
+          "x": 880,
+          "y": 140,
+          "width": 280,
+          "height": 340,
+          "fill": "#1e293b",
+          "cornerRadius": 12,
+          "stroke": "rgba(255,255,255,0.1)",
+          "strokeWidth": 1,
+          "children": [
+            {
+              "type": "text",
+              "id": "mobile-title",
+              "x": 24,
+              "y": 24,
+              "width": 232,
+              "height": 32,
+              "text": "移动端视图",
+              "fontSize": 24,
+              "fontWeight": "bold",
+              "fill": "#ffffff"
+            },
+            {
+              "type": "rectangle",
+              "id": "mobile-button",
+              "x": 70,
+              "y": 80,
+              "width": 140,
+              "height": 40,
+              "fill": "rgba(255,255,255,0.1)",
+              "cornerRadius": 6,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "mobile-icon",
+                  "x": 60,
+                  "y": 10,
+                  "width": 20,
+                  "height": 20,
+                  "text": "🌐",
+                  "fontSize": 16
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "mobile-note",
+              "x": 24,
+              "y": 140,
+              "width": 232,
+              "height": 60,
+              "text": "在小屏幕上，只显示图标，隐藏语言名称",
+              "fontSize": 14,
+              "fill": "#94a3b8",
+              "lineHeight": 1.5
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

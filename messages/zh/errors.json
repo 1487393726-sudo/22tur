@@ -1,0 +1,45 @@
+{
+  "network": {
+    "connectionError": "网络连接错误，请检查您的网络",
+    "timeout": "请求超时，请稍后重试",
+    "offline": "您当前处于离线状态"
+  },
+  "server": {
+    "internalError": "服务器内部错误",
+    "serviceUnavailable": "服务暂时不可用",
+    "maintenance": "系统正在维护中，请稍后访问"
+  },
+  "auth": {
+    "unauthorized": "未授权，请先登录",
+    "forbidden": "您没有权限执行此操作",
+    "sessionExpired": "会话已过期，请重新登录",
+    "invalidToken": "无效的令牌"
+  },
+  "resource": {
+    "notFound": "请求的资源不存在",
+    "alreadyExists": "资源已存在",
+    "conflict": "资源冲突，请刷新后重试"
+  },
+  "validation": {
+    "invalidInput": "输入数据无效",
+    "missingRequired": "缺少必填字段",
+    "invalidFormat": "数据格式不正确"
+  },
+  "file": {
+    "uploadFailed": "文件上传失败",
+    "downloadFailed": "文件下载失败",
+    "fileTooLarge": "文件太大",
+    "invalidType": "不支持的文件类型"
+  },
+  "payment": {
+    "paymentFailed": "支付失败",
+    "insufficientFunds": "余额不足",
+    "cardDeclined": "银行卡被拒绝",
+    "transactionError": "交易错误"
+  },
+  "generic": {
+    "unknownError": "发生未知错误",
+    "tryAgain": "请稍后重试",
+    "contactSupport": "如问题持续，请联系客服"
+  }
+}

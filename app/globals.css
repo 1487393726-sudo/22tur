@@ -1,0 +1,657 @@
+@import "tailwindcss";
+
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Import Design System */
+@import "../styles/design-system/globals.css";
+
+/* Import User Portal Theme */
+@import "../styles/user-portal-theme.css";
+
+/* Import Website Color System */
+@import "../styles/website-colors.css";
+
+/* Import Artistic Creative Theme */
+@import "../styles/artistic-theme.css";
+
+/* ============================================
+   新颜色系统 - 紫色渐变设计
+   New Color System - Purple Gradient Design
+   ============================================ */
+
+/* 浅色主题 (默认) - Light Theme (Default) */
+:root {
+  /* 背景色 */
+  --background: #F8F7FB;
+  --foreground: #2D1B4E;
+
+  /* 卡片 */
+  --card: #FFFFFF;
+  --card-foreground: #2D1B4E;
+
+  /* 弹出层 */
+  --popover: #FFFFFF;
+  --popover-foreground: #2D1B4E;
+
+  /* 主色 - 紫色 */
+  --primary: #6B3FA0;
+  --primary-foreground: #FFFFFF;
+
+  /* 辅助色 - 浅紫色 */
+  --secondary: #9D5FD8;
+  --secondary-foreground: #FFFFFF;
+
+  /* 静音色 */
+  --muted: #F0E6F6;
+  --muted-foreground: #7C6B8F;
+
+  /* 强调色 - 紫色渐变 */
+  --accent: #E8D5F2;
+  --accent-foreground: #2D1B4E;
+
+  /* 错误色 */
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+
+  /* 边框和输入框 */
+  --border: #E0D0ED;
+  --input: #E0D0ED;
+  --ring: #6B3FA0;
+
+  /* 图表颜色 */
+  --chart-1: #6B3FA0;
+  --chart-2: #9D5FD8;
+  --chart-3: #22C55E;
+  --chart-4: #F97316;
+  --chart-5: #EAB308;
+
+  /* 圆角 */
+  --radius: 0.75rem;
+
+  /* 侧边栏 */
+  --sidebar: #F5F3F9;
+  --sidebar-foreground: #2D1B4E;
+  --sidebar-primary: #6B3FA0;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E8D5F2;
+  --sidebar-accent-foreground: #2D1B4E;
+  --sidebar-border: #E0D0ED;
+  --sidebar-ring: #6B3FA0;
+
+  /* 语义色 */
+  --success: #22C55E;
+  --warning: #EAB308;
+  --error: #EF4444;
+  --info: #7C3AED;
+
+  /* 中性色系 */
+  --neutral-50: #F8F7FB;
+  --neutral-100: #F0E6F6;
+  --neutral-200: #E0D0ED;
+  --neutral-300: #D0BFE5;
+  --neutral-400: #A89BC0;
+  --neutral-500: #7C6B8F;
+  --neutral-600: #5D4B73;
+  --neutral-700: #3E2D57;
+  --neutral-800: #2D1B4E;
+  --neutral-900: #1A0F2E;
+  --neutral-950: #0F0818;
+}
+
+/* 深色主题 - Dark Theme (紫色渐变) */
+[data-theme="dark"],
+.dark {
+  --background: #1A0F2E;
+  --foreground: #F5F3F9;
+
+  --card: #2D1B4E;
+  --card-foreground: #F5F3F9;
+
+  --popover: #2D1B4E;
+  --popover-foreground: #F5F3F9;
+
+  --primary: #9D5FD8;
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #C99FE8;
+  --secondary-foreground: #FFFFFF;
+
+  --muted: #3E2D57;
+  --muted-foreground: #A89BC0;
+
+  --accent: #5D4B73;
+  --accent-foreground: #F5F3F9;
+
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+
+  --border: #5D4B73;
+  --input: #5D4B73;
+  --ring: #9D5FD8;
+
+  --chart-1: #9D5FD8;
+  --chart-2: #C99FE8;
+  --chart-3: #22C55E;
+  --chart-4: #F97316;
+  --chart-5: #EAB308;
+
+  --sidebar: #2D1B4E;
+  --sidebar-foreground: #F5F3F9;
+  --sidebar-primary: #9D5FD8;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #5D4B73;
+  --sidebar-accent-foreground: #F5F3F9;
+  --sidebar-border: #5D4B73;
+  --sidebar-ring: #9D5FD8;
+}
+
+/* 浅色主题 (显式) - Light Theme (Explicit - 紫色渐变) */
+[data-theme="light"] {
+  --background: #F8F7FB;
+  --foreground: #2D1B4E;
+
+  --card: #FFFFFF;
+  --card-foreground: #2D1B4E;
+
+  --popover: #FFFFFF;
+  --popover-foreground: #2D1B4E;
+
+  --primary: #6B3FA0;
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #9D5FD8;
+  --secondary-foreground: #FFFFFF;
+
+  --muted: #F0E6F6;
+  --muted-foreground: #7C6B8F;
+
+  --accent: #E8D5F2;
+  --accent-foreground: #2D1B4E;
+
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+
+  --border: #E0D0ED;
+  --input: #E0D0ED;
+  --ring: #6B3FA0;
+
+  --chart-1: #6B3FA0;
+  --chart-2: #9D5FD8;
+  --chart-3: #22C55E;
+  --chart-4: #F97316;
+  --chart-5: #EAB308;
+
+  --sidebar: #F5F3F9;
+  --sidebar-foreground: #2D1B4E;
+  --sidebar-primary: #6B3FA0;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E8D5F2;
+  --sidebar-accent-foreground: #2D1B4E;
+  --sidebar-border: #E0D0ED;
+  --sidebar-ring: #6B3FA0;
+}
+
+/* Tokyo Night 主题 - 保留但更新为深蓝色系 */
+[data-theme="tokyo"] {
+  --background: #1A1B26;
+  --foreground: #A9B1D6;
+
+  --card: #24283B;
+  --card-foreground: #A9B1D6;
+
+  --popover: #24283B;
+  --popover-foreground: #A9B1D6;
+
+  --primary: #7AA2F7;
+  --primary-foreground: #1A1B26;
+
+  --secondary: #2AC3DE;
+  --secondary-foreground: #1A1B26;
+
+  --muted: #414868;
+  --muted-foreground: #565F89;
+
+  --accent: #414868;
+  --accent-foreground: #A9B1D6;
+
+  --destructive: #F7768E;
+  --destructive-foreground: #1A1B26;
+
+  --border: #414868;
+  --input: #414868;
+  --ring: #7AA2F7;
+
+  --chart-1: #7AA2F7;
+  --chart-2: #2AC3DE;
+  --chart-3: #9ECE6A;
+  --chart-4: #FF9E64;
+  --chart-5: #E0AF68;
+
+  --sidebar: #24283B;
+  --sidebar-foreground: #A9B1D6;
+  --sidebar-primary: #7AA2F7;
+  --sidebar-primary-foreground: #1A1B26;
+  --sidebar-accent: #414868;
+  --sidebar-accent-foreground: #A9B1D6;
+  --sidebar-border: #414868;
+  --sidebar-ring: #7AA2F7;
+}
+
+/* Solarized 主题 - 保留但更新 */
+[data-theme="solarized"] {
+  --background: #FDF6E3;
+  --foreground: #657B83;
+
+  --card: #EEE8D5;
+  --card-foreground: #657B83;
+
+  --popover: #EEE8D5;
+  --popover-foreground: #657B83;
+
+  --primary: #268BD2;
+  --primary-foreground: #FDF6E3;
+
+  --secondary: #2AA198;
+  --secondary-foreground: #FDF6E3;
+
+  --muted: #EEE8D5;
+  --muted-foreground: #93A1A1;
+
+  --accent: #EEE8D5;
+  --accent-foreground: #657B83;
+
+  --destructive: #DC322F;
+  --destructive-foreground: #FDF6E3;
+
+  --border: #93A1A1;
+  --input: #93A1A1;
+  --ring: #268BD2;
+
+  --chart-1: #268BD2;
+  --chart-2: #2AA198;
+  --chart-3: #859900;
+  --chart-4: #CB4B16;
+  --chart-5: #B58900;
+
+  --sidebar: #EEE8D5;
+  --sidebar-foreground: #657B83;
+  --sidebar-primary: #268BD2;
+  --sidebar-primary-foreground: #FDF6E3;
+  --sidebar-accent: #EEE8D5;
+  --sidebar-accent-foreground: #657B83;
+  --sidebar-border: #93A1A1;
+  --sidebar-ring: #268BD2;
+}
+
+@theme inline {
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 4s ease-in-out infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.delay-1000 {
+  animation-delay: 1000ms;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* 卡片样式优化 */
+  [class*="card"] {
+    @apply shadow-sm hover:shadow-md transition-shadow;
+  }
+}
+
+/* ============================================
+   路由主题系统 - Route-based Theme System
+   官网保持紫色渐变，后台和用户中心使用不同主题
+   ============================================ */
+
+/* 官网主题 - Website Theme (Deep Blue System) */
+[data-route-type="website"] {
+  /* 使用新的深蓝色系统 - 统一协调的配色方案 */
+  --background: #F8F9FA;
+  --foreground: #1a2347;
+  
+  /* 主色：深蓝色 */
+  --primary: #5b7cff;
+  --primary-foreground: #FFFFFF;
+  
+  /* 次色：青绿色 */
+  --secondary: #00e5a8;
+  --secondary-foreground: #1a2347;
+  
+  /* 强调色：橙色 */
+  --accent: #f97316;
+  --accent-foreground: #FFFFFF;
+  
+  /* 静音色 */
+  --muted: #f0f4ff;
+  --muted-foreground: #525252;
+  
+  /* 卡片 */
+  --card: #FFFFFF;
+  --card-foreground: #1a2347;
+  
+  /* 边框 */
+  --border: #e5e5e5;
+  
+  /* 渐变定义 */
+  --gradient-primary: linear-gradient(135deg, #5b7cff 0%, #00e5a8 100%);
+  --gradient-secondary: linear-gradient(135deg, #00e5a8 0%, #f97316 100%);
+  --gradient-accent: linear-gradient(135deg, #f97316 0%, #5b7cff 100%);
+  
+  /* 完整色阶 */
+  --color-primary-50: #f0f4ff;
+  --color-primary-100: #e0e9ff;
+  --color-primary-200: #c7d9ff;
+  --color-primary-300: #a4bfff;
+  --color-primary-400: #7c9aff;
+  --color-primary-500: #5b7cff;
+  --color-primary-600: #4a63e8;
+  --color-primary-700: #3d4fb8;
+  --color-primary-800: #2d3a7a;
+  --color-primary-900: #1a2347;
+  
+  --color-secondary-50: #f0fdf9;
+  --color-secondary-100: #d4fef0;
+  --color-secondary-200: #a8fce1;
+  --color-secondary-300: #6ffad4;
+  --color-secondary-400: #2ef5c1;
+  --color-secondary-500: #00e5a8;
+  --color-secondary-600: #00c896;
+  --color-secondary-700: #00a878;
+  --color-secondary-800: #008860;
+  --color-secondary-900: #006b4a;
+  
+  --color-accent-50: #fff7ed;
+  --color-accent-100: #ffedd5;
+  --color-accent-200: #fed7aa;
+  --color-accent-300: #fdba74;
+  --color-accent-400: #fb923c;
+  --color-accent-500: #f97316;
+  --color-accent-600: #ea580c;
+  --color-accent-700: #c2410c;
+  --color-accent-800: #9a3412;
+  --color-accent-900: #7c2d12;
+}
+
+/* 管理后台主题 - Admin Theme (紫粉渐变 Purple-Pink) */
+[data-route-type="admin"] {
+  --background: #4c1d95;
+  --foreground: #f5f3ff;
+  --primary: #9333ea;
+  --primary-foreground: #FFFFFF;
+  --secondary: #c026d3;
+  --secondary-foreground: #FFFFFF;
+  --accent: #701a75;
+  --accent-foreground: #fae8ff;
+  --muted: #5b21b6;
+  --muted-foreground: #c4b5fd;
+  --card: #581c87;
+  --card-foreground: #f5f3ff;
+  --border: #7c3aed;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --ring: #9333ea;
+  --input: #6d28d9;
+  --popover: #581c87;
+  --popover-foreground: #f5f3ff;
+  --sidebar: #4c1d95;
+  --sidebar-foreground: #f5f3ff;
+  --sidebar-primary: #9333ea;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #701a75;
+  --sidebar-accent-foreground: #fae8ff;
+  --sidebar-border: #7c3aed;
+}
+
+/* 用户中心/仪表板主题 - Dashboard Theme (Deep Blue) */
+[data-route-type="dashboard"],
+[data-route-type="user"] {
+  /* 背景与文本：深蓝背景 + 浅色文字 */
+  --background: #0f1419;
+  --foreground: #f0f4ff;
+
+  /* 主色：官网深蓝体系 */
+  --primary: #5b7cff; /* 对应 color-primary-500 */
+  --primary-foreground: #0f1419;
+
+  /* 次色：官网青绿色体系 */
+  --secondary: #00e5a8; /* 对应 color-secondary-500 */
+  --secondary-foreground: #0f1419;
+
+  /* 强调色：官网橙色体系 */
+  --accent: #f97316; /* 接近 color-accent-500 */
+  --accent-foreground: #1a2347;
+
+  /* 静音 / 中性色 */
+  --muted: #252d3d;
+  --muted-foreground: #a3a3a3;
+
+  /* 卡片与边框：深蓝卡片 */
+  --card: #1a1f2e;
+  --card-foreground: #f0f4ff;
+  --border: #2d3a7a;
+
+  /* 表单与 Ring */
+  --input: #2d3a7a;
+  --ring: #5b7cff;
+
+  /* 错误色保持一致 */
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+
+  /* 弹出层 */
+  --popover: #1a1f2e;
+  --popover-foreground: #f0f4ff;
+
+  /* 侧边栏：深蓝色导航 */
+  --sidebar: #111827;
+  --sidebar-foreground: #e5e7eb;
+  --sidebar-primary: #5b7cff;
+  --sidebar-primary-foreground: #0f1419;
+  --sidebar-accent: #1f2937;
+  --sidebar-accent-foreground: #e5e7eb;
+  --sidebar-border: #1f2937;
+}
+
+/* 管理后台特定样式 - 紫粉渐变 */
+.admin-theme {
+  --admin-gradient-from: #4c1d95;
+  --admin-gradient-to: #701a75;
+  --admin-gradient-via: #9333ea;
+}
+
+/* 管理后台页面背景 - 紫粉渐变 */
+[data-route-type="admin"] .admin-gradient-bg {
+  background: linear-gradient(to bottom right, #4c1d95, #9333ea, #701a75);
+}
+
+/* 用户中心特定样式 */
+.dashboard-theme,
+.user-theme {
+  /* 深紫色渐变背景 */
+  --dashboard-gradient-from: #1A0F2E;
+  --dashboard-gradient-to: #2D1B4E;
+}
+
+/* 官网特定样式 - 保持紫色渐变 */
+.website-theme {
+  --website-gradient-from: #6B3FA0;
+  --website-gradient-to: #9D5FD8;
+}
+
+/* ============================================
+   官网新颜色系统 - Website New Color System
+   深蓝色系统，用于统一官网所有组件
+   ============================================ */
+
+/* 官网新颜色系统主题 - Website New Color Theme */
+[data-route-type="website"] {
+  /* 使用新的深蓝色系统 */
+  --color-primary-50: #f0f4ff;
+  --color-primary-100: #e0e9ff;
+  --color-primary-200: #c7d9ff;
+  --color-primary-300: #a4bfff;
+  --color-primary-400: #7c9aff;
+  --color-primary-500: #5b7cff;
+  --color-primary-600: #4a63e8;
+  --color-primary-700: #3d4fb8;
+  --color-primary-800: #2d3a7a;
+  --color-primary-900: #1a2347;
+
+  --color-secondary-50: #f0fdf9;
+  --color-secondary-100: #d4fef0;
+  --color-secondary-200: #a8fce1;
+  --color-secondary-300: #6ffad4;
+  --color-secondary-400: #2ef5c1;
+  --color-secondary-500: #00e5a8;
+  --color-secondary-600: #00c896;
+  --color-secondary-700: #00a878;
+  --color-secondary-800: #008860;
+  --color-secondary-900: #006b4a;
+
+  --color-accent-50: #fff7ed;
+  --color-accent-100: #ffedd5;
+  --color-accent-200: #fed7aa;
+  --color-accent-300: #fdba74;
+  --color-accent-400: #fb923c;
+  --color-accent-500: #f97316;
+  --color-accent-600: #ea580c;
+  --color-accent-700: #c2410c;
+  --color-accent-800: #9a3412;
+  --color-accent-900: #7c2d12;
+
+  --color-bg-light: #ffffff;
+  --color-bg-dark: #f9fafb;
+  --color-bg-darker: #f3f4f6;
+
+  --color-text-primary: #1a2347;
+  --color-text-secondary: #525252;
+  --color-text-tertiary: #a3a3a3;
+  --color-text-light: #ffffff;
+
+  --color-border-light: #e5e5e5;
+  --color-border-medium: #d4d4d4;
+  --color-border-dark: #a3a3a3;
+
+  --gradient-primary: linear-gradient(135deg, #5b7cff 0%, #00e5a8 100%);
+  --gradient-secondary: linear-gradient(135deg, #00e5a8 0%, #f97316 100%);
+  --gradient-accent: linear-gradient(135deg, #f97316 0%, #5b7cff 100%);
+  --gradient-subtle: linear-gradient(135deg, #f0f4ff 0%, #f0fdf9 100%);
+  --gradient-dark: linear-gradient(135deg, #1a2347 0%, #2d3a7a 100%);
+}
+
+/* 官网深色模式 - Website Dark Mode */
+[data-route-type="website"][data-theme="dark"],
+[data-route-type="website"].dark {
+  --color-primary-50: #1a2347;
+  --color-primary-100: #2d3a7a;
+  --color-primary-200: #3d4fb8;
+  --color-primary-300: #4a63e8;
+  --color-primary-400: #5b7cff;
+  --color-primary-500: #7c9aff;
+  --color-primary-600: #a4bfff;
+  --color-primary-700: #c7d9ff;
+  --color-primary-800: #e0e9ff;
+  --color-primary-900: #f0f4ff;
+
+  --color-bg-light: #0f1419;
+  --color-bg-dark: #1a1f2e;
+  --color-bg-darker: #252d3d;
+
+  --color-text-primary: #f0f4ff;
+  --color-text-secondary: #a3a3a3;
+  --color-text-tertiary: #737373;
+
+  --color-border-light: #2d3a7a;
+  --color-border-medium: #3d4fb8;
+  --color-border-dark: #4a63e8;
+}

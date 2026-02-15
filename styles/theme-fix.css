@@ -1,0 +1,547 @@
+/* 主题切换修复 - 四个主题的字体颜色对比度优化 */
+
+/* 强制文字对比度修复 - 基于四个主题优化 */
+@layer utilities {
+  /* 基础文字颜色 - 确保在所有主题下都清晰 */
+  .text-theme-foreground {
+    color: hsl(var(--foreground)) !important;
+    font-weight: 500;
+  }
+  
+  .text-theme-muted {
+    color: hsl(var(--muted-foreground)) !important;
+    font-weight: 400;
+  }
+  
+  .text-theme-primary {
+    color: hsl(var(--primary)) !important;
+    font-weight: 600;
+  }
+  
+  /* 背景颜色 */
+  .bg-theme-background {
+    background-color: hsl(var(--background)) !important;
+  }
+  
+  .bg-theme-card {
+    background-color: hsl(var(--card)) !important;
+  }
+  
+  /* 边框颜色 */
+  .border-theme-border {
+    border-color: hsl(var(--border)) !important;
+  }
+  
+  .border-theme-primary {
+    border-color: hsl(var(--primary)) !important;
+  }
+}
+
+/* === 主题1: 默认深色主题 (紫色/粉色渐变) === */
+:root {
+  /* 增强字体对比度 */
+  --foreground-enhanced: oklch(0.99 0 0); /* 更亮的白色 */
+  --muted-foreground-enhanced: oklch(0.75 0.02 260); /* 更亮的灰色 */
+  --primary-enhanced: oklch(0.65 0.28 290); /* 更亮的紫色 */
+  --secondary-enhanced: oklch(0.65 0.25 350); /* 更亮的粉色 */
+}
+
+:root .logo-carousel-text {
+  color: var(--foreground-enhanced) !important;
+}
+
+:root .logo-carousel-text.muted {
+  color: var(--muted-foreground-enhanced) !important;
+}
+
+:root .logo-carousel-text.primary {
+  color: var(--primary-enhanced) !important;
+}
+
+/* === 主题2: Tokyo Night主题 (深蓝/紫色) === */
+[data-theme="tokyo"] {
+  /* 增强字体对比度 */
+  --foreground-enhanced: oklch(0.92 0.01 240); /* 更亮的蓝白色 */
+  --muted-foreground-enhanced: oklch(0.7 0.02 250); /* 更亮的蓝灰色 */
+  --primary-enhanced: oklch(0.6 0.2 265); /* 更亮的蓝色 */
+  --secondary-enhanced: oklch(0.65 0.18 310); /* 更亮的紫色 */
+}
+
+[data-theme="tokyo"] .logo-carousel-text {
+  color: var(--foreground-enhanced) !important;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="tokyo"] .logo-carousel-text.muted {
+  color: var(--muted-foreground-enhanced) !important;
+}
+
+[data-theme="tokyo"] .logo-carousel-text.primary {
+  color: var(--primary-enhanced) !important;
+}
+
+/* === 主题3: Light主题 (明亮浅色) === */
+[data-theme="light"] {
+  /* 增强字体对比度 */
+  --foreground-enhanced: oklch(0.1 0.01 260); /* 更深的深色 */
+  --muted-foreground-enhanced: oklch(0.4 0.02 260); /* 更深的灰色 */
+  --primary-enhanced: oklch(0.45 0.25 290); /* 更深的紫色 */
+  --secondary-enhanced: oklch(0.5 0.22 350); /* 更深的粉色 */
+}
+
+[data-theme="light"] .logo-carousel-text {
+  color: var(--foreground-enhanced) !important;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="light"] .logo-carousel-text.muted {
+  color: var(--muted-foreground-enhanced) !important;
+}
+
+[data-theme="light"] .logo-carousel-text.primary {
+  color: var(--primary-enhanced) !important;
+}
+
+/* === 主题4: Solarized主题 (温暖低对比度) === */
+[data-theme="solarized"] {
+  /* 增强字体对比度 */
+  --foreground-enhanced: oklch(0.3 0.05 190); /* 更深的暖色调 */
+  --muted-foreground-enhanced: oklch(0.45 0.04 190); /* 更深的暖灰色 */
+  --primary-enhanced: oklch(0.4 0.15 240); /* 更深的蓝色 */
+  --secondary-enhanced: oklch(0.45 0.18 330); /* 更深的紫色 */
+}
+
+[data-theme="solarized"] .logo-carousel-text {
+  color: var(--foreground-enhanced) !important;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="solarized"] .logo-carousel-text.muted {
+  color: var(--muted-foreground-enhanced) !important;
+}
+
+[data-theme="solarized"] .logo-carousel-text.primary {
+  color: var(--primary-enhanced) !important;
+}
+
+/* === 通用字体增强 === */
+* {
+  color-scheme: light dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* === LOGO轮播组件特定优化 === */
+
+/* 卡片文字 - 四个主题优化 */
+.logo-card .logo-name {
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+:root .logo-card .logo-name {
+  color: oklch(0.99 0 0) !important;
+}
+
+[data-theme="tokyo"] .logo-card .logo-name {
+  color: oklch(0.92 0.01 240) !important;
+}
+
+[data-theme="light"] .logo-card .logo-name {
+  color: oklch(0.1 0.01 260) !important;
+}
+
+[data-theme="solarized"] .logo-card .logo-name {
+  color: oklch(0.3 0.05 190) !important;
+}
+
+.logo-card:hover .logo-name {
+  transform: scale(1.05);
+}
+
+:root .logo-card:hover .logo-name {
+  color: oklch(0.65 0.28 290) !important;
+}
+
+[data-theme="tokyo"] .logo-card:hover .logo-name {
+  color: oklch(0.6 0.2 265) !important;
+}
+
+[data-theme="light"] .logo-card:hover .logo-name {
+  color: oklch(0.45 0.25 290) !important;
+}
+
+[data-theme="solarized"] .logo-card:hover .logo-name {
+  color: oklch(0.4 0.15 240) !important;
+}
+
+/* 卡片描述文字 */
+.logo-card .logo-description {
+  transition: all 0.3s ease;
+  font-weight: 400;
+}
+
+:root .logo-card .logo-description {
+  color: oklch(0.75 0.02 260) !important;
+}
+
+[data-theme="tokyo"] .logo-card .logo-description {
+  color: oklch(0.7 0.02 250) !important;
+}
+
+[data-theme="light"] .logo-card .logo-description {
+  color: oklch(0.4 0.02 260) !important;
+}
+
+[data-theme="solarized"] .logo-card .logo-description {
+  color: oklch(0.45 0.04 190) !important;
+}
+
+.logo-card:hover .logo-description {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 控制按钮 - 四个主题优化 */
+.control-button {
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+:root .control-button {
+  color: oklch(0.75 0.02 260) !important;
+  background: oklch(0.14 0.005 260 / 0.6) !important;
+  border-color: oklch(0.2 0.01 260) !important;
+}
+
+[data-theme="tokyo"] .control-button {
+  color: oklch(0.7 0.02 250) !important;
+  background: oklch(0.16 0.02 250 / 0.6) !important;
+  border-color: oklch(0.25 0.02 250) !important;
+}
+
+[data-theme="light"] .control-button {
+  color: oklch(0.4 0.02 260) !important;
+  background: oklch(0.96 0 0 / 0.6) !important;
+  border-color: oklch(0.88 0.01 260) !important;
+}
+
+[data-theme="solarized"] .control-button {
+  color: oklch(0.45 0.04 190) !important;
+  background: oklch(0.95 0.01 85 / 0.6) !important;
+  border-color: oklch(0.88 0.02 85) !important;
+}
+
+.control-button:hover {
+  transform: scale(1.1);
+}
+
+:root .control-button:hover {
+  color: oklch(0.65 0.28 290) !important;
+  background: oklch(0.14 0.005 260) !important;
+  border-color: oklch(0.6 0.25 290 / 0.5) !important;
+}
+
+[data-theme="tokyo"] .control-button:hover {
+  color: oklch(0.6 0.2 265) !important;
+  background: oklch(0.16 0.02 250) !important;
+  border-color: oklch(0.55 0.18 265 / 0.5) !important;
+}
+
+[data-theme="light"] .control-button:hover {
+  color: oklch(0.45 0.25 290) !important;
+  background: oklch(0.96 0 0) !important;
+  border-color: oklch(0.5 0.22 290 / 0.5) !important;
+}
+
+[data-theme="solarized"] .control-button:hover {
+  color: oklch(0.4 0.15 240) !important;
+  background: oklch(0.95 0.01 85) !important;
+  border-color: oklch(0.45 0.12 240 / 0.5) !important;
+}
+
+/* 主要控制按钮 (播放/暂停) */
+.control-button.primary {
+  font-weight: 600;
+}
+
+:root .control-button.primary {
+  background: linear-gradient(45deg, oklch(0.65 0.28 290), oklch(0.65 0.25 350)) !important;
+  color: oklch(0.99 0 0) !important;
+}
+
+[data-theme="tokyo"] .control-button.primary {
+  background: linear-gradient(45deg, oklch(0.6 0.2 265), oklch(0.65 0.18 310)) !important;
+  color: oklch(0.98 0 0) !important;
+}
+
+[data-theme="light"] .control-button.primary {
+  background: linear-gradient(45deg, oklch(0.45 0.25 290), oklch(0.5 0.22 350)) !important;
+  color: oklch(0.98 0 0) !important;
+}
+
+[data-theme="solarized"] .control-button.primary {
+  background: linear-gradient(45deg, oklch(0.4 0.15 240), oklch(0.45 0.18 330)) !important;
+  color: oklch(0.97 0.01 85) !important;
+}
+
+/* 统计数字 - 四个主题优化 */
+.stat-number {
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+:root .stat-number {
+  background: linear-gradient(45deg, oklch(0.65 0.28 290), oklch(0.65 0.25 350)) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+[data-theme="tokyo"] .stat-number {
+  background: linear-gradient(45deg, oklch(0.6 0.2 265), oklch(0.65 0.18 310)) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+[data-theme="light"] .stat-number {
+  background: linear-gradient(45deg, oklch(0.45 0.25 290), oklch(0.5 0.22 350)) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+[data-theme="solarized"] .stat-number {
+  background: linear-gradient(45deg, oklch(0.4 0.15 240), oklch(0.45 0.18 330)) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.stat-number:hover {
+  transform: scale(1.1) rotate(2deg);
+}
+
+/* 进度指示器 - 四个主题优化 */
+.progress-dot {
+  transition: all 0.3s ease;
+}
+
+:root .progress-dot {
+  background: oklch(0.75 0.02 260 / 0.3) !important;
+}
+
+[data-theme="tokyo"] .progress-dot {
+  background: oklch(0.7 0.02 250 / 0.3) !important;
+}
+
+[data-theme="light"] .progress-dot {
+  background: oklch(0.4 0.02 260 / 0.3) !important;
+}
+
+[data-theme="solarized"] .progress-dot {
+  background: oklch(0.45 0.04 190 / 0.3) !important;
+}
+
+.progress-dot:hover {
+  opacity: 0.8;
+}
+
+:root .progress-dot:hover {
+  background: oklch(0.75 0.02 260 / 0.6) !important;
+}
+
+[data-theme="tokyo"] .progress-dot:hover {
+  background: oklch(0.7 0.02 250 / 0.6) !important;
+}
+
+[data-theme="light"] .progress-dot:hover {
+  background: oklch(0.4 0.02 260 / 0.6) !important;
+}
+
+[data-theme="solarized"] .progress-dot:hover {
+  background: oklch(0.45 0.04 190 / 0.6) !important;
+}
+
+.progress-dot.active {
+  transform: scaleX(4);
+}
+
+:root .progress-dot.active {
+  background: oklch(0.65 0.28 290) !important;
+  box-shadow: 0 0 10px oklch(0.65 0.28 290 / 0.5);
+}
+
+[data-theme="tokyo"] .progress-dot.active {
+  background: oklch(0.6 0.2 265) !important;
+  box-shadow: 0 0 10px oklch(0.6 0.2 265 / 0.5);
+}
+
+[data-theme="light"] .progress-dot.active {
+  background: oklch(0.45 0.25 290) !important;
+  box-shadow: 0 0 10px oklch(0.45 0.25 290 / 0.5);
+}
+
+[data-theme="solarized"] .progress-dot.active {
+  background: oklch(0.4 0.15 240) !important;
+  box-shadow: 0 0 10px oklch(0.4 0.15 240 / 0.5);
+}
+
+/* === 渐变遮罩优化 - 四个主题 === */
+.gradient-mask-left,
+.gradient-mask-right {
+  transition: background 0.3s ease;
+}
+
+:root .gradient-mask-left {
+  background: linear-gradient(to right, 
+    oklch(0.1 0.005 260) 0%, 
+    oklch(0.1 0.005 260) 20%, 
+    transparent 100%
+  ) !important;
+}
+
+:root .gradient-mask-right {
+  background: linear-gradient(to left, 
+    oklch(0.1 0.005 260) 0%, 
+    oklch(0.1 0.005 260) 20%, 
+    transparent 100%
+  ) !important;
+}
+
+[data-theme="tokyo"] .gradient-mask-left {
+  background: linear-gradient(to right, 
+    oklch(0.12 0.02 250) 0%, 
+    oklch(0.12 0.02 250) 20%, 
+    transparent 100%
+  ) !important;
+}
+
+[data-theme="tokyo"] .gradient-mask-right {
+  background: linear-gradient(to left, 
+    oklch(0.12 0.02 250) 0%, 
+    oklch(0.12 0.02 250) 20%, 
+    transparent 100%
+  ) !important;
+}
+
+[data-theme="light"] .gradient-mask-left {
+  background: linear-gradient(to right, 
+    oklch(0.98 0 0) 0%, 
+    oklch(0.98 0 0) 20%, 
+    transparent 100%
+  ) !important;
+}
+
+[data-theme="light"] .gradient-mask-right {
+  background: linear-gradient(to left, 
+    oklch(0.98 0 0) 0%, 
+    oklch(0.98 0 0) 20%, 
+    transparent 100%
+  ) !important;
+}
+
+[data-theme="solarized"] .gradient-mask-left {
+  background: linear-gradient(to right, 
+    oklch(0.97 0.01 85) 0%, 
+    oklch(0.97 0.01 85) 20%, 
+    transparent 100%
+  ) !important;
+}
+
+[data-theme="solarized"] .gradient-mask-right {
+  background: linear-gradient(to left, 
+    oklch(0.97 0.01 85) 0%, 
+    oklch(0.97 0.01 85) 20%, 
+    transparent 100%
+  ) !important;
+}
+
+/* === 高对比度模式支持 === */
+@media (prefers-contrast: high) {
+  .logo-carousel-text,
+  .logo-card .logo-name,
+  .control-button,
+  .stat-number {
+    font-weight: 700 !important;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5) !important;
+  }
+  
+  .logo-card {
+    border-width: 2px !important;
+  }
+  
+  .progress-dot {
+    border: 1px solid currentColor !important;
+  }
+}
+
+/* === 减少动画模式支持 === */
+@media (prefers-reduced-motion: reduce) {
+  .logo-carousel-text,
+  .logo-card .logo-name,
+  .logo-card .logo-description,
+  .control-button,
+  .stat-number,
+  .progress-dot {
+    transition: none !important;
+  }
+  
+  .stat-number:hover {
+    transform: none !important;
+  }
+  
+  .control-button:hover {
+    transform: none !important;
+  }
+}
+
+/* === 移动端优化 === */
+@media (max-width: 640px) {
+  .logo-carousel-text,
+  .logo-card .logo-name {
+    font-size: 0.9em;
+    font-weight: 600;
+  }
+  
+  .logo-card .logo-description {
+    font-size: 0.8em;
+  }
+  
+  .control-button {
+    padding: 0.75rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+}
+
+/* === 确保主题切换时的平滑过渡 === */
+* {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* === 强制覆盖任何可能导致文字不清晰的样式 === */
+.logo-carousel-section * {
+  color: inherit !important;
+}
+
+/* === 最终保障 - 确保所有文字都有足够的对比度 === */
+:root {
+  --min-contrast-ratio: 4.5;
+}
+
+[data-theme="tokyo"] {
+  --min-contrast-ratio: 4.5;
+}
+
+[data-theme="light"] {
+  --min-contrast-ratio: 4.5;
+}
+
+[data-theme="solarized"] {
+  --min-contrast-ratio: 3.5; /* Solarized 本身是低对比度设计 */
+}

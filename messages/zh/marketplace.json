@@ -1,0 +1,123 @@
+{
+  "title": "直播设备市场",
+  "header": {
+    "search": "搜索直播设备...",
+    "cart": "购物车",
+    "compare": "产品对比"
+  },
+  "segments": {
+    "all": "全部",
+    "personal": "个人用户",
+    "professional": "行业用户",
+    "enterprise": "企业用户",
+    "personalDesc": "适合个人直播入门",
+    "professionalDesc": "专业直播解决方案",
+    "enterpriseDesc": "企业级直播间配置"
+  },
+  "categories": {
+    "all": "全部",
+    "lighting": "灯光设备",
+    "computer": "电脑设备",
+    "camera": "摄像机",
+    "microphone": "麦克风",
+    "audioInterface": "声卡",
+    "stand": "支架"
+  },
+  "product": {
+    "featured": "精选",
+    "addToCart": "加入购物车",
+    "addToCompare": "加入对比",
+    "stock": "库存",
+    "outOfStock": "缺货",
+    "specifications": "规格参数",
+    "description": "产品描述",
+    "quantity": "数量"
+  },
+  "bundle": {
+    "hotBundle": "热门套餐",
+    "includes": "包含",
+    "items": "件设备",
+    "save": "省"
+  },
+  "cart": {
+    "title": "购物车",
+    "empty": "购物车是空的",
+    "emptyDesc": "快去挑选心仪的直播设备吧",
+    "goShopping": "去购物",
+    "clear": "清空购物车",
+    "subtotal": "商品小计",
+    "shipping": "运费",
+    "freeShipping": "免运费",
+    "total": "合计",
+    "checkout": "去结算",
+    "continueShopping": "继续购物"
+  },
+  "checkout": {
+    "title": "确认订单",
+    "shippingAddress": "收货地址",
+    "recipient": "收货人",
+    "phone": "手机号码",
+    "province": "省份",
+    "city": "城市",
+    "district": "区县",
+    "address": "详细地址",
+    "paymentMethod": "支付方式",
+    "alipay": "支付宝",
+    "wechat": "微信支付",
+    "bank": "银行转账",
+    "creditCard": "信用卡",
+    "orderSummary": "订单摘要",
+    "submit": "提交订单",
+    "submitting": "提交中..."
+  },
+  "order": {
+    "title": "我的订单",
+    "detail": "订单详情",
+    "orderNumber": "订单号",
+    "orderDate": "下单时间",
+    "status": {
+      "pending": "待支付",
+      "paid": "已支付",
+      "processing": "处理中",
+      "shipped": "已发货",
+      "delivered": "已完成",
+      "cancelled": "已取消"
+    },
+    "payNow": "立即支付",
+    "viewDetail": "查看详情",
+    "empty": "暂无订单",
+    "emptyDesc": "快去挑选心仪的直播设备吧",
+    "logistics": "物流信息",
+    "shippedAt": "发货时间",
+    "deliveredAt": "送达时间",
+    "paymentInfo": "支付信息",
+    "actualPayment": "实付金额"
+  },
+  "compare": {
+    "title": "产品对比",
+    "empty": "暂无对比产品",
+    "emptyDesc": "最多可添加 4 个产品进行对比",
+    "selectProducts": "去选择产品",
+    "clear": "清空对比",
+    "price": "价格",
+    "brand": "品牌",
+    "tier": "档次",
+    "stock": "库存",
+    "action": "操作"
+  },
+  "priceTier": {
+    "entry": "入门级",
+    "mid": "中端",
+    "high": "高端"
+  },
+  "common": {
+    "loading": "加载中...",
+    "noData": "暂无数据",
+    "back": "返回",
+    "confirm": "确认",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑",
+    "save": "保存"
+  }
+}

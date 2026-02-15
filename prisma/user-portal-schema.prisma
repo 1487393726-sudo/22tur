@@ -1,0 +1,311 @@
+// User Portal System Database Schema
+// This schema defines all tables for the user portal system
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// User Profile
+model UserProfile {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  email     String   @unique
+  name      String
+  phone     String?
+  avatar    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  preferences UserPreferences?
+  orders      Order[]
+  cart        Cart?
+  favorites   Favorite[]
+  messages    Message[]
+  reviews     Review[]
+  returns     ReturnRequest[]
+  tickets     SupportTicket[]
+
+  @@index([userId])
+  @@index([email])
+}
+
+// User Preferences
+model UserPreferences {
+  id                   String   @id @default(cuid())
+  userId               String   @unique
+  theme                String   @default("light")
+  language             String   @default("en")
+  notifications        Boolean  @default(true)
+  emailNotifications   Boolean  @default(true)
+  pushNotifications    Boolean  @default(true)
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  // Relations
+  user UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// Orders
+model Order {
+  id                String   @id @default(cuid())
+  userId            String
+  status            String   @default("pending")
+  totalAmount       Float
+  shippingAddress   String   // JSON string
+  trackingNumber    String?
+  estimatedDelivery DateTime?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  user  UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items OrderItem[]
+  returns ReturnRequest[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+// Order Items
+model OrderItem {
+  id          String @id @default(cuid())
+  orderId     String
+  productId   String
+  productName String
+  quantity    Int
+  price       Float
+  subtotal    Float
+
+  // Relations
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+  @@index([productId])
+}
+
+// Shopping Cart
+model Cart {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  subtotal  Float    @default(0)
+  discount  Float    @default(0)
+  total     Float    @default(0)
+  couponCode String?
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user  UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items CartItem[]
+
+  @@index([userId])
+}
+
+// Cart Items
+model CartItem {
+  id          String @id @default(cuid())
+  cartId      String
+  productId   String
+  productName String
+  quantity    Int
+  price       Float
+  image       String?
+
+  // Relations
+  cart Cart @relation(fields: [cartId], references: [id], onDelete: Cascade)
+
+  @@index([cartId])
+  @@index([productId])
+}
+
+// Favorites
+model Favorite {
+  id            String   @id @default(cuid())
+  userId        String
+  itemId        String
+  itemName      String
+  itemPrice     Float
+  availability  Boolean  @default(true)
+  priceHistory  String   @default("[]") // JSON array
+  createdAt     DateTime @default(now())
+
+  // Relations
+  user UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, itemId])
+  @@index([userId])
+  @@index([itemId])
+}
+
+// Points System
+model PointsTransaction {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String   // 'earn', 'redeem', 'expire'
+  amount    Int
+  reason    String
+  balance   Int
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([createdAt])
+}
+
+model PointsBalance {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  balance   Int      @default(0)
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+
+// Messaging
+model Conversation {
+  id              String   @id @default(cuid())
+  userId          String
+  participantId   String
+  participantName String
+  lastMessage     String?
+  lastMessageTime DateTime?
+  unreadCount     Int      @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  messages Message[]
+
+  @@unique([userId, participantId])
+  @@index([userId])
+  @@index([participantId])
+}
+
+model Message {
+  id             String   @id @default(cuid())
+  conversationId String
+  senderId       String
+  senderName     String
+  content        String
+  isRead         Boolean  @default(false)
+  createdAt      DateTime @default(now())
+
+  // Relations
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  user         UserProfile  @relation(fields: [senderId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId])
+  @@index([senderId])
+  @@index([createdAt])
+}
+
+// After-Sales Service
+model ReturnRequest {
+  id                  String   @id @default(cuid())
+  userId              String
+  orderId             String
+  reason              String
+  status              String   @default("pending")
+  shippingLabel       String?
+  refundAmount        Float
+  estimatedRefundDate DateTime?
+  documentation       String   @default("[]") // JSON array of file URLs
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  // Relations
+  user  UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+  order Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([orderId])
+  @@index([status])
+}
+
+// Reviews
+model Review {
+  id        String   @id @default(cuid())
+  userId    String
+  productId String
+  orderId   String
+  rating    Int
+  title     String
+  content   String
+  photos    String   @default("[]") // JSON array
+  helpful   Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId, orderId])
+  @@index([userId])
+  @@index([productId])
+  @@index([orderId])
+}
+
+// Help & Support
+model FAQ {
+  id        String   @id @default(cuid())
+  category  String
+  question  String
+  answer    String
+  helpful   Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([category])
+}
+
+model Guide {
+  id        String   @id @default(cuid())
+  category  String
+  title     String
+  content   String
+  steps     String   @default("[]") // JSON array
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([category])
+}
+
+model SupportTicket {
+  id         String   @id @default(cuid())
+  userId     String
+  subject    String
+  description String
+  status     String   @default("open")
+  priority   String   @default("medium")
+  assignedTo String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relations
+  user UserProfile @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@index([priority])
+}
+
+// Indexes for performance
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String
+  resource  String
+  details   String?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+}

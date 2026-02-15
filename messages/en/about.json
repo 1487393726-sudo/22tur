@@ -1,0 +1,112 @@
+{
+  "hero": {
+    "title": "About Us",
+    "subtitle": "We are a creative digital agency dedicated to crafting outstanding digital experiences for our clients"
+  },
+  "stats": {
+    "projects": "Projects Completed",
+    "clients": "Happy Clients",
+    "members": "Team Members",
+    "experience": "Years Experience"
+  },
+  "story": {
+    "title": "Our Story",
+    "p1": "Founded in 2019, we started as a small team's dream to help businesses go digital. Over the years, we've grown into a leading provider of digital solutions.",
+    "p2": "Our team consists of experienced designers, developers and marketers. We believe great design must be both beautiful and practical; great tech should be advanced and reliable.",
+    "p3": "To date, we've served 150+ clients across e‑commerce, education, finance, healthcare and more. Every project proves our expertise and our clients' trust."
+  },
+  "values": {
+    "title": "Core Values",
+    "subtitle": "These values guide every decision and action we take",
+    "target": {"title": "Goal-Oriented", "desc": "Always centered on client goals to deliver real value"},
+    "quality": {"title": "Quality Assurance", "desc": "Strict QA processes to deliver beyond expectations"},
+    "innovation": {"title": "Continuous Innovation", "desc": "Constantly learning to bring innovative solutions"}
+  },
+  "team": {
+    "title": "Our Team",
+    "subtitle": "Meet the people who make our success possible",
+    "zhangming": {
+      "name": "Zhang Ming",
+      "position": "CEO & Founder",
+      "bio": "10 years in tech, focused on product strategy and team leadership"
+    },
+    "lihua": {
+      "name": "Li Hua",
+      "position": "CTO",
+      "bio": "Full‑stack expert skilled across multiple languages and frameworks"
+    },
+    "wangfang": {
+      "name": "Wang Fang",
+      "position": "Lead Designer",
+      "bio": "Senior UI/UX designer crafting beautiful and usable interfaces"
+    },
+    "liuqiang": {
+      "name": "Liu Qiang",
+      "position": "Project Manager",
+      "bio": "Agile project manager ensuring on‑time, high‑quality delivery"
+    }
+  },
+  "timeline": {
+    "title": "Our Journey",
+    "subtitle": "Key milestones in our company's history",
+    "milestones": {
+      "2019": {
+        "title": "Company Founded",
+        "description": "Started as a small team with a dream to help businesses go digital and transform their operations."
+      },
+      "2020": {
+        "title": "First Major Client",
+        "description": "Secured our first enterprise client and expanded the team to 10 talented members."
+      },
+      "2021": {
+        "title": "Product Launch",
+        "description": "Launched our flagship product that revolutionized how businesses manage their digital presence."
+      },
+      "2022": {
+        "title": "International Expansion",
+        "description": "Opened offices in three new countries and reached 100+ satisfied clients worldwide."
+      },
+      "2023": {
+        "title": "Industry Recognition",
+        "description": "Received multiple awards for innovation, customer satisfaction, and industry leadership."
+      }
+    }
+  },
+  "achievements": {
+    "title": "Achievements & Certifications",
+    "subtitle": "Recognition and certifications that validate our expertise and commitment to excellence",
+    "items": {
+      "iso9001": {
+        "title": "ISO 9001 Certified",
+        "description": "Quality Management System Certification"
+      },
+      "iso27001": {
+        "title": "ISO 27001 Certified",
+        "description": "Information Security Management"
+      },
+      "bestAgency": {
+        "title": "Best Digital Agency 2023",
+        "description": "Industry Excellence Award"
+      },
+      "topInnovator": {
+        "title": "Top Innovator",
+        "description": "Technology Innovation Recognition"
+      },
+      "customerChoice": {
+        "title": "Customer's Choice",
+        "description": "Highest Customer Satisfaction Rating"
+      },
+      "greenBusiness": {
+        "title": "Green Business",
+        "description": "Environmental Sustainability Certification"
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have an idea? Let's discuss how to make it happen",
+    "address": {"title": "Office Address", "line1": "No. 88 Jianguo Rd, Chaoyang District, Beijing", "line2": "SOHO Xiandai Cheng Tower A, Room 2808"},
+    "email": {"title": "Email"},
+    "phone": {"title": "Phone"}
+  }
+}

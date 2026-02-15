@@ -1,0 +1,222 @@
+/* Gradient Theme - Modern Gradient Colors for Enterprise Admin System */
+
+/* ============================================================================
+   LIGHT MODE - Gradient Theme
+   ============================================================================ */
+
+:root[data-theme="gradient"],
+:root[data-theme="gradient"][data-mode="light"] {
+  /* ========== Blue-Purple Gradient (Default) ========== */
+  
+  /* Primary Gradient Colors - Light Mode */
+  --gradient-start-light: #2563eb;
+  --gradient-end-light: #9333ea;
+  --gradient-start-rgb-light: 37, 99, 235;
+  --gradient-end-rgb-light: 147, 51, 234;
+  
+  /* Gradient Definitions - Light Mode */
+  --gradient-bg-light: linear-gradient(135deg, #2563eb, #9333ea);
+  --gradient-text-light: linear-gradient(135deg, #2563eb, #9333ea);
+  --gradient-border-light: linear-gradient(135deg, #2563eb, #9333ea);
+  
+  /* Gradient Transparency Variants - Light Mode (10%, 20%, 30%, etc.) */
+  --gradient-bg-light-10: rgba(37, 99, 235, 0.1);
+  --gradient-bg-light-20: rgba(37, 99, 235, 0.2);
+  --gradient-bg-light-30: rgba(37, 99, 235, 0.3);
+  --gradient-bg-light-40: rgba(37, 99, 235, 0.4);
+  --gradient-bg-light-50: rgba(37, 99, 235, 0.5);
+  --gradient-bg-light-60: rgba(37, 99, 235, 0.6);
+  --gradient-bg-light-70: rgba(37, 99, 235, 0.7);
+  --gradient-bg-light-80: rgba(37, 99, 235, 0.8);
+  --gradient-bg-light-90: rgba(37, 99, 235, 0.9);
+  
+  /* Gradient Text Transparency Variants - Light Mode */
+  --gradient-text-light-10: rgba(147, 51, 234, 0.1);
+  --gradient-text-light-20: rgba(147, 51, 234, 0.2);
+  --gradient-text-light-30: rgba(147, 51, 234, 0.3);
+  --gradient-text-light-40: rgba(147, 51, 234, 0.4);
+  --gradient-text-light-50: rgba(147, 51, 234, 0.5);
+  --gradient-text-light-60: rgba(147, 51, 234, 0.6);
+  --gradient-text-light-70: rgba(147, 51, 234, 0.7);
+  --gradient-text-light-80: rgba(147, 51, 234, 0.8);
+  --gradient-text-light-90: rgba(147, 51, 234, 0.9);
+  
+  /* Individual Color Values - Light Mode */
+  --gradient-color-blue-light: #2563eb;
+  --gradient-color-purple-light: #9333ea;
+  
+  /* RGB Values for Transparency - Light Mode */
+  --gradient-color-blue-light-rgb: 37, 99, 235;
+  --gradient-color-purple-light-rgb: 147, 51, 234;
+  
+  /* ========== Purple-Pink Gradient (Alternative) ========== */
+  
+  /* Alternative Gradient Colors - Light Mode */
+  --gradient-alt-start-light: #9333ea;
+  --gradient-alt-end-light: #db2777;
+  --gradient-alt-start-rgb-light: 147, 51, 234;
+  --gradient-alt-end-rgb-light: 219, 39, 119;
+  
+  /* Alternative Gradient Definitions - Light Mode */
+  --gradient-alt-bg-light: linear-gradient(135deg, #9333ea, #db2777);
+  --gradient-alt-text-light: linear-gradient(135deg, #9333ea, #db2777);
+  --gradient-alt-border-light: linear-gradient(135deg, #9333ea, #db2777);
+  
+  /* Alternative Gradient Transparency Variants - Light Mode */
+  --gradient-alt-bg-light-10: rgba(147, 51, 234, 0.1);
+  --gradient-alt-bg-light-20: rgba(147, 51, 234, 0.2);
+  --gradient-alt-bg-light-30: rgba(147, 51, 234, 0.3);
+  --gradient-alt-bg-light-40: rgba(147, 51, 234, 0.4);
+  --gradient-alt-bg-light-50: rgba(147, 51, 234, 0.5);
+  --gradient-alt-bg-light-60: rgba(147, 51, 234, 0.6);
+  --gradient-alt-bg-light-70: rgba(147, 51, 234, 0.7);
+  --gradient-alt-bg-light-80: rgba(147, 51, 234, 0.8);
+  --gradient-alt-bg-light-90: rgba(147, 51, 234, 0.9);
+  
+  /* Alternative Gradient Text Transparency Variants - Light Mode */
+  --gradient-alt-text-light-10: rgba(219, 39, 119, 0.1);
+  --gradient-alt-text-light-20: rgba(219, 39, 119, 0.2);
+  --gradient-alt-text-light-30: rgba(219, 39, 119, 0.3);
+  --gradient-alt-text-light-40: rgba(219, 39, 119, 0.4);
+  --gradient-alt-text-light-50: rgba(219, 39, 119, 0.5);
+  --gradient-alt-text-light-60: rgba(219, 39, 119, 0.6);
+  --gradient-alt-text-light-70: rgba(219, 39, 119, 0.7);
+  --gradient-alt-text-light-80: rgba(219, 39, 119, 0.8);
+  --gradient-alt-text-light-90: rgba(219, 39, 119, 0.9);
+  
+  /* Individual Alternative Color Values - Light Mode */
+  --gradient-color-purple-light: #9333ea;
+  --gradient-color-pink-light: #db2777;
+  
+  /* RGB Values for Alternative Transparency - Light Mode */
+  --gradient-color-purple-light-rgb: 147, 51, 234;
+  --gradient-color-pink-light-rgb: 219, 39, 119;
+}
+
+/* ============================================================================
+   DARK MODE - Gradient Theme
+   ============================================================================ */
+
+:root[data-theme="gradient"][data-mode="dark"] {
+  /* ========== Blue-Purple Gradient (Default) ========== */
+  
+  /* Primary Gradient Colors - Dark Mode */
+  --gradient-start-dark: #60a5fa;
+  --gradient-end-dark: #c084fc;
+  --gradient-start-rgb-dark: 96, 165, 250;
+  --gradient-end-rgb-dark: 192, 132, 252;
+  
+  /* Gradient Definitions - Dark Mode */
+  --gradient-bg-dark: linear-gradient(135deg, #60a5fa, #c084fc);
+  --gradient-text-dark: linear-gradient(135deg, #60a5fa, #c084fc);
+  --gradient-border-dark: linear-gradient(135deg, #60a5fa, #c084fc);
+  
+  /* Gradient Transparency Variants - Dark Mode (10%, 20%, 30%, etc.) */
+  --gradient-bg-dark-10: rgba(96, 165, 250, 0.1);
+  --gradient-bg-dark-20: rgba(96, 165, 250, 0.2);
+  --gradient-bg-dark-30: rgba(96, 165, 250, 0.3);
+  --gradient-bg-dark-40: rgba(96, 165, 250, 0.4);
+  --gradient-bg-dark-50: rgba(96, 165, 250, 0.5);
+  --gradient-bg-dark-60: rgba(96, 165, 250, 0.6);
+  --gradient-bg-dark-70: rgba(96, 165, 250, 0.7);
+  --gradient-bg-dark-80: rgba(96, 165, 250, 0.8);
+  --gradient-bg-dark-90: rgba(96, 165, 250, 0.9);
+  
+  /* Gradient Text Transparency Variants - Dark Mode */
+  --gradient-text-dark-10: rgba(192, 132, 252, 0.1);
+  --gradient-text-dark-20: rgba(192, 132, 252, 0.2);
+  --gradient-text-dark-30: rgba(192, 132, 252, 0.3);
+  --gradient-text-dark-40: rgba(192, 132, 252, 0.4);
+  --gradient-text-dark-50: rgba(192, 132, 252, 0.5);
+  --gradient-text-dark-60: rgba(192, 132, 252, 0.6);
+  --gradient-text-dark-70: rgba(192, 132, 252, 0.7);
+  --gradient-text-dark-80: rgba(192, 132, 252, 0.8);
+  --gradient-text-dark-90: rgba(192, 132, 252, 0.9);
+  
+  /* Individual Color Values - Dark Mode */
+  --gradient-color-blue-dark: #60a5fa;
+  --gradient-color-purple-dark: #c084fc;
+  
+  /* RGB Values for Transparency - Dark Mode */
+  --gradient-color-blue-dark-rgb: 96, 165, 250;
+  --gradient-color-purple-dark-rgb: 192, 132, 252;
+  
+  /* ========== Purple-Pink Gradient (Alternative) ========== */
+  
+  /* Alternative Gradient Colors - Dark Mode */
+  --gradient-alt-start-dark: #c084fc;
+  --gradient-alt-end-dark: #ec4899;
+  --gradient-alt-start-rgb-dark: 192, 132, 252;
+  --gradient-alt-end-rgb-dark: 236, 72, 153;
+  
+  /* Alternative Gradient Definitions - Dark Mode */
+  --gradient-alt-bg-dark: linear-gradient(135deg, #c084fc, #ec4899);
+  --gradient-alt-text-dark: linear-gradient(135deg, #c084fc, #ec4899);
+  --gradient-alt-border-dark: linear-gradient(135deg, #c084fc, #ec4899);
+  
+  /* Alternative Gradient Transparency Variants - Dark Mode */
+  --gradient-alt-bg-dark-10: rgba(192, 132, 252, 0.1);
+  --gradient-alt-bg-dark-20: rgba(192, 132, 252, 0.2);
+  --gradient-alt-bg-dark-30: rgba(192, 132, 252, 0.3);
+  --gradient-alt-bg-dark-40: rgba(192, 132, 252, 0.4);
+  --gradient-alt-bg-dark-50: rgba(192, 132, 252, 0.5);
+  --gradient-alt-bg-dark-60: rgba(192, 132, 252, 0.6);
+  --gradient-alt-bg-dark-70: rgba(192, 132, 252, 0.7);
+  --gradient-alt-bg-dark-80: rgba(192, 132, 252, 0.8);
+  --gradient-alt-bg-dark-90: rgba(192, 132, 252, 0.9);
+  
+  /* Alternative Gradient Text Transparency Variants - Dark Mode */
+  --gradient-alt-text-dark-10: rgba(236, 72, 153, 0.1);
+  --gradient-alt-text-dark-20: rgba(236, 72, 153, 0.2);
+  --gradient-alt-text-dark-30: rgba(236, 72, 153, 0.3);
+  --gradient-alt-text-dark-40: rgba(236, 72, 153, 0.4);
+  --gradient-alt-text-dark-50: rgba(236, 72, 153, 0.5);
+  --gradient-alt-text-dark-60: rgba(236, 72, 153, 0.6);
+  --gradient-alt-text-dark-70: rgba(236, 72, 153, 0.7);
+  --gradient-alt-text-dark-80: rgba(236, 72, 153, 0.8);
+  --gradient-alt-text-dark-90: rgba(236, 72, 153, 0.9);
+  
+  /* Individual Alternative Color Values - Dark Mode */
+  --gradient-color-purple-dark: #c084fc;
+  --gradient-color-pink-dark: #ec4899;
+  
+  /* RGB Values for Alternative Transparency - Dark Mode */
+  --gradient-color-purple-dark-rgb: 192, 132, 252;
+  --gradient-color-pink-dark-rgb: 236, 72, 153;
+}
+
+/* ============================================================================
+   RESPONSIVE GRADIENT VARIABLES (Used by utility classes)
+   ============================================================================ */
+
+/* Light Mode - Responsive Variables */
+:root[data-mode="light"] {
+  --gradient-bg: var(--gradient-bg-light);
+  --gradient-text: var(--gradient-text-light);
+  --gradient-border: var(--gradient-border-light);
+  --gradient-start: var(--gradient-start-light);
+  --gradient-end: var(--gradient-end-light);
+  --gradient-start-rgb: var(--gradient-start-rgb-light);
+  --gradient-end-rgb: var(--gradient-end-rgb-light);
+}
+
+/* Dark Mode - Responsive Variables */
+:root[data-mode="dark"] {
+  --gradient-bg: var(--gradient-bg-dark);
+  --gradient-text: var(--gradient-text-dark);
+  --gradient-border: var(--gradient-border-dark);
+  --gradient-start: var(--gradient-start-dark);
+  --gradient-end: var(--gradient-end-dark);
+  --gradient-start-rgb: var(--gradient-start-rgb-dark);
+  --gradient-end-rgb: var(--gradient-end-rgb-dark);
+}
+
+/* ============================================================================
+   TRANSITION TIMING FOR GRADIENT EFFECTS
+   ============================================================================ */
+
+:root {
+  --gradient-transition-duration: 300ms;
+  --gradient-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  --gradient-transition: background var(--gradient-transition-duration) var(--gradient-transition-timing);
+}

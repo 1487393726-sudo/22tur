@@ -1,0 +1,123 @@
+{
+  "title": "Livestream Equipment Marketplace",
+  "header": {
+    "search": "Search equipment...",
+    "cart": "Cart",
+    "compare": "Compare"
+  },
+  "segments": {
+    "all": "All",
+    "personal": "Personal",
+    "professional": "Professional",
+    "enterprise": "Enterprise",
+    "personalDesc": "For personal streaming beginners",
+    "professionalDesc": "Professional streaming solutions",
+    "enterpriseDesc": "Enterprise-level studio setup"
+  },
+  "categories": {
+    "all": "All",
+    "lighting": "Lighting",
+    "computer": "Computer",
+    "camera": "Camera",
+    "microphone": "Microphone",
+    "audioInterface": "Audio Interface",
+    "stand": "Stand"
+  },
+  "product": {
+    "featured": "Featured",
+    "addToCart": "Add to Cart",
+    "addToCompare": "Add to Compare",
+    "stock": "Stock",
+    "outOfStock": "Out of Stock",
+    "specifications": "Specifications",
+    "description": "Description",
+    "quantity": "Quantity"
+  },
+  "bundle": {
+    "hotBundle": "Hot Bundle",
+    "includes": "Includes",
+    "items": "items",
+    "save": "Save"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "emptyDesc": "Start shopping for streaming equipment",
+    "goShopping": "Go Shopping",
+    "clear": "Clear Cart",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "freeShipping": "Free Shipping",
+    "total": "Total",
+    "checkout": "Checkout",
+    "continueShopping": "Continue Shopping"
+  },
+  "checkout": {
+    "title": "Confirm Order",
+    "shippingAddress": "Shipping Address",
+    "recipient": "Recipient",
+    "phone": "Phone",
+    "province": "Province",
+    "city": "City",
+    "district": "District",
+    "address": "Address",
+    "paymentMethod": "Payment Method",
+    "alipay": "Alipay",
+    "wechat": "WeChat Pay",
+    "bank": "Bank Transfer",
+    "creditCard": "Credit Card",
+    "orderSummary": "Order Summary",
+    "submit": "Submit Order",
+    "submitting": "Submitting..."
+  },
+  "order": {
+    "title": "My Orders",
+    "detail": "Order Details",
+    "orderNumber": "Order No.",
+    "orderDate": "Order Date",
+    "status": {
+      "pending": "Pending",
+      "paid": "Paid",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled"
+    },
+    "payNow": "Pay Now",
+    "viewDetail": "View Details",
+    "empty": "No orders yet",
+    "emptyDesc": "Start shopping for streaming equipment",
+    "logistics": "Logistics",
+    "shippedAt": "Shipped At",
+    "deliveredAt": "Delivered At",
+    "paymentInfo": "Payment Info",
+    "actualPayment": "Amount Paid"
+  },
+  "compare": {
+    "title": "Product Comparison",
+    "empty": "No products to compare",
+    "emptyDesc": "Add up to 4 products for comparison",
+    "selectProducts": "Select Products",
+    "clear": "Clear All",
+    "price": "Price",
+    "brand": "Brand",
+    "tier": "Tier",
+    "stock": "Stock",
+    "action": "Action"
+  },
+  "priceTier": {
+    "entry": "Entry Level",
+    "mid": "Mid Range",
+    "high": "High End"
+  },
+  "common": {
+    "loading": "Loading...",
+    "noData": "No data",
+    "back": "Back",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "save": "Save"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "title": "Our Team | Creative Digital Agency",
+    "description": "Meet our professional team members who make our success possible."
+  },
+  "hero": {
+    "title": "Our Team",
+    "subtitle": "Meet the people who make our success possible"
+  },
+  "members": {
+    "zhangming": {
+      "name": "Zhang Ming",
+      "position": "CEO & Founder",
+      "bio": "10 years in tech, focused on product strategy and team leadership"
+    },
+    "lihua": {
+      "name": "Li Hua",
+      "position": "CTO",
+      "bio": "Full-stack expert skilled across multiple languages and frameworks"
+    },
+    "wangfang": {
+      "name": "Wang Fang",
+      "position": "Lead Designer",
+      "bio": "Senior UI/UX designer crafting beautiful and usable interfaces"
+    },
+    "liuqiang": {
+      "name": "Liu Qiang",
+      "position": "Project Manager",
+      "bio": "Agile project manager ensuring on-time, high-quality delivery"
+    }
+  },
+  "social": {
+    "linkedin": "LinkedIn",
+    "twitter": "Twitter",
+    "github": "GitHub",
+    "email": "Email"
+  }
+}

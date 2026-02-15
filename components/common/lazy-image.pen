@@ -1,0 +1,395 @@
+{
+  "version": "2.0",
+  "type": "design-specification",
+  "component": "LazyImage",
+  "lastModified": "2026-01-26",
+  "description": "懒加载图片组件设计规范 - 支持图片懒加载、占位符、错误处理、渐进式加载",
+  "dimensions": {
+    "artboard": {
+      "width": 1200,
+      "height": 2400
+    },
+    "components": {
+      "lazyImage": {
+        "minWidth": 200,
+        "minHeight": 150,
+        "maxWidth": 800,
+        "maxHeight": 600
+      },
+      "avatar": {
+        "sm": { "width": 32, "height": 32 },
+        "md": { "width": 40, "height": 40 },
+        "lg": { "width": 48, "height": 48 },
+        "xl": { "width": 64, "height": 64 }
+      },
+      "gallery": {
+        "mainImage": { "aspectRatio": "16:9" },
+        "thumbnail": { "width": 80, "height": 80 }
+      }
+    }
+  },
+  "colorScheme": {
+    "primary": {
+      "background": "#ffffff",
+      "placeholder": "#f3f4f6",
+      "loading": "#e5e7eb",
+      "error": "#fef2f2",
+      "border": "#d1d5db"
+    },
+    "states": {
+      "loading": {
+        "background": "#f3f4f6",
+        "animation": "pulse",
+        "opacity": 0.6
+      },
+      "loaded": {
+        "opacity": 1,
+        "transition": "opacity 300ms ease"
+      },
+      "error": {
+        "background": "#f3f4f6",
+        "text": "#9ca3af",
+        "fontSize": "14px"
+      }
+    },
+    "avatar": {
+      "fallback": {
+        "background": "rgba(var(--primary), 0.1)",
+        "text": "var(--primary)",
+        "fontWeight": 500
+      }
+    },
+    "gallery": {
+      "selected": {
+        "border": "2px solid var(--primary)"
+      },
+      "unselected": {
+        "border": "2px solid transparent"
+      },
+      "hover": {
+        "border": "2px solid #d1d5db"
+      }
+    }
+  },
+  "layout": {
+    "container": {
+      "position": "relative",
+      "overflow": "hidden",
+      "borderRadius": "8px"
+    },
+    "aspectRatio": {
+      "responsive": true,
+      "paddingBottom": "calculated based on ratio"
+    },
+    "image": {
+      "position": "absolute",
+      "inset": 0,
+      "width": "100%",
+      "height": "100%",
+      "objectFit": "cover"
+    }
+  },
+  "interactions": {
+    "lazyLoading": {
+      "trigger": "intersection observer",
+      "threshold": "200px margin",
+      "animation": "fade in 300ms"
+    },
+    "loadingStates": {
+      "initial": "placeholder visible",
+      "loading": "pulse animation",
+      "loaded": "fade in image",
+      "error": "show fallback"
+    },
+    "gallery": {
+      "thumbnailClick": {
+        "action": "change main image",
+        "animation": "fade transition"
+      },
+      "navigation": {
+        "keyboard": "arrow keys",
+        "touch": "swipe gestures"
+      }
+    }
+  },
+  "responsive": {
+    "breakpoints": {
+      "mobile": {
+        "maxWidth": "768px",
+        "gallery": {
+          "thumbnailSize": "60px",
+          "gap": "8px"
+        }
+      },
+      "tablet": {
+        "maxWidth": "1024px",
+        "gallery": {
+          "thumbnailSize": "70px",
+          "gap": "12px"
+        }
+      },
+      "desktop": {
+        "minWidth": "1025px",
+        "gallery": {
+          "thumbnailSize": "80px",
+          "gap": "16px"
+        }
+      }
+    }
+  },
+  "accessibility": {
+    "images": {
+      "altText": "required for all images",
+      "loading": "aria-busy='true' during load",
+      "error": "descriptive error message"
+    },
+    "gallery": {
+      "navigation": "keyboard accessible",
+      "announcements": "screen reader updates",
+      "focus": "visible focus indicators"
+    },
+    "avatar": {
+      "fallback": "meaningful initials",
+      "contrast": "WCAG AA compliant"
+    }
+  },
+  "performance": {
+    "lazyLoading": {
+      "intersectionObserver": "native browser API",
+      "threshold": "configurable margin",
+      "cleanup": "automatic observer disconnect"
+    },
+    "imageOptimization": {
+      "nextImage": "automatic optimization",
+      "blurPlaceholder": "base64 encoded",
+      "responsiveImages": "srcSet generation"
+    },
+    "memoryManagement": {
+      "cleanup": "remove observers on unmount",
+      "errorHandling": "graceful fallbacks"
+    }
+  },
+  "errorHandling": {
+    "loadFailure": {
+      "fallbackImage": "default error image",
+      "callback": "onLoadError function",
+      "retry": "manual retry option"
+    },
+    "networkIssues": {
+      "timeout": "configurable timeout",
+      "offline": "cached fallback"
+    }
+  }
+}
+
+---
+
+# LazyImage 组件设计规范
+
+## 概述
+LazyImage 是一个高性能的图片懒加载组件，支持占位符、错误处理、渐进式加载和多种显示模式。
+
+## 核心功能
+
+### 1. 懒加载机制
+- **触发方式**: Intersection Observer API
+- **阈值设置**: 默认200px，可配置
+- **性能优化**: 自动清理观察器，避免内存泄漏
+
+### 2. 加载状态管理
+```
+初始状态 → 加载中 → 加载完成/失败
+   ↓         ↓         ↓
+占位符   → 脉冲动画 → 图片显示/错误图片
+```
+
+### 3. 组件变体
+
+#### LazyImage (基础组件)
+- **尺寸**: 灵活尺寸，支持宽高比锁定
+- **占位符**: 默认灰色背景或自定义
+- **加载动画**: 可选脉冲效果
+- **错误处理**: 自动回退到错误图片
+
+#### ResponsiveImage (响应式图片)
+- **多尺寸源**: 根据屏幕宽度选择最佳图片
+- **srcSet生成**: 自动生成响应式图片集
+- **带宽优化**: 移动端加载小尺寸图片
+
+#### ImageGallery (图片画廊)
+- **主图显示**: 16:9 宽高比
+- **缩略图导航**: 水平滚动列表
+- **选中状态**: 主色调边框高亮
+- **交互反馈**: 悬停和点击状态
+
+#### AvatarImage (头像组件)
+- **尺寸规格**: sm(32px), md(40px), lg(48px), xl(64px)
+- **圆形裁剪**: border-radius: 50%
+- **文字回退**: 显示用户姓名首字母
+- **颜色主题**: 主色调背景，对比文字
+
+## 视觉设计
+
+### 颜色系统
+- **占位符**: #f3f4f6 (灰色100)
+- **加载动画**: #e5e7eb (灰色200)
+- **错误状态**: #fef2f2 (红色50背景)
+- **边框**: #d1d5db (灰色300)
+
+### 动画效果
+- **淡入**: opacity 0 → 1, 300ms ease
+- **脉冲**: 透明度周期性变化
+- **过渡**: 所有状态变化平滑过渡
+
+### 布局规则
+- **容器**: 相对定位，溢出隐藏
+- **图片**: 绝对定位，填充容器
+- **宽高比**: 使用 padding-bottom 技巧
+
+## 交互设计
+
+### 懒加载行为
+1. 组件进入视口前200px时开始加载
+2. 显示脉冲动画表示加载中
+3. 加载完成后淡入显示图片
+4. 加载失败显示错误占位符
+
+### 画廊交互
+1. 点击缩略图切换主图
+2. 键盘导航支持（左右箭头）
+3. 触摸设备支持滑动切换
+4. 选中缩略图高亮显示
+
+### 头像交互
+1. 图片加载失败自动显示文字
+2. 支持不同尺寸规格
+3. 保持圆形外观
+
+## 响应式设计
+
+### 移动端 (≤768px)
+- 缩略图尺寸: 60px
+- 间距: 8px
+- 触摸友好的点击区域
+
+### 平板端 (769px-1024px)
+- 缩略图尺寸: 70px
+- 间距: 12px
+- 平衡的视觉比例
+
+### 桌面端 (≥1025px)
+- 缩略图尺寸: 80px
+- 间距: 16px
+- 最佳视觉体验
+
+## 无障碍设计
+
+### 图片可访问性
+- 所有图片必须提供 alt 属性
+- 加载中状态使用 aria-busy="true"
+- 错误状态提供描述性文本
+
+### 键盘导航
+- 画廊支持 Tab 键导航
+- 箭头键切换图片
+- 回车键激活选择
+
+### 屏幕阅读器
+- 状态变化实时通知
+- 图片描述清晰准确
+- 交互元素角色明确
+
+## 性能优化
+
+### 懒加载优化
+- 使用原生 Intersection Observer
+- 自动清理观察器避免内存泄漏
+- 可配置的触发阈值
+
+### 图片优化
+- Next.js Image 组件自动优化
+- 支持 WebP 格式
+- 响应式图片集
+
+### 内存管理
+- 组件卸载时清理资源
+- 错误状态优雅处理
+- 避免重复加载
+
+## 错误处理
+
+### 加载失败
+- 自动显示错误占位符
+- 触发 onLoadError 回调
+- 提供重试机制
+
+### 网络问题
+- 可配置加载超时
+- 离线状态缓存回退
+- 渐进式增强
+
+## 使用示例
+
+### 基础用法
+```tsx
+<LazyImage
+  src="/image.jpg"
+  alt="示例图片"
+  width={400}
+  height={300}
+  placeholder="/placeholder.jpg"
+/>
+```
+
+### 响应式图片
+```tsx
+<ResponsiveImage
+  sources={[
+    { src: "/image-400.jpg", width: 400 },
+    { src: "/image-800.jpg", width: 800 }
+  ]}
+  defaultSrc="/image-400.jpg"
+  alt="响应式图片"
+/>
+```
+
+### 图片画廊
+```tsx
+<ImageGallery
+  images={[
+    { src: "/img1.jpg", alt: "图片1" },
+    { src: "/img2.jpg", alt: "图片2" }
+  ]}
+  onImageClick={(index) => console.log(index)}
+/>
+```
+
+### 头像组件
+```tsx
+<AvatarImage
+  src="/avatar.jpg"
+  alt="用户头像"
+  size="lg"
+  fallbackText="张三"
+/>
+```
+
+## 技术实现
+
+### 核心依赖
+- React 18+ (Hooks)
+- Next.js Image 组件
+- Intersection Observer API
+- CSS Modules / Tailwind CSS
+
+### 浏览器支持
+- Chrome 58+
+- Firefox 55+
+- Safari 12.1+
+- Edge 79+
+
+### 性能指标
+- 首次内容绘制: < 1.5s
+- 图片加载时间: < 2s
+- 内存使用: < 50MB
+- CPU 使用率: < 5%

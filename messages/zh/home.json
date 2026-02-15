@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "title": "创意数字代理机构 | 首页",
+    "description": "我们提供网站开发、移动应用、品牌设计与数字营销的一站式数字化解决方案。"
+  },
+  "hero": {
+    "title": "将您的想法转化为现实",
+    "subtitle": "获奖创意工作室，专注于创意设计和技术开发",
+    "cta": "了解更多"
+  },
+  "services": {
+    "title": "我们的服务",
+    "subtitle": "提供全方位的创意和技术解决方案，帮助您的业务在数字时代蓬勃发展",
+    "webDev": {
+      "title": "网页开发",
+      "description": "使用最新技术构建高性能、响应式的网站和应用程序"
+    },
+    "uiux": {
+      "title": "UI/UX 设计",
+      "description": "创建美观、直观的用户界面，提升用户体验"
+    },
+    "branding": {
+      "title": "品牌建设",
+      "description": "打造独特的品牌形象，建立市场竞争力"
+    }
+  },
+  "stats": {
+    "title": "我们的成就",
+    "subtitle": "用数字说话",
+    "projects": {
+      "label": "完成项目"
+    },
+    "clients": {
+      "label": "满意客户"
+    },
+    "experience": {
+      "label": "年行业经验"
+    },
+    "satisfaction": {
+      "label": "客户满意度"
+    }
+  }
+}

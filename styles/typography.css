@@ -1,0 +1,522 @@
+/* ========================================
+   字体和排版优化 - Typography Optimization
+   ======================================== */
+
+/* 标题样式 */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--foreground);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.1;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 1.15;
+}
+
+@media (min-width: 768px) {
+  h2 {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  h2 {
+    font-size: 2.5rem;
+  }
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  h3 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  h3 {
+    font-size: 2rem;
+  }
+}
+
+h4 {
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+@media (min-width: 768px) {
+  h4 {
+    font-size: 1.5rem;
+  }
+}
+
+h5 {
+  font-size: 1.125rem;
+  line-height: 1.3;
+}
+
+h6 {
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+/* 正文文字 */
+p {
+  color: var(--foreground);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+  letter-spacing: 0;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* 小文字 */
+small,
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+
+/* 大文字 */
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2;
+}
+
+/* 文字颜色 */
+.text-primary {
+  color: var(--primary);
+}
+
+.text-secondary {
+  color: var(--secondary);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.text-success {
+  color: var(--success);
+}
+
+.text-warning {
+  color: var(--warning);
+}
+
+.text-error {
+  color: var(--error);
+}
+
+.text-info {
+  color: var(--info);
+}
+
+/* 文字对齐 */
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+/* 文字粗细 */
+.font-light {
+  font-weight: 300;
+}
+
+.font-normal {
+  font-weight: 400;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-extrabold {
+  font-weight: 800;
+}
+
+/* 文字样式 */
+.italic {
+  font-style: italic;
+}
+
+.not-italic {
+  font-style: normal;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+/* 文字转换 */
+.uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.normal-case {
+  text-transform: none;
+}
+
+/* 行高 */
+.leading-tight {
+  line-height: 1.25;
+}
+
+.leading-snug {
+  line-height: 1.375;
+}
+
+.leading-normal {
+  line-height: 1.5;
+}
+
+.leading-relaxed {
+  line-height: 1.625;
+}
+
+.leading-loose {
+  line-height: 2;
+}
+
+/* 字间距 */
+.tracking-tight {
+  letter-spacing: -0.02em;
+}
+
+.tracking-normal {
+  letter-spacing: 0;
+}
+
+.tracking-wide {
+  letter-spacing: 0.02em;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+
+.tracking-widest {
+  letter-spacing: 0.1em;
+}
+
+/* 列表样式 */
+ul, ol {
+  margin: 0 0 1rem 0;
+  padding-left: 2rem;
+  color: var(--foreground);
+}
+
+ul li, ol li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+ul li:last-child, ol li:last-child {
+  margin-bottom: 0;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+ul ul {
+  list-style-type: circle;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+ol ol {
+  list-style-type: lower-alpha;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+/* 代码样式 */
+code,
+pre {
+  font-family: 'Geist Mono', 'Courier New', monospace;
+  background-color: var(--muted);
+  color: var(--foreground);
+  border-radius: 0.375rem;
+}
+
+code {
+  padding: 0.125rem 0.375rem;
+  font-size: 0.875em;
+}
+
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  font-size: 0.875rem;
+}
+
+.dark code,
+.dark pre {
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+/* 引用样式 */
+blockquote {
+  margin: 0 0 1rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid var(--primary);
+  background-color: var(--muted);
+  color: var(--foreground);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+blockquote p:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+blockquote cite {
+  display: block;
+  margin-top: 0.5rem;
+  font-style: normal;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+
+/* 水平线 */
+hr {
+  margin: 2rem 0;
+  border: none;
+  border-top: 1px solid var(--border);
+  color: var(--border);
+}
+
+/* 标记样式 */
+mark {
+  background-color: rgba(234, 179, 8, 0.3);
+  color: inherit;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+}
+
+/* 删除和插入 */
+del {
+  text-decoration: line-through;
+  color: var(--muted-foreground);
+}
+
+ins {
+  text-decoration: underline;
+  color: var(--success);
+}
+
+/* 上标和下标 */
+sup {
+  font-size: 0.75em;
+  vertical-align: super;
+}
+
+sub {
+  font-size: 0.75em;
+  vertical-align: sub;
+}
+
+/* 深色主题文字颜色 */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: var(--foreground);
+}
+
+.dark p {
+  color: var(--foreground);
+}
+
+.dark small,
+.dark .text-sm {
+  color: var(--muted-foreground);
+}
+
+.dark blockquote {
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+/* 响应式排版 */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.875rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+  
+  h4 {
+    font-size: 1.125rem;
+  }
+  
+  p {
+    font-size: 0.9375rem;
+  }
+  
+  ul, ol {
+    padding-left: 1.5rem;
+  }
+}
+
+/* 文字截断 */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 文字间距 */
+.whitespace-normal {
+  white-space: normal;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
+.whitespace-pre {
+  white-space: pre;
+}
+
+.whitespace-pre-wrap {
+  white-space: pre-wrap;
+}
+
+.whitespace-pre-line {
+  white-space: pre-line;
+}
+
+.break-words {
+  word-break: break-word;
+}
+
+.break-all {
+  word-break: break-all;
+}

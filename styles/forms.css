@@ -1,0 +1,489 @@
+/* ========================================
+   表单和输入框样式 - Form & Input Styles
+   ======================================== */
+
+/* 表单基础样式 */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+form.form-inline {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+form.form-inline > * {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* 表单组 */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group.form-group-inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form-group.form-group-inline label {
+  min-width: 120px;
+}
+
+/* 标签样式 */
+label {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+label.required::after {
+  content: " *";
+  color: var(--error);
+}
+
+/* 输入框基础样式 */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="search"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--foreground);
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+input[type="number"]::placeholder,
+input[type="tel"]::placeholder,
+input[type="url"]::placeholder,
+input[type="date"]::placeholder,
+input[type="time"]::placeholder,
+input[type="datetime-local"]::placeholder,
+input[type="month"]::placeholder,
+input[type="week"]::placeholder,
+input[type="search"]::placeholder,
+textarea::placeholder {
+  color: var(--muted-foreground);
+}
+
+/* 输入框焦点状态 */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="datetime-local"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="search"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.1);
+}
+
+.dark input[type="text"]:focus,
+.dark input[type="email"]:focus,
+.dark input[type="password"]:focus,
+.dark input[type="number"]:focus,
+.dark input[type="tel"]:focus,
+.dark input[type="url"]:focus,
+.dark input[type="date"]:focus,
+.dark input[type="time"]:focus,
+.dark input[type="datetime-local"]:focus,
+.dark input[type="month"]:focus,
+.dark input[type="week"]:focus,
+.dark input[type="search"]:focus,
+.dark textarea:focus,
+.dark select:focus {
+  border-color: #60A5FA;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* 输入框禁用状态 */
+input[type="text"]:disabled,
+input[type="email"]:disabled,
+input[type="password"]:disabled,
+input[type="number"]:disabled,
+input[type="tel"]:disabled,
+input[type="url"]:disabled,
+input[type="date"]:disabled,
+input[type="time"]:disabled,
+input[type="datetime-local"]:disabled,
+input[type="month"]:disabled,
+input[type="week"]:disabled,
+input[type="search"]:disabled,
+textarea:disabled,
+select:disabled {
+  background-color: var(--muted);
+  color: var(--muted-foreground);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* 输入框错误状态 */
+input[type="text"].error,
+input[type="email"].error,
+input[type="password"].error,
+input[type="number"].error,
+input[type="tel"].error,
+input[type="url"].error,
+input[type="date"].error,
+input[type="time"].error,
+input[type="datetime-local"].error,
+input[type="month"].error,
+input[type="week"].error,
+input[type="search"].error,
+textarea.error,
+select.error {
+  border-color: var(--error);
+}
+
+input[type="text"].error:focus,
+input[type="email"].error:focus,
+input[type="password"].error:focus,
+input[type="number"].error:focus,
+input[type="tel"].error:focus,
+input[type="url"].error:focus,
+input[type="date"].error:focus,
+input[type="time"].error:focus,
+input[type="datetime-local"].error:focus,
+input[type="month"].error:focus,
+input[type="week"].error:focus,
+input[type="search"].error:focus,
+textarea.error:focus,
+select.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* 输入框成功状态 */
+input[type="text"].success,
+input[type="email"].success,
+input[type="password"].success,
+input[type="number"].success,
+input[type="tel"].success,
+input[type="url"].success,
+input[type="date"].success,
+input[type="time"].success,
+input[type="datetime-local"].success,
+input[type="month"].success,
+input[type="week"].success,
+input[type="search"].success,
+textarea.success,
+select.success {
+  border-color: var(--success);
+}
+
+input[type="text"].success:focus,
+input[type="email"].success:focus,
+input[type="password"].success:focus,
+input[type="number"].success:focus,
+input[type="tel"].success:focus,
+input[type="url"].success:focus,
+input[type="date"].success:focus,
+input[type="time"].success:focus,
+input[type="datetime-local"].success:focus,
+input[type="month"].success:focus,
+input[type="week"].success:focus,
+input[type="search"].success:focus,
+textarea.success:focus,
+select.success:focus {
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+/* 文本区域 */
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+textarea.resize-none {
+  resize: none;
+}
+
+textarea.resize-both {
+  resize: both;
+}
+
+textarea.resize-horizontal {
+  resize: horizontal;
+}
+
+/* 选择框 */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231E293B' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+.dark select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23F8FAFC' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+}
+
+/* 复选框和单选框 */
+input[type="checkbox"],
+input[type="radio"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--primary);
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+input[type="checkbox"]:disabled,
+input[type="radio"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* 复选框/单选框容器 */
+.checkbox-group,
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.checkbox-group.inline,
+.radio-group.inline {
+  flex-direction: row;
+  gap: 1.5rem;
+}
+
+.checkbox-item,
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox-item label,
+.radio-item label {
+  margin: 0;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+/* 输入框大小 */
+input.input-sm,
+textarea.input-sm,
+select.input-sm {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8125rem;
+}
+
+input.input-lg,
+textarea.input-lg,
+select.input-lg {
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+}
+
+/* 输入框宽度 */
+input.input-full,
+textarea.input-full,
+select.input-full {
+  width: 100%;
+}
+
+/* 帮助文本 */
+.form-help,
+.form-text {
+  display: block;
+  margin-top: 0.375rem;
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+
+.form-help.error,
+.form-text.error {
+  color: var(--error);
+}
+
+.form-help.success,
+.form-text.success {
+  color: var(--success);
+}
+
+.form-help.warning,
+.form-text.warning {
+  color: var(--warning);
+}
+
+.form-help.info,
+.form-text.info {
+  color: var(--info);
+}
+
+/* 表单验证消息 */
+.form-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  margin-top: 0.5rem;
+}
+
+.form-message.error {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--error);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.form-message.success {
+  background-color: rgba(34, 197, 94, 0.1);
+  color: var(--success);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.form-message.warning {
+  background-color: rgba(234, 179, 8, 0.1);
+  color: var(--warning);
+  border: 1px solid rgba(234, 179, 8, 0.3);
+}
+
+.form-message.info {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: var(--info);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+/* 表单按钮组 */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.form-actions.center {
+  justify-content: center;
+}
+
+.form-actions.start {
+  justify-content: flex-start;
+}
+
+.form-actions.between {
+  justify-content: space-between;
+}
+
+/* 响应式表单 */
+@media (max-width: 640px) {
+  form {
+    gap: 1rem;
+  }
+  
+  form.form-inline {
+    flex-direction: column;
+  }
+  
+  form.form-inline > * {
+    min-width: auto;
+  }
+  
+  .form-group.form-group-inline {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group.form-group-inline label {
+    min-width: auto;
+  }
+  
+  .checkbox-group.inline,
+  .radio-group.inline {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .form-actions button {
+    width: 100%;
+  }
+}
+
+/* 深色主题表单 */
+.dark input[type="text"],
+.dark input[type="email"],
+.dark input[type="password"],
+.dark input[type="number"],
+.dark input[type="tel"],
+.dark input[type="url"],
+.dark input[type="date"],
+.dark input[type="time"],
+.dark input[type="datetime-local"],
+.dark input[type="month"],
+.dark input[type="week"],
+.dark input[type="search"],
+.dark textarea,
+.dark select {
+  background-color: var(--background);
+  color: var(--foreground);
+  border-color: var(--border);
+}
+
+.dark input[type="text"]::placeholder,
+.dark input[type="email"]::placeholder,
+.dark input[type="password"]::placeholder,
+.dark input[type="number"]::placeholder,
+.dark input[type="tel"]::placeholder,
+.dark input[type="url"]::placeholder,
+.dark input[type="date"]::placeholder,
+.dark input[type="time"]::placeholder,
+.dark input[type="datetime-local"]::placeholder,
+.dark input[type="month"]::placeholder,
+.dark input[type="week"]::placeholder,
+.dark input[type="search"]::placeholder,
+.dark textarea::placeholder {
+  color: var(--muted-foreground);
+}
+
+.dark input[type="checkbox"],
+.dark input[type="radio"] {
+  accent-color: #60A5FA;
+}

@@ -1,0 +1,45 @@
+{
+  "network": {
+    "connectionError": "網路連線錯誤，請檢查您的網路",
+    "timeout": "請求逾時，請稍後重試",
+    "offline": "您目前處於離線狀態"
+  },
+  "server": {
+    "internalError": "伺服器內部錯誤",
+    "serviceUnavailable": "服務暫時無法使用",
+    "maintenance": "系統正在維護中，請稍後訪問"
+  },
+  "auth": {
+    "unauthorized": "未授權，請先登入",
+    "forbidden": "您沒有權限執行此操作",
+    "sessionExpired": "工作階段已過期，請重新登入",
+    "invalidToken": "無效的權杖"
+  },
+  "resource": {
+    "notFound": "請求的資源不存在",
+    "alreadyExists": "資源已存在",
+    "conflict": "資源衝突，請重新整理後重試"
+  },
+  "validation": {
+    "invalidInput": "輸入資料無效",
+    "missingRequired": "缺少必填欄位",
+    "invalidFormat": "資料格式不正確"
+  },
+  "file": {
+    "uploadFailed": "檔案上傳失敗",
+    "downloadFailed": "檔案下載失敗",
+    "fileTooLarge": "檔案太大",
+    "invalidType": "不支援的檔案類型"
+  },
+  "payment": {
+    "paymentFailed": "付款失敗",
+    "insufficientFunds": "餘額不足",
+    "cardDeclined": "銀行卡被拒絕",
+    "transactionError": "交易錯誤"
+  },
+  "generic": {
+    "unknownError": "發生未知錯誤",
+    "tryAgain": "請稍後重試",
+    "contactSupport": "如問題持續，請聯繫客服"
+  }
+}

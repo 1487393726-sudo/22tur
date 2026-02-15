@@ -1,0 +1,480 @@
+{
+  "name": "设备管理器",
+  "description": "登录设备管理组件，支持查看、移除登录设备",
+  "type": "component",
+  "framework": "React",
+  "styling": "Tailwind CSS",
+  "layout": {
+    "container": {
+      "width": "100%",
+      "maxWidth": "800px",
+      "margin": "0 auto",
+      "padding": "24px"
+    },
+    "card": {
+      "width": "100%",
+      "borderRadius": "12px",
+      "border": "1px solid #e5e7eb",
+      "backgroundColor": "#ffffff",
+      "boxShadow": "0 1px 3px rgba(0, 0, 0, 0.1)"
+    }
+  },
+  "components": {
+    "header": {
+      "title": {
+        "text": "登录设备",
+        "fontSize": "24px",
+        "fontWeight": "600",
+        "color": "#111827",
+        "marginBottom": "8px"
+      },
+      "description": {
+        "text": "管理您账户的登录设备",
+        "fontSize": "14px",
+        "color": "#6b7280",
+        "marginBottom": "24px"
+      },
+      "revokeAllButton": {
+        "position": "absolute",
+        "top": "24px",
+        "right": "24px",
+        "padding": "8px 16px",
+        "fontSize": "14px",
+        "backgroundColor": "transparent",
+        "border": "1px solid #d1d5db",
+        "borderRadius": "6px",
+        "color": "#374151",
+        "cursor": "pointer",
+        "display": "flex",
+        "alignItems": "center",
+        "gap": "8px"
+      }
+    },
+    "deviceList": {
+      "container": {
+        "display": "flex",
+        "flexDirection": "column",
+        "gap": "16px"
+      },
+      "deviceItem": {
+        "display": "flex",
+        "alignItems": "flex-start",
+        "gap": "16px",
+        "padding": "16px",
+        "border": "1px solid #e5e7eb",
+        "borderRadius": "8px",
+        "backgroundColor": "#ffffff"
+      },
+      "deviceIcon": {
+        "width": "40px",
+        "height": "40px",
+        "backgroundColor": "#f3f4f6",
+        "borderRadius": "50%",
+        "display": "flex",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "flexShrink": "0"
+      },
+      "deviceInfo": {
+        "flex": "1",
+        "minWidth": "0"
+      },
+      "deviceName": {
+        "fontSize": "16px",
+        "fontWeight": "500",
+        "color": "#111827",
+        "marginBottom": "4px",
+        "display": "flex",
+        "alignItems": "center",
+        "gap": "8px"
+      },
+      "currentBadge": {
+        "padding": "2px 8px",
+        "fontSize": "12px",
+        "backgroundColor": "#f3f4f6",
+        "color": "#374151",
+        "borderRadius": "12px",
+        "fontWeight": "500"
+      },
+      "deviceDetails": {
+        "display": "flex",
+        "flexWrap": "wrap",
+        "gap": "16px 16px",
+        "marginTop": "4px",
+        "fontSize": "14px",
+        "color": "#6b7280"
+      },
+      "detailItem": {
+        "display": "flex",
+        "alignItems": "center",
+        "gap": "4px"
+      },
+      "revokeButton": {
+        "width": "40px",
+        "height": "40px",
+        "backgroundColor": "transparent",
+        "border": "none",
+        "borderRadius": "6px",
+        "cursor": "pointer",
+        "display": "flex",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "color": "#dc2626"
+      }
+    },
+    "loadingState": {
+      "container": {
+        "display": "flex",
+        "flexDirection": "column",
+        "gap": "16px"
+      },
+      "skeletonItem": {
+        "display": "flex",
+        "alignItems": "center",
+        "gap": "16px",
+        "padding": "16px",
+        "border": "1px solid #e5e7eb",
+        "borderRadius": "8px"
+      },
+      "skeletonAvatar": {
+        "width": "40px",
+        "height": "40px",
+        "backgroundColor": "#f3f4f6",
+        "borderRadius": "50%",
+        "animation": "pulse 2s infinite"
+      },
+      "skeletonText": {
+        "height": "16px",
+        "backgroundColor": "#f3f4f6",
+        "borderRadius": "4px",
+        "animation": "pulse 2s infinite"
+      }
+    },
+    "emptyState": {
+      "textAlign": "center",
+      "padding": "64px 0",
+      "color": "#6b7280",
+      "fontSize": "16px"
+    },
+    "confirmDialog": {
+      "overlay": {
+        "position": "fixed",
+        "inset": "0",
+        "backgroundColor": "rgba(0, 0, 0, 0.5)",
+        "zIndex": "50"
+      },
+      "content": {
+        "position": "fixed",
+        "top": "50%",
+        "left": "50%",
+        "transform": "translate(-50%, -50%)",
+        "width": "400px",
+        "maxWidth": "90vw",
+        "backgroundColor": "#ffffff",
+        "borderRadius": "12px",
+        "padding": "24px",
+        "boxShadow": "0 25px 50px rgba(0, 0, 0, 0.25)"
+      },
+      "title": {
+        "fontSize": "18px",
+        "fontWeight": "600",
+        "color": "#111827",
+        "marginBottom": "8px"
+      },
+      "description": {
+        "fontSize": "14px",
+        "color": "#6b7280",
+        "marginBottom": "24px",
+        "lineHeight": "1.5"
+      },
+      "actions": {
+        "display": "flex",
+        "gap": "12px",
+        "justifyContent": "flex-end"
+      },
+      "cancelButton": {
+        "padding": "8px 16px",
+        "fontSize": "14px",
+        "backgroundColor": "transparent",
+        "border": "1px solid #d1d5db",
+        "borderRadius": "6px",
+        "color": "#374151",
+        "cursor": "pointer"
+      },
+      "confirmButton": {
+        "padding": "8px 16px",
+        "fontSize": "14px",
+        "backgroundColor": "#dc2626",
+        "border": "1px solid #dc2626",
+        "borderRadius": "6px",
+        "color": "#ffffff",
+        "cursor": "pointer"
+      }
+    }
+  },
+  "interactions": {
+    "revokeDevice": {
+      "trigger": "click",
+      "target": "revokeButton",
+      "action": "showConfirmDialog",
+      "feedback": "loading spinner"
+    },
+    "revokeAllDevices": {
+      "trigger": "click",
+      "target": "revokeAllButton",
+      "action": "showConfirmDialog",
+      "feedback": "loading spinner"
+    },
+    "confirmRevoke": {
+      "trigger": "click",
+      "target": "confirmButton",
+      "action": "apiCall",
+      "feedback": "toast notification"
+    }
+  },
+  "responsive": {
+    "mobile": {
+      "breakpoint": "768px",
+      "changes": {
+        "container.padding": "16px",
+        "deviceItem.flexDirection": "column",
+        "deviceItem.alignItems": "flex-start",
+        "deviceDetails.flexDirection": "column",
+        "deviceDetails.gap": "8px",
+        "revokeAllButton.position": "static",
+        "revokeAllButton.width": "100%",
+        "revokeAllButton.marginTop": "16px"
+      }
+    },
+    "tablet": {
+      "breakpoint": "1024px",
+      "changes": {
+        "container.maxWidth": "600px"
+      }
+    }
+  },
+  "accessibility": {
+    "keyboardNavigation": true,
+    "screenReader": {
+      "deviceIcon": "设备类型图标",
+      "revokeButton": "移除设备",
+      "revokeAllButton": "移除所有其他设备",
+      "currentBadge": "当前设备"
+    },
+    "focusManagement": {
+      "confirmDialog": "trap focus within dialog",
+      "buttons": "visible focus indicators"
+    },
+    "announcements": {
+      "deviceRevoked": "设备已移除",
+      "allDevicesRevoked": "已移除所有其他设备"
+    }
+  },
+  "performance": {
+    "lazyLoading": false,
+    "virtualization": false,
+    "memoization": ["device list", "device icons"],
+    "bundleSize": "~15KB gzipped"
+  },
+  "errorHandling": {
+    "networkError": {
+      "display": "toast notification",
+      "message": "网络错误，请稍后重试",
+      "retry": true
+    },
+    "apiError": {
+      "display": "toast notification",
+      "message": "操作失败，请稍后重试",
+      "retry": false
+    },
+    "loadingError": {
+      "display": "error state",
+      "message": "获取设备列表失败",
+      "retry": true
+    }
+  },
+  "animations": {
+    "deviceRemoval": {
+      "type": "fadeOut",
+      "duration": "300ms",
+      "easing": "ease-out"
+    },
+    "loading": {
+      "type": "pulse",
+      "duration": "2s",
+      "iteration": "infinite"
+    },
+    "dialogAppear": {
+      "type": "scaleIn",
+      "duration": "200ms",
+      "easing": "ease-out"
+    }
+  }
+}
+
+---
+
+# 设备管理器组件设计文档
+
+## 概述
+设备管理器是一个用于管理用户登录设备的组件，支持查看所有登录设备、移除单个设备或批量移除所有其他设备。
+
+## 核心功能
+
+### 1. 设备列表显示
+- **设备信息展示**：显示浏览器、操作系统、IP地址、地理位置、最后活跃时间
+- **设备类型识别**：根据操作系统自动显示对应图标（手机、平板、电脑）
+- **当前设备标识**：特殊标记当前登录设备，不可移除
+
+### 2. 设备管理操作
+- **单设备移除**：点击垃圾桶图标移除指定设备
+- **批量移除**：一键移除所有其他设备（保留当前设备）
+- **确认对话框**：所有移除操作都需要用户确认
+
+### 3. 状态管理
+- **加载状态**：显示骨架屏动画
+- **空状态**：无设备时的提示信息
+- **错误处理**：网络错误和API错误的友好提示
+
+## 视觉设计
+
+### 布局结构
+```
+┌─────────────────────────────────────────┐
+│ 登录设备                    [移除所有其他设备] │
+│ 管理您账户的登录设备                        │
+├─────────────────────────────────────────┤
+│ [图标] Chrome on Windows 10  [当前设备]  │
+│        🌐 192.168.1.100                 │
+│        📍 北京, 中国                     │
+│        🕒 2分钟前                       │
+├─────────────────────────────────────────┤
+│ [图标] Safari on iPhone     [🗑️]       │
+│        🌐 10.0.0.50                     │
+│        📍 上海, 中国                     │
+│        🕒 1小时前                       │
+└─────────────────────────────────────────┘
+```
+
+### 颜色方案
+- **主色调**：#ffffff (白色背景)
+- **边框色**：#e5e7eb (浅灰色)
+- **文本色**：#111827 (深灰色)
+- **次要文本**：#6b7280 (中灰色)
+- **危险色**：#dc2626 (红色，用于删除按钮)
+- **成功色**：#10b981 (绿色，用于成功状态)
+
+### 图标系统
+- **电脑设备**：Monitor 图标
+- **手机设备**：Smartphone 图标
+- **平板设备**：Tablet 图标
+- **操作按钮**：Trash2, LogOut, Globe, MapPin, Clock
+
+## 交互设计
+
+### 用户操作流程
+1. **查看设备列表**
+   - 页面加载时自动获取设备列表
+   - 显示加载动画直到数据加载完成
+
+2. **移除单个设备**
+   - 点击设备项右侧的删除按钮
+   - 弹出确认对话框
+   - 确认后发送删除请求
+   - 成功后从列表中移除该设备
+
+3. **批量移除设备**
+   - 点击右上角"移除所有其他设备"按钮
+   - 弹出确认对话框说明影响
+   - 确认后移除所有非当前设备
+
+### 反馈机制
+- **即时反馈**：按钮点击时显示加载状态
+- **操作结果**：使用 toast 通知显示操作结果
+- **视觉反馈**：设备移除时的淡出动画
+
+## 响应式设计
+
+### 移动端适配 (< 768px)
+- 设备项改为垂直布局
+- 设备详情信息垂直排列
+- "移除所有设备"按钮移至底部，全宽显示
+- 减少内边距以节省空间
+
+### 平板端适配 (768px - 1024px)
+- 保持桌面端布局
+- 适当调整容器最大宽度
+- 优化触摸目标大小
+
+## 无障碍设计
+
+### 键盘导航
+- 所有交互元素支持 Tab 键导航
+- 确认对话框内的焦点管理
+- 明显的焦点指示器
+
+### 屏幕阅读器支持
+- 语义化的 HTML 结构
+- 适当的 ARIA 标签
+- 操作结果的语音播报
+
+### 视觉辅助
+- 高对比度的颜色搭配
+- 清晰的图标和文字
+- 足够大的点击目标
+
+## 性能优化
+
+### 数据处理
+- 设备列表的记忆化处理
+- 图标组件的复用
+- 避免不必要的重新渲染
+
+### 网络优化
+- 合理的错误重试机制
+- 请求去重处理
+- 适当的加载状态显示
+
+## 错误处理
+
+### 网络错误
+- 显示友好的错误提示
+- 提供重试选项
+- 保持界面可用性
+
+### API 错误
+- 根据错误类型显示相应提示
+- 记录错误日志用于调试
+- 优雅降级处理
+
+## 技术实现
+
+### 状态管理
+- 使用 React Hooks 管理组件状态
+- 合理的状态更新和副作用处理
+- 防抖和节流优化
+
+### 数据格式
+```typescript
+interface Device {
+  id: string;
+  fingerprint: string;
+  browser: string;
+  os: string;
+  ipAddress: string;
+  location?: {
+    country?: string;
+    city?: string;
+  };
+  lastActiveAt: string;
+  createdAt: string;
+  isCurrent?: boolean;
+}
+```
+
+### API 接口
+- `GET /api/auth/devices` - 获取设备列表
+- `DELETE /api/auth/devices/:id` - 删除指定设备
+- `POST /api/auth/devices/revoke-all` - 删除所有其他设备
+
+这个设备管理器组件提供了完整的设备管理功能，具有良好的用户体验和无障碍支持，适合在各种企业级应用中使用。

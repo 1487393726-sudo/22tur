@@ -1,0 +1,748 @@
+{
+  "name": "编辑客户模态框",
+  "description": "客户信息编辑的模态框组件，支持修改客户的完整信息并保存更新",
+  "type": "component",
+  "framework": "React",
+  "styling": "Tailwind CSS",
+  "layout": {
+    "modal": {
+      "position": "fixed",
+      "inset": "0",
+      "backgroundColor": "rgba(0, 0, 0, 0.5)",
+      "display": "flex",
+      "alignItems": "center",
+      "justifyContent": "center",
+      "zIndex": "50"
+    },
+    "dialog": {
+      "width": "100%",
+      "maxWidth": "600px",
+      "backgroundColor": "#ffffff",
+      "borderRadius": "12px",
+      "boxShadow": "0 25px 50px rgba(0, 0, 0, 0.25)",
+      "maxHeight": "90vh",
+      "overflow": "auto"
+    }
+  },
+  "components": {
+    "header": {
+      "padding": "24px 24px 0",
+      "borderBottom": "1px solid #f3f4f6"
+    },
+    "title": {
+      "fontSize": "20px",
+      "fontWeight": "600",
+      "color": "#111827",
+      "marginBottom": "16px"
+    },
+    "form": {
+      "padding": "24px",
+      "display": "flex",
+      "flexDirection": "column",
+      "gap": "16px"
+    },
+    "formGrid": {
+      "display": "grid",
+      "gridTemplateColumns": "repeat(2, 1fr)",
+      "gap": "16px"
+    },
+    "formField": {
+      "display": "flex",
+      "flexDirection": "column",
+      "gap": "8px"
+    },
+    "label": {
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "#374151"
+    },
+    "requiredIndicator": {
+      "color": "#dc2626",
+      "marginLeft": "2px"
+    },
+    "input": {
+      "padding": "8px 12px",
+      "fontSize": "14px",
+      "border": "1px solid #d1d5db",
+      "borderRadius": "6px",
+      "backgroundColor": "#ffffff",
+      "outline": "none",
+      "transition": "all 0.2s ease"
+    },
+    "select": {
+      "padding": "8px 12px",
+      "fontSize": "14px",
+      "border": "1px solid #d1d5db",
+      "borderRadius": "6px",
+      "backgroundColor": "#ffffff",
+      "cursor": "pointer",
+      "minHeight": "40px"
+    },
+    "textarea": {
+      "padding": "8px 12px",
+      "fontSize": "14px",
+      "border": "1px solid #d1d5db",
+      "borderRadius": "6px",
+      "backgroundColor": "#ffffff",
+      "resize": "vertical",
+      "minHeight": "80px"
+    },
+    "errorMessage": {
+      "fontSize": "12px",
+      "color": "#dc2626",
+      "marginTop": "4px"
+    },
+    "statusOption": {
+      "display": "flex",
+      "alignItems": "center",
+      "padding": "8px 12px",
+      "fontSize": "14px"
+    },
+    "footer": {
+      "display": "flex",
+      "justifyContent": "flex-end",
+      "gap": "12px",
+      "padding": "0 24px 24px",
+      "borderTop": "1px solid #f3f4f6",
+      "paddingTop": "16px"
+    },
+    "button": {
+      "padding": "8px 16px",
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "borderRadius": "6px",
+      "cursor": "pointer",
+      "transition": "all 0.2s ease",
+      "minWidth": "80px"
+    }
+  },
+  "clientStatus": {
+    "PROSPECT": {
+      "label": "潜在客户",
+      "color": "#f59e0b",
+      "backgroundColor": "#fef3c7",
+      "description": "有合作意向但尚未签约"
+    },
+    "ACTIVE": {
+      "label": "活跃",
+      "color": "#10b981",
+      "backgroundColor": "#d1fae5",
+      "description": "正在合作的客户"
+    },
+    "INACTIVE": {
+      "label": "未活跃",
+      "color": "#6b7280",
+      "backgroundColor": "#f3f4f6",
+      "description": "暂停合作的客户"
+    },
+    "CHURNED": {
+      "label": "已流失",
+      "color": "#dc2626",
+      "backgroundColor": "#fee2e2",
+      "description": "已终止合作的客户"
+    }
+  },
+  "industries": [
+    "科技", "金融", "医疗", "教育", "零售", "制造",
+    "房地产", "咨询", "媒体", "娱乐", "餐饮", "旅游",
+    "物流", "建筑", "能源", "农业", "其他"
+  ],
+  "states": {
+    "default": {
+      "input": {
+        "borderColor": "#d1d5db",
+        "backgroundColor": "#ffffff"
+      },
+      "button": {
+        "opacity": "1",
+        "cursor": "pointer"
+      }
+    },
+    "inputFocused": {
+      "input": {
+        "borderColor": "#3b82f6",
+        "boxShadow": "0 0 0 3px rgba(59, 130, 246, 0.1)"
+      }
+    },
+    "inputError": {
+      "input": {
+        "borderColor": "#dc2626",
+        "boxShadow": "0 0 0 3px rgba(220, 38, 38, 0.1)"
+      }
+    },
+    "loading": {
+      "button": {
+        "opacity": "0.6",
+        "cursor": "not-allowed"
+      },
+      "input": {
+        "disabled": true,
+        "backgroundColor": "#f9fafb"
+      }
+    },
+    "dataLoaded": {
+      "form": {
+        "populated": "with existing client data"
+      }
+    },
+    "buttonHover": {
+      "primaryButton": {
+        "backgroundColor": "#2563eb"
+      },
+      "secondaryButton": {
+        "backgroundColor": "#f9fafb"
+      }
+    }
+  },
+  "interactions": {
+    "openModal": {
+      "trigger": "prop change",
+      "target": "modal",
+      "conditions": ["client data provided"],
+      "actions": [
+        "showModal",
+        "populateForm",
+        "focusFirstInput"
+      ],
+      "feedback": "modal appear animation + form population"
+    },
+    "closeModal": {
+      "trigger": "click",
+      "target": "overlay or close button",
+      "action": "hideModal",
+      "feedback": "modal disappear animation"
+    },
+    "formSubmit": {
+      "trigger": "submit",
+      "target": "form",
+      "conditions": ["form validation passes", "client exists"],
+      "actions": [
+        "setState: loading",
+        "validateForm",
+        "submitToAPI",
+        "handleResponse",
+        "closeModal"
+      ],
+      "feedback": "loading state + success/error feedback"
+    },
+    "inputFocus": {
+      "trigger": "focus",
+      "target": "input",
+      "action": "setState: inputFocused",
+      "feedback": "border color change + shadow"
+    },
+    "inputBlur": {
+      "trigger": "blur",
+      "target": "input",
+      "actions": [
+        "removeState: inputFocused",
+        "validateField",
+        "showFieldError"
+      ],
+      "feedback": "remove focus styles + show validation"
+    },
+    "inputChange": {
+      "trigger": "input",
+      "target": "input",
+      "actions": [
+        "updateValue",
+        "clearFieldError"
+      ],
+      "feedback": "real-time value update"
+    },
+    "selectChange": {
+      "trigger": "change",
+      "target": "select",
+      "actions": [
+        "updateValue",
+        "clearFieldError"
+      ],
+      "feedback": "option selection"
+    },
+    "buttonHover": {
+      "trigger": "mouseenter",
+      "target": "button",
+      "action": "setState: buttonHover",
+      "feedback": "background color change"
+    },
+    "buttonLeave": {
+      "trigger": "mouseleave",
+      "target": "button",
+      "action": "removeState: buttonHover",
+      "feedback": "revert background color"
+    }
+  },
+  "validation": {
+    "clientSchema": {
+      "name": {
+        "required": true,
+        "minLength": 1,
+        "message": "客户名称不能为空"
+      },
+      "email": {
+        "required": false,
+        "format": "email",
+        "message": "请输入有效的邮箱地址",
+        "allowEmpty": true
+      },
+      "phone": {
+        "required": true,
+        "minLength": 1,
+        "message": "联系电话不能为空"
+      },
+      "website": {
+        "required": false,
+        "format": "url",
+        "message": "请输入有效的网站地址",
+        "allowEmpty": true
+      },
+      "industry": {
+        "required": true,
+        "minLength": 1,
+        "message": "请选择行业"
+      },
+      "status": {
+        "required": true,
+        "enum": ["PROSPECT", "ACTIVE", "INACTIVE", "CHURNED"]
+      }
+    },
+    "validationTiming": {
+      "onBlur": "validate individual fields",
+      "onSubmit": "validate entire form",
+      "onChange": "clear existing errors"
+    }
+  },
+  "dataManagement": {
+    "formPopulation": {
+      "trigger": "modal open with client data",
+      "mapping": {
+        "name": "client.name",
+        "email": "client.email",
+        "phone": "client.phone",
+        "website": "client.website",
+        "industry": "client.industry",
+        "status": "client.status",
+        "contactPerson": "client.contactPerson",
+        "position": "client.position",
+        "address": "client.address",
+        "description": "client.description"
+      },
+      "fallback": "empty string for optional fields"
+    },
+    "formReset": {
+      "trigger": "modal close or client change",
+      "action": "reset form to new client data"
+    }
+  },
+  "responsive": {
+    "mobile": {
+      "breakpoint": "640px",
+      "changes": {
+        "dialog.maxWidth": "95%",
+        "dialog.margin": "16px",
+        "formGrid.gridTemplateColumns": "1fr",
+        "footer.flexDirection": "column-reverse",
+        "button.width": "100%"
+      }
+    },
+    "tablet": {
+      "breakpoint": "768px",
+      "changes": {
+        "dialog.maxWidth": "90%",
+        "formGrid.gridTemplateColumns": "repeat(2, 1fr)"
+      }
+    }
+  },
+  "accessibility": {
+    "keyboardNavigation": true,
+    "screenReader": {
+      "modal": "编辑客户对话框",
+      "form": "客户信息编辑表单",
+      "requiredField": "必填字段",
+      "statusSelect": "客户状态选择",
+      "industrySelect": "行业选择",
+      "updateButton": "更新客户信息"
+    },
+    "focusManagement": {
+      "modalOpen": "focus first input field",
+      "modalClose": "return focus to trigger element",
+      "trapFocus": "keep focus within modal"
+    },
+    "announcements": {
+      "formSubmit": "正在更新客户信息",
+      "submitSuccess": "客户信息更新成功",
+      "submitError": "客户信息更新失败",
+      "validationError": "表单验证失败"
+    }
+  },
+  "performance": {
+    "lazyLoading": false,
+    "memoization": ["form validation", "industry options", "status options", "client data"],
+    "bundleSize": "~16KB gzipped"
+  },
+  "errorHandling": {
+    "formValidation": {
+      "display": "inline error messages",
+      "timing": "on blur and submit",
+      "clearing": "on input change"
+    },
+    "networkError": {
+      "display": "alert dialog",
+      "message": "网络连接失败，请重试",
+      "retry": "manual retry"
+    },
+    "apiError": {
+      "display": "alert dialog",
+      "message": "服务器错误，请稍后重试",
+      "details": "show specific error message"
+    },
+    "clientNotFound": {
+      "display": "error message",
+      "message": "客户不存在或已被删除",
+      "action": "close modal"
+    },
+    "validationError": {
+      "display": "field-level error messages",
+      "prevention": "disable submit button",
+      "guidance": "highlight invalid fields"
+    }
+  },
+  "animations": {
+    "modalAppear": {
+      "type": "fadeIn + scaleUp",
+      "duration": "200ms",
+      "easing": "ease-out"
+    },
+    "modalDisappear": {
+      "type": "fadeOut + scaleDown",
+      "duration": "150ms",
+      "easing": "ease-in"
+    },
+    "formPopulation": {
+      "type": "fadeIn",
+      "duration": "150ms",
+      "easing": "ease-out"
+    },
+    "inputFocus": {
+      "type": "borderTransition + shadowAppear",
+      "duration": "150ms",
+      "easing": "ease-out"
+    },
+    "errorAppear": {
+      "type": "slideDown + fadeIn",
+      "duration": "200ms",
+      "easing": "ease-out"
+    },
+    "buttonHover": {
+      "type": "backgroundTransition",
+      "duration": "150ms",
+      "easing": "ease-out"
+    },
+    "formSubmit": {
+      "type": "buttonPress + ripple",
+      "duration": "100ms",
+      "easing": "ease-in-out"
+    }
+  },
+  "apiIntegration": {
+    "endpoint": "/api/clients/{id}",
+    "method": "PATCH",
+    "requestFormat": "JSON",
+    "responseHandling": {
+      "success": "close modal + trigger refresh",
+      "error": "show error message + keep modal open",
+      "validation": "show field-specific errors"
+    },
+    "optimisticUpdates": false
+  }
+}
+
+---
+
+# 编辑客户模态框组件设计文档
+
+## 概述
+编辑客户模态框是一个用于修改现有客户信息的对话框组件，提供了完整的客户信息编辑表单，支持数据预填充、表单验证和更新保存功能。
+
+## 核心功能
+
+### 1. 数据预填充
+- **自动填充**：打开时自动填充现有客户数据
+- **字段映射**：将客户对象属性映射到表单字段
+- **空值处理**：可选字段的空值安全处理
+- **数据同步**：客户数据变化时重新填充表单
+
+### 2. 信息编辑
+- **基本信息**：客户名称、行业、状态
+- **联系信息**：联系人、职位、电话、邮箱
+- **业务信息**：网站、地址、备注描述
+- **状态管理**：潜在客户、活跃、未活跃、已流失
+
+### 3. 表单验证
+- **必填字段验证**：客户名称、联系电话、行业
+- **格式验证**：邮箱格式、网站URL格式
+- **实时验证**：失焦时验证，输入时清除错误
+- **提交前验证**：确保所有数据符合要求
+
+### 4. 更新保存
+- **PATCH请求**：仅更新修改的字段
+- **乐观更新**：可选的乐观更新策略
+- **错误处理**：网络错误和验证错误的处理
+- **成功反馈**：更新成功后的用户反馈
+
+## 视觉设计
+
+### 模态框布局
+```
+┌─────────────────────────────────────────────────────────────┐
+│ 编辑客户                                                    │
+├─────────────────────────────────────────────────────────────┤
+│ 客户名称 *          [ABC科技有限公司___]  行业 *  [▼IT/软件] │
+│ 状态              [▼活跃___________]  网站      [www.abc.com] │
+│                                                             │
+│ 联系人            [张经理__________]                        │
+│ 职位              [总经理__________]  联系电话 * [010-88888] │
+│ 邮箱              [zhang@abc.com___]                        │
+│                                                             │
+│ 地址                                                        │
+│ [北京市朝阳区建国门外大街1号_____________________________] │
+│                                                             │
+│ 备注                                                        │
+│ [重要客户，长期合作伙伴_____________________________________] │
+│ [_____________________________________________________________] │
+├─────────────────────────────────────────────────────────────┤
+│                                          [取消] [更新客户]   │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 颜色方案
+- **主色调**：#3b82f6 (蓝色)
+- **背景色**：#ffffff (白色)
+- **边框色**：#d1d5db (浅灰色)
+- **文本色**：#111827 (深灰色)
+- **标签色**：#374151 (中深灰色)
+- **错误色**：#dc2626 (红色)
+- **必填标识**：#dc2626 (红色星号)
+
+### 状态颜色
+- **潜在客户**：#f59e0b (橙色)
+- **活跃客户**：#10b981 (绿色)
+- **未活跃**：#6b7280 (灰色)
+- **已流失**：#dc2626 (红色)
+
+## 交互设计
+
+### 用户操作流程
+1. **打开编辑模态框**
+   - 传入客户数据
+   - 自动填充表单字段
+   - 焦点定位到第一个输入框
+
+2. **编辑客户信息**
+   - 修改需要更新的字段
+   - 实时验证输入格式
+   - 选择新的行业和状态
+
+3. **表单验证**
+   - 失焦时验证单个字段
+   - 显示具体的错误信息
+   - 输入时清除已有错误
+
+4. **提交更新**
+   - 点击更新按钮
+   - 显示加载状态
+   - 处理成功或失败结果
+
+### 数据预填充逻辑
+```typescript
+useEffect(() => {
+  if (client && open) {
+    reset({
+      name: client.name || "",
+      email: client.email || "",
+      phone: client.phone || "",
+      website: client.website || "",
+      industry: client.industry || "",
+      status: client.status as ClientStatus,
+      contactPerson: client.contactPerson || "",
+      position: client.position || "",
+      address: client.address || "",
+      description: client.description || ""
+    });
+  }
+}, [client, open, reset]);
+```
+
+## 响应式设计
+
+### 移动端适配 (< 640px)
+- 表单改为单列布局
+- 模态框占满屏幕宽度
+- 按钮改为垂直排列
+- 优化触摸目标大小
+
+### 平板端适配 (768px - 1024px)
+- 保持双列表单布局
+- 适当调整模态框宽度
+- 优化输入框尺寸
+
+### 桌面端优化 (> 1024px)
+- 最佳的表单布局
+- 充分利用屏幕空间
+- 优化鼠标交互体验
+
+## 无障碍设计
+
+### 键盘导航
+- Tab 键在表单元素间导航
+- Enter 键提交表单
+- Escape 键关闭模态框
+- 焦点管理和陷阱
+
+### 屏幕阅读器支持
+- 语义化的表单结构
+- 适当的标签关联
+- 必填字段的标识
+- 错误信息的播报
+
+### 视觉辅助
+- 高对比度的颜色搭配
+- 清晰的错误状态指示
+- 足够大的点击目标
+- 明显的焦点指示器
+
+## 性能优化
+
+### 组件优化
+- 表单验证逻辑的记忆化
+- 客户数据的记忆化
+- 行业和状态选项的记忆化
+- 避免不必要的重新渲染
+
+### 数据处理优化
+- 防抖处理用户输入
+- 异步验证的优化
+- 合理的状态更新策略
+
+## 错误处理
+
+### 表单验证错误
+- **字段级错误**：在对应字段下显示错误信息
+- **实时清除**：用户输入时清除错误状态
+- **提交阻止**：有错误时禁用提交按钮
+
+### 数据相关错误
+- **客户不存在**：客户已被删除的情况
+- **数据冲突**：并发编辑冲突处理
+- **权限错误**：无编辑权限的处理
+
+### 网络和API错误
+- **连接失败**：显示网络错误提示
+- **服务器错误**：显示具体的错误信息
+- **验证失败**：显示服务端验证错误
+
+## 技术实现
+
+### 表单管理
+```typescript
+const {
+  register,
+  handleSubmit,
+  reset,
+  setValue,
+  watch,
+  formState: { errors }
+} = useForm<ClientFormData>({
+  resolver: zodResolver(clientSchema)
+});
+```
+
+### 更新提交
+```typescript
+const onSubmit = async (data: ClientFormData) => {
+  if (!client) return;
+  
+  setLoading(true);
+  try {
+    const response = await fetch(`/api/clients/${client.id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    
+    if (response.ok) {
+      onSuccess();
+    } else {
+      const error = await response.json();
+      alert(`更新客户失败: ${error.message}`);
+    }
+  } catch (error) {
+    alert('更新客户失败，请重试');
+  } finally {
+    setLoading(false);
+  }
+};
+```
+
+## 组件属性
+
+### Props接口
+```typescript
+interface EditClientModalProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  client: Client | null;
+  onSuccess: () => void;
+}
+```
+
+### 客户数据接口
+```typescript
+interface Client {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string | null;
+  website?: string;
+  industry?: string | null;
+  status: string;
+  contactPerson?: string;
+  position?: string;
+  address?: string | null;
+  description?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+```
+
+## 与创建模态框的区别
+
+### 功能差异
+- **数据预填充**：编辑模态框需要预填充现有数据
+- **API方法**：使用PATCH而非POST请求
+- **按钮文本**：显示"更新客户"而非"创建客户"
+- **客户依赖**：需要传入现有客户对象
+
+### 用户体验差异
+- **加载状态**：需要处理数据加载状态
+- **数据同步**：客户数据变化时需要重新填充
+- **错误处理**：需要处理客户不存在的情况
+
+## 扩展性设计
+
+### 版本控制
+- 支持数据版本检查
+- 并发编辑冲突检测
+- 变更历史记录
+
+### 权限控制
+- 字段级编辑权限
+- 角色基础的访问控制
+- 审批流程集成
+
+### 国际化
+- 多语言标签和提示
+- 本地化的行业选项
+- 地区特定的验证规则
+
+这个编辑客户模态框组件提供了完整的客户信息编辑功能，具有良好的用户体验、数据预填充和错误处理机制，适合在CRM和客户管理系统中使用。

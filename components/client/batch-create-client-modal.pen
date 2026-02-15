@@ -1,0 +1,720 @@
+{
+  "name": "批量创建客户模态框",
+  "description": "支持手动添加和CSV导入的批量客户创建组件",
+  "type": "component",
+  "framework": "React",
+  "styling": "Tailwind CSS",
+  "layout": {
+    "modal": {
+      "position": "fixed",
+      "inset": "0",
+      "backgroundColor": "rgba(0, 0, 0, 0.5)",
+      "display": "flex",
+      "alignItems": "center",
+      "justifyContent": "center",
+      "padding": "16px",
+      "zIndex": "50"
+    },
+    "card": {
+      "width": "100%",
+      "maxWidth": "1024px",
+      "maxHeight": "90vh",
+      "overflow": "auto",
+      "backgroundColor": "#ffffff",
+      "borderRadius": "12px",
+      "boxShadow": "0 25px 50px rgba(0, 0, 0, 0.25)"
+    }
+  },
+  "components": {
+    "header": {
+      "padding": "24px 24px 0",
+      "borderBottom": "1px solid #f3f4f6"
+    },
+    "title": {
+      "display": "flex",
+      "alignItems": "center",
+      "gap": "8px",
+      "fontSize": "20px",
+      "fontWeight": "600",
+      "color": "#111827"
+    },
+    "tabNavigation": {
+      "display": "grid",
+      "gridTemplateColumns": "1fr 1fr",
+      "width": "100%",
+      "marginBottom": "16px",
+      "backgroundColor": "#f3f4f6",
+      "borderRadius": "8px",
+      "padding": "4px"
+    },
+    "tabButton": {
+      "padding": "8px 16px",
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "borderRadius": "6px",
+      "cursor": "pointer",
+      "transition": "all 0.2s ease",
+      "textAlign": "center"
+    },
+    "manualAddForm": {
+      "padding": "16px",
+      "backgroundColor": "#f9fafb",
+      "border": "1px solid #e5e7eb",
+      "borderRadius": "8px",
+      "marginBottom": "16px"
+    },
+    "formGrid": {
+      "display": "grid",
+      "gridTemplateColumns": "repeat(2, 1fr)",
+      "gap": "16px"
+    },
+    "formField": {
+      "display": "flex",
+      "flexDirection": "column",
+      "gap": "8px"
+    },
+    "label": {
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "#374151"
+    },
+    "input": {
+      "padding": "8px 12px",
+      "fontSize": "14px",
+      "border": "1px solid #d1d5db",
+      "borderRadius": "6px",
+      "backgroundColor": "#ffffff",
+      "outline": "none",
+      "transition": "border-color 0.2s ease"
+    },
+    "select": {
+      "padding": "8px 12px",
+      "fontSize": "14px",
+      "border": "1px solid #d1d5db",
+      "borderRadius": "6px",
+      "backgroundColor": "#ffffff",
+      "cursor": "pointer"
+    },
+    "textarea": {
+      "padding": "8px 12px",
+      "fontSize": "14px",
+      "border": "1px solid #d1d5db",
+      "borderRadius": "6px",
+      "backgroundColor": "#ffffff",
+      "resize": "vertical",
+      "minHeight": "60px"
+    },
+    "csvImportArea": {
+      "padding": "16px",
+      "backgroundColor": "#f9fafb",
+      "border": "1px solid #e5e7eb",
+      "borderRadius": "8px"
+    },
+    "csvTextarea": {
+      "width": "100%",
+      "height": "128px",
+      "padding": "8px",
+      "border": "1px solid #d1d5db",
+      "borderRadius": "6px",
+      "fontSize": "14px",
+      "fontFamily": "monospace",
+      "resize": "vertical"
+    },
+    "clientTable": {
+      "width": "100%",
+      "borderCollapse": "collapse",
+      "border": "1px solid #e5e7eb",
+      "borderRadius": "8px",
+      "overflow": "hidden"
+    },
+    "tableHeader": {
+      "backgroundColor": "#f9fafb",
+      "borderBottom": "1px solid #e5e7eb"
+    },
+    "tableCell": {
+      "padding": "12px",
+      "borderBottom": "1px solid #f3f4f6",
+      "fontSize": "14px"
+    },
+    "statusBadge": {
+      "padding": "4px 8px",
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "borderRadius": "12px",
+      "display": "inline-flex",
+      "alignItems": "center"
+    },
+    "actionButtons": {
+      "display": "flex",
+      "justifyContent": "flex-end",
+      "gap": "12px",
+      "padding": "24px",
+      "borderTop": "1px solid #f3f4f6"
+    },
+    "button": {
+      "padding": "8px 16px",
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "borderRadius": "6px",
+      "cursor": "pointer",
+      "transition": "all 0.2s ease",
+      "display": "flex",
+      "alignItems": "center",
+      "gap": "8px"
+    },
+    "errorMessage": {
+      "fontSize": "12px",
+      "color": "#dc2626",
+      "marginTop": "4px"
+    }
+  },
+  "states": {
+    "manualTab": {
+      "tabButton": {
+        "backgroundColor": "#ffffff",
+        "color": "#111827",
+        "boxShadow": "0 1px 2px rgba(0, 0, 0, 0.05)"
+      },
+      "manualAddForm": {
+        "display": "block"
+      },
+      "csvImportArea": {
+        "display": "none"
+      }
+    },
+    "csvTab": {
+      "tabButton": {
+        "backgroundColor": "#ffffff",
+        "color": "#111827",
+        "boxShadow": "0 1px 2px rgba(0, 0, 0, 0.05)"
+      },
+      "manualAddForm": {
+        "display": "none"
+      },
+      "csvImportArea": {
+        "display": "block"
+      }
+    },
+    "inputFocused": {
+      "input": {
+        "borderColor": "#3b82f6",
+        "boxShadow": "0 0 0 3px rgba(59, 130, 246, 0.1)"
+      }
+    },
+    "inputError": {
+      "input": {
+        "borderColor": "#dc2626"
+      }
+    },
+    "submitting": {
+      "button": {
+        "opacity": "0.6",
+        "cursor": "not-allowed"
+      },
+      "input": {
+        "disabled": true
+      }
+    },
+    "buttonHover": {
+      "primaryButton": {
+        "backgroundColor": "#2563eb"
+      },
+      "secondaryButton": {
+        "backgroundColor": "#f9fafb"
+      },
+      "dangerButton": {
+        "backgroundColor": "#dc2626"
+      }
+    }
+  },
+  "interactions": {
+    "tabSwitch": {
+      "trigger": "click",
+      "target": "tabButton",
+      "action": "switchTab",
+      "feedback": "tab state change"
+    },
+    "addClient": {
+      "trigger": "submit",
+      "target": "manualAddForm",
+      "conditions": ["form validation passes"],
+      "actions": [
+        "validateForm",
+        "addToClientList",
+        "resetForm",
+        "showSuccessToast"
+      ],
+      "feedback": "form reset + toast notification"
+    },
+    "removeClient": {
+      "trigger": "click",
+      "target": "removeButton",
+      "action": "removeFromClientList",
+      "feedback": "row removal animation"
+    },
+    "csvImport": {
+      "trigger": "click",
+      "target": "importButton",
+      "conditions": ["csvData is not empty"],
+      "actions": [
+        "parseCsvData",
+        "validateClientData",
+        "addValidClientsToList",
+        "showImportResults"
+      ],
+      "feedback": "import results toast"
+    },
+    "downloadTemplate": {
+      "trigger": "click",
+      "target": "downloadButton",
+      "action": "downloadCsvTemplate",
+      "feedback": "file download"
+    },
+    "batchSubmit": {
+      "trigger": "click",
+      "target": "submitButton",
+      "conditions": ["clientList is not empty"],
+      "actions": [
+        "setState: submitting",
+        "createClientsInBatch",
+        "showResults",
+        "closeModal"
+      ],
+      "feedback": "loading state + progress indication"
+    },
+    "inputFocus": {
+      "trigger": "focus",
+      "target": "input",
+      "action": "setState: inputFocused",
+      "feedback": "border color change"
+    },
+    "inputBlur": {
+      "trigger": "blur",
+      "target": "input",
+      "action": "removeState: inputFocused",
+      "feedback": "remove focus styles"
+    }
+  },
+  "validation": {
+    "clientSchema": {
+      "name": {
+        "required": true,
+        "minLength": 2,
+        "message": "客户名称至少需要2个字符"
+      },
+      "email": {
+        "required": false,
+        "format": "email",
+        "message": "请输入有效的邮箱地址"
+      },
+      "phone": {
+        "required": true,
+        "minLength": 1,
+        "message": "请输入联系电话"
+      },
+      "industry": {
+        "required": true,
+        "message": "请选择行业"
+      },
+      "website": {
+        "required": false,
+        "format": "url",
+        "message": "请输入有效的网站地址"
+      },
+      "status": {
+        "required": true,
+        "enum": ["active", "inactive", "potential"],
+        "default": "active"
+      }
+    },
+    "csvValidation": {
+      "format": "CSV with headers",
+      "requiredColumns": ["客户名称", "电话", "行业"],
+      "optionalColumns": ["邮箱", "地址", "网站", "联系人", "职位", "备注", "状态"]
+    }
+  },
+  "responsive": {
+    "mobile": {
+      "breakpoint": "640px",
+      "changes": {
+        "modal.padding": "8px",
+        "card.maxWidth": "100%",
+        "formGrid.gridTemplateColumns": "1fr",
+        "actionButtons.flexDirection": "column",
+        "button.width": "100%"
+      }
+    },
+    "tablet": {
+      "breakpoint": "768px",
+      "changes": {
+        "card.maxWidth": "90%",
+        "formGrid.gridTemplateColumns": "repeat(2, 1fr)"
+      }
+    }
+  },
+  "accessibility": {
+    "keyboardNavigation": true,
+    "screenReader": {
+      "modal": "批量创建客户对话框",
+      "tabNavigation": "选择创建方式",
+      "form": "客户信息表单",
+      "table": "待创建客户列表",
+      "csvImport": "CSV数据导入区域"
+    },
+    "focusManagement": {
+      "modalOpen": "focus trap within modal",
+      "tabNavigation": "arrow key navigation",
+      "formInputs": "logical tab order"
+    },
+    "announcements": {
+      "clientAdded": "客户已添加到列表",
+      "clientRemoved": "客户已从列表移除",
+      "importComplete": "CSV导入完成",
+      "batchCreateComplete": "批量创建完成"
+    }
+  },
+  "performance": {
+    "lazyLoading": false,
+    "virtualization": "table virtualization for large lists",
+    "memoization": ["client list", "form validation", "csv parsing"],
+    "bundleSize": "~25KB gzipped"
+  },
+  "errorHandling": {
+    "formValidation": {
+      "display": "inline error messages",
+      "realTime": "on blur validation",
+      "submit": "prevent invalid submission"
+    },
+    "csvImportError": {
+      "display": "toast notification",
+      "message": "CSV格式错误，请检查文件格式",
+      "recovery": "show format requirements"
+    },
+    "networkError": {
+      "display": "toast notification",
+      "message": "网络连接失败，请重试",
+      "retry": "manual retry button"
+    },
+    "batchCreateError": {
+      "display": "detailed results",
+      "partialSuccess": "show successful and failed items",
+      "recovery": "retry failed items"
+    }
+  },
+  "animations": {
+    "modalAppear": {
+      "type": "fadeIn + scaleUp",
+      "duration": "200ms",
+      "easing": "ease-out"
+    },
+    "tabSwitch": {
+      "type": "slideTransition",
+      "duration": "150ms",
+      "easing": "ease-in-out"
+    },
+    "clientAdd": {
+      "type": "slideDown + fadeIn",
+      "duration": "300ms",
+      "easing": "ease-out"
+    },
+    "clientRemove": {
+      "type": "slideUp + fadeOut",
+      "duration": "200ms",
+      "easing": "ease-in"
+    },
+    "formSubmit": {
+      "type": "buttonPress + ripple",
+      "duration": "100ms",
+      "easing": "ease-in-out"
+    }
+  },
+  "features": {
+    "manualEntry": {
+      "singleClientForm": "comprehensive client information form",
+      "realTimeValidation": "immediate feedback on input errors",
+      "industryPresets": "predefined industry options",
+      "statusOptions": "active, inactive, potential client status"
+    },
+    "csvImport": {
+      "templateDownload": "CSV template with proper format",
+      "bulkImport": "paste or upload CSV data",
+      "dataValidation": "validate each row before import",
+      "errorReporting": "detailed import results"
+    },
+    "clientManagement": {
+      "previewList": "review clients before creation",
+      "individualRemoval": "remove specific clients from list",
+      "batchCreation": "create all clients in one operation",
+      "progressTracking": "show creation progress and results"
+    }
+  }
+}
+
+---
+
+# 批量创建客户模态框组件设计文档
+
+## 概述
+批量创建客户模态框是一个功能丰富的组件，支持两种客户创建方式：手动逐个添加和CSV批量导入。该组件提供了完整的客户信息管理功能，包括数据验证、预览确认和批量提交。
+
+## 核心功能
+
+### 1. 双模式创建
+- **手动添加模式**：通过表单逐个添加客户信息
+- **CSV导入模式**：通过CSV文件批量导入客户数据
+- **模式切换**：标签页形式的无缝切换体验
+
+### 2. 手动添加功能
+- **完整表单**：包含客户名称、联系方式、行业等完整信息
+- **实时验证**：输入时即时验证数据格式和必填项
+- **行业预设**：提供常见行业选项供快速选择
+- **状态管理**：支持活跃、不活跃、潜在客户等状态
+
+### 3. CSV导入功能
+- **模板下载**：提供标准CSV模板文件
+- **数据解析**：智能解析CSV格式数据
+- **批量验证**：验证每行数据的完整性和格式
+- **导入反馈**：显示导入成功和失败的详细结果
+
+### 4. 客户列表管理
+- **预览列表**：显示待创建的所有客户信息
+- **单项删除**：支持从列表中移除特定客户
+- **批量操作**：一次性创建所有列表中的客户
+- **状态显示**：清晰显示每个客户的状态和信息
+
+## 视觉设计
+
+### 模态框布局
+```
+┌─────────────────────────────────────────────────────────────┐
+│ 👥 批量创建客户                                              │
+├─────────────────────────────────────────────────────────────┤
+│ [手动添加] [CSV导入]                                         │
+├─────────────────────────────────────────────────────────────┤
+│ ┌─ 添加单个客户 ─────────────────────────────────────────┐   │
+│ │ 客户名称*    [____________]  邮箱      [____________] │   │
+│ │ 联系电话*    [____________]  行业*     [▼选择行业___] │   │
+│ │ 联系人       [____________]  职位      [____________] │   │
+│ │ 网站         [____________]  状态      [▼活跃_______] │   │
+│ │ 地址         [________________________________]     │   │
+│ │ 备注         [________________________________]     │   │
+│ │                                    [+ 添加到列表]    │   │
+│ └─────────────────────────────────────────────────────────┘   │
+├─────────────────────────────────────────────────────────────┤
+│ 待创建客户列表 (3)                                    [3 个] │
+│ ┌─────────────────────────────────────────────────────────┐   │
+│ │ 客户名称    │ 电话        │ 行业    │ 联系人 │ 状态 │ 操作│   │
+│ │ ABC科技     │ 010-8888888 │ IT/软件 │ 张经理 │ 活跃 │ 🗑️ │   │
+│ │ XYZ公司     │ 021-9999999 │ 金融    │ 李总   │ 活跃 │ 🗑️ │   │
+│ └─────────────────────────────────────────────────────────┘   │
+├─────────────────────────────────────────────────────────────┤
+│                                      [取消] [批量创建 (3)]   │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### CSV导入界面
+```
+┌─────────────────────────────────────────────────────────────┐
+│ CSV导入                                        [📥 下载模板] │
+│ 请按照模板格式准备CSV文件，确保包含所有必填字段               │
+│ ┌─────────────────────────────────────────────────────────┐   │
+│ │ 客户名称,邮箱,电话,行业,地址,网站,联系人,职位,备注,状态    │   │
+│ │ ABC科技,contact@abc.com,010-88888888,IT/软件,...        │   │
+│ │                                                         │   │
+│ └─────────────────────────────────────────────────────────┘   │
+│                                              [📤 导入数据]   │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 颜色方案
+- **主色调**：#3b82f6 (蓝色)
+- **背景色**：#ffffff (白色)
+- **表单背景**：#f9fafb (浅灰色)
+- **边框色**：#e5e7eb (浅灰色)
+- **文本色**：#111827 (深灰色)
+- **次要文本**：#6b7280 (中灰色)
+- **错误色**：#dc2626 (红色)
+- **成功色**：#10b981 (绿色)
+
+## 交互设计
+
+### 用户操作流程
+1. **选择创建方式**
+   - 点击标签页选择手动添加或CSV导入
+   - 界面切换到对应的输入方式
+
+2. **手动添加流程**
+   - 填写客户信息表单
+   - 实时验证输入数据
+   - 点击"添加到列表"按钮
+   - 客户信息添加到预览列表
+
+3. **CSV导入流程**
+   - 下载CSV模板（可选）
+   - 准备CSV数据并粘贴到文本区域
+   - 点击"导入数据"按钮
+   - 系统解析并验证数据
+   - 有效数据添加到预览列表
+
+4. **批量创建**
+   - 确认预览列表中的客户信息
+   - 点击"批量创建"按钮
+   - 系统逐个创建客户
+   - 显示创建结果和统计信息
+
+### 表单验证
+- **必填字段验证**：客户名称、联系电话、行业
+- **格式验证**：邮箱格式、网站URL格式
+- **实时反馈**：输入时即时显示验证结果
+- **提交前验证**：确保所有数据符合要求
+
+## 响应式设计
+
+### 移动端适配 (< 640px)
+- 表单改为单列布局
+- 操作按钮改为垂直排列
+- 表格改为卡片式布局
+- 减少内边距节省空间
+
+### 平板端适配 (768px - 1024px)
+- 保持双列表单布局
+- 优化表格列宽分配
+- 适当调整模态框尺寸
+
+### 桌面端优化 (> 1024px)
+- 完整的表格布局
+- 最佳的表单体验
+- 充分利用屏幕空间
+
+## 无障碍设计
+
+### 键盘导航
+- 模态框内的焦点管理
+- 标签页的方向键导航
+- 表单元素的逻辑Tab顺序
+
+### 屏幕阅读器支持
+- 语义化的表单结构
+- 适当的标签关联
+- 操作结果的语音播报
+
+### 视觉辅助
+- 高对比度的颜色搭配
+- 清晰的错误状态指示
+- 足够大的点击目标
+
+## 性能优化
+
+### 数据处理优化
+- 客户列表的记忆化处理
+- 表单验证的防抖处理
+- CSV解析的异步处理
+
+### 渲染优化
+- 大量客户数据的虚拟化
+- 条件渲染减少DOM节点
+- 合理的状态更新策略
+
+### 网络优化
+- 批量创建的并发控制
+- 失败重试机制
+- 请求去重处理
+
+## 错误处理
+
+### 表单验证错误
+- **内联错误提示**：字段下方显示具体错误信息
+- **实时验证**：失焦时验证并显示错误
+- **提交阻止**：有错误时禁用提交按钮
+
+### CSV导入错误
+- **格式错误**：提示CSV格式要求
+- **数据验证失败**：显示具体的验证错误
+- **部分导入成功**：显示成功和失败的统计
+
+### 网络和API错误
+- **连接失败**：显示网络错误提示
+- **服务器错误**：显示服务器响应错误
+- **部分创建失败**：显示详细的成功/失败结果
+
+## 技术实现
+
+### 状态管理
+```typescript
+interface BatchCreateState {
+  clients: ClientFormData[];
+  importMethod: 'manual' | 'file';
+  isSubmitting: boolean;
+  csvData: string;
+}
+```
+
+### 数据验证
+```typescript
+const clientSchema = z.object({
+  name: z.string().min(2, "客户名称至少需要2个字符"),
+  email: z.string().email().optional().or(z.literal("")),
+  phone: z.string().min(1, "请输入联系电话"),
+  industry: z.string().min(1, "请选择行业"),
+  // ... 其他字段
+});
+```
+
+### CSV解析逻辑
+```typescript
+const parseCsvData = (csvText: string) => {
+  const lines = csvText.trim().split('\n');
+  const headers = lines[0].split(',');
+  
+  return lines.slice(1).map(line => {
+    const values = line.split(',');
+    return headers.reduce((obj, header, index) => {
+      obj[header.trim()] = values[index]?.trim() || '';
+      return obj;
+    }, {});
+  });
+};
+```
+
+### 批量创建处理
+```typescript
+const handleBatchSubmit = async () => {
+  const results = await Promise.allSettled(
+    clients.map(client => 
+      fetch('/api/client', {
+        method: 'POST',
+        body: JSON.stringify(client)
+      })
+    )
+  );
+  
+  const successful = results.filter(r => r.status === 'fulfilled').length;
+  const failed = results.filter(r => r.status === 'rejected').length;
+  
+  // 显示结果统计
+};
+```
+
+## 功能特性
+
+### 行业预设
+- 提供常见行业选项
+- 支持自定义行业输入
+- 行业数据的本地化支持
+
+### 状态管理
+- 活跃客户：正在合作的客户
+- 不活跃客户：暂停合作的客户
+- 潜在客户：有合作意向的客户
+
+### CSV模板
+- 标准化的CSV格式
+- 包含示例数据
+- 支持中文列名
+
+### 批量操作
+- 并发创建优化
+- 进度显示
+- 结果统计和报告
+
+这个批量创建客户模态框组件提供了完整的批量客户管理功能，具有良好的用户体验、数据验证和错误处理机制，适合在CRM和客户管理系统中使用。

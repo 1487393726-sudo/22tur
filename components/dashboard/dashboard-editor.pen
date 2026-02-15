@@ -1,0 +1,436 @@
+{
+  "version": "2.0",
+  "type": "design-specification",
+  "component": "DashboardEditor",
+  "lastModified": "2026-01-26",
+  "description": "仪表板编辑器设计规范 - 支持拖拽布局、小部件管理、实时预览",
+  "dimensions": {
+    "artboard": {
+      "width": 1400,
+      "height": 1000
+    },
+    "components": {
+      "toolbar": {
+        "height": 64,
+        "padding": 16
+      },
+      "widgetLibrary": {
+        "width": 300,
+        "itemHeight": 80,
+        "gap": 12
+      },
+      "gridLayout": {
+        "cols": 12,
+        "rowHeight": 60,
+        "margin": [10, 10],
+        "containerPadding": [20, 20]
+      },
+      "widget": {
+        "minWidth": 150,
+        "minHeight": 100,
+        "borderRadius": 8,
+        "padding": 16
+      }
+    }
+  },
+  "colorScheme": {
+    "primary": {
+      "background": "#ffffff",
+      "surface": "#f8fafc",
+      "border": "#e2e8f0",
+      "text": "#1e293b"
+    },
+    "toolbar": {
+      "background": "#ffffff",
+      "border": "#e2e8f0",
+      "shadow": "0 1px 3px rgba(0,0,0,0.1)"
+    },
+    "widgetLibrary": {
+      "background": "#f8fafc",
+      "itemBackground": "#ffffff",
+      "itemHover": "#f1f5f9",
+      "itemActive": "#dbeafe",
+      "categoryTab": "#64748b",
+      "categoryTabActive": "#3b82f6"
+    },
+    "gridCanvas": {
+      "background": "#f1f5f9",
+      "gridLines": "#e2e8f0",
+      "dropZone": "#dbeafe"
+    },
+    "widget": {
+      "background": "#ffffff",
+      "border": "#e2e8f0",
+      "shadow": "0 1px 3px rgba(0,0,0,0.1)",
+      "selected": "#3b82f6",
+      "hover": "#f8fafc"
+    },
+    "states": {
+      "preview": {
+        "background": "#0f172a",
+        "overlay": "rgba(0,0,0,0.8)"
+      },
+      "saving": {
+        "spinner": "#3b82f6",
+        "overlay": "rgba(255,255,255,0.8)"
+      }
+    }
+  },
+  "layout": {
+    "structure": "三栏布局",
+    "toolbar": {
+      "position": "top",
+      "height": "64px",
+      "justifyContent": "space-between",
+      "padding": "0 24px"
+    },
+    "sidebar": {
+      "position": "left",
+      "width": "300px",
+      "overflow": "auto"
+    },
+    "canvas": {
+      "position": "center",
+      "flex": 1,
+      "overflow": "auto",
+      "padding": "24px"
+    },
+    "properties": {
+      "position": "right",
+      "width": "280px",
+      "overflow": "auto"
+    }
+  },
+  "interactions": {
+    "widgetLibrary": {
+      "categoryTabs": {
+        "trigger": "click",
+        "animation": "slide transition 200ms"
+      },
+      "addWidget": {
+        "trigger": "click widget item",
+        "action": "add to canvas",
+        "feedback": "toast notification"
+      }
+    },
+    "gridLayout": {
+      "dragDrop": {
+        "trigger": "mouse down on widget",
+        "constraints": "grid boundaries",
+        "feedback": "visual drag preview",
+        "snap": "grid alignment"
+      },
+      "resize": {
+        "trigger": "drag resize handles",
+        "constraints": "min/max dimensions",
+        "feedback": "dimension tooltip"
+      },
+      "select": {
+        "trigger": "click widget",
+        "feedback": "blue border highlight",
+        "properties": "show in right panel"
+      }
+    },
+    "toolbar": {
+      "preview": {
+        "trigger": "click preview button",
+        "action": "fullscreen preview mode",
+        "animation": "fade in overlay"
+      },
+      "save": {
+        "trigger": "click save button",
+        "action": "persist layout",
+        "feedback": "loading spinner + toast"
+      }
+    }
+  },
+  "responsive": {
+    "breakpoints": {
+      "mobile": {
+        "maxWidth": "768px",
+        "layout": "single column",
+        "sidebar": "overlay drawer",
+        "canvas": "full width"
+      },
+      "tablet": {
+        "maxWidth": "1024px",
+        "sidebar": "collapsible",
+        "properties": "bottom sheet"
+      },
+      "desktop": {
+        "minWidth": "1025px",
+        "layout": "three column",
+        "fullFeatures": true
+      }
+    }
+  },
+  "accessibility": {
+    "keyboard": {
+      "navigation": "tab order through widgets",
+      "selection": "arrow keys for widget navigation",
+      "actions": "enter/space for activation"
+    },
+    "screenReader": {
+      "labels": "descriptive widget labels",
+      "states": "drag/resize state announcements",
+      "structure": "landmark regions"
+    },
+    "focus": {
+      "visible": "2px blue outline",
+      "management": "trap focus in dialogs"
+    }
+  },
+  "performance": {
+    "rendering": {
+      "virtualization": "large widget lists",
+      "debouncing": "resize/drag operations",
+      "memoization": "widget components"
+    },
+    "dataFlow": {
+      "stateManagement": "React state + callbacks",
+      "updates": "immutable state updates",
+      "persistence": "async save operations"
+    }
+  },
+  "errorHandling": {
+    "validation": {
+      "widgetConfig": "schema validation",
+      "layout": "boundary checking",
+      "dataSource": "URL validation"
+    },
+    "recovery": {
+      "autoSave": "periodic state backup",
+      "undo": "action history stack",
+      "fallback": "default configurations"
+    }
+  }
+}
+
+---
+
+# DashboardEditor 组件设计规范
+
+## 概述
+DashboardEditor 是一个可视化仪表板编辑器，支持拖拽式布局设计、小部件管理和实时预览功能。
+
+## 核心功能
+
+### 1. 小部件库 (Widget Library)
+- **分类标签**: 图表、数据、展示三个类别
+- **小部件项**: 显示图标、名称、描述
+- **添加操作**: 点击添加到画布
+- **搜索过滤**: 快速查找小部件
+
+### 2. 拖拽布局系统
+- **网格系统**: 12列网格，60px行高
+- **拖拽移动**: 鼠标拖拽调整位置
+- **大小调整**: 拖拽边角调整尺寸
+- **对齐辅助**: 网格对齐和吸附
+
+### 3. 小部件管理
+- **选择状态**: 蓝色边框高亮
+- **操作按钮**: 编辑、复制、删除
+- **属性面板**: 右侧配置面板
+- **实时更新**: 配置即时生效
+
+### 4. 预览模式
+- **全屏预览**: 隐藏编辑界面
+- **真实渲染**: 显示最终效果
+- **交互测试**: 验证用户体验
+
+## 视觉设计
+
+### 布局结构
+```
+┌─────────────────────────────────────────────────────────┐
+│                    工具栏 (Toolbar)                      │
+├─────────────┬─────────────────────────┬─────────────────┤
+│             │                         │                 │
+│  小部件库    │        画布区域          │    属性面板      │
+│ (Sidebar)   │       (Canvas)          │ (Properties)    │
+│             │                         │                 │
+│  - 图表类    │   ┌─────┐  ┌─────────┐   │  - 基本信息      │
+│  - 数据类    │   │小部件│  │  小部件  │   │  - 位置大小      │
+│  - 展示类    │   └─────┘  └─────────┘   │  - 样式配置      │
+│             │                         │  - 数据源       │
+└─────────────┴─────────────────────────┴─────────────────┘
+```
+
+### 颜色系统
+- **主背景**: #ffffff (纯白)
+- **次背景**: #f8fafc (浅灰)
+- **边框**: #e2e8f0 (中性灰)
+- **主色**: #3b82f6 (蓝色)
+- **成功**: #10b981 (绿色)
+- **警告**: #f59e0b (橙色)
+- **错误**: #ef4444 (红色)
+
+### 小部件样式
+- **默认状态**: 白色背景，浅灰边框
+- **悬停状态**: 浅蓝背景，蓝色边框
+- **选中状态**: 蓝色边框，阴影效果
+- **拖拽状态**: 半透明，虚线边框
+
+## 交互设计
+
+### 小部件添加流程
+1. 用户点击小部件库中的项目
+2. 系统在画布中央创建新小部件
+3. 自动选中新小部件
+4. 显示属性配置面板
+5. 显示成功提示
+
+### 拖拽操作流程
+1. 鼠标按下小部件开始拖拽
+2. 显示拖拽预览和网格辅助线
+3. 实时更新位置坐标
+4. 鼠标释放完成拖拽
+5. 更新布局配置
+
+### 大小调整流程
+1. 选中小部件显示调整手柄
+2. 拖拽手柄开始调整大小
+3. 显示尺寸提示和约束
+4. 实时更新小部件尺寸
+5. 释放鼠标完成调整
+
+### 预览模式切换
+1. 点击预览按钮
+2. 淡入全屏遮罩
+3. 隐藏编辑界面
+4. 显示最终效果
+5. 提供退出选项
+
+## 响应式设计
+
+### 桌面端 (≥1025px)
+- 三栏布局完整显示
+- 小部件库固定左侧
+- 属性面板固定右侧
+- 画布区域居中自适应
+
+### 平板端 (769px-1024px)
+- 小部件库可折叠
+- 属性面板底部抽屉
+- 画布区域扩大
+- 触摸友好的操作
+
+### 移动端 (≤768px)
+- 单栏布局
+- 小部件库抽屉模式
+- 属性面板全屏弹窗
+- 简化的操作界面
+
+## 无障碍设计
+
+### 键盘导航
+- Tab 键遍历所有可交互元素
+- 箭头键在小部件间导航
+- Enter/Space 键激活选择
+- Escape 键取消操作
+
+### 屏幕阅读器
+- 小部件类型和状态播报
+- 拖拽操作状态通知
+- 布局变化实时反馈
+- 错误信息清晰描述
+
+### 视觉辅助
+- 高对比度模式支持
+- 焦点指示器清晰可见
+- 文字大小可调节
+- 颜色不是唯一信息载体
+
+## 性能优化
+
+### 渲染优化
+- 虚拟化长列表
+- 防抖拖拽操作
+- 组件懒加载
+- 状态更新批处理
+
+### 内存管理
+- 及时清理事件监听器
+- 避免内存泄漏
+- 合理的组件卸载
+- 状态持久化
+
+### 网络优化
+- 异步保存操作
+- 增量数据更新
+- 错误重试机制
+- 离线状态处理
+
+## 错误处理
+
+### 输入验证
+- 小部件配置验证
+- 布局边界检查
+- 数据源URL验证
+- 必填字段检查
+
+### 异常恢复
+- 自动保存机制
+- 操作历史记录
+- 默认配置回退
+- 用户友好的错误提示
+
+### 状态管理
+- 不可变状态更新
+- 状态一致性检查
+- 并发操作处理
+- 数据同步机制
+
+## 技术实现
+
+### 核心依赖
+- React 18+ (Hooks)
+- react-grid-layout (拖拽布局)
+- Lucide React (图标)
+- Tailwind CSS (样式)
+
+### 状态管理
+- useState (本地状态)
+- useCallback (性能优化)
+- useRef (DOM引用)
+- useEffect (副作用)
+
+### 事件处理
+- 鼠标事件 (拖拽)
+- 键盘事件 (导航)
+- 窗口事件 (全屏)
+- 自定义事件 (通信)
+
+## 使用示例
+
+### 基础用法
+```tsx
+<DashboardEditor
+  dashboardId="dashboard-1"
+  initialLayout={layout}
+  initialWidgets={widgets}
+  onSave={handleSave}
+/>
+```
+
+### 只读模式
+```tsx
+<DashboardEditor
+  dashboardId="dashboard-1"
+  initialLayout={layout}
+  initialWidgets={widgets}
+  readOnly={true}
+/>
+```
+
+### 自定义配置
+```tsx
+<DashboardEditor
+  dashboardId="dashboard-1"
+  initialLayout={layout}
+  initialWidgets={widgets}
+  onSave={handleSave}
+  onWidgetAdd={handleWidgetAdd}
+  onWidgetDelete={handleWidgetDelete}
+/>
+```

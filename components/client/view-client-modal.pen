@@ -1,0 +1,813 @@
+{
+  "name": "查看客户模态框",
+  "description": "客户详细信息查看的模态框组件，展示完整的客户资料和项目统计",
+  "type": "component",
+  "framework": "React",
+  "styling": "Tailwind CSS",
+  "layout": {
+    "modal": {
+      "position": "fixed",
+      "inset": "0",
+      "backgroundColor": "rgba(0, 0, 0, 0.5)",
+      "display": "flex",
+      "alignItems": "center",
+      "justifyContent": "center",
+      "zIndex": "50"
+    },
+    "dialog": {
+      "width": "100%",
+      "maxWidth": "800px",
+      "backgroundColor": "#ffffff",
+      "borderRadius": "12px",
+      "boxShadow": "0 25px 50px rgba(0, 0, 0, 0.25)",
+      "maxHeight": "90vh",
+      "overflow": "auto"
+    }
+  },
+  "components": {
+    "header": {
+      "padding": "24px 24px 0",
+      "borderBottom": "1px solid #f3f4f6"
+    },
+    "title": {
+      "display": "flex",
+      "alignItems": "center",
+      "gap": "8px",
+      "fontSize": "20px",
+      "fontWeight": "600",
+      "color": "#111827",
+      "marginBottom": "16px"
+    },
+    "titleIcon": {
+      "width": "20px",
+      "height": "20px",
+      "color": "#6b7280"
+    },
+    "content": {
+      "padding": "24px",
+      "display": "flex",
+      "flexDirection": "column",
+      "gap": "24px"
+    },
+    "infoCard": {
+      "backgroundColor": "#ffffff",
+      "border": "1px solid #e5e7eb",
+      "borderRadius": "8px",
+      "overflow": "hidden"
+    },
+    "cardHeader": {
+      "padding": "16px 20px",
+      "borderBottom": "1px solid #f3f4f6",
+      "backgroundColor": "#f9fafb"
+    },
+    "cardTitle": {
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "color": "#111827"
+    },
+    "cardContent": {
+      "padding": "20px",
+      "display": "flex",
+      "flexDirection": "column",
+      "gap": "16px"
+    },
+    "infoGrid": {
+      "display": "grid",
+      "gridTemplateColumns": "repeat(auto-fit, minmax(250px, 1fr))",
+      "gap": "16px"
+    },
+    "infoItem": {
+      "display": "flex",
+      "alignItems": "center",
+      "gap": "8px"
+    },
+    "infoIcon": {
+      "width": "16px",
+      "height": "16px",
+      "color": "#6b7280",
+      "flexShrink": "0"
+    },
+    "infoLabel": {
+      "fontSize": "14px",
+      "color": "#6b7280",
+      "minWidth": "60px"
+    },
+    "infoValue": {
+      "fontSize": "14px",
+      "color": "#111827",
+      "fontWeight": "500"
+    },
+    "statusBadge": {
+      "padding": "4px 8px",
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "borderRadius": "12px",
+      "display": "inline-flex",
+      "alignItems": "center"
+    },
+    "link": {
+      "color": "#3b82f6",
+      "textDecoration": "none",
+      "fontSize": "14px",
+      "transition": "color 0.2s ease"
+    },
+    "description": {
+      "marginTop": "8px"
+    },
+    "descriptionLabel": {
+      "fontSize": "14px",
+      "color": "#6b7280",
+      "marginBottom": "8px"
+    },
+    "descriptionText": {
+      "fontSize": "14px",
+      "backgroundColor": "#f9fafb",
+      "padding": "12px",
+      "borderRadius": "6px",
+      "lineHeight": "1.5"
+    },
+    "contactSection": {
+      "display": "flex",
+      "flexDirection": "column",
+      "gap": "16px"
+    },
+    "contactItem": {
+      "display": "flex",
+      "flexDirection": "column",
+      "gap": "4px"
+    },
+    "contactLabel": {
+      "fontSize": "14px",
+      "color": "#6b7280"
+    },
+    "contactValue": {
+      "fontWeight": "500",
+      "color": "#111827"
+    },
+    "contactSubValue": {
+      "fontSize": "14px",
+      "color": "#6b7280"
+    },
+    "contactLink": {
+      "display": "flex",
+      "alignItems": "center",
+      "gap": "8px",
+      "color": "#3b82f6",
+      "textDecoration": "none",
+      "fontSize": "14px"
+    },
+    "addressItem": {
+      "display": "flex",
+      "alignItems": "flex-start",
+      "gap": "8px",
+      "gridColumn": "1 / -1"
+    },
+    "addressIcon": {
+      "width": "16px",
+      "height": "16px",
+      "color": "#6b7280",
+      "marginTop": "2px",
+      "flexShrink": "0"
+    },
+    "addressText": {
+      "fontSize": "14px",
+      "color": "#111827",
+      "lineHeight": "1.4"
+    },
+    "statsGrid": {
+      "display": "grid",
+      "gridTemplateColumns": "repeat(auto-fit, minmax(200px, 1fr))",
+      "gap": "16px",
+      "marginBottom": "16px"
+    },
+    "statItem": {
+      "display": "flex",
+      "alignItems": "center",
+      "gap": "8px"
+    },
+    "statIcon": {
+      "width": "16px",
+      "height": "16px",
+      "color": "#6b7280"
+    },
+    "statLabel": {
+      "fontSize": "14px",
+      "color": "#6b7280"
+    },
+    "statValue": {
+      "fontWeight": "500",
+      "color": "#111827"
+    },
+    "projectsList": {
+      "marginTop": "8px"
+    },
+    "projectsLabel": {
+      "fontSize": "14px",
+      "color": "#6b7280",
+      "marginBottom": "12px"
+    },
+    "projectItem": {
+      "display": "flex",
+      "alignItems": "center",
+      "justifyContent": "space-between",
+      "padding": "12px",
+      "backgroundColor": "#f9fafb",
+      "borderRadius": "6px",
+      "marginBottom": "8px"
+    },
+    "projectInfo": {
+      "flex": "1"
+    },
+    "projectName": {
+      "fontWeight": "500",
+      "color": "#111827",
+      "marginBottom": "4px"
+    },
+    "projectDate": {
+      "fontSize": "14px",
+      "color": "#6b7280"
+    },
+    "projectMeta": {
+      "display": "flex",
+      "alignItems": "center",
+      "gap": "12px"
+    },
+    "projectBudget": {
+      "fontSize": "14px",
+      "fontWeight": "500",
+      "color": "#111827"
+    }
+  },
+  "statusConfig": {
+    "ACTIVE": {
+      "label": "活跃",
+      "backgroundColor": "#d1fae5",
+      "color": "#166534"
+    },
+    "INACTIVE": {
+      "label": "未活跃",
+      "backgroundColor": "#f3f4f6",
+      "color": "#374151"
+    },
+    "PROSPECT": {
+      "label": "潜在客户",
+      "backgroundColor": "#fef3c7",
+      "color": "#92400e"
+    },
+    "CHURNED": {
+      "label": "已流失",
+      "backgroundColor": "#fee2e2",
+      "color": "#991b1b"
+    },
+    "PLANNING": {
+      "label": "规划中",
+      "backgroundColor": "#dbeafe",
+      "color": "#1e40af"
+    },
+    "IN_PROGRESS": {
+      "label": "进行中",
+      "backgroundColor": "#e9d5ff",
+      "color": "#7c3aed"
+    },
+    "COMPLETED": {
+      "label": "已完成",
+      "backgroundColor": "#d1fae5",
+      "color": "#166534"
+    },
+    "ON_HOLD": {
+      "label": "暂停",
+      "backgroundColor": "#fed7aa",
+      "color": "#c2410c"
+    },
+    "CANCELLED": {
+      "label": "已取消",
+      "backgroundColor": "#fee2e2",
+      "color": "#991b1b"
+    }
+  },
+  "states": {
+    "default": {
+      "modal": {
+        "display": "flex"
+      }
+    },
+    "hidden": {
+      "modal": {
+        "display": "none"
+      }
+    },
+    "linkHover": {
+      "link": {
+        "color": "#1d4ed8",
+        "textDecoration": "underline"
+      },
+      "contactLink": {
+        "color": "#1d4ed8"
+      }
+    }
+  },
+  "interactions": {
+    "openModal": {
+      "trigger": "prop change",
+      "target": "modal",
+      "conditions": ["client data provided"],
+      "actions": [
+        "showModal",
+        "populateClientData"
+      ],
+      "feedback": "modal appear animation"
+    },
+    "closeModal": {
+      "trigger": "click",
+      "target": "overlay or close button",
+      "action": "hideModal",
+      "feedback": "modal disappear animation"
+    },
+    "linkClick": {
+      "trigger": "click",
+      "target": "website link",
+      "action": "openInNewTab",
+      "feedback": "external navigation"
+    },
+    "emailClick": {
+      "trigger": "click",
+      "target": "email link",
+      "action": "openEmailClient",
+      "feedback": "email client launch"
+    },
+    "linkHover": {
+      "trigger": "mouseenter",
+      "target": "link",
+      "action": "setState: linkHover",
+      "feedback": "color change + underline"
+    },
+    "linkLeave": {
+      "trigger": "mouseleave",
+      "target": "link",
+      "action": "removeState: linkHover",
+      "feedback": "revert link styles"
+    }
+  },
+  "dataMapping": {
+    "basicInfo": {
+      "name": "client.name",
+      "industry": "client.industry || '其他'",
+      "status": "client.status",
+      "website": "client.website",
+      "createdAt": "new Date(client.createdAt).toLocaleDateString('zh-CN')",
+      "description": "client.description"
+    },
+    "contactInfo": {
+      "contactPerson": "client.contactPerson",
+      "position": "client.position",
+      "phone": "client.phone",
+      "email": "client.email",
+      "address": "client.address"
+    },
+    "projectStats": {
+      "projectCount": "client._count.projects",
+      "totalValue": "client.totalProjectValue?.toLocaleString()",
+      "lastUpdated": "new Date(client.updatedAt).toLocaleDateString('zh-CN')"
+    },
+    "recentProjects": {
+      "projects": "client.projects?.slice(0, 5)",
+      "mapping": {
+        "name": "project.name",
+        "status": "project.status",
+        "budget": "project.budget?.toLocaleString()",
+        "dateRange": "startDate - endDate or '进行中'"
+      }
+    }
+  },
+  "responsive": {
+    "mobile": {
+      "breakpoint": "640px",
+      "changes": {
+        "dialog.maxWidth": "95%",
+        "dialog.margin": "16px",
+        "infoGrid.gridTemplateColumns": "1fr",
+        "statsGrid.gridTemplateColumns": "1fr",
+        "projectItem.flexDirection": "column",
+        "projectItem.alignItems": "flex-start",
+        "projectMeta.marginTop": "8px"
+      }
+    },
+    "tablet": {
+      "breakpoint": "768px",
+      "changes": {
+        "dialog.maxWidth": "90%",
+        "infoGrid.gridTemplateColumns": "repeat(2, 1fr)",
+        "statsGrid.gridTemplateColumns": "repeat(2, 1fr)"
+      }
+    }
+  },
+  "accessibility": {
+    "keyboardNavigation": true,
+    "screenReader": {
+      "modal": "客户详情对话框",
+      "basicInfo": "基本信息卡片",
+      "contactInfo": "联系信息卡片",
+      "projectInfo": "项目信息卡片",
+      "statusBadge": "客户状态标识",
+      "websiteLink": "客户网站链接",
+      "emailLink": "邮箱链接"
+    },
+    "focusManagement": {
+      "modalOpen": "focus close button",
+      "modalClose": "return focus to trigger element",
+      "trapFocus": "keep focus within modal"
+    },
+    "announcements": {
+      "modalOpen": "客户详情已打开",
+      "modalClose": "客户详情已关闭"
+    }
+  },
+  "performance": {
+    "lazyLoading": false,
+    "memoization": ["client data", "status badge rendering", "date formatting"],
+    "bundleSize": "~12KB gzipped"
+  },
+  "errorHandling": {
+    "missingClient": {
+      "display": "empty modal or error message",
+      "message": "客户信息不存在",
+      "action": "close modal"
+    },
+    "missingData": {
+      "display": "fallback values",
+      "fallbacks": {
+        "industry": "其他",
+        "contactPerson": "-",
+        "phone": "-",
+        "email": "-",
+        "address": "-",
+        "description": "无备注信息"
+      }
+    },
+    "linkErrors": {
+      "invalidWebsite": "disable link or show warning",
+      "invalidEmail": "disable email link"
+    }
+  },
+  "animations": {
+    "modalAppear": {
+      "type": "fadeIn + scaleUp",
+      "duration": "200ms",
+      "easing": "ease-out"
+    },
+    "modalDisappear": {
+      "type": "fadeOut + scaleDown",
+      "duration": "150ms",
+      "easing": "ease-in"
+    },
+    "cardAppear": {
+      "type": "fadeIn + slideUp",
+      "duration": "300ms",
+      "easing": "ease-out",
+      "stagger": "100ms"
+    },
+    "linkHover": {
+      "type": "colorTransition",
+      "duration": "150ms",
+      "easing": "ease-out"
+    },
+    "badgeAppear": {
+      "type": "scaleIn",
+      "duration": "200ms",
+      "easing": "ease-out"
+    }
+  },
+  "contentSections": {
+    "basicInfo": {
+      "title": "基本信息",
+      "icon": "Building2",
+      "fields": [
+        "industry",
+        "status", 
+        "website",
+        "createdAt",
+        "description"
+      ]
+    },
+    "contactInfo": {
+      "title": "联系信息",
+      "fields": [
+        "contactPerson",
+        "position",
+        "phone",
+        "email",
+        "address"
+      ]
+    },
+    "projectInfo": {
+      "title": "项目信息",
+      "icon": "FileText",
+      "fields": [
+        "projectCount",
+        "totalValue",
+        "lastUpdated",
+        "recentProjects"
+      ]
+    }
+  }
+}
+
+---
+
+# 查看客户模态框组件设计文档
+
+## 概述
+查看客户模态框是一个只读的客户信息展示组件，以结构化的方式展示客户的完整资料，包括基本信息、联系方式和项目统计等，为用户提供全面的客户概览。
+
+## 核心功能
+
+### 1. 客户信息展示
+- **基本信息**：客户名称、行业、状态、网站、创建时间
+- **联系信息**：联系人、职位、电话、邮箱、地址
+- **项目统计**：项目总数、总价值、最后更新时间
+- **备注信息**：客户描述和备注内容
+
+### 2. 数据可视化
+- **状态徽章**：不同颜色标识客户状态
+- **信息分组**：逻辑分组展示相关信息
+- **图标标识**：使用图标增强信息识别
+- **链接处理**：网站和邮箱的可点击链接
+
+### 3. 项目关联
+- **项目列表**：显示最近的5个项目
+- **项目状态**：每个项目的状态标识
+- **项目预算**：显示项目预算金额
+- **时间范围**：项目的开始和结束时间
+
+### 4. 交互功能
+- **外部链接**：网站链接在新标签页打开
+- **邮件链接**：点击邮箱地址打开邮件客户端
+- **模态框控制**：支持键盘和鼠标关闭
+
+## 视觉设计
+
+### 模态框布局
+```
+┌─────────────────────────────────────────────────────────────┐
+│ 🏢 ABC科技有限公司                                          │
+├─────────────────────────────────────────────────────────────┤
+│ ┌─ 基本信息 ─────────────────────────────────────────────┐   │
+│ │ 🏢 行业: [IT/软件]     📊 状态: [活跃]                 │   │
+│ │ 🌐 网站: www.abc.com   📅 创建时间: 2024年1月15日      │   │
+│ │                                                       │   │
+│ │ 备注:                                                 │   │
+│ │ 重要客户，长期合作伙伴，技术实力强...                  │   │
+│ └───────────────────────────────────────────────────────┘   │
+│                                                             │
+│ ┌─ 联系信息 ─────────────────────────────────────────────┐   │
+│ │ 联系人: 张经理                                         │   │
+│ │ 总经理                                                │   │
+│ │                                                       │   │
+│ │ 📞 联系电话: 010-88888888                             │   │
+│ │ 📧 邮箱: zhang@abc.com                                │   │
+│ │ 📍 地址: 北京市朝阳区建国门外大街1号                   │   │
+│ └───────────────────────────────────────────────────────┘   │
+│                                                             │
+│ ┌─ 📄 项目信息 ──────────────────────────────────────────┐   │
+│ │ 👥 项目总数: 5    💰 总价值: ¥2,500,000               │   │
+│ │ 📅 最后更新: 2024年3月20日                            │   │
+│ │                                                       │   │
+│ │ 最近项目:                                             │   │
+│ │ ┌─────────────────────────────────────────────────┐   │   │
+│ │ │ 网站重构项目        [进行中]    ¥500,000        │   │   │
+│ │ │ 2024-01-15 - 进行中                            │   │   │
+│ │ └─────────────────────────────────────────────────┘   │   │
+│ │ ┌─────────────────────────────────────────────────┐   │   │
+│ │ │ 移动应用开发        [已完成]    ¥800,000        │   │   │
+│ │ │ 2023-10-01 - 2024-01-10                        │   │   │
+│ │ └─────────────────────────────────────────────────┘   │   │
+│ └───────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 信息卡片设计
+- **卡片头部**：16px内边距，浅灰色背景
+- **卡片内容**：20px内边距，白色背景
+- **信息项**：图标 + 标签 + 值的结构
+- **状态徽章**：圆角徽章，不同状态不同颜色
+
+### 颜色方案
+- **背景色**：#ffffff (白色)
+- **卡片背景**：#f9fafb (浅灰色头部)
+- **边框色**：#e5e7eb (浅灰色)
+- **文本色**：#111827 (深灰色)
+- **标签色**：#6b7280 (中灰色)
+- **链接色**：#3b82f6 (蓝色)
+- **图标色**：#6b7280 (中灰色)
+
+### 状态颜色配置
+- **活跃**：绿色背景 (#d1fae5)，深绿文字 (#166534)
+- **未活跃**：灰色背景 (#f3f4f6)，深灰文字 (#374151)
+- **潜在客户**：黄色背景 (#fef3c7)，深黄文字 (#92400e)
+- **已流失**：红色背景 (#fee2e2)，深红文字 (#991b1b)
+
+## 交互设计
+
+### 用户操作流程
+1. **打开模态框**
+   - 传入客户数据
+   - 显示模态框动画
+   - 渲染客户信息
+
+2. **浏览信息**
+   - 查看基本信息卡片
+   - 查看联系信息卡片
+   - 查看项目统计信息
+
+3. **交互操作**
+   - 点击网站链接跳转
+   - 点击邮箱地址发送邮件
+   - 查看项目列表详情
+
+4. **关闭模态框**
+   - 点击遮罩层或ESC键
+   - 模态框消失动画
+
+### 数据映射逻辑
+```typescript
+// 基本信息映射
+const basicInfo = {
+  name: client.name,
+  industry: client.industry || '其他',
+  status: client.status,
+  website: client.website,
+  createdAt: new Date(client.createdAt).toLocaleDateString('zh-CN'),
+  description: client.description
+};
+
+// 联系信息映射
+const contactInfo = {
+  contactPerson: client.contactPerson,
+  position: client.position,
+  phone: client.phone,
+  email: client.email,
+  address: client.address
+};
+```
+
+## 响应式设计
+
+### 移动端适配 (< 640px)
+- 信息网格改为单列布局
+- 项目卡片改为垂直布局
+- 减少内边距节省空间
+- 优化触摸目标大小
+
+### 平板端适配 (768px - 1024px)
+- 信息网格保持双列布局
+- 适当调整模态框宽度
+- 优化卡片间距
+
+### 桌面端优化 (> 1024px)
+- 最佳的信息展示布局
+- 充分利用屏幕空间
+- 优化阅读体验
+
+## 无障碍设计
+
+### 键盘导航
+- Tab 键在可交互元素间导航
+- Enter 键激活链接
+- Escape 键关闭模态框
+- 焦点管理和陷阱
+
+### 屏幕阅读器支持
+- 语义化的信息结构
+- 适当的标签和描述
+- 状态徽章的语音播报
+- 链接的明确标识
+
+### 视觉辅助
+- 高对比度的颜色搭配
+- 清晰的信息层次
+- 足够大的文字尺寸
+- 明显的链接标识
+
+## 性能优化
+
+### 组件优化
+- 客户数据的记忆化
+- 状态徽章渲染的记忆化
+- 日期格式化的记忆化
+- 避免不必要的重新渲染
+
+### 数据处理优化
+- 条件渲染减少DOM节点
+- 合理的状态更新策略
+- 图标组件的复用
+
+## 错误处理
+
+### 数据缺失处理
+- **客户不存在**：显示错误信息或关闭模态框
+- **字段缺失**：显示默认值或占位符
+- **无效链接**：禁用链接或显示警告
+
+### 显示降级
+```typescript
+const fallbackValues = {
+  industry: '其他',
+  contactPerson: '-',
+  phone: '-',
+  email: '-',
+  address: '-',
+  description: '无备注信息'
+};
+```
+
+### 链接验证
+- 网站URL格式验证
+- 邮箱地址格式验证
+- 无效链接的禁用处理
+
+## 技术实现
+
+### 状态徽章渲染
+```typescript
+const getStatusBadge = (status: string) => {
+  const config = statusConfig[status];
+  return (
+    <Badge className={config.className}>
+      {config.label}
+    </Badge>
+  );
+};
+```
+
+### 项目列表渲染
+```typescript
+{client.projects?.slice(0, 5).map((project) => (
+  <div key={project.id} className="project-item">
+    <div>
+      <p className="project-name">{project.name}</p>
+      <p className="project-date">
+        {formatDateRange(project.startDate, project.endDate)}
+      </p>
+    </div>
+    <div className="project-meta">
+      {getStatusBadge(project.status)}
+      {project.budget && (
+        <span className="project-budget">
+          ¥{project.budget.toLocaleString()}
+        </span>
+      )}
+    </div>
+  </div>
+))}
+```
+
+## 组件属性
+
+### Props接口
+```typescript
+interface ViewClientModalProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  client: ClientWithProjects | null;
+}
+```
+
+### 扩展客户接口
+```typescript
+interface ClientWithProjects extends Client {
+  _count: {
+    projects: number;
+  };
+  projects?: Array<{
+    id: string;
+    name: string;
+    status: string;
+    budget?: number;
+    startDate: Date;
+    endDate?: Date;
+  }>;
+  totalProjectValue?: number;
+}
+```
+
+## 扩展性设计
+
+### 信息扩展
+- 支持自定义字段显示
+- 支持更多联系方式
+- 支持客户标签系统
+- 支持客户评级显示
+
+### 功能扩展
+- 支持客户编辑快捷入口
+- 支持客户操作历史
+- 支持相关文档附件
+- 支持客户关系图谱
+
+### 交互扩展
+- 支持信息复制功能
+- 支持客户信息导出
+- 支持快速操作菜单
+- 支持客户比较功能
+
+这个查看客户模态框组件提供了完整的客户信息展示功能，具有良好的信息组织、视觉设计和用户体验，适合在CRM和客户管理系统中使用。

@@ -1,0 +1,433 @@
+{
+  "name": "邮箱验证通知",
+  "description": "邮箱验证通知组件，显示验证邮件发送状态并支持重新发送",
+  "type": "component",
+  "framework": "React",
+  "styling": "Tailwind CSS",
+  "layout": {
+    "container": {
+      "width": "100%",
+      "maxWidth": "500px",
+      "margin": "0 auto",
+      "padding": "16px"
+    },
+    "alert": {
+      "width": "100%",
+      "padding": "16px",
+      "borderRadius": "8px",
+      "border": "1px solid rgba(59, 130, 246, 0.2)",
+      "backgroundColor": "rgba(59, 130, 246, 0.1)"
+    }
+  },
+  "components": {
+    "alertHeader": {
+      "display": "flex",
+      "alignItems": "center",
+      "gap": "8px",
+      "marginBottom": "12px"
+    },
+    "icon": {
+      "width": "16px",
+      "height": "16px",
+      "color": "#60a5fa",
+      "flexShrink": "0"
+    },
+    "title": {
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "color": "#60a5fa",
+      "margin": "0"
+    },
+    "content": {
+      "color": "rgba(255, 255, 255, 0.7)",
+      "lineHeight": "1.5"
+    },
+    "emailAddress": {
+      "fontWeight": "600",
+      "color": "#ffffff"
+    },
+    "description": {
+      "fontSize": "14px",
+      "marginBottom": "12px"
+    },
+    "expiryNotice": {
+      "fontSize": "14px",
+      "marginBottom": "16px"
+    },
+    "successMessage": {
+      "display": "flex",
+      "alignItems": "center",
+      "gap": "8px",
+      "color": "#34d399",
+      "fontSize": "14px",
+      "marginBottom": "16px"
+    },
+    "successIcon": {
+      "width": "16px",
+      "height": "16px",
+      "flexShrink": "0"
+    },
+    "actionArea": {
+      "display": "flex",
+      "gap": "8px",
+      "paddingTop": "8px"
+    },
+    "resendButton": {
+      "padding": "8px 16px",
+      "fontSize": "14px",
+      "backgroundColor": "rgba(255, 255, 255, 0.1)",
+      "border": "1px solid rgba(255, 255, 255, 0.2)",
+      "borderRadius": "6px",
+      "color": "#ffffff",
+      "cursor": "pointer",
+      "display": "flex",
+      "alignItems": "center",
+      "gap": "8px",
+      "transition": "all 0.2s ease"
+    },
+    "loadingSpinner": {
+      "width": "12px",
+      "height": "12px",
+      "animation": "spin 1s linear infinite"
+    }
+  },
+  "states": {
+    "default": {
+      "resendButton": {
+        "backgroundColor": "rgba(255, 255, 255, 0.1)",
+        "border": "1px solid rgba(255, 255, 255, 0.2)",
+        "color": "#ffffff",
+        "cursor": "pointer"
+      },
+      "successMessage": {
+        "display": "none"
+      }
+    },
+    "sending": {
+      "resendButton": {
+        "backgroundColor": "rgba(255, 255, 255, 0.05)",
+        "border": "1px solid rgba(255, 255, 255, 0.1)",
+        "color": "rgba(255, 255, 255, 0.5)",
+        "cursor": "not-allowed"
+      },
+      "loadingSpinner": {
+        "display": "inline-block"
+      }
+    },
+    "sent": {
+      "resendButton": {
+        "backgroundColor": "rgba(34, 197, 94, 0.1)",
+        "border": "1px solid rgba(34, 197, 94, 0.2)",
+        "color": "#22c55e",
+        "cursor": "not-allowed"
+      },
+      "successMessage": {
+        "display": "flex"
+      }
+    },
+    "hover": {
+      "resendButton": {
+        "backgroundColor": "rgba(255, 255, 255, 0.2)"
+      }
+    }
+  },
+  "interactions": {
+    "resendEmail": {
+      "trigger": "click",
+      "target": "resendButton",
+      "conditions": ["!sending", "!sent"],
+      "actions": [
+        "setState: sending",
+        "apiCall: /api/auth/resend-verification",
+        "setState: sent",
+        "setTimeout: resetSentState (5000ms)"
+      ],
+      "feedback": "loading spinner + button state change"
+    },
+    "buttonHover": {
+      "trigger": "mouseenter",
+      "target": "resendButton",
+      "action": "setState: hover"
+    },
+    "buttonLeave": {
+      "trigger": "mouseleave",
+      "target": "resendButton",
+      "action": "removeState: hover"
+    }
+  },
+  "responsive": {
+    "mobile": {
+      "breakpoint": "640px",
+      "changes": {
+        "container.padding": "12px",
+        "alert.padding": "12px",
+        "title.fontSize": "15px",
+        "description.fontSize": "13px",
+        "resendButton.padding": "6px 12px",
+        "resendButton.fontSize": "13px"
+      }
+    }
+  },
+  "accessibility": {
+    "keyboardNavigation": true,
+    "screenReader": {
+      "alert": "邮箱验证通知",
+      "resendButton": "重新发送验证邮件",
+      "successMessage": "验证邮件已重新发送",
+      "loadingState": "正在发送验证邮件"
+    },
+    "focusManagement": {
+      "resendButton": "visible focus ring"
+    },
+    "announcements": {
+      "emailSent": "验证邮件已发送",
+      "emailResent": "验证邮件已重新发送"
+    }
+  },
+  "performance": {
+    "lazyLoading": false,
+    "memoization": ["email address", "button states"],
+    "bundleSize": "~8KB gzipped"
+  },
+  "errorHandling": {
+    "networkError": {
+      "display": "button remains enabled",
+      "message": "发送失败，请重试",
+      "retry": true
+    },
+    "apiError": {
+      "display": "button remains enabled",
+      "message": "发送失败，请稍后重试",
+      "retry": true
+    },
+    "rateLimitError": {
+      "display": "disable button temporarily",
+      "message": "发送过于频繁，请稍后重试",
+      "retry": false
+    }
+  },
+  "animations": {
+    "successAppear": {
+      "type": "fadeIn",
+      "duration": "300ms",
+      "easing": "ease-out"
+    },
+    "buttonStateChange": {
+      "type": "colorTransition",
+      "duration": "200ms",
+      "easing": "ease-in-out"
+    },
+    "loadingSpinner": {
+      "type": "rotate",
+      "duration": "1s",
+      "iteration": "infinite",
+      "timing": "linear"
+    }
+  },
+  "theming": {
+    "colorScheme": "blue",
+    "variants": {
+      "blue": {
+        "background": "rgba(59, 130, 246, 0.1)",
+        "border": "rgba(59, 130, 246, 0.2)",
+        "icon": "#60a5fa",
+        "title": "#60a5fa"
+      },
+      "green": {
+        "background": "rgba(34, 197, 94, 0.1)",
+        "border": "rgba(34, 197, 94, 0.2)",
+        "icon": "#22c55e",
+        "title": "#22c55e"
+      },
+      "orange": {
+        "background": "rgba(249, 115, 22, 0.1)",
+        "border": "rgba(249, 115, 22, 0.2)",
+        "icon": "#f97316",
+        "title": "#f97316"
+      }
+    }
+  }
+}
+
+---
+
+# 邮箱验证通知组件设计文档
+
+## 概述
+邮箱验证通知组件用于在用户注册或更改邮箱后显示验证邮件发送状态，并提供重新发送验证邮件的功能。
+
+## 核心功能
+
+### 1. 验证状态显示
+- **邮件发送通知**：清晰显示验证邮件已发送到指定邮箱
+- **邮箱地址展示**：高亮显示目标邮箱地址
+- **过期时间提醒**：提示验证链接的有效期（24小时）
+
+### 2. 重新发送功能
+- **重发按钮**：支持用户主动重新发送验证邮件
+- **防重复发送**：发送后短时间内禁用按钮
+- **发送状态反馈**：显示发送中和发送成功状态
+
+### 3. 用户体验优化
+- **即时反馈**：操作后立即显示状态变化
+- **自动恢复**：成功状态5秒后自动恢复到默认状态
+- **错误处理**：网络错误时保持按钮可用
+
+## 视觉设计
+
+### 布局结构
+```
+┌─────────────────────────────────────────┐
+│ 📧 验证您的邮箱                          │
+│                                         │
+│ 我们已向 user@example.com 发送了一封     │
+│ 验证邮件。                               │
+│                                         │
+│ 请点击邮件中的链接来验证您的邮箱地址。    │
+│ 验证链接将在 24 小时后过期。             │
+│                                         │
+│ ✅ 验证邮件已重新发送！                  │
+│                                         │
+│ [重新发送]                              │
+└─────────────────────────────────────────┘
+```
+
+### 颜色方案
+- **背景色**：rgba(59, 130, 246, 0.1) (浅蓝色)
+- **边框色**：rgba(59, 130, 246, 0.2) (蓝色透明)
+- **图标色**：#60a5fa (亮蓝色)
+- **标题色**：#60a5fa (亮蓝色)
+- **内容色**：rgba(255, 255, 255, 0.7) (半透明白色)
+- **邮箱色**：#ffffff (纯白色)
+- **成功色**：#34d399 (绿色)
+
+### 图标系统
+- **邮件图标**：Mail (16px)
+- **成功图标**：CheckCircle (16px)
+- **加载图标**：Loader2 (12px, 旋转动画)
+
+## 交互设计
+
+### 用户操作流程
+1. **初始显示**
+   - 显示验证邮件已发送的通知
+   - 展示目标邮箱地址
+   - 提供重新发送按钮
+
+2. **重新发送邮件**
+   - 点击"重新发送"按钮
+   - 按钮显示加载状态
+   - 发送成功后显示确认消息
+   - 5秒后恢复到默认状态
+
+3. **错误处理**
+   - 网络错误时保持按钮可用
+   - 显示相应的错误提示
+   - 允许用户重试操作
+
+### 按钮状态管理
+- **默认状态**：可点击，显示"重新发送"
+- **发送中状态**：禁用，显示加载图标和"发送中..."
+- **发送成功状态**：禁用，显示"已发送"，绿色样式
+- **悬停状态**：背景色加深，提供视觉反馈
+
+## 响应式设计
+
+### 移动端适配 (< 640px)
+- 减少内边距以节省空间
+- 调整字体大小保持可读性
+- 按钮尺寸适配触摸操作
+- 保持布局的紧凑性
+
+### 内容自适应
+- 邮箱地址过长时自动换行
+- 按钮文字根据状态动态调整
+- 成功消息的显示和隐藏动画
+
+## 无障碍设计
+
+### 键盘导航
+- 重新发送按钮支持 Tab 键导航
+- 明显的焦点指示器
+- 支持 Enter 和 Space 键激活
+
+### 屏幕阅读器支持
+- 语义化的 Alert 组件结构
+- 适当的 ARIA 标签和描述
+- 状态变化的语音播报
+
+### 视觉辅助
+- 高对比度的颜色搭配
+- 清晰的图标和文字
+- 足够大的点击目标
+
+## 性能优化
+
+### 组件优化
+- 邮箱地址和按钮状态的记忆化
+- 避免不必要的重新渲染
+- 合理的状态更新策略
+
+### 动画优化
+- 使用 CSS 变换而非布局变化
+- 合理的动画时长和缓动函数
+- 减少重绘和重排
+
+## 错误处理
+
+### 网络错误
+- 保持按钮可用状态
+- 显示友好的错误提示
+- 允许用户重试操作
+
+### API 错误
+- 根据错误类型显示相应提示
+- 记录错误日志用于调试
+- 优雅降级处理
+
+### 频率限制
+- 检测发送频率限制
+- 临时禁用按钮
+- 显示等待时间提示
+
+## 技术实现
+
+### 状态管理
+```typescript
+interface EmailVerificationState {
+  resending: boolean;
+  resent: boolean;
+  error: string | null;
+}
+```
+
+### API 接口
+- `POST /api/auth/resend-verification` - 重新发送验证邮件
+
+### 组件属性
+```typescript
+interface EmailVerificationNoticeProps {
+  email: string;
+  onResend?: () => void;
+}
+```
+
+### 自动状态重置
+- 使用 setTimeout 在5秒后重置成功状态
+- 组件卸载时清理定时器
+- 防止内存泄漏
+
+## 主题定制
+
+### 颜色变体
+- **蓝色主题**：默认的信息提示样式
+- **绿色主题**：成功确认样式
+- **橙色主题**：警告提示样式
+
+### 自定义选项
+- 背景色和边框色
+- 图标和文字颜色
+- 按钮样式和状态色
+- 动画时长和效果
+
+这个邮箱验证通知组件提供了完整的邮件验证流程支持，具有良好的用户体验和无障碍访问性，适合在各种注册和邮箱验证场景中使用。

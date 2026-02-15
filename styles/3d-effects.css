@@ -1,0 +1,472 @@
+/**
+ * 3D Effects CSS Utilities
+ * 
+ * This file provides utility classes for creating 3D visual effects including:
+ * - 3D transforms (perspective, rotateX, rotateY, translateZ)
+ * - Depth shadows (shallow, medium, deep)
+ * - GPU acceleration optimizations
+ * 
+ * Requirements: 1.1, 1.3, 4.5
+ */
+
+/* ============================================
+   CSS Custom Properties (Variables)
+   ============================================ */
+
+:root {
+  /* Perspective values for 3D space */
+  --perspective-near: 500px;
+  --perspective-medium: 1000px;
+  --perspective-far: 1500px;
+  
+  /* Rotation angles */
+  --rotate-subtle: 2deg;
+  --rotate-medium: 5deg;
+  --rotate-strong: 10deg;
+  
+  /* Translation Z values for depth */
+  --translate-z-shallow: 10px;
+  --translate-z-medium: 30px;
+  --translate-z-deep: 50px;
+  
+  /* Shadow colors for depth effect */
+  --shadow-color-light: rgba(0, 0, 0, 0.1);
+  --shadow-color-medium: rgba(0, 0, 0, 0.15);
+  --shadow-color-dark: rgba(0, 0, 0, 0.25);
+}
+
+/* ============================================
+   3D Transform Utilities
+   ============================================ */
+
+/* Perspective containers */
+.perspective-near {
+  perspective: var(--perspective-near);
+}
+
+.perspective-medium {
+  perspective: var(--perspective-medium);
+}
+
+.perspective-far {
+  perspective: var(--perspective-far);
+}
+
+/* Preserve 3D for nested elements */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Rotation utilities */
+.rotate-x-subtle {
+  transform: rotateX(var(--rotate-subtle));
+}
+
+.rotate-x-medium {
+  transform: rotateX(var(--rotate-medium));
+}
+
+.rotate-x-strong {
+  transform: rotateX(var(--rotate-strong));
+}
+
+.rotate-y-subtle {
+  transform: rotateY(var(--rotate-subtle));
+}
+
+.rotate-y-medium {
+  transform: rotateY(var(--rotate-medium));
+}
+
+.rotate-y-strong {
+  transform: rotateY(var(--rotate-strong));
+}
+
+/* Translation Z utilities */
+.translate-z-shallow {
+  transform: translateZ(var(--translate-z-shallow));
+}
+
+.translate-z-medium {
+  transform: translateZ(var(--translate-z-medium));
+}
+
+.translate-z-deep {
+  transform: translateZ(var(--translate-z-deep));
+}
+
+/* ============================================
+   Depth Shadow Utilities
+   ============================================ */
+
+/* Shallow depth - subtle 3D effect with 2 shadow layers */
+.shadow-depth-shallow {
+  box-shadow: 
+    0 2px 4px var(--shadow-color-light),
+    0 4px 8px var(--shadow-color-light);
+}
+
+/* Medium depth - noticeable 3D effect with 3 shadow layers */
+.shadow-depth-medium {
+  box-shadow: 
+    0 4px 6px var(--shadow-color-light),
+    0 8px 12px var(--shadow-color-medium),
+    0 12px 20px var(--shadow-color-light);
+}
+
+/* Deep depth - strong 3D effect with 4 shadow layers */
+.shadow-depth-deep {
+  box-shadow: 
+    0 6px 10px var(--shadow-color-medium),
+    0 12px 20px var(--shadow-color-medium),
+    0 20px 30px var(--shadow-color-light),
+    0 30px 50px var(--shadow-color-dark);
+}
+
+/* Hover state shadows - enhanced depth on interaction */
+.shadow-depth-shallow-hover:hover {
+  box-shadow: 
+    0 4px 8px var(--shadow-color-medium),
+    0 8px 16px var(--shadow-color-light);
+}
+
+.shadow-depth-medium-hover:hover {
+  box-shadow: 
+    0 8px 12px var(--shadow-color-medium),
+    0 16px 24px var(--shadow-color-medium),
+    0 24px 40px var(--shadow-color-light);
+}
+
+.shadow-depth-deep-hover:hover {
+  box-shadow: 
+    0 10px 20px var(--shadow-color-medium),
+    0 20px 40px var(--shadow-color-medium),
+    0 30px 50px var(--shadow-color-dark),
+    0 40px 70px var(--shadow-color-dark);
+}
+
+/* ============================================
+   GPU Acceleration Optimizations
+   ============================================ */
+
+/* Enable GPU acceleration for transforms */
+.gpu-accelerated {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* GPU acceleration for opacity changes */
+.gpu-accelerated-opacity {
+  will-change: opacity;
+}
+
+/* GPU acceleration for combined transform and opacity */
+.gpu-accelerated-full {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Remove will-change after animation completes (use with JS) */
+.gpu-accelerated-auto {
+  will-change: auto;
+}
+
+/* ============================================
+   Combined 3D Card Effects
+   ============================================ */
+
+/* Base 3D card with perspective and preserve-3d */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* 3D card hover effect - light intensity */
+.card-3d-light:hover {
+  transform: translateY(-5px) scale(1.01);
+}
+
+/* 3D card hover effect - medium intensity */
+.card-3d-medium:hover {
+  transform: translateY(-10px) scale(1.02) rotateX(2deg);
+}
+
+/* 3D card hover effect - heavy intensity */
+.card-3d-heavy:hover {
+  transform: translateY(-15px) scale(1.03) rotateX(5deg);
+}
+
+/* ============================================
+   Smooth Transitions
+   ============================================ */
+
+/* Standard transition for 3D effects */
+.transition-3d {
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+/* Slow transition for dramatic effects */
+.transition-3d-slow {
+  transition: transform 0.5s ease-out, box-shadow 0.5s ease-out;
+}
+
+/* Fast transition for snappy interactions */
+.transition-3d-fast {
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+/* ============================================
+   Mobile Optimizations
+   ============================================ */
+
+/* Simplified 3D effects for mobile devices */
+@media (max-width: 640px) {
+  /* Reduce perspective on mobile */
+  .perspective-near,
+  .perspective-medium,
+  .perspective-far {
+    perspective: var(--perspective-near);
+  }
+  
+  /* Simplify hover effects on mobile (touch devices) */
+  .card-3d-medium:hover,
+  .card-3d-heavy:hover {
+    transform: translateY(-5px) scale(1.01);
+  }
+  
+  /* Reduce shadow complexity on mobile */
+  .shadow-depth-deep {
+    box-shadow: 
+      0 4px 8px var(--shadow-color-medium),
+      0 8px 16px var(--shadow-color-light);
+  }
+}
+
+/* ============================================
+   Accessibility - Reduced Motion
+   ============================================ */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .card-3d,
+  .transition-3d,
+  .transition-3d-slow,
+  .transition-3d-fast {
+    transition: none;
+  }
+  
+  .card-3d-light:hover,
+  .card-3d-medium:hover,
+  .card-3d-heavy:hover {
+    transform: none;
+  }
+  
+  .gpu-accelerated,
+  .gpu-accelerated-full {
+    will-change: auto;
+  }
+}
+
+/* ============================================
+   RTL (Right-to-Left) Layout Support
+   ============================================ */
+
+/* Invert Y rotation for RTL layouts */
+[dir="rtl"] .rotate-y-subtle {
+  transform: rotateY(calc(-1 * var(--rotate-subtle)));
+}
+
+[dir="rtl"] .rotate-y-medium {
+  transform: rotateY(calc(-1 * var(--rotate-medium)));
+}
+
+[dir="rtl"] .rotate-y-strong {
+  transform: rotateY(calc(-1 * var(--rotate-strong)));
+}
+
+/* Adjust card hover effects for RTL */
+[dir="rtl"] .card-3d-medium:hover {
+  transform: translateY(-10px) scale(1.02) rotateX(2deg);
+}
+
+[dir="rtl"] .card-3d-heavy:hover {
+  transform: translateY(-15px) scale(1.03) rotateX(5deg);
+}
+
+[dir="rtl"] .card-3d-medium-depth:hover {
+  transform: translateY(-10px) scale(1.02) rotateX(2deg);
+}
+
+[dir="rtl"] .card-3d-deep-depth:hover {
+  transform: translateY(-15px) scale(1.03) rotateX(5deg);
+}
+
+/* Mirror horizontal transforms for RTL */
+[dir="rtl"] .translate-x-positive {
+  transform: translateX(-1rem);
+}
+
+[dir="rtl"] .translate-x-negative {
+  transform: translateX(1rem);
+}
+
+/* ============================================
+   Browser Fallbacks
+   ============================================ */
+
+/* Fallback for browsers without 3D transform support */
+@supports not (transform: perspective(1px)) {
+  .perspective-near,
+  .perspective-medium,
+  .perspective-far {
+    perspective: none;
+  }
+  
+  .card-3d-light:hover {
+    transform: translateY(-5px) scale(1.01);
+  }
+  
+  .card-3d-medium:hover {
+    transform: translateY(-10px) scale(1.02);
+  }
+  
+  .card-3d-heavy:hover {
+    transform: translateY(-15px) scale(1.03);
+  }
+}
+
+/* ============================================
+   Utility Combinations
+   ============================================ */
+
+/* Ready-to-use 3D card with shallow depth */
+.card-3d-shallow {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  will-change: transform;
+  backface-visibility: hidden;
+  box-shadow: 
+    0 2px 4px var(--shadow-color-light),
+    0 4px 8px var(--shadow-color-light);
+}
+
+.card-3d-shallow:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 
+    0 4px 8px var(--shadow-color-medium),
+    0 8px 16px var(--shadow-color-light);
+}
+
+/* Ready-to-use 3D card with medium depth */
+.card-3d-medium-depth {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  will-change: transform;
+  backface-visibility: hidden;
+  box-shadow: 
+    0 4px 6px var(--shadow-color-light),
+    0 8px 12px var(--shadow-color-medium),
+    0 12px 20px var(--shadow-color-light);
+}
+
+.card-3d-medium-depth:hover {
+  transform: translateY(-10px) scale(1.02) rotateX(2deg);
+  box-shadow: 
+    0 8px 12px var(--shadow-color-medium),
+    0 16px 24px var(--shadow-color-medium),
+    0 24px 40px var(--shadow-color-light);
+}
+
+/* Ready-to-use 3D card with deep depth */
+.card-3d-deep-depth {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  will-change: transform;
+  backface-visibility: hidden;
+  box-shadow: 
+    0 6px 10px var(--shadow-color-medium),
+    0 12px 20px var(--shadow-color-medium),
+    0 20px 30px var(--shadow-color-light),
+    0 30px 50px var(--shadow-color-dark);
+}
+
+.card-3d-deep-depth:hover {
+  transform: translateY(-15px) scale(1.03) rotateX(5deg);
+  box-shadow: 
+    0 10px 20px var(--shadow-color-medium),
+    0 20px 40px var(--shadow-color-medium),
+    0 30px 50px var(--shadow-color-dark),
+    0 40px 70px var(--shadow-color-dark);
+}
+
+/* ============================================
+   Form Submission Animations
+   ============================================ */
+
+/* Fade in animation for success/error messages */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+/* Scale in animation for icons */
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scale-in 0.6s ease-out forwards;
+}
+
+/* Check mark animation for success icon */
+@keyframes check-mark {
+  0% {
+    stroke-dasharray: 0, 100;
+  }
+  100% {
+    stroke-dasharray: 100, 0;
+  }
+}
+
+.animate-check-mark {
+  stroke-dasharray: 100;
+  animation: check-mark 0.6s ease-out 0.3s forwards;
+}
+
+/* Spin animation for loading spinner */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}

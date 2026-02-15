@@ -1,0 +1,717 @@
+{
+  "name": "用户登录表单",
+  "description": "面向普通用户的登录表单，支持邮箱登录、记住我功能和多种导航选项",
+  "type": "component",
+  "framework": "React",
+  "styling": "Tailwind CSS",
+  "layout": {
+    "container": {
+      "width": "100%",
+      "maxWidth": "400px",
+      "margin": "0 auto",
+      "padding": "24px"
+    },
+    "card": {
+      "width": "100%",
+      "borderRadius": "12px",
+      "border": "1px solid #e5e7eb",
+      "backgroundColor": "#ffffff",
+      "boxShadow": "0 4px 6px rgba(0, 0, 0, 0.05)"
+    }
+  },
+  "components": {
+    "header": {
+      "container": {
+        "padding": "32px 24px 0",
+        "textAlign": "center"
+      },
+      "title": {
+        "fontSize": "24px",
+        "fontWeight": "700",
+        "color": "#111827",
+        "marginBottom": "8px"
+      },
+      "description": {
+        "fontSize": "14px",
+        "color": "#6b7280",
+        "marginBottom": "32px"
+      }
+    },
+    "form": {
+      "container": {
+        "padding": "0 24px 32px",
+        "display": "flex",
+        "flexDirection": "column",
+        "gap": "16px"
+      },
+      "fieldGroup": {
+        "display": "flex",
+        "flexDirection": "column",
+        "gap": "8px"
+      },
+      "label": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "#374151"
+      },
+      "inputContainer": {
+        "position": "relative",
+        "display": "flex",
+        "alignItems": "center"
+      },
+      "input": {
+        "width": "100%",
+        "padding": "12px 16px 12px 40px",
+        "fontSize": "16px",
+        "border": "1px solid #d1d5db",
+        "borderRadius": "8px",
+        "backgroundColor": "#ffffff",
+        "color": "#111827",
+        "outline": "none",
+        "transition": "all 0.2s ease"
+      },
+      "inputIcon": {
+        "position": "absolute",
+        "left": "12px",
+        "width": "16px",
+        "height": "16px",
+        "color": "#9ca3af",
+        "pointerEvents": "none"
+      },
+      "passwordToggle": {
+        "position": "absolute",
+        "right": "12px",
+        "width": "16px",
+        "height": "16px",
+        "color": "#9ca3af",
+        "cursor": "pointer",
+        "transition": "color 0.2s ease"
+      },
+      "checkboxContainer": {
+        "display": "flex",
+        "alignItems": "center",
+        "gap": "8px",
+        "marginTop": "4px"
+      },
+      "checkbox": {
+        "width": "16px",
+        "height": "16px",
+        "borderRadius": "4px",
+        "border": "1px solid #d1d5db",
+        "cursor": "pointer"
+      },
+      "checkboxLabel": {
+        "fontSize": "14px",
+        "color": "#374151",
+        "cursor": "pointer"
+      },
+      "submitButton": {
+        "width": "100%",
+        "padding": "12px 24px",
+        "fontSize": "16px",
+        "fontWeight": "500",
+        "backgroundColor": "#3b82f6",
+        "color": "#ffffff",
+        "border": "none",
+        "borderRadius": "8px",
+        "cursor": "pointer",
+        "display": "flex",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "gap": "8px",
+        "transition": "all 0.2s ease",
+        "marginTop": "8px"
+      }
+    },
+    "navigation": {
+      "container": {
+        "textAlign": "center",
+        "display": "flex",
+        "flexDirection": "column",
+        "gap": "8px"
+      },
+      "linkGroup": {
+        "fontSize": "14px",
+        "color": "#6b7280"
+      },
+      "link": {
+        "color": "#3b82f6",
+        "textDecoration": "none",
+        "fontWeight": "500",
+        "cursor": "pointer",
+        "transition": "color 0.2s ease"
+      },
+      "adminLink": {
+        "fontSize": "14px",
+        "color": "#9ca3af",
+        "textDecoration": "none",
+        "cursor": "pointer",
+        "transition": "color 0.2s ease"
+      }
+    },
+    "errorAlert": {
+      "padding": "12px 16px",
+      "backgroundColor": "#fef2f2",
+      "border": "1px solid #fecaca",
+      "borderRadius": "8px",
+      "marginBottom": "16px"
+    },
+    "errorText": {
+      "fontSize": "14px",
+      "color": "#dc2626"
+    },
+    "loadingSpinner": {
+      "width": "16px",
+      "height": "16px",
+      "animation": "spin 1s linear infinite"
+    }
+  },
+  "states": {
+    "default": {
+      "input": {
+        "borderColor": "#d1d5db",
+        "backgroundColor": "#ffffff"
+      },
+      "submitButton": {
+        "backgroundColor": "#3b82f6",
+        "cursor": "pointer",
+        "disabled": false
+      },
+      "errorAlert": {
+        "display": "none"
+      },
+      "passwordToggle": {
+        "color": "#9ca3af"
+      }
+    },
+    "loading": {
+      "input": {
+        "backgroundColor": "#f9fafb",
+        "cursor": "not-allowed",
+        "disabled": true
+      },
+      "submitButton": {
+        "backgroundColor": "#9ca3af",
+        "cursor": "not-allowed",
+        "disabled": true
+      },
+      "checkbox": {
+        "disabled": true
+      },
+      "loadingSpinner": {
+        "display": "inline-block"
+      }
+    },
+    "error": {
+      "errorAlert": {
+        "display": "block"
+      },
+      "input": {
+        "borderColor": "#f87171"
+      }
+    },
+    "inputFocused": {
+      "input": {
+        "borderColor": "#3b82f6",
+        "boxShadow": "0 0 0 3px rgba(59, 130, 246, 0.1)"
+      },
+      "inputIcon": {
+        "color": "#3b82f6"
+      }
+    },
+    "passwordVisible": {
+      "passwordToggle": {
+        "color": "#3b82f6"
+      }
+    },
+    "checkboxChecked": {
+      "checkbox": {
+        "backgroundColor": "#3b82f6",
+        "borderColor": "#3b82f6"
+      }
+    },
+    "buttonHover": {
+      "submitButton": {
+        "backgroundColor": "#2563eb"
+      },
+      "link": {
+        "color": "#1d4ed8"
+      },
+      "adminLink": {
+        "color": "#6b7280"
+      },
+      "passwordToggle": {
+        "color": "#6b7280"
+      }
+    }
+  },
+  "interactions": {
+    "formSubmit": {
+      "trigger": "submit",
+      "target": "form",
+      "conditions": ["email.length > 0", "password.length > 0"],
+      "actions": [
+        "preventDefault",
+        "setState: loading",
+        "signIn: credentials",
+        "redirectToDashboard"
+      ],
+      "feedback": "loading spinner + disabled inputs"
+    },
+    "inputFocus": {
+      "trigger": "focus",
+      "target": "input",
+      "action": "setState: inputFocused",
+      "feedback": "border color change + icon color change"
+    },
+    "inputBlur": {
+      "trigger": "blur",
+      "target": "input",
+      "action": "removeState: inputFocused",
+      "feedback": "remove focus styles"
+    },
+    "passwordToggle": {
+      "trigger": "click",
+      "target": "passwordToggle",
+      "action": "togglePasswordVisibility",
+      "feedback": "input type change + icon change"
+    },
+    "checkboxToggle": {
+      "trigger": "click",
+      "target": "checkbox",
+      "action": "toggleRememberMe",
+      "feedback": "checkbox state change"
+    },
+    "registerNavigation": {
+      "trigger": "click",
+      "target": "registerLink",
+      "action": "navigate: /register",
+      "feedback": "page navigation"
+    },
+    "forgotPasswordNavigation": {
+      "trigger": "click",
+      "target": "forgotPasswordLink",
+      "action": "navigate: /forgot-password",
+      "feedback": "page navigation"
+    },
+    "adminLoginNavigation": {
+      "trigger": "click",
+      "target": "adminLink",
+      "action": "navigate: /admin-login",
+      "feedback": "page navigation"
+    },
+    "buttonHover": {
+      "trigger": "mouseenter",
+      "target": "interactiveElement",
+      "action": "setState: buttonHover"
+    },
+    "buttonLeave": {
+      "trigger": "mouseleave",
+      "target": "interactiveElement",
+      "action": "removeState: buttonHover"
+    }
+  },
+  "responsive": {
+    "mobile": {
+      "breakpoint": "640px",
+      "changes": {
+        "container.padding": "16px",
+        "header.padding": "24px 16px 0",
+        "form.padding": "0 16px 24px",
+        "input.fontSize": "16px",
+        "submitButton.padding": "14px 24px",
+        "navigation.gap": "12px"
+      }
+    },
+    "tablet": {
+      "breakpoint": "768px",
+      "changes": {
+        "container.maxWidth": "380px"
+      }
+    }
+  },
+  "accessibility": {
+    "keyboardNavigation": true,
+    "screenReader": {
+      "form": "用户登录表单",
+      "emailInput": "邮箱输入框",
+      "passwordInput": "密码输入框",
+      "passwordToggle": "显示/隐藏密码",
+      "rememberCheckbox": "记住我选项",
+      "submitButton": "登录按钮",
+      "errorAlert": "错误提示",
+      "registerLink": "注册链接",
+      "forgotPasswordLink": "忘记密码链接",
+      "adminLink": "管理员登录链接"
+    },
+    "focusManagement": {
+      "inputs": "visible focus indicators",
+      "buttons": "keyboard accessible",
+      "links": "proper focus order"
+    },
+    "announcements": {
+      "loginStart": "正在登录",
+      "loginSuccess": "登录成功",
+      "loginError": "登录失败",
+      "passwordToggle": "密码可见性已切换"
+    }
+  },
+  "performance": {
+    "lazyLoading": false,
+    "memoization": ["form validation", "navigation handlers"],
+    "bundleSize": "~11KB gzipped"
+  },
+  "errorHandling": {
+    "networkError": {
+      "display": "error alert",
+      "message": "登录失败，请稍后重试",
+      "retry": true
+    },
+    "credentialsError": {
+      "display": "error alert",
+      "message": "邮箱或密码错误",
+      "retry": true
+    },
+    "validationError": {
+      "display": "inline validation",
+      "message": "请填写必填字段",
+      "retry": true
+    },
+    "sessionError": {
+      "display": "error alert",
+      "message": "会话创建失败",
+      "retry": true
+    }
+  },
+  "animations": {
+    "errorAppear": {
+      "type": "slideDown + fadeIn",
+      "duration": "300ms",
+      "easing": "ease-out"
+    },
+    "inputFocus": {
+      "type": "borderTransition + shadowAppear",
+      "duration": "200ms",
+      "easing": "ease-out"
+    },
+    "passwordToggle": {
+      "type": "iconTransition",
+      "duration": "150ms",
+      "easing": "ease-in-out"
+    },
+    "checkboxToggle": {
+      "type": "backgroundTransition + scaleUp",
+      "duration": "150ms",
+      "easing": "ease-out"
+    },
+    "buttonHover": {
+      "type": "backgroundTransition",
+      "duration": "150ms",
+      "easing": "ease-out"
+    },
+    "loadingSpinner": {
+      "type": "rotate",
+      "duration": "1s",
+      "iteration": "infinite",
+      "timing": "linear"
+    }
+  },
+  "validation": {
+    "email": {
+      "required": true,
+      "type": "email",
+      "message": "请输入有效的邮箱地址"
+    },
+    "password": {
+      "required": true,
+      "minLength": 6,
+      "message": "密码至少6位字符"
+    }
+  },
+  "security": {
+    "authentication": {
+      "method": "NextAuth.js credentials provider",
+      "encryption": "bcrypt password hashing",
+      "session": "JWT tokens"
+    },
+    "rememberMe": {
+      "implementation": "extended session duration",
+      "security": "secure cookie settings",
+      "expiration": "configurable session length"
+    },
+    "dataProtection": {
+      "inputSanitization": "XSS prevention",
+      "csrfProtection": "CSRF tokens",
+      "rateLimiting": "login attempt limits"
+    }
+  },
+  "features": {
+    "passwordVisibility": {
+      "toggle": "eye/eye-off icon",
+      "states": ["hidden", "visible"],
+      "accessibility": "screen reader announcements"
+    },
+    "rememberMe": {
+      "functionality": "extended session duration",
+      "storage": "secure cookie",
+      "userControl": "optional checkbox"
+    },
+    "navigation": {
+      "register": "link to registration page",
+      "forgotPassword": "link to password reset",
+      "adminLogin": "link to admin login"
+    }
+  }
+}
+
+---
+
+# 用户登录表单组件设计文档
+
+## 概述
+用户登录表单是面向普通用户的登录界面，提供了完整的登录功能，包括邮箱密码验证、记住我选项、密码可见性切换和多种导航选项。
+
+## 核心功能
+
+### 1. 用户身份验证
+- **邮箱登录**：使用邮箱地址作为用户标识
+- **密码验证**：安全的密码验证机制
+- **会话管理**：基于 JWT 的用户会话
+- **自动跳转**：登录成功后跳转到用户仪表板
+
+### 2. 用户体验功能
+- **密码可见性切换**：点击眼睛图标显示/隐藏密码
+- **记住我功能**：延长会话有效期
+- **实时验证**：输入时的表单验证
+- **状态反馈**：清晰的加载和错误状态
+
+### 3. 导航和引导
+- **注册引导**：引导新用户注册账户
+- **密码重置**：忘记密码的重置链接
+- **管理员入口**：管理员登录的入口链接
+
+## 视觉设计
+
+### 布局结构
+```
+┌─────────────────────────────────────────┐
+│              用户登录                    │
+│           登录您的个人账户               │
+├─────────────────────────────────────────┤
+│ 邮箱                                    │
+│ [📧 user@example.com        ]          │
+├─────────────────────────────────────────┤
+│ 密码                                    │
+│ [🔒 ••••••••••••••••••••••••] 👁️      │
+├─────────────────────────────────────────┤
+│ ☑️ 记住我                               │
+├─────────────────────────────────────────┤
+│ ⚠️ 邮箱或密码错误                        │
+├─────────────────────────────────────────┤
+│              [登录]                     │
+├─────────────────────────────────────────┤
+│ 还没有账户？ 立即注册                    │
+│           忘记密码？                     │
+│          管理员登录                      │
+└─────────────────────────────────────────┘
+```
+
+### 颜色方案
+- **主色调**：#3b82f6 (蓝色)
+- **背景色**：#ffffff (白色)
+- **边框色**：#d1d5db (浅灰色)
+- **文本色**：#111827 (深灰色)
+- **次要文本**：#6b7280 (中灰色)
+- **图标色**：#9ca3af (中灰色)
+- **错误色**：#dc2626 (红色)
+- **链接色**：#3b82f6 (蓝色)
+
+### 图标系统
+- **邮箱图标**：Mail (16px)
+- **密码图标**：Lock (16px)
+- **显示密码**：Eye (16px)
+- **隐藏密码**：EyeOff (16px)
+- **加载图标**：Loader2 (16px, 旋转动画)
+
+## 交互设计
+
+### 用户操作流程
+1. **页面加载**
+   - 显示登录表单
+   - 焦点自动定位到邮箱输入框
+
+2. **填写表单**
+   - 输入邮箱地址
+   - 输入密码（支持可见性切换）
+   - 选择是否记住登录状态
+
+3. **提交登录**
+   - 点击登录按钮或按 Enter 键
+   - 显示加载状态
+   - 执行身份验证
+
+4. **登录成功**
+   - 跳转到用户仪表板
+   - 建立用户会话
+
+### 表单交互特性
+- **密码可见性**：点击眼睛图标切换密码显示/隐藏
+- **记住我**：勾选后延长会话有效期
+- **实时验证**：输入时即时显示验证结果
+- **焦点管理**：合理的焦点顺序和视觉反馈
+
+## 响应式设计
+
+### 移动端适配 (< 640px)
+- 调整容器内边距
+- 优化输入框和按钮尺寸
+- 增加导航链接间距
+- 确保触摸目标足够大
+
+### 平板端适配 (768px - 1024px)
+- 保持桌面端布局
+- 适当调整容器宽度
+- 优化触摸交互体验
+
+## 无障碍设计
+
+### 键盘导航
+- Tab 键在表单元素间导航
+- Enter 键提交表单
+- Space 键切换复选框
+- 明显的焦点指示器
+
+### 屏幕阅读器支持
+- 语义化的表单结构
+- 适当的标签关联
+- 密码可见性切换的语音播报
+- 错误信息的语音播报
+
+### 视觉辅助
+- 高对比度的颜色搭配
+- 清晰的状态指示
+- 足够大的点击目标
+
+## 性能优化
+
+### 组件优化
+- 表单验证逻辑的记忆化
+- 导航处理函数的记忆化
+- 避免不必要的重新渲染
+
+### 用户体验优化
+- 密码切换的流畅动画
+- 表单提交的防重复处理
+- 合理的加载状态显示
+
+## 错误处理
+
+### 认证错误
+- **凭据错误**：邮箱或密码不正确
+- **账户不存在**：邮箱未注册
+- **账户锁定**：多次失败后的临时锁定
+
+### 表单验证错误
+- **邮箱格式错误**：提示正确的邮箱格式
+- **密码长度不足**：提示密码最小长度要求
+- **必填字段为空**：提示填写必填字段
+
+### 网络错误
+- **连接超时**：网络连接问题
+- **服务器错误**：后端服务异常
+- **会话创建失败**：会话建立失败
+
+## 安全考虑
+
+### 密码安全
+- 使用 bcrypt 进行密码哈希
+- 密码输入默认隐藏
+- 支持密码可见性切换
+
+### 会话安全
+- JWT 令牌的安全生成和验证
+- 记住我功能的安全实现
+- 会话超时和自动登出
+
+### 输入安全
+- XSS 攻击防护
+- CSRF 令牌验证
+- 输入数据的清理和验证
+
+## 技术实现
+
+### 状态管理
+```typescript
+interface UserLoginState {
+  email: string;
+  password: string;
+  rememberMe: boolean;
+  showPassword: boolean;
+  loading: boolean;
+  error: string;
+}
+```
+
+### 表单处理
+```typescript
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setLoading(true);
+  
+  try {
+    const result = await signIn('credentials', {
+      identifier: email,
+      password,
+      redirect: false
+    });
+    
+    if (result?.ok) {
+      router.push('/dashboard');
+    } else {
+      setError('邮箱或密码错误');
+    }
+  } catch (error) {
+    setError('登录失败，请稍后重试');
+  } finally {
+    setLoading(false);
+  }
+};
+```
+
+### 密码可见性切换
+```typescript
+const togglePasswordVisibility = () => {
+  setShowPassword(!showPassword);
+};
+```
+
+## 功能特性
+
+### 记住我功能
+- **实现方式**：延长 JWT 令牌有效期
+- **存储方式**：安全的 HTTP-only Cookie
+- **用户控制**：可选的复选框控制
+
+### 导航系统
+- **注册引导**：引导新用户注册
+- **密码重置**：忘记密码的恢复流程
+- **管理员入口**：管理员登录的便捷入口
+
+### 表单验证
+- **实时验证**：输入时的即时反馈
+- **提交验证**：提交前的完整性检查
+- **错误显示**：友好的错误信息展示
+
+## 部署配置
+
+### 环境变量
+- `NEXTAUTH_SECRET`: JWT 签名密钥
+- `NEXTAUTH_URL`: 应用基础 URL
+- `DATABASE_URL`: 数据库连接字符串
+
+### 会话配置
+- 默认会话时长：30天
+- 记住我会话时长：90天
+- 会话刷新策略：滑动窗口
+
+这个用户登录表单组件提供了完整的用户身份验证功能，具有良好的用户体验、安全性和可访问性，适合在面向普通用户的应用中使用。

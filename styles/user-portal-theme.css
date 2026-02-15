@@ -1,0 +1,150 @@
+/* User Portal System Theme Application */
+
+/* Apply user portal theme to user portal routes */
+[data-route-type="user-portal"],
+[data-route-type="user-portal"][data-mode="light"] {
+  /* Primary Colors - Teal */
+  --color-primary-50: #F0FDFA;
+  --color-primary-100: #CCFBF1;
+  --color-primary-200: #99F6E4;
+  --color-primary-300: #5EEAD4;
+  --color-primary-400: #2DD4BF;
+  --color-primary-500: #14B8A6;
+  --color-primary-600: #0D9488;
+  --color-primary-700: #0F766E;
+  --color-primary-800: #115E59;
+  --color-primary-900: #134E4A;
+
+  /* Secondary Colors - Light Green */
+  --color-secondary-50: #F0FDF4;
+  --color-secondary-100: #DCFCE7;
+  --color-secondary-200: #BBEF63;
+  --color-secondary-300: #86EFAC;
+  --color-secondary-400: #4ADE80;
+  --color-secondary-500: #22C55E;
+  --color-secondary-600: #16A34A;
+  --color-secondary-700: #15803D;
+
+  /* Semantic Colors */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #06B6D4;
+
+  /* Text Colors */
+  --color-text-primary: #0F766E;
+  --color-text-secondary: #0D9488;
+  --color-text-tertiary: #5EEAD4;
+  --color-text-inverse: #FFFFFF;
+
+  /* Background Colors */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F0FDFA;
+  --color-bg-tertiary: #CCFBF1;
+
+  /* Border Colors */
+  --color-border-light: #CCFBF1;
+  --color-border-default: #99F6E4;
+  --color-border-dark: #5EEAD4;
+
+  /* Tailwind color overrides for user portal */
+  --background: #FFFFFF;
+  --foreground: #0F766E;
+  --primary: #14B8A6;
+  --primary-foreground: #FFFFFF;
+  --secondary: #22C55E;
+  --secondary-foreground: #FFFFFF;
+  --accent: #F0FDFA;
+  --accent-foreground: #0F766E;
+  --muted: #CCFBF1;
+  --muted-foreground: #0D9488;
+  --card: #FFFFFF;
+  --card-foreground: #0F766E;
+  --border: #99F6E4;
+  --input: #99F6E4;
+  --ring: #14B8A6;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --popover: #FFFFFF;
+  --popover-foreground: #0F766E;
+}
+
+/* Dark Mode for User Portal */
+[data-route-type="user-portal"][data-mode="dark"] {
+  /* Primary Colors - Inverted */
+  --color-primary-50: #134E4A;
+  --color-primary-100: #115E59;
+  --color-primary-200: #0F766E;
+  --color-primary-300: #0D9488;
+  --color-primary-400: #14B8A6;
+  --color-primary-500: #2DD4BF;
+  --color-primary-600: #5EEAD4;
+  --color-primary-700: #99F6E4;
+  --color-primary-800: #CCFBF1;
+  --color-primary-900: #F0FDFA;
+
+  /* Secondary Colors */
+  --color-secondary-50: #15803D;
+  --color-secondary-100: #16A34A;
+  --color-secondary-200: #22C55E;
+  --color-secondary-300: #4ADE80;
+  --color-secondary-400: #86EFAC;
+  --color-secondary-500: #BBEF63;
+  --color-secondary-600: #DCFCE7;
+  --color-secondary-700: #F0FDF4;
+
+  /* Text Colors */
+  --color-text-primary: #F0FDFA;
+  --color-text-secondary: #5EEAD4;
+  --color-text-tertiary: #2DD4BF;
+  --color-text-inverse: #0F766E;
+
+  /* Background Colors */
+  --color-bg-primary: #134E4A;
+  --color-bg-secondary: #115E59;
+  --color-bg-tertiary: #0F766E;
+
+  /* Border Colors */
+  --color-border-light: #0F766E;
+  --color-border-default: #0D9488;
+  --color-border-dark: #14B8A6;
+
+  /* Tailwind color overrides for user portal dark mode */
+  --background: #134E4A;
+  --foreground: #F0FDFA;
+  --primary: #2DD4BF;
+  --primary-foreground: #134E4A;
+  --secondary: #86EFAC;
+  --secondary-foreground: #134E4A;
+  --accent: #0F766E;
+  --accent-foreground: #F0FDFA;
+  --muted: #0F766E;
+  --muted-foreground: #5EEAD4;
+  --card: #115E59;
+  --card-foreground: #F0FDFA;
+  --border: #0D9488;
+  --input: #0D9488;
+  --ring: #2DD4BF;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --popover: #115E59;
+  --popover-foreground: #F0FDFA;
+}
+
+/* User Portal Specific Styles */
+[data-route-type="user-portal"] {
+  /* Gradient backgrounds */
+  --user-portal-gradient-from: #14B8A6;
+  --user-portal-gradient-to: #22C55E;
+  
+  /* Friendly and vibrant feel */
+  --user-portal-accent-light: #F0FDFA;
+  --user-portal-accent-dark: #0F766E;
+}
+
+/* Smooth transitions for theme switching */
+[data-route-type="user-portal"] * {
+  transition: background-color var(--transition-base), 
+              color var(--transition-base),
+              border-color var(--transition-base);
+}

@@ -1,0 +1,622 @@
+{
+  "title": "企業管理系統",
+  "sidebar": {
+    "dashboard": "儀表板",
+    "users": "使用者管理",
+    "support": "客服管理",
+    "homepage": "首頁編輯",
+    "content": "內容管理",
+    "editor": "內容編輯",
+    "marketplace": "商城管理",
+    "productImages": "產品圖片",
+    "templates": "範本管理",
+    "invoices": "發票管理",
+    "services": "服務管理",
+    "orders": "訂單管理",
+    "contracts": "合約管理",
+    "hr": "HR管理",
+    "subscriptions": "訂閱管理",
+    "employees": "員工管理",
+    "projects": "專案管理",
+    "clients": "客戶管理",
+    "finance": "財務管理",
+    "tasks": "任務管理",
+    "documents": "文件管理",
+    "packages": "壓縮包管理",
+    "analytics": "報表分析",
+    "apiManagement": "API管理",
+    "loginLogs": "登入日誌",
+    "securityEvents": "安全事件",
+    "securityScan": "安全掃描",
+    "settings": "系統設定",
+    "emailLogs": "郵件日誌",
+    "backups": "備份管理",
+    "investmentProjects": "投資專案"
+  },
+  "dashboard": {
+    "title": "儀表板",
+    "overview": "企業營運資料概覽",
+    "totalUsers": "員工總數",
+    "totalProjects": "專案總數",
+    "totalClients": "客戶數量",
+    "activeTasks": "活躍任務",
+    "totalRevenue": "總收入",
+    "totalExpenses": "總支出",
+    "netProfit": "淨利潤",
+    "profitMargin": "利潤率",
+    "recentProjects": "最近專案",
+    "upcomingTasks": "即將到期任務",
+    "comparedToLastMonth": "較上月",
+    "newThisMonth": "本月新增",
+    "pendingTasks": "待處理任務"
+  },
+  "users": {
+    "title": "使用者管理",
+    "description": "管理系統使用者和權限",
+    "addUser": "新增使用者",
+    "editUser": "編輯使用者",
+    "deleteUser": "刪除使用者",
+    "table": {
+      "username": "使用者名稱",
+      "email": "電子郵件",
+      "phone": "電話",
+      "role": "角色",
+      "userType": "使用者類型",
+      "status": "狀態",
+      "createdAt": "建立時間",
+      "lastLogin": "最後登入",
+      "actions": "操作"
+    },
+    "form": {
+      "firstName": "名字",
+      "lastName": "姓氏",
+      "email": "電子郵件",
+      "phone": "電話",
+      "password": "密碼",
+      "confirmPassword": "確認密碼",
+      "role": "角色",
+      "department": "部門",
+      "position": "職位"
+    }
+  },
+  "content": {
+    "title": "內容管理",
+    "description": "管理前台頁面展示的內容：團隊、部落格、作品集等",
+    "blog": "部落格文章",
+    "portfolio": "作品集",
+    "team": "團隊成員",
+    "addContent": "新增內容",
+    "editContent": "編輯內容",
+    "publishContent": "發布內容",
+    "unpublishContent": "取消發布",
+    "tabs": {
+      "team": "團隊成員",
+      "blog": "部落格文章",
+      "portfolio": "作品集"
+    },
+    "dragHint": "拖曳卡片可調整排序",
+    "dragFeaturedHint": "拖曳卡片可調整排序，點擊星標設為精選",
+    "addMember": "新增成員",
+    "addPost": "新增文章",
+    "addPortfolio": "新增作品",
+    "editMember": "編輯團隊成員",
+    "createMember": "新增團隊成員",
+    "editPost": "編輯部落格文章",
+    "createPost": "新增部落格文章",
+    "editPortfolioItem": "編輯作品",
+    "createPortfolioItem": "新增作品",
+    "noTeamMembers": "暫無團隊成員，點擊上方按鈕新增",
+    "noBlogPosts": "暫無部落格文章",
+    "noPortfolioItems": "暫無作品，點擊上方按鈕新增",
+    "filter": {
+      "all": "全部",
+      "published": "已發布",
+      "draft": "草稿",
+      "allCategories": "全部分類",
+      "status": "狀態",
+      "category": "分類"
+    },
+    "form": {
+      "nameCn": "姓名（中文）",
+      "nameEn": "姓名（英文）",
+      "roleCn": "職位（中文）",
+      "roleEn": "職位（英文）",
+      "avatarUrl": "頭像URL",
+      "bioCn": "簡介（中文）",
+      "bioEn": "簡介（英文）",
+      "enabled": "啟用",
+      "titleCn": "標題（中文）",
+      "titleEn": "標題（英文）",
+      "urlSlug": "URL Slug",
+      "coverImageUrl": "封面圖片URL",
+      "author": "作者",
+      "readTime": "閱讀時間",
+      "excerptCn": "摘要（中文）",
+      "excerptEn": "摘要（英文）",
+      "contentCn": "內容（中文）",
+      "publish": "發布",
+      "descriptionCn": "描述（中文）",
+      "descriptionEn": "描述（英文）",
+      "client": "客戶",
+      "tagsJson": "標籤（JSON格式）",
+      "projectLink": "專案連結",
+      "featured": "精選"
+    },
+    "messages": {
+      "loadFailed": "載入資料失敗",
+      "orderUpdated": "排序已更新",
+      "orderUpdateFailed": "更新排序失敗",
+      "memberCreated": "團隊成員已建立",
+      "memberUpdated": "團隊成員已更新",
+      "memberDeleted": "團隊成員已刪除",
+      "postCreated": "部落格文章已建立",
+      "postUpdated": "部落格文章已更新",
+      "postDeleted": "文章已刪除",
+      "postPublished": "文章已發布",
+      "postUnpublished": "文章已取消發布",
+      "portfolioCreated": "作品已建立",
+      "portfolioUpdated": "作品已更新",
+      "portfolioDeleted": "作品已刪除",
+      "setFeatured": "已設為精選",
+      "unsetFeatured": "已取消精選",
+      "saveFailed": "儲存失敗",
+      "deleteFailed": "刪除失敗",
+      "operationFailed": "操作失敗",
+      "confirmDeleteMember": "確定要刪除這個團隊成員嗎？",
+      "confirmDeletePost": "確定要刪除這篇文章嗎？",
+      "confirmDeletePortfolio": "確定要刪除這個作品嗎？"
+    }
+  },
+  "orders": {
+    "title": "訂單管理",
+    "description": "管理所有訂單",
+    "table": {
+      "orderNumber": "訂單編號",
+      "customer": "客戶",
+      "amount": "金額",
+      "status": "狀態",
+      "paymentStatus": "付款狀態",
+      "createdAt": "建立時間",
+      "actions": "操作"
+    },
+    "status": {
+      "pending": "待確認",
+      "confirmed": "已確認",
+      "processing": "處理中",
+      "shipped": "已發貨",
+      "delivered": "已完成",
+      "cancelled": "已取消"
+    },
+    "paymentStatus": {
+      "unpaid": "未付款",
+      "partial": "部分付款",
+      "paid": "已付款",
+      "refunded": "已退款"
+    }
+  },
+  "finance": {
+    "title": "財務管理",
+    "description": "管理收支記錄和發票開具",
+    "income": "收入",
+    "expense": "支出",
+    "transactions": "收支記錄",
+    "invoices": "發票管理",
+    "addTransaction": "收支記錄",
+    "addInvoice": "開具發票",
+    "stats": {
+      "totalIncome": "總收入",
+      "totalExpenses": "總支出",
+      "netIncome": "淨收入",
+      "outstanding": "待收款",
+      "paid": "已付款"
+    },
+    "search": {
+      "placeholder": "搜尋描述、類別、客戶或專案...",
+      "allTypes": "所有類型",
+      "allStatus": "所有狀態"
+    },
+    "type": {
+      "income": "收入",
+      "expense": "支出"
+    },
+    "status": {
+      "draft": "草稿",
+      "sent": "已發送",
+      "paid": "已付款",
+      "overdue": "逾期",
+      "cancelled": "已取消"
+    },
+    "table": {
+      "date": "日期",
+      "type": "類型",
+      "amount": "金額",
+      "category": "類別",
+      "description": "描述",
+      "client": "關聯客戶",
+      "project": "關聯專案",
+      "actions": "操作",
+      "invoiceNumber": "發票號",
+      "issueDate": "開票日期",
+      "dueDate": "到期日期",
+      "status": "狀態"
+    },
+    "empty": {
+      "noTransactions": "暫無收支記錄",
+      "noInvoices": "暫無發票記錄",
+      "noMatchingRecords": "沒有找到符合的記錄",
+      "noMatchingInvoices": "沒有找到符合的發票",
+      "adjustFilters": "請嘗試調整搜尋條件或篩選器",
+      "startRecording": "開始記錄您的第一筆收支吧",
+      "startInvoicing": "開始開具您的第一張發票吧",
+      "addRecord": "新增記錄"
+    },
+    "actions": {
+      "viewDetails": "查看詳情",
+      "export": "匯出",
+      "download": "下載"
+    }
+  },
+  "settings": {
+    "title": "系統設定",
+    "description": "管理系統配置和偏好設定",
+    "tabs": {
+      "company": "公司資訊",
+      "system": "系統設定",
+      "notifications": "通知設定",
+      "security": "安全設定",
+      "backup": "備份還原"
+    },
+    "company": {
+      "title": "公司基本資訊",
+      "description": "配置公司的基本資訊和聯絡方式",
+      "name": "公司名稱",
+      "email": "電子郵件地址",
+      "phone": "聯絡電話",
+      "website": "官方網站",
+      "address": "公司地址",
+      "companyDescription": "公司簡介"
+    },
+    "system": {
+      "title": "系統配置",
+      "description": "配置系統的基本參數和偏好設定",
+      "timezone": "時區",
+      "language": "語言",
+      "dateFormat": "日期格式",
+      "currency": "貨幣",
+      "currencies": {
+        "cny": "人民幣 (CNY)",
+        "usd": "美元 (USD)",
+        "eur": "歐元 (EUR)"
+      },
+      "languages": {
+        "zhCN": "简体中文",
+        "enUS": "English",
+        "jaJP": "日本語"
+      }
+    },
+    "notifications": {
+      "title": "通知配置",
+      "description": "配置系統通知的類型和發送方式",
+      "emailNotification": "郵件通知",
+      "emailNotificationDesc": "啟用郵件通知功能",
+      "smsNotification": "簡訊通知",
+      "smsNotificationDesc": "啟用簡訊通知功能",
+      "notificationTypes": "通知類型",
+      "projectUpdates": "專案更新通知",
+      "taskAssignments": "任務分配通知",
+      "financialReports": "財務報告通知",
+      "clientUpdates": "客戶更新通知"
+    },
+    "security": {
+      "title": "安全配置",
+      "description": "配置系統的安全策略和存取控制",
+      "twoFactor": "雙因素認證",
+      "twoFactorDesc": "啟用雙因素認證增強安全性",
+      "loginAlerts": "登入提醒",
+      "loginAlertsDesc": "使用者登入時發送通知",
+      "passwordPolicy": "密碼策略",
+      "minPasswordLength": "最小密碼長度",
+      "requireSpecialChar": "要求特殊字元",
+      "sessionTimeout": "工作階段逾時（分鐘）"
+    },
+    "backup": {
+      "title": "備份狀態",
+      "description": "查看系統備份的當前狀態和歷史記錄",
+      "settingsTitle": "備份設定",
+      "settingsDescription": "配置自動備份的參數和策略",
+      "lastBackup": "最後備份時間",
+      "nextBackup": "下次備份時間",
+      "backupSize": "備份大小",
+      "autoBackup": "自動備份",
+      "enabled": "已啟用",
+      "disabled": "已停用",
+      "operations": "備份操作",
+      "createBackup": "立即建立備份",
+      "restoreBackup": "還原備份",
+      "enableAutoBackup": "啟用自動備份",
+      "enableAutoBackupDesc": "定期自動建立系統備份",
+      "frequency": "備份頻率",
+      "daily": "每日",
+      "weekly": "每週",
+      "monthly": "每月",
+      "history": "備份歷史"
+    },
+    "actions": {
+      "save": "儲存設定",
+      "saving": "儲存中..."
+    },
+    "messages": {
+      "settingsSaved": "{section}設定已成功儲存",
+      "creatingBackup": "正在建立備份...",
+      "backupCreated": "備份建立成功",
+      "restoringBackup": "正在還原備份...",
+      "backupRestored": "備份還原成功"
+    }
+  },
+  "editor": {
+    "title": "內容編輯",
+    "description": "編輯前台頁面展示的服務內容",
+    "tabs": {
+      "serviceMarket": "服務市場",
+      "featuredWorks": "精選作品",
+      "servicePricing": "服務定價",
+      "serviceProjects": "服務專案"
+    },
+    "serviceMarket": {
+      "title": "服務市場專案",
+      "addItem": "新增專案",
+      "editItem": "編輯專案",
+      "table": {
+        "name": "名稱",
+        "category": "分類",
+        "price": "價格",
+        "status": "狀態",
+        "actions": "操作"
+      }
+    },
+    "featuredWorks": {
+      "title": "精選作品",
+      "addWork": "新增作品",
+      "editWork": "編輯作品",
+      "setFeatured": "設為精選",
+      "unsetFeatured": "取消精選",
+      "featured": "精選"
+    },
+    "servicePricing": {
+      "title": "服務定價",
+      "addPackage": "新增套餐",
+      "editPackage": "編輯套餐",
+      "hot": "熱門",
+      "table": {
+        "name": "名稱",
+        "price": "價格",
+        "discount": "折扣",
+        "recommended": "推薦",
+        "actions": "操作"
+      },
+      "form": {
+        "currentPrice": "現價",
+        "originalPrice": "原價",
+        "discountPercent": "折扣%",
+        "featuresCn": "功能列表（中文）",
+        "featuresEn": "功能列表（英文）",
+        "inputFeature": "輸入功能",
+        "add": "新增"
+      }
+    },
+    "serviceProjects": {
+      "title": "服務專案",
+      "addProject": "新增專案",
+      "editProject": "編輯專案",
+      "table": {
+        "order": "排序",
+        "name": "名稱",
+        "startingPrice": "起始價格",
+        "icon": "圖示",
+        "status": "狀態",
+        "actions": "操作"
+      }
+    },
+    "form": {
+      "nameCn": "中文名稱",
+      "nameEn": "英文名稱",
+      "descriptionCn": "中文描述",
+      "descriptionEn": "英文描述",
+      "titleCn": "中文標題",
+      "titleEn": "英文標題",
+      "urlSlug": "URL Slug",
+      "coverImageUrl": "封面圖片URL",
+      "author": "作者",
+      "teamName": "團隊名稱",
+      "category": "分類",
+      "icon": "圖示",
+      "price": "價格"
+    },
+    "messages": {
+      "loadFailed": "取得資料失敗",
+      "saveFailed": "儲存失敗",
+      "saveSuccess": "儲存成功",
+      "createSuccess": "建立成功",
+      "updateSuccess": "更新成功",
+      "deleteFailed": "刪除失敗",
+      "deleteSuccess": "刪除成功",
+      "updateFailed": "更新失敗",
+      "confirmDelete": "確定要刪除嗎？"
+    }
+  },
+  "loginLogs": {
+    "title": "登入日誌",
+    "description": "查看和管理使用者登入記錄",
+    "searchPlaceholder": "搜尋使用者電子郵件或使用者名稱...",
+    "allResults": "所有結果",
+    "allMethods": "所有方式",
+    "success": "成功",
+    "failed": "失敗",
+    "blocked": "已阻止",
+    "password": "密碼",
+    "oauth": "OAuth",
+    "2fa": "雙因素",
+    "identifier": "使用者識別",
+    "ipAddress": "IP位址",
+    "device": "裝置",
+    "method": "登入方式",
+    "result": "結果",
+    "time": "時間",
+    "noLogs": "暫無登入日誌",
+    "showing": "顯示 {from}-{to}，共 {total} 筆",
+    "exportSuccess": "匯出成功",
+    "exportFailed": "匯出失敗",
+    "fetchFailed": "取得日誌失敗"
+  },
+  "securityEvents": {
+    "title": "安全事件",
+    "description": "監控和管理安全相關事件",
+    "allSeverities": "所有級別",
+    "allStatus": "所有狀態",
+    "low": "低",
+    "medium": "中",
+    "high": "高",
+    "critical": "嚴重",
+    "resolved": "已解決",
+    "unresolved": "未解決",
+    "eventType": "事件類型",
+    "severity": "嚴重程度",
+    "description": "描述",
+    "ipAddress": "IP位址",
+    "status": "狀態",
+    "time": "時間",
+    "actions": "操作",
+    "noEvents": "暫無安全事件",
+    "showing": "顯示 {from}-{to}，共 {total} 筆",
+    "unlock": "解鎖",
+    "unlockTitle": "解鎖帳戶",
+    "unlockDescription": "確定要解鎖此帳戶嗎？",
+    "confirmUnlock": "確認解鎖",
+    "accountUnlocked": "帳戶已解鎖",
+    "unlockFailed": "解鎖失敗",
+    "fetchFailed": "取得事件失敗"
+  },
+  "editor": {
+    "title": "內容編輯",
+    "description": "編輯前台頁面展示的服務內容",
+    "tabs": {
+      "serviceMarket": "服務市場",
+      "featuredWorks": "精選作品",
+      "servicePricing": "服務定價",
+      "serviceProjects": "服務專案"
+    },
+    "serviceMarket": {
+      "title": "服務市場專案",
+      "addItem": "新增專案",
+      "editItem": "編輯專案",
+      "table": {
+        "name": "名稱",
+        "category": "分類",
+        "price": "價格",
+        "status": "狀態",
+        "actions": "操作"
+      }
+    },
+    "featuredWorks": {
+      "title": "精選作品",
+      "addWork": "新增作品",
+      "editWork": "編輯作品",
+      "setFeatured": "設為精選",
+      "unsetFeatured": "取消精選",
+      "featured": "精選"
+    },
+    "servicePricing": {
+      "title": "服務定價",
+      "addPackage": "新增套餐",
+      "editPackage": "編輯套餐",
+      "hot": "熱門",
+      "table": {
+        "name": "名稱",
+        "price": "價格",
+        "discount": "折扣",
+        "recommended": "推薦",
+        "actions": "操作"
+      },
+      "form": {
+        "currentPrice": "現價",
+        "originalPrice": "原價",
+        "discountPercent": "折扣%",
+        "featuresCn": "功能列表（中文）",
+        "featuresEn": "功能列表（英文）",
+        "inputFeature": "輸入功能",
+        "add": "新增"
+      }
+    },
+    "serviceProjects": {
+      "title": "服務專案",
+      "addProject": "新增專案",
+      "editProject": "編輯專案",
+      "table": {
+        "order": "排序",
+        "name": "名稱",
+        "startingPrice": "起始價格",
+        "icon": "圖示",
+        "status": "狀態",
+        "actions": "操作"
+      }
+    },
+    "form": {
+      "nameCn": "中文名稱",
+      "nameEn": "英文名稱",
+      "descriptionCn": "中文描述",
+      "descriptionEn": "英文描述",
+      "titleCn": "中文標題",
+      "titleEn": "英文標題",
+      "urlSlug": "URL Slug",
+      "coverImageUrl": "封面圖片URL",
+      "author": "作者",
+      "teamName": "團隊名稱",
+      "category": "分類",
+      "icon": "圖示",
+      "price": "價格"
+    },
+    "messages": {
+      "loadFailed": "取得資料失敗",
+      "saveFailed": "儲存失敗",
+      "saveSuccess": "儲存成功",
+      "createSuccess": "建立成功",
+      "updateSuccess": "更新成功",
+      "deleteFailed": "刪除失敗",
+      "deleteSuccess": "刪除成功",
+      "updateFailed": "更新失敗",
+      "confirmDelete": "確定要刪除嗎？"
+    },
+    "common": {
+      "cancel": "取消",
+      "save": "儲存"
+    }
+  },
+  "common": {
+    "previous": "上一頁",
+    "next": "下一頁",
+    "cancel": "取消"
+  },
+  "support": {
+    "title": "客服管理",
+    "description": "管理和回覆用戶工單",
+    "ticketList": "工單列表",
+    "selectTicket": "選擇一個工單",
+    "selectTicketDesc": "從左側列表選擇工單開始回覆",
+    "noTickets": "暫無工單",
+    "noMessages": "暫無訊息",
+    "searchPlaceholder": "搜尋工單或用戶...",
+    "allStatus": "全部狀態",
+    "statusOpen": "待處理",
+    "statusInProgress": "處理中",
+    "statusClosed": "已解決",
+    "priorityLow": "低",
+    "priorityMedium": "中",
+    "priorityHigh": "高",
+    "replyPlaceholder": "輸入回覆訊息...",
+    "sendHint": "按 Enter 發送，Shift+Enter 換行",
+    "messageSent": "訊息發送成功",
+    "messageFailed": "訊息發送失敗",
+    "statusUpdated": "狀態更新成功",
+    "statusUpdateFailed": "狀態更新失敗"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "common": {
+    "systemName": "企業管理システム",
+    "autoSendNotice": "このメールはシステムから自動送信されています。返信しないでください",
+    "copyright": "© 2024 企業管理システム. All rights reserved.",
+    "hello": "こんにちは",
+    "dear": "拝啓"
+  },
+  "passwordReset": {
+    "subject": "パスワードリセットのリクエスト - 企業管理システム",
+    "title": "パスワードリセットのリクエスト",
+    "greeting": "こんにちは、",
+    "message": "パスワードリセットのリクエストを受け付けました。下のボタンをクリックしてパスワードをリセットしてください：",
+    "buttonText": "パスワードをリセット",
+    "copyLinkText": "または以下のリンクをブラウザにコピーしてください：",
+    "importantTitle": "重要：",
+    "expireNotice": "このリンクは15分後に期限切れになります",
+    "ignoreNotice": "パスワードリセットをリクエストしていない場合は、このメールを無視してください",
+    "securityNotice": "アカウントのセキュリティのため、このリンクを他人と共有しないでください"
+  },
+  "emailVerification": {
+    "subject": "メールアドレスの確認 - 企業管理システム",
+    "title": "メールアドレスの確認",
+    "greeting": "こんにちは、",
+    "message": "企業管理システムへのご登録ありがとうございます！下のボタンをクリックしてメールアドレスを確認してください：",
+    "buttonText": "メールを確認",
+    "copyLinkText": "または以下のリンクをブラウザにコピーしてください：",
+    "tipTitle": "ヒント：",
+    "verifyBenefit": "メールを確認すると、システムのすべての機能をご利用いただけます",
+    "ignoreNotice": "アカウントを作成していない場合は、このメールを無視してください"
+  },
+  "welcome": {
+    "subject": "企業管理システムへようこそ！",
+    "title": "🎉 企業管理システムへようこそ！",
+    "greeting": "こんにちは {userName} さん、",
+    "message": "企業管理システムへようこそ！メンバーとしてお迎えできることを嬉しく思います。",
+    "featuresTitle": "以下の機能をご利用いただけます：",
+    "feature1": "📋 プロジェクトとタスク管理",
+    "feature2": "📄 ドキュメント管理とバージョン管理",
+    "feature3": "💬 メッセージセンターとチームコラボレーション",
+    "feature4": "📊 レポートとデータ分析",
+    "feature5": "🔄 ワークフローと承認プロセス",
+    "feature6": "⏱️ 時間追跡と勤怠管理",
+    "buttonText": "今すぐログイン",
+    "tipTitle": "ヒント：",
+    "tip1": "アカウント情報は安全に保管してください",
+    "tip2": "アカウントのセキュリティのため、定期的にパスワードを変更することをお勧めします",
+    "tip3": "ご質問がある場合は、システム管理者にお問い合わせください"
+  },
+  "taskAssignment": {
+    "subject": "新しいタスクが割り当てられました：{taskTitle}",
+    "title": "📋 新しいタスクの割り当て",
+    "greeting": "こんにちは {userName} さん、",
+    "message": "{assignerName} さんから新しいタスクが割り当てられました：",
+    "dueDateLabel": "期限：",
+    "dueDateNotSet": "未設定",
+    "buttonText": "タスクの詳細を見る",
+    "actionNotice": "タスクの詳細を確認して作業を開始してください。ご質問がある場合は、割り当て者にお問い合わせください。"
+  },
+  "approvalRequest": {
+    "subject": "承認待ち：{workflowName}",
+    "title": "✅ 承認リクエスト",
+    "greeting": "こんにちは {approverName} さん、",
+    "message": "{requesterName} さんから承認リクエストが提出されました：",
+    "buttonText": "今すぐ承認",
+    "actionNotice": "承認リクエストを速やかに処理してください。ご質問がある場合は、申請者にお問い合わせください。"
+  },
+  "invoice": {
+    "subject": "請求書 #{invoiceNumber} - 企業管理システム",
+    "title": "💰 請求書のお知らせ",
+    "greeting": "{clientName} 様、",
+    "message": "新しい請求書があります。詳細は以下の通りです：",
+    "invoiceLabel": "請求書",
+    "amountLabel": "金額：",
+    "dueDateLabel": "支払期限：",
+    "viewButton": "請求書を見る",
+    "downloadButton": "PDFをダウンロード",
+    "actionNotice": "支払期限までにお支払いください。ご質問がある場合は、お問い合わせください。"
+  },
+  "workflowNotification": {
+    "subjectCompleted": "ワークフロー完了：{workflowName}",
+    "subjectFailed": "ワークフロー却下：{workflowName}",
+    "subjectCancelled": "ワークフローキャンセル：{workflowName}",
+    "title": "ワークフローステータス更新",
+    "greeting": "こんにちは {userName} さん、",
+    "message": "ワークフローが更新されました：",
+    "statusCompleted": "完了",
+    "statusFailed": "却下",
+    "statusCancelled": "キャンセル",
+    "notesLabel": "備考：",
+    "buttonText": "詳細を見る"
+  },
+  "orderConfirmation": {
+    "subject": "注文確認 #{orderNumber}",
+    "title": "🛒 注文確認",
+    "greeting": "{customerName} 様、",
+    "message": "ご注文ありがとうございます！ご注文が確認されました。詳細は以下の通りです：",
+    "orderNumberLabel": "注文番号：",
+    "orderDateLabel": "注文日：",
+    "totalLabel": "注文合計：",
+    "itemsTitle": "注文商品：",
+    "shippingTitle": "配送情報：",
+    "buttonText": "注文詳細を見る",
+    "thankYou": "ご購入ありがとうございます！"
+  },
+  "paymentSuccess": {
+    "subject": "お支払い完了のお知らせ",
+    "title": "✅ お支払い完了",
+    "greeting": "{userName} 様、",
+    "message": "お支払いが正常に処理されました。",
+    "amountLabel": "支払金額：",
+    "transactionIdLabel": "取引ID：",
+    "dateLabel": "支払日時：",
+    "buttonText": "詳細を見る"
+  },
+  "paymentFailed": {
+    "subject": "お支払い失敗のお知らせ",
+    "title": "❌ お支払い失敗",
+    "greeting": "{userName} 様、",
+    "message": "申し訳ございませんが、お支払いを処理できませんでした。",
+    "reasonLabel": "理由：",
+    "buttonText": "再度お支払い",
+    "supportNotice": "サポートが必要な場合は、カスタマーサポートにお問い合わせください。"
+  }
+}

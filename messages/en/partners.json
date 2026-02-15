@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "Partners | Creative Digital Agency",
+    "description": "We collaborate with industry leaders to deliver exceptional solutions and drive innovation together."
+  },
+  "hero": {
+    "badge": "Our Partners",
+    "title": "Trusted Partners",
+    "subtitle": "We collaborate with industry leaders to deliver exceptional solutions and drive innovation together."
+  },
+  "stats": {
+    "globalPartners": "Global Partners",
+    "countries": "Countries",
+    "projectValue": "Project Value",
+    "successRate": "Success Rate"
+  },
+  "search": {
+    "placeholder": "Search partners...",
+    "allCategories": "All Categories"
+  },
+  "categories": {
+    "all": "All Categories",
+    "technology": "Technology",
+    "automotive": "Automotive",
+    "finance": "Finance",
+    "healthcare": "Healthcare"
+  },
+  "sections": {
+    "featured": "Featured Partners",
+    "all": "All Partners"
+  },
+  "card": {
+    "partnerSince": "Partner since",
+    "employees": "employees",
+    "projects": "projects",
+    "viewDetails": "View Details"
+  },
+  "detail": {
+    "companyInfo": "Company Information",
+    "contactInfo": "Contact Information",
+    "recentProjects": "Recent Projects",
+    "about": "About",
+    "visitWebsite": "Visit Website",
+    "revenue": "revenue"
+  },
+  "empty": {
+    "title": "No partners found",
+    "description": "Try adjusting your search or filter criteria"
+  }
+}

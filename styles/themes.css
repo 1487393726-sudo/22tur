@@ -1,0 +1,57 @@
+/* 主题变量定义 */
+:root {
+  --gradient-from: purple-600;
+  --gradient-to: pink-600;
+}
+
+/* 紫粉渐变主题（默认） */
+.theme-purple-pink {
+  --gradient-from: #9333ea;
+  --gradient-to: #db2777;
+}
+
+/* 蓝紫渐变主题 */
+.theme-blue-purple {
+  --gradient-from: #2563eb;
+  --gradient-to: #9333ea;
+}
+
+/* 青蓝渐变主题 */
+.theme-cyan-blue {
+  --gradient-from: #06b6d4;
+  --gradient-to: #2563eb;
+}
+
+/* 绿青渐变主题 */
+.theme-green-teal {
+  --gradient-from: #16a34a;
+  --gradient-to: #14b8a6;
+}
+
+/* 橙红渐变主题 */
+.theme-orange-red {
+  --gradient-from: #ea580c;
+  --gradient-to: #dc2626;
+}
+
+/* 粉玫渐变主题 */
+.theme-pink-rose {
+  --gradient-from: #db2777;
+  --gradient-to: #e11d48;
+}
+
+/* 应用主题到全局元素 */
+.theme-gradient-bg {
+  background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+}
+
+.theme-gradient-text {
+  background: linear-gradient(to right, var(--gradient-from), var(--gradient-to));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.theme-gradient-border {
+  border-image: linear-gradient(to right, var(--gradient-from), var(--gradient-to)) 1;
+}

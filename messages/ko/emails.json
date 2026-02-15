@@ -1,0 +1,125 @@
+{
+  "common": {
+    "systemName": "기업 관리 시스템",
+    "autoSendNotice": "이 이메일은 시스템에서 자동으로 발송되었습니다. 회신하지 마세요",
+    "copyright": "© 2024 기업 관리 시스템. All rights reserved.",
+    "hello": "안녕하세요",
+    "dear": "존경하는"
+  },
+  "passwordReset": {
+    "subject": "비밀번호 재설정 요청 - 기업 관리 시스템",
+    "title": "비밀번호 재설정 요청",
+    "greeting": "안녕하세요,",
+    "message": "비밀번호 재설정 요청을 받았습니다. 아래 버튼을 클릭하여 비밀번호를 재설정하세요:",
+    "buttonText": "비밀번호 재설정",
+    "copyLinkText": "또는 다음 링크를 브라우저에 복사하세요:",
+    "importantTitle": "중요:",
+    "expireNotice": "이 링크는 15분 후에 만료됩니다",
+    "ignoreNotice": "비밀번호 재설정을 요청하지 않았다면 이 이메일을 무시하세요",
+    "securityNotice": "계정 보안을 위해 이 링크를 다른 사람과 공유하지 마세요"
+  },
+  "emailVerification": {
+    "subject": "이메일 인증 - 기업 관리 시스템",
+    "title": "이메일 인증",
+    "greeting": "안녕하세요,",
+    "message": "기업 관리 시스템에 가입해 주셔서 감사합니다! 아래 버튼을 클릭하여 이메일 주소를 인증하세요:",
+    "buttonText": "이메일 인증",
+    "copyLinkText": "또는 다음 링크를 브라우저에 복사하세요:",
+    "tipTitle": "팁:",
+    "verifyBenefit": "이메일 인증 후 시스템의 모든 기능을 사용할 수 있습니다",
+    "ignoreNotice": "계정을 만들지 않았다면 이 이메일을 무시하세요"
+  },
+  "welcome": {
+    "subject": "기업 관리 시스템에 오신 것을 환영합니다!",
+    "title": "🎉 기업 관리 시스템에 오신 것을 환영합니다!",
+    "greeting": "안녕하세요 {userName}님,",
+    "message": "기업 관리 시스템에 오신 것을 환영합니다! 회원이 되어 주셔서 기쁩니다.",
+    "featuresTitle": "다음 기능을 사용할 수 있습니다:",
+    "feature1": "📋 프로젝트 및 작업 관리",
+    "feature2": "📄 문서 관리 및 버전 관리",
+    "feature3": "💬 메시지 센터 및 팀 협업",
+    "feature4": "📊 보고서 및 데이터 분석",
+    "feature5": "🔄 워크플로우 및 승인 프로세스",
+    "feature6": "⏱️ 시간 추적 및 근태 관리",
+    "buttonText": "지금 로그인",
+    "tipTitle": "팁:",
+    "tip1": "계정 정보를 안전하게 보관하세요",
+    "tip2": "계정 보안을 위해 정기적으로 비밀번호를 변경하는 것이 좋습니다",
+    "tip3": "질문이 있으시면 시스템 관리자에게 문의하세요"
+  },
+  "taskAssignment": {
+    "subject": "새 작업 할당: {taskTitle}",
+    "title": "📋 새 작업 할당",
+    "greeting": "안녕하세요 {userName}님,",
+    "message": "{assignerName}님이 새 작업을 할당했습니다:",
+    "dueDateLabel": "마감일:",
+    "dueDateNotSet": "미설정",
+    "buttonText": "작업 상세 보기",
+    "actionNotice": "작업 상세를 확인하고 작업을 시작하세요. 질문이 있으시면 할당자에게 문의하세요."
+  },
+  "approvalRequest": {
+    "subject": "승인 대기: {workflowName}",
+    "title": "✅ 승인 요청",
+    "greeting": "안녕하세요 {approverName}님,",
+    "message": "{requesterName}님이 승인 요청을 제출했습니다:",
+    "buttonText": "지금 승인",
+    "actionNotice": "승인 요청을 신속하게 처리해 주세요. 질문이 있으시면 요청자에게 문의하세요."
+  },
+  "invoice": {
+    "subject": "청구서 #{invoiceNumber} - 기업 관리 시스템",
+    "title": "💰 청구서 알림",
+    "greeting": "{clientName}님께,",
+    "message": "새 청구서가 있습니다. 상세 내용은 다음과 같습니다:",
+    "invoiceLabel": "청구서",
+    "amountLabel": "금액:",
+    "dueDateLabel": "결제 기한:",
+    "viewButton": "청구서 보기",
+    "downloadButton": "PDF 다운로드",
+    "actionNotice": "결제 기한 전에 결제를 완료해 주세요. 질문이 있으시면 문의해 주세요."
+  },
+  "workflowNotification": {
+    "subjectCompleted": "워크플로우 완료: {workflowName}",
+    "subjectFailed": "워크플로우 거부: {workflowName}",
+    "subjectCancelled": "워크플로우 취소: {workflowName}",
+    "title": "워크플로우 상태 업데이트",
+    "greeting": "안녕하세요 {userName}님,",
+    "message": "워크플로우가 업데이트되었습니다:",
+    "statusCompleted": "완료",
+    "statusFailed": "거부",
+    "statusCancelled": "취소",
+    "notesLabel": "비고:",
+    "buttonText": "상세 보기"
+  },
+  "orderConfirmation": {
+    "subject": "주문 확인 #{orderNumber}",
+    "title": "🛒 주문 확인",
+    "greeting": "{customerName}님께,",
+    "message": "주문해 주셔서 감사합니다! 주문이 확인되었습니다. 상세 내용은 다음과 같습니다:",
+    "orderNumberLabel": "주문 번호:",
+    "orderDateLabel": "주문 날짜:",
+    "totalLabel": "주문 총액:",
+    "itemsTitle": "주문 상품:",
+    "shippingTitle": "배송 정보:",
+    "buttonText": "주문 상세 보기",
+    "thankYou": "구매해 주셔서 감사합니다!"
+  },
+  "paymentSuccess": {
+    "subject": "결제 성공 알림",
+    "title": "✅ 결제 성공",
+    "greeting": "{userName}님께,",
+    "message": "결제가 성공적으로 처리되었습니다.",
+    "amountLabel": "결제 금액:",
+    "transactionIdLabel": "거래 ID:",
+    "dateLabel": "결제 일시:",
+    "buttonText": "상세 보기"
+  },
+  "paymentFailed": {
+    "subject": "결제 실패 알림",
+    "title": "❌ 결제 실패",
+    "greeting": "{userName}님께,",
+    "message": "죄송합니다. 결제를 처리할 수 없었습니다.",
+    "reasonLabel": "사유:",
+    "buttonText": "다시 결제",
+    "supportNotice": "도움이 필요하시면 고객 지원에 문의하세요."
+  }
+}

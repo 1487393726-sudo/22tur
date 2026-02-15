@@ -1,0 +1,223 @@
+/* Design System Global Styles */
+
+/* Import all design tokens */
+@import './tokens/typography.css';
+@import './tokens/spacing.css';
+@import './tokens/border-radius.css';
+@import './tokens/shadows.css';
+@import './tokens/animation.css';
+
+/* Import all theme files */
+@import './themes/website-theme.css';
+@import './themes/enterprise-admin-theme.css';
+@import './themes/user-portal-theme.css';
+@import './themes/gradient-theme.css';
+
+/* Import gradient utilities after all theme files */
+@import './utilities/gradient-utilities.css';
+
+/* Default theme - Website */
+:root {
+  --current-theme: website;
+  --current-mode: light;
+}
+
+/* Ensure theme is applied to html element */
+html {
+  color-scheme: light;
+}
+
+html[data-mode="dark"] {
+  color-scheme: dark;
+}
+
+/* Base styles using design tokens */
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  transition: var(--transition-colors);
+}
+
+/* Headings */
+h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+}
+
+h4 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+}
+
+h5 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  margin: var(--spacing-sm) 0 var(--spacing-xs) 0;
+}
+
+h6 {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  margin: var(--spacing-sm) 0 var(--spacing-xs) 0;
+}
+
+/* Paragraphs */
+p {
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+/* Links */
+a {
+  color: var(--color-primary-500);
+  text-decoration: none;
+  transition: var(--transition-colors);
+}
+
+a:hover {
+  color: var(--color-primary-600);
+  text-decoration: underline;
+}
+
+a:active {
+  color: var(--color-primary-700);
+}
+
+/* Code */
+code {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+}
+
+pre {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Lists */
+ul, ol {
+  margin: 0 0 var(--spacing-md) 0;
+  padding-left: var(--spacing-lg);
+}
+
+li {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+th {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--spacing-md);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+td {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+tr:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+/* Blockquote */
+blockquote {
+  border-left: 4px solid var(--color-primary-500);
+  padding-left: var(--spacing-md);
+  margin: var(--spacing-md) 0;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+/* Horizontal Rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border-light);
+  margin: var(--spacing-lg) 0;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-primary-500);
+  color: var(--color-text-inverse);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-default);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-dark);
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}

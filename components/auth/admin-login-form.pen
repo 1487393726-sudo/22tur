@@ -1,0 +1,607 @@
+{
+  "name": "管理员登录表单",
+  "description": "企业管理系统管理员登录表单，支持邮箱密码登录和角色验证",
+  "type": "component",
+  "framework": "React",
+  "styling": "Tailwind CSS",
+  "layout": {
+    "container": {
+      "width": "100%",
+      "maxWidth": "400px",
+      "margin": "0 auto",
+      "padding": "24px"
+    },
+    "card": {
+      "width": "100%",
+      "borderRadius": "12px",
+      "border": "1px solid #e5e7eb",
+      "backgroundColor": "#ffffff",
+      "boxShadow": "0 4px 6px rgba(0, 0, 0, 0.05)"
+    }
+  },
+  "components": {
+    "header": {
+      "container": {
+        "padding": "32px 24px 0",
+        "textAlign": "center"
+      },
+      "title": {
+        "fontSize": "24px",
+        "fontWeight": "700",
+        "color": "#111827",
+        "marginBottom": "8px"
+      },
+      "description": {
+        "fontSize": "14px",
+        "color": "#6b7280",
+        "marginBottom": "32px"
+      }
+    },
+    "form": {
+      "container": {
+        "padding": "0 24px 32px",
+        "display": "flex",
+        "flexDirection": "column",
+        "gap": "16px"
+      },
+      "fieldGroup": {
+        "display": "flex",
+        "flexDirection": "column",
+        "gap": "8px"
+      },
+      "label": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "#374151"
+      },
+      "input": {
+        "width": "100%",
+        "padding": "12px 16px",
+        "fontSize": "16px",
+        "border": "1px solid #d1d5db",
+        "borderRadius": "8px",
+        "backgroundColor": "#ffffff",
+        "color": "#111827",
+        "outline": "none",
+        "transition": "all 0.2s ease"
+      },
+      "submitButton": {
+        "width": "100%",
+        "padding": "12px 24px",
+        "fontSize": "16px",
+        "fontWeight": "500",
+        "backgroundColor": "#3b82f6",
+        "color": "#ffffff",
+        "border": "none",
+        "borderRadius": "8px",
+        "cursor": "pointer",
+        "display": "flex",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "gap": "8px",
+        "transition": "all 0.2s ease",
+        "marginTop": "8px"
+      }
+    },
+    "errorAlert": {
+      "padding": "12px 16px",
+      "backgroundColor": "#fef2f2",
+      "border": "1px solid #fecaca",
+      "borderRadius": "8px",
+      "marginBottom": "16px"
+    },
+    "errorText": {
+      "fontSize": "14px",
+      "color": "#dc2626"
+    },
+    "testAccount": {
+      "container": {
+        "margin": "24px 24px 0",
+        "padding": "16px",
+        "backgroundColor": "#eff6ff",
+        "border": "1px solid #bfdbfe",
+        "borderRadius": "8px"
+      },
+      "title": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "#1e40af",
+        "marginBottom": "8px"
+      },
+      "credential": {
+        "fontSize": "12px",
+        "color": "#1e40af",
+        "marginBottom": "4px"
+      }
+    },
+    "loadingSpinner": {
+      "width": "16px",
+      "height": "16px",
+      "animation": "spin 1s linear infinite"
+    }
+  },
+  "states": {
+    "default": {
+      "input": {
+        "borderColor": "#d1d5db",
+        "backgroundColor": "#ffffff"
+      },
+      "submitButton": {
+        "backgroundColor": "#3b82f6",
+        "cursor": "pointer",
+        "disabled": false
+      },
+      "errorAlert": {
+        "display": "none"
+      }
+    },
+    "loading": {
+      "input": {
+        "backgroundColor": "#f9fafb",
+        "cursor": "not-allowed",
+        "disabled": true
+      },
+      "submitButton": {
+        "backgroundColor": "#9ca3af",
+        "cursor": "not-allowed",
+        "disabled": true
+      },
+      "loadingSpinner": {
+        "display": "inline-block"
+      }
+    },
+    "error": {
+      "errorAlert": {
+        "display": "block"
+      },
+      "input": {
+        "borderColor": "#f87171"
+      }
+    },
+    "inputFocused": {
+      "input": {
+        "borderColor": "#3b82f6",
+        "boxShadow": "0 0 0 3px rgba(59, 130, 246, 0.1)"
+      }
+    },
+    "inputFilled": {
+      "input": {
+        "backgroundColor": "#f9fafb"
+      }
+    },
+    "buttonHover": {
+      "submitButton": {
+        "backgroundColor": "#2563eb"
+      }
+    }
+  },
+  "interactions": {
+    "formSubmit": {
+      "trigger": "submit",
+      "target": "form",
+      "conditions": ["email.length > 0", "password.length > 0"],
+      "actions": [
+        "preventDefault",
+        "setState: loading",
+        "signIn: credentials",
+        "checkUserRole",
+        "redirectToAdmin"
+      ],
+      "feedback": "loading spinner + disabled inputs"
+    },
+    "inputFocus": {
+      "trigger": "focus",
+      "target": "input",
+      "action": "setState: inputFocused",
+      "feedback": "border color change + shadow"
+    },
+    "inputBlur": {
+      "trigger": "blur",
+      "target": "input",
+      "action": "removeState: inputFocused",
+      "feedback": "remove focus styles"
+    },
+    "inputChange": {
+      "trigger": "input",
+      "target": "input",
+      "actions": [
+        "updateValue",
+        "clearError"
+      ],
+      "feedback": "real-time validation"
+    },
+    "buttonHover": {
+      "trigger": "mouseenter",
+      "target": "submitButton",
+      "action": "setState: buttonHover"
+    },
+    "buttonLeave": {
+      "trigger": "mouseleave",
+      "target": "submitButton",
+      "action": "removeState: buttonHover"
+    }
+  },
+  "responsive": {
+    "mobile": {
+      "breakpoint": "640px",
+      "changes": {
+        "container.padding": "16px",
+        "header.padding": "24px 16px 0",
+        "form.padding": "0 16px 24px",
+        "testAccount.margin": "16px 16px 0",
+        "input.fontSize": "16px",
+        "submitButton.padding": "14px 24px"
+      }
+    },
+    "tablet": {
+      "breakpoint": "768px",
+      "changes": {
+        "container.maxWidth": "380px"
+      }
+    }
+  },
+  "accessibility": {
+    "keyboardNavigation": true,
+    "screenReader": {
+      "form": "管理员登录表单",
+      "emailInput": "邮箱输入框",
+      "passwordInput": "密码输入框",
+      "submitButton": "登录按钮",
+      "errorAlert": "错误提示",
+      "testAccount": "测试账户信息"
+    },
+    "focusManagement": {
+      "inputs": "visible focus indicators",
+      "submitButton": "keyboard accessible"
+    },
+    "announcements": {
+      "loginStart": "正在登录",
+      "loginSuccess": "登录成功",
+      "loginError": "登录失败",
+      "roleError": "权限不足"
+    }
+  },
+  "performance": {
+    "lazyLoading": false,
+    "memoization": ["form validation", "error messages"],
+    "bundleSize": "~10KB gzipped"
+  },
+  "errorHandling": {
+    "networkError": {
+      "display": "error alert",
+      "message": "登录失败，请稍后重试",
+      "retry": true
+    },
+    "credentialsError": {
+      "display": "error alert",
+      "message": "邮箱或密码错误",
+      "retry": true
+    },
+    "roleError": {
+      "display": "error alert",
+      "message": "您没有管理员权限",
+      "retry": false
+    },
+    "validationError": {
+      "display": "inline validation",
+      "message": "请填写必填字段",
+      "retry": true
+    }
+  },
+  "animations": {
+    "errorAppear": {
+      "type": "slideDown + fadeIn",
+      "duration": "300ms",
+      "easing": "ease-out"
+    },
+    "inputFocus": {
+      "type": "borderTransition + shadowAppear",
+      "duration": "200ms",
+      "easing": "ease-out"
+    },
+    "buttonHover": {
+      "type": "backgroundTransition",
+      "duration": "150ms",
+      "easing": "ease-out"
+    },
+    "loadingSpinner": {
+      "type": "rotate",
+      "duration": "1s",
+      "iteration": "infinite",
+      "timing": "linear"
+    },
+    "formSubmit": {
+      "type": "buttonPress",
+      "duration": "100ms",
+      "easing": "ease-in-out"
+    }
+  },
+  "validation": {
+    "email": {
+      "required": true,
+      "type": "email",
+      "message": "请输入有效的邮箱地址"
+    },
+    "password": {
+      "required": true,
+      "minLength": 6,
+      "message": "密码至少6位字符"
+    }
+  },
+  "security": {
+    "authentication": {
+      "method": "NextAuth.js credentials provider",
+      "encryption": "bcrypt password hashing",
+      "session": "JWT tokens"
+    },
+    "authorization": {
+      "roleCheck": "server-side role validation",
+      "redirect": "unauthorized users blocked"
+    },
+    "dataProtection": {
+      "inputSanitization": "XSS prevention",
+      "csrfProtection": "CSRF tokens",
+      "rateLimiting": "login attempt limits"
+    }
+  },
+  "testData": {
+    "credentials": {
+      "email": "admin@example.com",
+      "password": "admin123"
+    },
+    "purpose": "development and testing only"
+  }
+}
+
+---
+
+# 管理员登录表单组件设计文档
+
+## 概述
+管理员登录表单是企业管理系统的入口组件，专门为管理员用户设计，支持邮箱密码登录和严格的角色权限验证。
+
+## 核心功能
+
+### 1. 身份验证
+- **邮箱登录**：使用邮箱地址作为用户标识
+- **密码验证**：安全的密码验证机制
+- **角色检查**：登录后验证管理员权限
+- **会话管理**：基于 JWT 的会话管理
+
+### 2. 用户体验
+- **实时验证**：输入时的实时表单验证
+- **状态反馈**：清晰的加载和错误状态
+- **测试账户**：开发环境的测试账户信息
+- **响应式设计**：适配各种设备尺寸
+
+### 3. 安全特性
+- **权限控制**：严格的管理员权限验证
+- **错误处理**：友好的错误提示和处理
+- **防护机制**：CSRF 保护和输入验证
+- **审计日志**：登录活动的记录和追踪
+
+## 视觉设计
+
+### 布局结构
+```
+┌─────────────────────────────────────────┐
+│           企业管理系统                   │
+│        请使用管理员账户登录               │
+├─────────────────────────────────────────┤
+│ 邮箱                                    │
+│ [admin@example.com            ]         │
+├─────────────────────────────────────────┤
+│ 密码                                    │
+│ [••••••••••••••••••••••••••••]         │
+├─────────────────────────────────────────┤
+│ ⚠️ 邮箱或密码错误                        │
+├─────────────────────────────────────────┤
+│              [登录]                     │
+├─────────────────────────────────────────┤
+│ 📋 测试账户：                           │
+│ 邮箱：admin@example.com                 │
+│ 密码：admin123                          │
+└─────────────────────────────────────────┘
+```
+
+### 颜色方案
+- **主色调**：#3b82f6 (蓝色)
+- **背景色**：#ffffff (白色)
+- **边框色**：#d1d5db (浅灰色)
+- **文本色**：#111827 (深灰色)
+- **次要文本**：#6b7280 (中灰色)
+- **错误色**：#dc2626 (红色)
+- **测试区域**：#eff6ff (浅蓝色背景)
+
+### 视觉层次
+- **标题**：24px, 粗体, 居中对齐
+- **描述**：14px, 常规, 中灰色
+- **标签**：14px, 中等粗细
+- **输入框**：16px, 常规, 圆角边框
+- **按钮**：16px, 中等粗细, 圆角
+
+## 交互设计
+
+### 用户操作流程
+1. **页面加载**
+   - 显示登录表单
+   - 展示测试账户信息（开发环境）
+   - 焦点自动定位到邮箱输入框
+
+2. **填写表单**
+   - 输入邮箱地址
+   - 输入密码
+   - 实时表单验证
+
+3. **提交登录**
+   - 点击登录按钮或按 Enter 键
+   - 显示加载状态
+   - 执行身份验证
+
+4. **权限验证**
+   - 验证用户角色
+   - 成功则跳转到管理后台
+   - 失败则显示权限错误
+
+### 表单验证
+- **邮箱验证**：格式验证和必填验证
+- **密码验证**：长度验证和必填验证
+- **实时反馈**：输入时即时显示验证结果
+- **提交验证**：提交前的完整性检查
+
+## 响应式设计
+
+### 移动端适配 (< 640px)
+- 调整容器内边距
+- 优化输入框尺寸
+- 确保按钮易于点击
+- 保持测试信息可见性
+
+### 平板端适配 (768px - 1024px)
+- 保持桌面端布局
+- 适当调整容器宽度
+- 优化触摸交互体验
+
+## 无障碍设计
+
+### 键盘导航
+- Tab 键在表单元素间导航
+- Enter 键提交表单
+- 明显的焦点指示器
+
+### 屏幕阅读器支持
+- 语义化的表单结构
+- 适当的标签关联
+- 错误信息的语音播报
+
+### 视觉辅助
+- 高对比度的颜色搭配
+- 清晰的错误状态指示
+- 足够大的点击目标
+
+## 性能优化
+
+### 组件优化
+- 表单验证逻辑的记忆化
+- 避免不必要的重新渲染
+- 合理的状态更新策略
+
+### 网络优化
+- 登录请求的防重复提交
+- 合理的超时设置
+- 错误重试机制
+
+## 错误处理
+
+### 认证错误
+- **凭据错误**：邮箱或密码不正确
+- **账户不存在**：邮箱未注册
+- **账户锁定**：多次失败后的临时锁定
+
+### 权限错误
+- **角色不匹配**：非管理员用户尝试登录
+- **权限不足**：管理员权限被撤销
+- **账户禁用**：管理员账户被禁用
+
+### 网络错误
+- **连接超时**：网络连接问题
+- **服务器错误**：后端服务异常
+- **请求失败**：API 调用失败
+
+## 安全考虑
+
+### 身份验证安全
+- 使用 bcrypt 进行密码哈希
+- JWT 令牌的安全生成和验证
+- 会话超时和自动登出
+
+### 输入安全
+- XSS 攻击防护
+- SQL 注入防护
+- CSRF 令牌验证
+
+### 访问控制
+- 严格的角色权限检查
+- 未授权访问的重定向
+- 敏感操作的二次验证
+
+## 技术实现
+
+### 状态管理
+```typescript
+interface AdminLoginState {
+  email: string;
+  password: string;
+  loading: boolean;
+  error: string;
+}
+```
+
+### 表单验证
+```typescript
+const validateForm = (email: string, password: string) => {
+  const errors: string[] = [];
+  
+  if (!email) errors.push('邮箱不能为空');
+  if (!isValidEmail(email)) errors.push('邮箱格式不正确');
+  if (!password) errors.push('密码不能为空');
+  if (password.length < 6) errors.push('密码至少6位字符');
+  
+  return errors;
+};
+```
+
+### 认证流程
+```typescript
+const handleLogin = async (email: string, password: string) => {
+  // 1. 表单验证
+  const errors = validateForm(email, password);
+  if (errors.length > 0) return;
+  
+  // 2. 身份验证
+  const result = await signIn('credentials', {
+    identifier: email,
+    password,
+    redirect: false
+  });
+  
+  // 3. 角色验证
+  if (result?.ok) {
+    const userData = await fetch('/api/auth/me');
+    const user = await userData.json();
+    
+    if (user.role === 'ADMIN') {
+      router.push('/admin');
+    } else {
+      setError('您没有管理员权限');
+    }
+  }
+};
+```
+
+## 测试支持
+
+### 开发环境
+- 预设的测试账户信息
+- 清晰的测试凭据显示
+- 快速登录功能
+
+### 测试用例
+- 正常登录流程测试
+- 错误处理测试
+- 权限验证测试
+- 响应式布局测试
+
+## 部署配置
+
+### 环境变量
+- `NEXTAUTH_SECRET`: JWT 签名密钥
+- `NEXTAUTH_URL`: 应用基础 URL
+- `DATABASE_URL`: 数据库连接字符串
+
+### 安全配置
+- HTTPS 强制启用
+- 安全头部配置
+- 跨域请求限制
+
+这个管理员登录表单组件提供了完整的管理员身份验证功能，具有良好的安全性、用户体验和可维护性，适合在企业级管理系统中使用。

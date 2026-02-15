@@ -1,0 +1,568 @@
+{
+  "version": "2.6",
+  "name": "3D Particle Background Design",
+  "description": "3D粒子背景效果设计 - 紫色和粉色渐变粒子场",
+  "children": [
+    {
+      "type": "frame",
+      "id": "main-canvas",
+      "x": 0,
+      "y": 0,
+      "name": "Particle Background Canvas",
+      "clip": true,
+      "width": 1920,
+      "height": 1080,
+      "fill": "#0a0a0a",
+      "layout": "none",
+      "children": [
+        {
+          "type": "text",
+          "id": "title",
+          "x": 60,
+          "y": 40,
+          "width": 600,
+          "height": 80,
+          "text": "3D Particle Background",
+          "fontSize": 48,
+          "fontWeight": "bold",
+          "fill": "#ffffff",
+          "fontFamily": "Inter, sans-serif"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "x": 60,
+          "y": 130,
+          "width": 800,
+          "height": 60,
+          "text": "动态旋转的紫粉色粒子场效果",
+          "fontSize": 24,
+          "fill": "#a0a0a0",
+          "fontFamily": "Inter, sans-serif"
+        },
+        {
+          "type": "group",
+          "id": "particle-field",
+          "x": 400,
+          "y": 300,
+          "name": "Particle Field Visualization",
+          "children": [
+            {
+              "type": "circle",
+              "id": "particle-1",
+              "x": 0,
+              "y": 0,
+              "radius": 3,
+              "fill": "#9333ea",
+              "opacity": 0.8
+            },
+            {
+              "type": "circle",
+              "id": "particle-2",
+              "x": 120,
+              "y": 50,
+              "radius": 2,
+              "fill": "#c026d3",
+              "opacity": 0.7
+            },
+            {
+              "type": "circle",
+              "id": "particle-3",
+              "x": 80,
+              "y": 120,
+              "radius": 4,
+              "fill": "#a855f7",
+              "opacity": 0.9
+            },
+            {
+              "type": "circle",
+              "id": "particle-4",
+              "x": 200,
+              "y": 80,
+              "radius": 2.5,
+              "fill": "#d946ef",
+              "opacity": 0.6
+            },
+            {
+              "type": "circle",
+              "id": "particle-5",
+              "x": 160,
+              "y": 150,
+              "radius": 3.5,
+              "fill": "#e879f9",
+              "opacity": 0.8
+            },
+            {
+              "type": "circle",
+              "id": "particle-6",
+              "x": 280,
+              "y": 100,
+              "radius": 2,
+              "fill": "#9333ea",
+              "opacity": 0.7
+            },
+            {
+              "type": "circle",
+              "id": "particle-7",
+              "x": 240,
+              "y": 180,
+              "radius": 3,
+              "fill": "#c026d3",
+              "opacity": 0.85
+            },
+            {
+              "type": "circle",
+              "id": "particle-8",
+              "x": 320,
+              "y": 140,
+              "radius": 2.5,
+              "fill": "#a855f7",
+              "opacity": 0.75
+            },
+            {
+              "type": "circle",
+              "id": "particle-9",
+              "x": 360,
+              "y": 60,
+              "radius": 4,
+              "fill": "#d946ef",
+              "opacity": 0.9
+            },
+            {
+              "type": "circle",
+              "id": "particle-10",
+              "x": 400,
+              "y": 120,
+              "radius": 3,
+              "fill": "#e879f9",
+              "opacity": 0.8
+            },
+            {
+              "type": "circle",
+              "id": "particle-11",
+              "x": 440,
+              "y": 90,
+              "radius": 2,
+              "fill": "#9333ea",
+              "opacity": 0.65
+            },
+            {
+              "type": "circle",
+              "id": "particle-12",
+              "x": 480,
+              "y": 160,
+              "radius": 3.5,
+              "fill": "#c026d3",
+              "opacity": 0.8
+            },
+            {
+              "type": "circle",
+              "id": "particle-13",
+              "x": 520,
+              "y": 110,
+              "radius": 2.5,
+              "fill": "#a855f7",
+              "opacity": 0.7
+            },
+            {
+              "type": "circle",
+              "id": "particle-14",
+              "x": 560,
+              "y": 70,
+              "radius": 4,
+              "fill": "#d946ef",
+              "opacity": 0.9
+            },
+            {
+              "type": "circle",
+              "id": "particle-15",
+              "x": 600,
+              "y": 140,
+              "radius": 3,
+              "fill": "#e879f9",
+              "opacity": 0.75
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "specs-panel",
+          "x": 60,
+          "y": 600,
+          "width": 500,
+          "height": 400,
+          "fill": "#1a1a1a",
+          "cornerRadius": 16,
+          "stroke": "#333333",
+          "strokeWidth": 1,
+          "children": [
+            {
+              "type": "text",
+              "id": "specs-title",
+              "x": 30,
+              "y": 30,
+              "width": 440,
+              "height": 40,
+              "text": "技术规格",
+              "fontSize": 28,
+              "fontWeight": "bold",
+              "fill": "#ffffff",
+              "fontFamily": "Inter, sans-serif"
+            },
+            {
+              "type": "text",
+              "id": "spec-1",
+              "x": 30,
+              "y": 90,
+              "width": 440,
+              "height": 30,
+              "text": "• 粒子数量: 5000",
+              "fontSize": 18,
+              "fill": "#e0e0e0",
+              "fontFamily": "Inter, sans-serif"
+            },
+            {
+              "type": "text",
+              "id": "spec-2",
+              "x": 30,
+              "y": 130,
+              "width": 440,
+              "height": 30,
+              "text": "• 颜色: 紫色 (#9333ea) 和粉色 (#e879f9)",
+              "fontSize": 18,
+              "fill": "#e0e0e0",
+              "fontFamily": "Inter, sans-serif"
+            },
+            {
+              "type": "text",
+              "id": "spec-3",
+              "x": 30,
+              "y": 170,
+              "width": 440,
+              "height": 30,
+              "text": "• 分布范围: 10x10x10 立方体空间",
+              "fontSize": 18,
+              "fill": "#e0e0e0",
+              "fontFamily": "Inter, sans-serif"
+            },
+            {
+              "type": "text",
+              "id": "spec-4",
+              "x": 30,
+              "y": 210,
+              "width": 440,
+              "height": 30,
+              "text": "• 旋转速度: X轴 0.1rad/s, Y轴 0.067rad/s",
+              "fontSize": 18,
+              "fill": "#e0e0e0",
+              "fontFamily": "Inter, sans-serif"
+            },
+            {
+              "type": "text",
+              "id": "spec-5",
+              "x": 30,
+              "y": 250,
+              "width": 440,
+              "height": 30,
+              "text": "• 粒子大小: 0.02 (自适应缩放)",
+              "fontSize": 18,
+              "fill": "#e0e0e0",
+              "fontFamily": "Inter, sans-serif"
+            },
+            {
+              "type": "text",
+              "id": "spec-6",
+              "x": 30,
+              "y": 290,
+              "width": 440,
+              "height": 30,
+              "text": "• 透明度: 40% (整体)",
+              "fontSize": 18,
+              "fill": "#e0e0e0",
+              "fontFamily": "Inter, sans-serif"
+            },
+            {
+              "type": "text",
+              "id": "spec-7",
+              "x": 30,
+              "y": 330,
+              "width": 440,
+              "height": 30,
+              "text": "• 层级: z-0 (背景层)",
+              "fontSize": 18,
+              "fill": "#e0e0e0",
+              "fontFamily": "Inter, sans-serif"
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "usage-panel",
+          "x": 620,
+          "y": 600,
+          "width": 500,
+          "height": 400,
+          "fill": "#1a1a1a",
+          "cornerRadius": 16,
+          "stroke": "#333333",
+          "strokeWidth": 1,
+          "children": [
+            {
+              "type": "text",
+              "id": "usage-title",
+              "x": 30,
+              "y": 30,
+              "width": 440,
+              "height": 40,
+              "text": "使用场景",
+              "fontSize": 28,
+              "fontWeight": "bold",
+              "fill": "#ffffff",
+              "fontFamily": "Inter, sans-serif"
+            },
+            {
+              "type": "text",
+              "id": "usage-1",
+              "x": 30,
+              "y": 90,
+              "width": 440,
+              "height": 30,
+              "text": "• 网站首页背景装饰",
+              "fontSize": 18,
+              "fill": "#e0e0e0",
+              "fontFamily": "Inter, sans-serif"
+            },
+            {
+              "type": "text",
+              "id": "usage-2",
+              "x": 30,
+              "y": 130,
+              "width": 440,
+              "height": 30,
+              "text": "• 科技感页面氛围营造",
+              "fontSize": 18,
+              "fill": "#e0e0e0",
+              "fontFamily": "Inter, sans-serif"
+            },
+            {
+              "type": "text",
+              "id": "usage-3",
+              "x": 30,
+              "y": 170,
+              "width": 440,
+              "height": 30,
+              "text": "• 登录/注册页面背景",
+              "fontSize": 18,
+              "fill": "#e0e0e0",
+              "fontFamily": "Inter, sans-serif"
+            },
+            {
+              "type": "text",
+              "id": "usage-4",
+              "x": 30,
+              "y": 210,
+              "width": 440,
+              "height": 30,
+              "text": "• 产品展示页面增强",
+              "fontSize": 18,
+              "fill": "#e0e0e0",
+              "fontFamily": "Inter, sans-serif"
+            },
+            {
+              "type": "text",
+              "id": "features-title",
+              "x": 30,
+              "y": 270,
+              "width": 440,
+              "height": 40,
+              "text": "特性",
+              "fontSize": 24,
+              "fontWeight": "bold",
+              "fill": "#ffffff",
+              "fontFamily": "Inter, sans-serif"
+            },
+            {
+              "type": "text",
+              "id": "feature-1",
+              "x": 30,
+              "y": 320,
+              "width": 440,
+              "height": 30,
+              "text": "✓ 性能优化 (Suspense + Canvas)",
+              "fontSize": 16,
+              "fill": "#a855f7",
+              "fontFamily": "Inter, sans-serif"
+            },
+            {
+              "type": "text",
+              "id": "feature-2",
+              "x": 30,
+              "y": 350,
+              "width": 440,
+              "height": 30,
+              "text": "✓ 不阻挡用户交互 (pointer-events-none)",
+              "fontSize": 16,
+              "fill": "#a855f7",
+              "fontFamily": "Inter, sans-serif"
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "color-palette",
+          "x": 1180,
+          "y": 600,
+          "width": 680,
+          "height": 400,
+          "fill": "#1a1a1a",
+          "cornerRadius": 16,
+          "stroke": "#333333",
+          "strokeWidth": 1,
+          "children": [
+            {
+              "type": "text",
+              "id": "palette-title",
+              "x": 30,
+              "y": 30,
+              "width": 620,
+              "height": 40,
+              "text": "色彩方案",
+              "fontSize": 28,
+              "fontWeight": "bold",
+              "fill": "#ffffff",
+              "fontFamily": "Inter, sans-serif"
+            },
+            {
+              "type": "rectangle",
+              "id": "color-1",
+              "x": 30,
+              "y": 100,
+              "width": 120,
+              "height": 120,
+              "fill": "#9333ea",
+              "cornerRadius": 12
+            },
+            {
+              "type": "text",
+              "id": "color-1-label",
+              "x": 30,
+              "y": 230,
+              "width": 120,
+              "height": 30,
+              "text": "#9333ea",
+              "fontSize": 14,
+              "fill": "#ffffff",
+              "fontFamily": "monospace",
+              "textAlign": "center"
+            },
+            {
+              "type": "rectangle",
+              "id": "color-2",
+              "x": 170,
+              "y": 100,
+              "width": 120,
+              "height": 120,
+              "fill": "#a855f7",
+              "cornerRadius": 12
+            },
+            {
+              "type": "text",
+              "id": "color-2-label",
+              "x": 170,
+              "y": 230,
+              "width": 120,
+              "height": 30,
+              "text": "#a855f7",
+              "fontSize": 14,
+              "fill": "#ffffff",
+              "fontFamily": "monospace",
+              "textAlign": "center"
+            },
+            {
+              "type": "rectangle",
+              "id": "color-3",
+              "x": 310,
+              "y": 100,
+              "width": 120,
+              "height": 120,
+              "fill": "#c026d3",
+              "cornerRadius": 12
+            },
+            {
+              "type": "text",
+              "id": "color-3-label",
+              "x": 310,
+              "y": 230,
+              "width": 120,
+              "height": 30,
+              "text": "#c026d3",
+              "fontSize": 14,
+              "fill": "#ffffff",
+              "fontFamily": "monospace",
+              "textAlign": "center"
+            },
+            {
+              "type": "rectangle",
+              "id": "color-4",
+              "x": 450,
+              "y": 100,
+              "width": 120,
+              "height": 120,
+              "fill": "#d946ef",
+              "cornerRadius": 12
+            },
+            {
+              "type": "text",
+              "id": "color-4-label",
+              "x": 450,
+              "y": 230,
+              "width": 120,
+              "height": 30,
+              "text": "#d946ef",
+              "fontSize": 14,
+              "fill": "#ffffff",
+              "fontFamily": "monospace",
+              "textAlign": "center"
+            },
+            {
+              "type": "rectangle",
+              "id": "color-5",
+              "x": 30,
+              "y": 280,
+              "width": 120,
+              "height": 120,
+              "fill": "#e879f9",
+              "cornerRadius": 12
+            },
+            {
+              "type": "text",
+              "id": "color-5-label",
+              "x": 30,
+              "y": 410,
+              "width": 120,
+              "height": 30,
+              "text": "#e879f9",
+              "fontSize": 14,
+              "fill": "#ffffff",
+              "fontFamily": "monospace",
+              "textAlign": "center"
+            },
+            {
+              "type": "text",
+              "id": "gradient-note",
+              "x": 170,
+              "y": 300,
+              "width": 400,
+              "height": 80,
+              "text": "粒子颜色在紫色和粉色之间\n交替分布，创造渐变效果",
+              "fontSize": 16,
+              "fill": "#a0a0a0",
+              "fontFamily": "Inter, sans-serif",
+              "lineHeight": 1.6
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

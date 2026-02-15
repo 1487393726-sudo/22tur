@@ -1,0 +1,134 @@
+{
+  "meta": {
+    "title": "案例展示 | 创意工作室",
+    "description": "查看我们的成功案例，了解我们如何帮助客户实现他们的目标。"
+  },
+  "hero": {
+    "title": "案例展示",
+    "subtitle": "查看我们的成功案例，了解我们如何帮助客户实现他们的目标"
+  },
+  "cases": [
+    {
+      "title": "电商平台重构",
+      "client": "某知名零售品牌",
+      "category": "网页开发",
+      "description": "为客户重构电商平台，提升用户体验和转化率",
+      "results": [
+        "转化率提升45%",
+        "页面加载速度提升60%",
+        "用户满意度提升35%"
+      ],
+      "tags": ["React", "Next.js", "PostgreSQL"]
+    },
+    {
+      "title": "企业品牌升级",
+      "client": "某科技公司",
+      "category": "品牌设计",
+      "description": "全面升级企业品牌形象，包括Logo、VI系统和品牌指南",
+      "results": [
+        "品牌认知度提升50%",
+        "市场份额增长30%",
+        "客户满意度95%"
+      ],
+      "tags": ["品牌策略", "VI设计", "Logo设计"]
+    },
+    {
+      "title": "移动应用开发",
+      "client": "某金融服务公司",
+      "category": "移动应用",
+      "description": "开发iOS和Android原生应用，提供便捷的金融服务",
+      "results": [
+        "下载量突破100万",
+        "App Store评分4.8",
+        "日活用户20万+"
+      ],
+      "tags": ["React Native", "iOS", "Android"]
+    },
+    {
+      "title": "企业官网设计",
+      "client": "某制造企业",
+      "category": "网页设计",
+      "description": "设计现代化的企业官网，展示企业实力和产品",
+      "results": [
+        "访问量提升80%",
+        "询盘量增长60%",
+        "跳出率降低40%"
+      ],
+      "tags": ["UI/UX", "响应式设计", "SEO"]
+    },
+    {
+      "title": "数字营销活动",
+      "client": "某消费品牌",
+      "category": "数字营销",
+      "description": "策划并执行全渠道数字营销活动",
+      "results": [
+        "ROI提升200%",
+        "社交媒体粉丝增长150%",
+        "销售额增长120%"
+      ],
+      "tags": ["社交媒体", "SEO/SEM", "内容营销"]
+    },
+    {
+      "title": "企业管理系统",
+      "client": "某物流公司",
+      "category": "系统开发",
+      "description": "开发定制化的企业管理系统，提升运营效率",
+      "results": [
+        "效率提升70%",
+        "成本降低40%",
+        "错误率降低85%"
+      ],
+      "tags": ["Vue.js", "Node.js", "MongoDB"]
+    }
+  ],
+  "resultsLabel": "成果：",
+  "filters": {
+    "category": "按类别筛选",
+    "tag": "按技术筛选",
+    "all": "全部",
+    "showing": "显示 {count} 个案例",
+    "noResults": "未找到匹配的案例",
+    "noResultsDescription": "请尝试调整筛选条件或清除所有筛选",
+    "clearFilters": "清除筛选"
+  },
+  "detail": {
+    "timeline": "项目时间线",
+    "duration": "项目周期",
+    "startDate": "开始日期",
+    "endDate": "结束日期",
+    "keyMetrics": "关键指标",
+    "results": "项目成果",
+    "challenges": "面临挑战",
+    "solution": "解决方案",
+    "technologies": "使用技术",
+    "gallery": "项目图片",
+    "viewDetails": "查看详情"
+  },
+  "mockData": {
+    "timeline": {
+      "duration": "3个月",
+      "startDate": "2023年6月",
+      "endDate": "2023年9月"
+    },
+    "metrics": [
+      {
+        "label": "用户增长",
+        "value": "+150%"
+      },
+      {
+        "label": "性能提升",
+        "value": "+60%"
+      },
+      {
+        "label": "客户满意度",
+        "value": "95%"
+      },
+      {
+        "label": "ROI",
+        "value": "+200%"
+      }
+    ],
+    "challenges": "客户面临着老旧系统性能低下、用户体验不佳、移动端适配困难等多重挑战。现有平台无法满足快速增长的业务需求，急需进行全面升级改造。",
+    "solution": "我们采用现代化的技术栈重构整个平台，实施响应式设计确保跨设备体验一致，优化数据库查询提升性能，并引入自动化测试保证代码质量。通过敏捷开发方法，我们在3个月内完成了平台的全面升级。"
+  }
+}

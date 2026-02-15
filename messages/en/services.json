@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "title": "Our Services | Creative Digital Agency",
+    "description": "We provide comprehensive creative and technical solutions including web development, mobile apps, UI/UX design, branding, and digital marketing."
+  },
+  "hero": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive creative and technical solutions to help your business thrive in the digital age",
+    "cta": {"consult": "Free Consultation", "cases": "View Cases"}
+  },
+  "grid": {
+    "title": "Professional Services",
+    "subtitle": "Our team has deep experience delivering solutions for companies of all sizes",
+    "popular": "Popular",
+    "includes": "Includes:",
+    "details": "Learn More",
+    "consult": "Get Consultation",
+    "clickToFlip": "Click to see details",
+    "clickToFlipBack": "Click to go back"
+  },
+  "services": {
+    "webDev": {
+      "title": "Web Development",
+      "description": "Build high-performance, responsive websites and applications using the latest technologies",
+      "icon": "💻",
+      "features": ["Responsive Design", "SEO Optimization", "High Performance", "Secure & Reliable"]
+    },
+    "uiux": {
+      "title": "UI/UX Design",
+      "description": "Create beautiful, intuitive user interfaces that enhance user experience",
+      "icon": "🎨",
+      "features": ["User Research", "Interaction Design", "Visual Design", "Prototyping"]
+    },
+    "mobile": {
+      "title": "Mobile App Development",
+      "description": "Develop native iOS and Android apps as well as cross-platform applications",
+      "icon": "📱",
+      "features": ["Native Development", "Cross-Platform", "App Store Publishing", "Ongoing Maintenance"]
+    },
+    "branding": {
+      "title": "Brand Building",
+      "description": "Craft unique brand identities and establish market competitiveness",
+      "icon": "🏆",
+      "features": ["Brand Strategy", "Logo Design", "Visual Identity", "Brand Guidelines"]
+    },
+    "marketing": {
+      "title": "Digital Marketing",
+      "description": "Promote your brand and products through digital channels",
+      "icon": "📈",
+      "features": ["SEO/SEM", "Social Media", "Content Marketing", "Data Analytics"]
+    },
+    "consulting": {
+      "title": "Technical Consulting",
+      "description": "Professional advice and support for your technical decisions",
+      "icon": "🔧",
+      "features": ["Technology Selection", "Architecture Design", "Performance Optimization", "Security Audit"]
+    }
+  },
+  "process": {
+    "title": "Our Process",
+    "subtitle": "A clear process ensures successful delivery",
+    "steps": [
+      {"step": "01", "title": "Discovery", "desc": "Understand your needs and goals"},
+      {"step": "02", "title": "Solution Design", "desc": "Plan the solution and timeline"},
+      {"step": "03", "title": "Implementation", "desc": "Agile development with regular updates"},
+      {"step": "04", "title": "Delivery & Support", "desc": "Handover and ongoing support"}
+    ]
+  },
+  "tech": {
+    "title": "Technologies We Use",
+    "subtitle": "We work with cutting-edge technologies to deliver the best solutions",
+    "items": ["React", "Next.js", "Vue.js", "Node.js", "Python", "TypeScript", "Tailwind CSS", "PostgreSQL", "MongoDB", "AWS", "Docker", "Kubernetes"]
+  },
+  "pricing": {
+    "title": "Pricing Plans",
+    "subtitle": "Choose the plan that fits your needs",
+    "basic": {
+      "name": "Basic",
+      "price": "$9,999",
+      "features": ["Basic Website Development", "Responsive Design", "3 Pages", "1 Month Maintenance"]
+    },
+    "professional": {
+      "name": "Professional",
+      "price": "$29,999",
+      "features": ["Complete Website Development", "Advanced Design", "10 Pages", "3 Months Maintenance", "SEO Optimization"],
+      "featured": true
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "price": "Custom",
+      "features": ["Custom Development", "Unlimited Pages", "1 Year Maintenance", "Dedicated Support", "Advanced Features"]
+    },
+    "contactButton": "Contact Now"
+  },
+  "comparison": {
+    "title": "Compare Services",
+    "subtitle": "Select services to compare features and find the best fit for your needs",
+    "selectHint": "Selected {count} services",
+    "select": "Select for comparison",
+    "selected": "Selected",
+    "compare": "Compare Services",
+    "clear": "Clear Selection",
+    "viewTitle": "Service Comparison",
+    "comparing": "Comparing",
+    "services": "services",
+    "back": "Back to Selection",
+    "features": "Features",
+    "remove": "Remove from Comparison",
+    "feature": "Feature",
+    "contact": "Contact Us",
+    "startOver": "Start Over"
+  },
+  "cta": {
+    "title": "Ready to Get Started?",
+    "subtitle": "Contact us for a free consultation and quote",
+    "contact": "Contact Now",
+    "portfolio": "View Portfolio"
+  }
+}

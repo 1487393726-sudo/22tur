@@ -1,0 +1,125 @@
+{
+  "common": {
+    "systemName": "Enterprise Management System",
+    "autoSendNotice": "This email was sent automatically, please do not reply",
+    "copyright": "© 2024 Enterprise Management System. All rights reserved.",
+    "hello": "Hello",
+    "dear": "Dear"
+  },
+  "passwordReset": {
+    "subject": "Password Reset Request - Enterprise Management System",
+    "title": "Password Reset Request",
+    "greeting": "Hello,",
+    "message": "We received your password reset request. Please click the button below to reset your password:",
+    "buttonText": "Reset Password",
+    "copyLinkText": "Or copy the following link to your browser:",
+    "importantTitle": "Important:",
+    "expireNotice": "This link will expire in 15 minutes",
+    "ignoreNotice": "If you did not request a password reset, please ignore this email",
+    "securityNotice": "For your account security, please do not share this link with others"
+  },
+  "emailVerification": {
+    "subject": "Verify Your Email - Enterprise Management System",
+    "title": "Verify Your Email",
+    "greeting": "Hello,",
+    "message": "Thank you for registering with Enterprise Management System! Please click the button below to verify your email address:",
+    "buttonText": "Verify Email",
+    "copyLinkText": "Or copy the following link to your browser:",
+    "tipTitle": "Tips:",
+    "verifyBenefit": "After verifying your email, you will have access to all system features",
+    "ignoreNotice": "If you did not create an account, please ignore this email"
+  },
+  "welcome": {
+    "subject": "Welcome to Enterprise Management System!",
+    "title": "🎉 Welcome to Enterprise Management System!",
+    "greeting": "Hello {userName},",
+    "message": "Welcome to Enterprise Management System! We are delighted to have you as a member.",
+    "featuresTitle": "You can use the following features:",
+    "feature1": "📋 Project and Task Management",
+    "feature2": "📄 Document Management and Version Control",
+    "feature3": "💬 Message Center and Team Collaboration",
+    "feature4": "📊 Reports and Data Analytics",
+    "feature5": "🔄 Workflow and Approval Process",
+    "feature6": "⏱️ Time Tracking and Timesheet",
+    "buttonText": "Login Now",
+    "tipTitle": "Tips:",
+    "tip1": "Please keep your account information safe",
+    "tip2": "We recommend changing your password regularly for account security",
+    "tip3": "If you have any questions, please contact the system administrator"
+  },
+  "taskAssignment": {
+    "subject": "New Task Assigned: {taskTitle}",
+    "title": "📋 New Task Assignment",
+    "greeting": "Hello {userName},",
+    "message": "{assignerName} has assigned you a new task:",
+    "dueDateLabel": "Due Date:",
+    "dueDateNotSet": "Not set",
+    "buttonText": "View Task Details",
+    "actionNotice": "Please review the task details and start working. If you have any questions, please contact the assigner."
+  },
+  "approvalRequest": {
+    "subject": "Pending Approval: {workflowName}",
+    "title": "✅ Pending Approval Request",
+    "greeting": "Hello {approverName},",
+    "message": "{requesterName} has submitted an approval request that requires your approval:",
+    "buttonText": "Approve Now",
+    "actionNotice": "Please process the approval request promptly. If you have any questions, please contact the requester."
+  },
+  "invoice": {
+    "subject": "Invoice #{invoiceNumber} - Enterprise Management System",
+    "title": "💰 Invoice Notification",
+    "greeting": "Dear {clientName},",
+    "message": "You have a new invoice. Details are as follows:",
+    "invoiceLabel": "Invoice",
+    "amountLabel": "Amount:",
+    "dueDateLabel": "Due Date:",
+    "viewButton": "View Invoice",
+    "downloadButton": "Download PDF",
+    "actionNotice": "Please complete payment before the due date. If you have any questions, please contact us."
+  },
+  "workflowNotification": {
+    "subjectCompleted": "Workflow Completed: {workflowName}",
+    "subjectFailed": "Workflow Rejected: {workflowName}",
+    "subjectCancelled": "Workflow Cancelled: {workflowName}",
+    "title": "Workflow Status Update",
+    "greeting": "Hello {userName},",
+    "message": "Your workflow has been updated:",
+    "statusCompleted": "Completed",
+    "statusFailed": "Rejected",
+    "statusCancelled": "Cancelled",
+    "notesLabel": "Notes:",
+    "buttonText": "View Details"
+  },
+  "orderConfirmation": {
+    "subject": "Order Confirmation #{orderNumber}",
+    "title": "🛒 Order Confirmation",
+    "greeting": "Dear {customerName},",
+    "message": "Thank you for your order! Your order has been confirmed. Details are as follows:",
+    "orderNumberLabel": "Order Number:",
+    "orderDateLabel": "Order Date:",
+    "totalLabel": "Order Total:",
+    "itemsTitle": "Order Items:",
+    "shippingTitle": "Shipping Information:",
+    "buttonText": "View Order Details",
+    "thankYou": "Thank you for your purchase!"
+  },
+  "paymentSuccess": {
+    "subject": "Payment Successful",
+    "title": "✅ Payment Successful",
+    "greeting": "Dear {userName},",
+    "message": "Your payment has been successfully processed.",
+    "amountLabel": "Payment Amount:",
+    "transactionIdLabel": "Transaction ID:",
+    "dateLabel": "Payment Date:",
+    "buttonText": "View Details"
+  },
+  "paymentFailed": {
+    "subject": "Payment Failed",
+    "title": "❌ Payment Failed",
+    "greeting": "Dear {userName},",
+    "message": "We're sorry, your payment could not be processed.",
+    "reasonLabel": "Reason:",
+    "buttonText": "Retry Payment",
+    "supportNotice": "If you need assistance, please contact support."
+  }
+}

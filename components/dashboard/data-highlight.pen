@@ -1,0 +1,412 @@
+{
+  "version": "2.0",
+  "type": "design-specification",
+  "component": "DataHighlight",
+  "lastModified": "2026-01-26",
+  "description": "数据变化高亮组件设计规范 - 智能检测数据变化并提供视觉反馈",
+  "dimensions": {
+    "artboard": {
+      "width": 800,
+      "height": 1200
+    },
+    "components": {
+      "highlightIndicator": {
+        "width": 12,
+        "height": 12,
+        "borderRadius": "50%",
+        "position": "absolute",
+        "top": -4,
+        "right": -4
+      },
+      "animatedNumber": {
+        "minWidth": 60,
+        "height": 32,
+        "fontSize": 24,
+        "fontWeight": 600
+      },
+      "thresholdAlert": {
+        "padding": 8,
+        "borderRadius": 6,
+        "ringWidth": 2
+      }
+    }
+  },
+  "colorScheme": {
+    "highlight": {
+      "up": "#22c55e",
+      "down": "#ef4444",
+      "neutral": "#6b7280"
+    },
+    "background": {
+      "default": "transparent",
+      "highlighted": "rgba(var(--highlight-color), 0.1)"
+    },
+    "shadow": {
+      "highlighted": "0 0 20px rgba(var(--highlight-color), 0.4), 0 0 40px rgba(var(--highlight-color), 0.2)"
+    },
+    "threshold": {
+      "info": "#3b82f6",
+      "warning": "#f59e0b",
+      "critical": "#ef4444"
+    }
+  },
+  "animations": {
+    "highlight": {
+      "duration": "2000ms",
+      "easing": "ease-out",
+      "keyframes": {
+        "0%": { "opacity": 0, "transform": "scale(0.8)" },
+        "50%": { "opacity": 1, "transform": "scale(1.1)" },
+        "100%": { "opacity": 1, "transform": "scale(1)" }
+      }
+    },
+    "pulse": {
+      "duration": "1500ms",
+      "easing": "ease-in-out",
+      "iteration": "infinite",
+      "keyframes": {
+        "0%, 100%": { "opacity": 1 },
+        "50%": { "opacity": 0.5 }
+      }
+    },
+    "ping": {
+      "duration": "1000ms",
+      "easing": "cubic-bezier(0, 0, 0.2, 1)",
+      "iteration": "infinite",
+      "keyframes": {
+        "75%, 100%": { "transform": "scale(2)", "opacity": 0 }
+      }
+    },
+    "numberChange": {
+      "duration": "500ms",
+      "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "property": "transform, opacity"
+    }
+  },
+  "layout": {
+    "container": {
+      "position": "relative",
+      "display": "inline-block",
+      "transition": "all 300ms ease"
+    },
+    "indicator": {
+      "position": "absolute",
+      "zIndex": 10,
+      "pointerEvents": "none"
+    },
+    "content": {
+      "position": "relative",
+      "zIndex": 1
+    }
+  },
+  "interactions": {
+    "dataChange": {
+      "trigger": "value prop change",
+      "threshold": "configurable percentage",
+      "detection": "automatic comparison",
+      "feedback": "visual highlight + animation"
+    },
+    "thresholdAlert": {
+      "trigger": "value exceeds threshold",
+      "severity": "info | warning | critical",
+      "display": "border + shadow + label",
+      "message": "optional custom message"
+    },
+    "animatedNumber": {
+      "trigger": "value change",
+      "animation": "smooth transition",
+      "direction": "up/down indicator",
+      "format": "configurable decimals"
+    }
+  },
+  "responsive": {
+    "mobile": {
+      "indicator": { "width": 10, "height": 10 },
+      "fontSize": { "number": 20, "label": 12 },
+      "shadow": "reduced intensity"
+    },
+    "tablet": {
+      "indicator": { "width": 12, "height": 12 },
+      "fontSize": { "number": 22, "label": 14 },
+      "shadow": "medium intensity"
+    },
+    "desktop": {
+      "indicator": { "width": 12, "height": 12 },
+      "fontSize": { "number": 24, "label": 16 },
+      "shadow": "full intensity"
+    }
+  },
+  "accessibility": {
+    "announcements": {
+      "dataChange": "Value changed from X to Y",
+      "threshold": "Alert: Value exceeds threshold",
+      "direction": "Value increased/decreased"
+    },
+    "visualCues": {
+      "colorBlind": "icons + text indicators",
+      "highContrast": "enhanced border visibility",
+      "reducedMotion": "static highlights only"
+    }
+  },
+  "performance": {
+    "optimization": {
+      "debouncing": "rapid value changes",
+      "memoization": "expensive calculations",
+      "cleanup": "timeout management"
+    },
+    "memory": {
+      "refs": "previous value tracking",
+      "timers": "automatic cleanup",
+      "listeners": "event handler removal"
+    }
+  }
+}
+
+---
+
+# DataHighlight 组件设计规范
+
+## 概述
+DataHighlight 是一个智能数据变化检测组件，当数据变化超过设定阈值时自动显示高亮动画效果，提供直观的视觉反馈。
+
+## 核心功能
+
+### 1. 数据变化检测
+- **自动比较**: 监听 value 属性变化
+- **阈值判断**: 可配置变化百分比阈值
+- **方向识别**: 区分上涨/下跌趋势
+- **智能过滤**: 避免微小波动干扰
+
+### 2. 视觉高亮效果
+- **边框高亮**: 彩色边框 + 阴影效果
+- **指示器**: 右上角脉冲圆点
+- **颜色编码**: 绿色上涨，红色下跌
+- **动画过渡**: 平滑的淡入淡出
+
+### 3. 组件变体
+
+#### DataHighlight (基础组件)
+```tsx
+<DataHighlight
+  value={1250}
+  previousValue={1000}
+  config={{
+    threshold: 5,
+    duration: 2000,
+    upColor: "#22c55e",
+    downColor: "#ef4444"
+  }}
+>
+  <div>数据内容</div>
+</DataHighlight>
+```
+
+#### AnimatedNumber (动画数字)
+```tsx
+<AnimatedNumber
+  value={1250}
+  duration={500}
+  decimals={2}
+  prefix="$"
+  suffix="万"
+  highlightConfig={config}
+/>
+```
+
+#### ThresholdAlert (阈值告警)
+```tsx
+<ThresholdAlert
+  value={85}
+  thresholds={[
+    { value: 80, type: "above", severity: "warning" },
+    { value: 90, type: "above", severity: "critical" }
+  ]}
+>
+  <div>监控内容</div>
+</ThresholdAlert>
+```
+
+## 视觉设计
+
+### 高亮状态
+- **正常状态**: 无特殊样式
+- **上涨高亮**: 绿色边框 + 绿色阴影 + 绿色指示器
+- **下跌高亮**: 红色边框 + 红色阴影 + 红色指示器
+- **持续时间**: 默认2秒，可配置
+
+### 动画效果
+- **高亮出现**: 0.3秒淡入 + 缩放效果
+- **指示器**: 无限脉冲动画
+- **数字变化**: 0.5秒平滑过渡
+- **高亮消失**: 0.3秒淡出效果
+
+### 颜色系统
+```css
+:root {
+  --highlight-up: #22c55e;
+  --highlight-down: #ef4444;
+  --highlight-neutral: #6b7280;
+  --threshold-info: #3b82f6;
+  --threshold-warning: #f59e0b;
+  --threshold-critical: #ef4444;
+}
+```
+
+## 交互设计
+
+### 数据变化流程
+1. 检测到 value 属性变化
+2. 计算变化百分比
+3. 判断是否超过阈值
+4. 确定变化方向 (上涨/下跌)
+5. 触发高亮动画
+6. 设置定时器自动清除
+7. 更新前一个值引用
+
+### 阈值告警流程
+1. 检查所有配置的阈值
+2. 判断当前值是否触发告警
+3. 确定最高严重级别
+4. 显示对应的视觉样式
+5. 可选显示告警消息
+
+### Hook 使用模式
+```tsx
+const { 
+  isHighlighted, 
+  direction, 
+  changePercent, 
+  highlightColor 
+} = useDataHighlight(value, config);
+```
+
+## 配置选项
+
+### HighlightConfig
+```typescript
+interface HighlightConfig {
+  enabled: boolean;        // 是否启用高亮
+  threshold: number;       // 变化阈值 (%)
+  duration: number;        // 高亮持续时间 (ms)
+  upColor: string;         // 上涨颜色
+  downColor: string;       // 下跌颜色
+}
+```
+
+### ThresholdConfig
+```typescript
+interface ThresholdConfig {
+  value: number;           // 阈值
+  type: "above" | "below"; // 触发条件
+  severity: "info" | "warning" | "critical"; // 严重级别
+  message?: string;        // 自定义消息
+}
+```
+
+## 响应式设计
+
+### 移动端适配
+- 指示器尺寸: 10px
+- 阴影强度: 降低50%
+- 动画时长: 缩短至1.5秒
+- 触摸友好的间距
+
+### 平板端适配
+- 指示器尺寸: 12px
+- 阴影强度: 标准
+- 动画时长: 标准2秒
+- 平衡的视觉效果
+
+### 桌面端适配
+- 指示器尺寸: 12px
+- 阴影强度: 完整效果
+- 动画时长: 完整2秒
+- 最佳视觉体验
+
+## 无障碍设计
+
+### 屏幕阅读器
+- 数据变化播报: "数值从1000变为1250，上涨25%"
+- 阈值告警播报: "警告：数值超过阈值"
+- 方向指示播报: "数值上涨" / "数值下跌"
+
+### 视觉辅助
+- 色盲友好: 配合图标和文字指示
+- 高对比度: 增强边框可见性
+- 减少动画: 支持 prefers-reduced-motion
+
+### 键盘导航
+- 可聚焦元素: 支持 Tab 导航
+- 状态指示: 清晰的焦点样式
+- 操作反馈: 键盘操作确认
+
+## 性能优化
+
+### 计算优化
+- 防抖处理: 快速连续变化
+- 记忆化: 昂贵的计算结果
+- 批量更新: 多个数据点变化
+
+### 内存管理
+- 定时器清理: 组件卸载时清除
+- 引用管理: 避免内存泄漏
+- 事件监听: 及时移除监听器
+
+### 渲染优化
+- 条件渲染: 仅在需要时显示动画
+- CSS 变量: 动态颜色切换
+- 硬件加速: transform 和 opacity
+
+## 错误处理
+
+### 输入验证
+- 数值类型检查
+- 配置参数验证
+- 阈值合理性检查
+- 颜色格式验证
+
+### 异常恢复
+- 默认配置回退
+- 错误边界保护
+- 优雅降级处理
+- 用户友好提示
+
+## 使用场景
+
+### 仪表板数据
+- KPI 指标变化
+- 实时监控数据
+- 业务指标趋势
+- 性能数据展示
+
+### 金融数据
+- 股价变化
+- 汇率波动
+- 交易量变化
+- 收益率指标
+
+### 运营数据
+- 用户增长
+- 销售数据
+- 流量统计
+- 转化率监控
+
+## 技术实现
+
+### 核心 Hooks
+- useState: 高亮状态管理
+- useEffect: 数据变化监听
+- useRef: 前值引用存储
+- useCallback: 性能优化
+
+### 动画实现
+- CSS Transitions: 平滑过渡
+- CSS Animations: 脉冲效果
+- requestAnimationFrame: 数字动画
+- setTimeout: 高亮持续时间
+
+### 类型安全
+- TypeScript 接口定义
+- 泛型约束
+- 严格的类型检查
+- 运行时验证

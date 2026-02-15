@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "title": "Creative Digital Agency | Home",
+    "description": "We deliver end-to-end digital solutions across web, mobile, brand and marketing."
+  },
+  "hero": {
+    "title": "Transform Your Ideas Into Reality",
+    "subtitle": "Award-winning creative studio focused on innovative design and technology development",
+    "cta": "Learn More"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive creative and technical solutions to help your business thrive in the digital age",
+    "webDev": {
+      "title": "Web Development",
+      "description": "Build high-performance, responsive websites and applications using the latest technologies"
+    },
+    "uiux": {
+      "title": "UI/UX Design",
+      "description": "Create beautiful, intuitive user interfaces that enhance user experience"
+    },
+    "branding": {
+      "title": "Brand Building",
+      "description": "Craft unique brand identities and establish market competitiveness"
+    }
+  },
+  "stats": {
+    "title": "Our Achievements",
+    "subtitle": "Numbers that speak for themselves",
+    "projects": {
+      "label": "Projects Completed"
+    },
+    "clients": {
+      "label": "Happy Clients"
+    },
+    "experience": {
+      "label": "Years Experience"
+    },
+    "satisfaction": {
+      "label": "Client Satisfaction"
+    }
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "subtitle": "Real feedback from satisfied clients who trust our services",
+    "items": [
+      {
+        "name": "Sarah Johnson",
+        "role": "CEO, TechStart Inc.",
+        "content": "Working with this team has been an absolute pleasure. They delivered our project on time and exceeded all expectations with their attention to detail and innovative solutions.",
+        "rating": 5
+      },
+      {
+        "name": "Michael Chen",
+        "role": "Product Manager, InnovateCo",
+        "content": "The level of professionalism and expertise demonstrated throughout our collaboration was outstanding. Our new platform has transformed how we engage with customers.",
+        "rating": 5
+      },
+      {
+        "name": "Emily Rodriguez",
+        "role": "Marketing Director, BrandWorks",
+        "content": "From concept to launch, the team guided us through every step. The final product not only looks amazing but performs flawlessly. Highly recommended!",
+        "rating": 5
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to Get Started?",
+    "description": "Contact us and let us help you bring your ideas to life",
+    "contactButton": "Contact Us",
+    "servicesButton": "View All Services"
+  }
+}

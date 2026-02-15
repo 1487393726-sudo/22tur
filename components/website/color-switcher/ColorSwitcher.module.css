@@ -1,0 +1,110 @@
+/**
+ * Color Switcher Component Styles
+ */
+
+.colorSwitcher {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.colorSwitcher.horizontal {
+  flex-direction: row;
+}
+
+.colorSwitcher.vertical {
+  flex-direction: column;
+}
+
+.styleButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 200ms ease-in-out;
+  white-space: nowrap;
+}
+
+.styleButton:hover {
+  background-color: var(--color-surfaceVariant);
+  border-color: var(--color-primary);
+}
+
+.styleButton:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-color: var(--color-primary);
+}
+
+.styleButton.active {
+  background-color: var(--color-primary);
+  color: var(--color-onPrimary);
+  border-color: var(--color-primary);
+}
+
+.styleButton.active:hover {
+  opacity: 0.9;
+}
+
+.colorPreview {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid currentColor;
+  flex-shrink: 0;
+}
+
+.label {
+  display: inline-block;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .colorSwitcher {
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .styleButton {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .colorPreview {
+    width: 14px;
+    height: 14px;
+  }
+
+  .label {
+    display: none;
+  }
+}
+
+/* Accessibility: High contrast mode */
+@media (prefers-contrast: more) {
+  .styleButton {
+    border-width: 3px;
+  }
+
+  .styleButton:focus-visible {
+    outline-width: 3px;
+  }
+}
+
+/* Accessibility: Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .styleButton {
+    transition: none;
+  }
+}

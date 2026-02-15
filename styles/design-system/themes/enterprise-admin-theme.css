@@ -1,0 +1,90 @@
+/* Enterprise Admin System Theme - Dark Gray (#495057) */
+
+/* Light Mode */
+:root[data-theme="enterprise-admin"],
+:root[data-theme="enterprise-admin"][data-mode="light"] {
+  /* Primary Colors - Dark Gray */
+  --color-primary-50: #F8F9FA;
+  --color-primary-100: #E9ECEF;
+  --color-primary-200: #DEE2E6;
+  --color-primary-300: #CED4DA;
+  --color-primary-400: #ADB5BD;
+  --color-primary-500: #495057;
+  --color-primary-600: #3D444D;
+  --color-primary-700: #313A43;
+  --color-primary-800: #252D39;
+  --color-primary-900: #1A202C;
+
+  /* Secondary Colors - Accent Blue */
+  --color-secondary-50: #EFF6FF;
+  --color-secondary-100: #DBEAFE;
+  --color-secondary-200: #BFDBFE;
+  --color-secondary-300: #93C5FD;
+  --color-secondary-400: #60A5FA;
+  --color-secondary-500: #3B82F6;
+  --color-secondary-600: #2563EB;
+  --color-secondary-700: #1D4ED8;
+
+  /* Semantic Colors */
+  --color-success: #059669;
+  --color-warning: #D97706;
+  --color-error: #DC2626;
+  --color-info: #2563EB;
+
+  /* Text Colors */
+  --color-text-primary: #1A202C;
+  --color-text-secondary: #495057;
+  --color-text-tertiary: #ADB5BD;
+  --color-text-inverse: #FFFFFF;
+
+  /* Background Colors */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F8F9FA;
+  --color-bg-tertiary: #E9ECEF;
+
+  /* Border Colors */
+  --color-border-light: #E9ECEF;
+  --color-border-default: #DEE2E6;
+  --color-border-dark: #ADB5BD;
+}
+
+/* Dark Mode */
+:root[data-theme="enterprise-admin"][data-mode="dark"] {
+  /* Primary Colors - Inverted */
+  --color-primary-50: #1A202C;
+  --color-primary-100: #252D39;
+  --color-primary-200: #313A43;
+  --color-primary-300: #3D444D;
+  --color-primary-400: #495057;
+  --color-primary-500: #ADB5BD;
+  --color-primary-600: #CED4DA;
+  --color-primary-700: #DEE2E6;
+  --color-primary-800: #E9ECEF;
+  --color-primary-900: #F8F9FA;
+
+  /* Secondary Colors */
+  --color-secondary-50: #1D4ED8;
+  --color-secondary-100: #2563EB;
+  --color-secondary-200: #3B82F6;
+  --color-secondary-300: #60A5FA;
+  --color-secondary-400: #93C5FD;
+  --color-secondary-500: #BFDBFE;
+  --color-secondary-600: #DBEAFE;
+  --color-secondary-700: #EFF6FF;
+
+  /* Text Colors */
+  --color-text-primary: #F8F9FA;
+  --color-text-secondary: #ADB5BD;
+  --color-text-tertiary: #495057;
+  --color-text-inverse: #1A202C;
+
+  /* Background Colors */
+  --color-bg-primary: #1A202C;
+  --color-bg-secondary: #252D39;
+  --color-bg-tertiary: #313A43;
+
+  /* Border Colors */
+  --color-border-light: #313A43;
+  --color-border-default: #3D444D;
+  --color-border-dark: #495057;
+}

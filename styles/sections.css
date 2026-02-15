@@ -1,0 +1,326 @@
+/* ========================================
+   首页区块样式 - Homepage Section Styles
+   ======================================== */
+
+/* 区块基础样式 */
+section {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 默认区块 - 白色背景 */
+section.section-default {
+  background-color: var(--background);
+  color: var(--foreground);
+  padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+  section.section-default {
+    padding: 5rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  section.section-default {
+    padding: 6rem 0;
+  }
+}
+
+/* 浅灰色背景区块 */
+section.section-muted {
+  background-color: var(--muted);
+  color: var(--foreground);
+  padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+  section.section-muted {
+    padding: 5rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  section.section-muted {
+    padding: 6rem 0;
+  }
+}
+
+/* 主色背景区块 */
+section.section-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+  section.section-primary {
+    padding: 5rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  section.section-primary {
+    padding: 6rem 0;
+  }
+}
+
+section.section-primary h1,
+section.section-primary h2,
+section.section-primary h3,
+section.section-primary h4,
+section.section-primary h5,
+section.section-primary h6 {
+  color: var(--primary-foreground);
+}
+
+section.section-primary a {
+  color: var(--primary-foreground);
+}
+
+section.section-primary a:hover {
+  opacity: 0.9;
+}
+
+/* 深色背景区块 */
+section.section-dark {
+  background-color: var(--neutral-900);
+  color: var(--neutral-100);
+  padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+  section.section-dark {
+    padding: 5rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  section.section-dark {
+    padding: 6rem 0;
+  }
+}
+
+section.section-dark h1,
+section.section-dark h2,
+section.section-dark h3,
+section.section-dark h4,
+section.section-dark h5,
+section.section-dark h6 {
+  color: white;
+}
+
+section.section-dark a {
+  color: var(--secondary);
+}
+
+section.section-dark a:hover {
+  color: var(--secondary);
+  opacity: 0.8;
+}
+
+/* Hero 区块 */
+section.hero-section {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  section.hero-section {
+    padding: 8rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  section.hero-section {
+    padding: 10rem 0;
+  }
+}
+
+section.hero-section h1 {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  section.hero-section h1 {
+    font-size: 3.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  section.hero-section h1 {
+    font-size: 4rem;
+  }
+}
+
+section.hero-section p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+/* CTA 区块 */
+section.cta-section {
+  background-color: var(--primary);
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  section.cta-section {
+    padding: 5rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  section.cta-section {
+    padding: 6rem 0;
+  }
+}
+
+section.cta-section h2 {
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  section.cta-section h2 {
+    font-size: 2.5rem;
+  }
+}
+
+section.cta-section p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+}
+
+/* 区块容器 */
+section .section-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  section .section-container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  section .section-container {
+    padding: 0 2rem;
+  }
+}
+
+/* 区块标题 */
+section .section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  section .section-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  section .section-title {
+    font-size: 3rem;
+  }
+}
+
+/* 区块副标题 */
+section .section-subtitle {
+  font-size: 1.125rem;
+  color: var(--muted-foreground);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+section.section-primary .section-subtitle,
+section.section-dark .section-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 区块描述 */
+section .section-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+  margin-bottom: 2rem;
+}
+
+section.section-primary .section-description,
+section.section-dark .section-description {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 区块网格 */
+section .section-grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  section .section-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  section .section-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+}
+
+/* 区块间距 */
+section + section {
+  margin-top: 0;
+}
+
+/* 深色主题区块调整 */
+.dark section.section-default {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.dark section.section-muted {
+  background-color: var(--muted);
+  color: var(--foreground);
+}
+
+/* 移动端响应式 */
+@media (max-width: 640px) {
+  section {
+    padding: 2rem 0;
+  }
+  
+  section .section-title {
+    font-size: 1.5rem;
+  }
+  
+  section .section-subtitle {
+    font-size: 1rem;
+  }
+  
+  section .section-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

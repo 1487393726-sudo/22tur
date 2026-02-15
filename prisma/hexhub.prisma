@@ -1,0 +1,307 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/hexhub"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("HEXHUB_DATABASE_URL")
+}
+
+// ============================================
+// HexHub 核心用户管理
+// ============================================
+
+model HexHubUser {
+  id                String              @id @default(cuid())
+  email             String              @unique
+  username          String              @unique
+  password          String
+  firstName         String?
+  lastName          String?
+  avatar            String?
+  role              String              @default("USER")
+  status            String              @default("ACTIVE")
+  emailVerified     DateTime?
+  lastLoginAt       DateTime?
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  
+  // 关系
+  projects          HexHubProject[]     @relation("ProjectCreator")
+  datasets          HexHubDataset[]     @relation("DatasetOwner")
+  auditLogs         HexHubAuditLog[]    @relation("AuditUser")
+  apiKeys           HexHubApiKey[]      @relation("ApiKeyUser")
+  notifications     HexHubNotification[] @relation("NotificationUser")
+  
+  @@index([email])
+  @@index([status])
+  @@index([createdAt])
+  @@map("hexhub_users")
+}
+
+// ============================================
+// HexHub 项目管理
+// ============================================
+
+model HexHubProject {
+  id                String              @id @default(cuid())
+  name              String
+  description       String?
+  status            String              @default("ACTIVE")
+  visibility        String              @default("PRIVATE")
+  creatorId         String
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  
+  // 关系
+  creator           HexHubUser          @relation("ProjectCreator", fields: [creatorId], references: [id], onDelete: Cascade)
+  datasets          HexHubDataset[]     @relation("ProjectDatasets")
+  members           HexHubProjectMember[] @relation("ProjectMembers")
+  analytics         HexHubAnalytics[]   @relation("ProjectAnalytics")
+  
+  @@index([creatorId])
+  @@index([status])
+  @@index([visibility])
+  @@index([createdAt])
+  @@map("hexhub_projects")
+}
+
+model HexHubProjectMember {
+  id                String              @id @default(cuid())
+  projectId         String
+  userId            String
+  role              String              @default("VIEWER")
+  joinedAt          DateTime            @default(now())
+  
+  project           HexHubProject       @relation("ProjectMembers", fields: [projectId], references: [id], onDelete: Cascade)
+  
+  @@unique([projectId, userId])
+  @@index([projectId])
+  @@index([userId])
+  @@map("hexhub_project_members")
+}
+
+// ============================================
+// HexHub 数据集管理
+// ============================================
+
+model HexHubDataset {
+  id                String              @id @default(cuid())
+  projectId         String
+  name              String
+  description       String?
+  dataType          String
+  format            String              @default("JSON")
+  size              Int                 @default(0)
+  recordCount       Int                 @default(0)
+  status            String              @default("ACTIVE")
+  ownerId           String
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  
+  // 关系
+  project           HexHubProject       @relation("ProjectDatasets", fields: [projectId], references: [id], onDelete: Cascade)
+  owner             HexHubUser          @relation("DatasetOwner", fields: [ownerId], references: [id])
+  records           HexHubDataRecord[]  @relation("DatasetRecords")
+  
+  @@index([projectId])
+  @@index([ownerId])
+  @@index([dataType])
+  @@index([status])
+  @@index([createdAt])
+  @@map("hexhub_datasets")
+}
+
+model HexHubDataRecord {
+  id                String              @id @default(cuid())
+  datasetId         String
+  data              String
+  metadata          String?
+  hash              String?
+  createdAt         DateTime            @default(now())
+  
+  dataset           HexHubDataset       @relation("DatasetRecords", fields: [datasetId], references: [id], onDelete: Cascade)
+  
+  @@index([datasetId])
+  @@index([hash])
+  @@index([createdAt])
+  @@map("hexhub_data_records")
+}
+
+// ============================================
+// HexHub 分析和统计
+// ============================================
+
+model HexHubAnalytics {
+  id                String              @id @default(cuid())
+  projectId         String
+  metric            String
+  value             Float
+  dimension         String?
+  timestamp         DateTime            @default(now())
+  
+  project           HexHubProject       @relation("ProjectAnalytics", fields: [projectId], references: [id], onDelete: Cascade)
+  
+  @@index([projectId])
+  @@index([metric])
+  @@index([dimension])
+  @@index([timestamp])
+  @@map("hexhub_analytics")
+}
+
+model HexHubReport {
+  id                String              @id @default(cuid())
+  projectId         String
+  name              String
+  description       String?
+  type              String
+  config            String
+  status            String              @default("DRAFT")
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  
+  @@index([projectId])
+  @@index([type])
+  @@index([status])
+  @@map("hexhub_reports")
+}
+
+// ============================================
+// HexHub API 管理
+// ============================================
+
+model HexHubApiKey {
+  id                String              @id @default(cuid())
+  userId            String
+  name              String
+  key               String              @unique
+  secret            String
+  status            String              @default("ACTIVE")
+  lastUsedAt        DateTime?
+  expiresAt         DateTime?
+  createdAt         DateTime            @default(now())
+  
+  user              HexHubUser          @relation("ApiKeyUser", fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+  @@index([key])
+  @@index([status])
+  @@map("hexhub_api_keys")
+}
+
+model HexHubApiLog {
+  id                String              @id @default(cuid())
+  apiKeyId          String?
+  endpoint          String
+  method            String
+  statusCode        Int
+  responseTime      Int
+  ipAddress         String?
+  userAgent         String?
+  createdAt         DateTime            @default(now())
+  
+  @@index([apiKeyId])
+  @@index([endpoint])
+  @@index([statusCode])
+  @@index([createdAt])
+  @@map("hexhub_api_logs")
+}
+
+// ============================================
+// HexHub 审计和安全
+// ============================================
+
+model HexHubAuditLog {
+  id                String              @id @default(cuid())
+  userId            String?
+  action            String
+  resource          String
+  resourceId        String?
+  details           String?
+  ipAddress         String?
+  userAgent         String?
+  createdAt         DateTime            @default(now())
+  
+  user              HexHubUser?         @relation("AuditUser", fields: [userId], references: [id])
+  
+  @@index([userId])
+  @@index([action])
+  @@index([resource])
+  @@index([createdAt])
+  @@map("hexhub_audit_logs")
+}
+
+model HexHubSecurityEvent {
+  id                String              @id @default(cuid())
+  type              String
+  severity          String              @default("LOW")
+  description       String?
+  userId            String?
+  ipAddress         String?
+  status            String              @default("OPEN")
+  createdAt         DateTime            @default(now())
+  resolvedAt        DateTime?
+  
+  @@index([type])
+  @@index([severity])
+  @@index([status])
+  @@index([createdAt])
+  @@map("hexhub_security_events")
+}
+
+// ============================================
+// HexHub 通知系统
+// ============================================
+
+model HexHubNotification {
+  id                String              @id @default(cuid())
+  userId            String
+  title             String
+  message           String
+  type              String
+  priority          String              @default("NORMAL")
+  isRead            Boolean             @default(false)
+  actionUrl         String?
+  createdAt         DateTime            @default(now())
+  readAt            DateTime?
+  
+  user              HexHubUser          @relation("NotificationUser", fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+  @@index([isRead])
+  @@index([type])
+  @@index([createdAt])
+  @@map("hexhub_notifications")
+}
+
+// ============================================
+// HexHub 配置和设置
+// ============================================
+
+model HexHubSetting {
+  id                String              @id @default(cuid())
+  key               String              @unique
+  value             String
+  type              String              @default("STRING")
+  description       String?
+  updatedAt         DateTime            @updatedAt
+  
+  @@map("hexhub_settings")
+}
+
+model HexHubIntegration {
+  id                String              @id @default(cuid())
+  projectId         String
+  type              String
+  name              String
+  config            String
+  status            String              @default("ACTIVE")
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  
+  @@index([projectId])
+  @@index([type])
+  @@index([status])
+  @@map("hexhub_integrations")
+}

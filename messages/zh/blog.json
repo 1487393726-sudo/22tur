@@ -1,0 +1,63 @@
+{
+  "title": "博客",
+  "subtitle": "阅读我们的最新文章,了解设计、开发和数字营销的最新趋势",
+  "search": {
+    "placeholder": "搜索文章...",
+    "label": "搜索博客文章"
+  },
+  "categories": {
+    "all": "全部",
+    "design": "设计",
+    "development": "开发",
+    "marketing": "营销",
+    "branding": "品牌"
+  },
+  "readMore": "阅读更多",
+  "readTime": "分钟阅读",
+  "loading": "正在加载更多文章...",
+  "loadMore": "加载更多",
+  "endOfResults": "已经到达文章末尾",
+  "noResults": {
+    "title": "未找到文章",
+    "description": "没有找到符合您搜索条件的文章。请尝试其他关键词或清除筛选条件。",
+    "resetButton": "清除筛选"
+  },
+  "subscribe": {
+    "title": "订阅我们的博客",
+    "description": "获取最新的设计、开发和营销资讯,直接发送到您的邮箱",
+    "placeholder": "输入您的邮箱",
+    "button": "订阅"
+  },
+  "articles": {
+    "webDesignTrends": {
+      "title": "2024年网页设计趋势",
+      "excerpt": "探索2024年最热门的网页设计趋势,包括极简主义、深色模式、3D元素等。",
+      "category": "design"
+    },
+    "react19": {
+      "title": "React 19 新特性详解",
+      "excerpt": "React 19带来了许多令人兴奋的新特性,让我们一起来看看这些改进如何提升开发体验。",
+      "category": "development"
+    },
+    "seoGuide": {
+      "title": "如何提升网站SEO排名",
+      "excerpt": "分享实用的SEO优化技巧,帮助您的网站在搜索引擎中获得更好的排名。",
+      "category": "marketing"
+    },
+    "uiuxBestPractices": {
+      "title": "UI/UX设计最佳实践",
+      "excerpt": "了解如何创建用户友好的界面,提升用户体验和满意度。",
+      "category": "design"
+    },
+    "nextjsPerformance": {
+      "title": "Next.js性能优化指南",
+      "excerpt": "深入探讨Next.js应用的性能优化策略,包括代码分割、图片优化等。",
+      "category": "development"
+    },
+    "brandBuilding": {
+      "title": "品牌建设的重要性",
+      "excerpt": "为什么品牌建设对企业至关重要?如何打造一个成功的品牌?",
+      "category": "branding"
+    }
+  }
+}

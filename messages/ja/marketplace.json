@@ -1,0 +1,123 @@
+{
+  "title": "ライブ配信機材マーケット",
+  "header": {
+    "search": "機材を検索...",
+    "cart": "カート",
+    "compare": "比較"
+  },
+  "segments": {
+    "all": "すべて",
+    "personal": "個人ユーザー",
+    "professional": "プロユーザー",
+    "enterprise": "企業ユーザー",
+    "personalDesc": "個人配信入門向け",
+    "professionalDesc": "プロ向けソリューション",
+    "enterpriseDesc": "企業向けスタジオ構成"
+  },
+  "categories": {
+    "all": "すべて",
+    "lighting": "照明機材",
+    "computer": "パソコン",
+    "camera": "カメラ",
+    "microphone": "マイク",
+    "audioInterface": "オーディオIF",
+    "stand": "スタンド"
+  },
+  "product": {
+    "featured": "おすすめ",
+    "addToCart": "カートに追加",
+    "addToCompare": "比較に追加",
+    "stock": "在庫",
+    "outOfStock": "在庫切れ",
+    "specifications": "仕様",
+    "description": "商品説明",
+    "quantity": "数量"
+  },
+  "bundle": {
+    "hotBundle": "人気セット",
+    "includes": "含む",
+    "items": "点",
+    "save": "お得"
+  },
+  "cart": {
+    "title": "ショッピングカート",
+    "empty": "カートは空です",
+    "emptyDesc": "配信機材を探しましょう",
+    "goShopping": "買い物する",
+    "clear": "カートを空にする",
+    "subtotal": "小計",
+    "shipping": "送料",
+    "freeShipping": "送料無料",
+    "total": "合計",
+    "checkout": "レジに進む",
+    "continueShopping": "買い物を続ける"
+  },
+  "checkout": {
+    "title": "注文確認",
+    "shippingAddress": "配送先",
+    "recipient": "受取人",
+    "phone": "電話番号",
+    "province": "都道府県",
+    "city": "市区町村",
+    "district": "地区",
+    "address": "住所",
+    "paymentMethod": "支払い方法",
+    "alipay": "Alipay",
+    "wechat": "WeChat Pay",
+    "bank": "銀行振込",
+    "creditCard": "クレジットカード",
+    "orderSummary": "注文概要",
+    "submit": "注文する",
+    "submitting": "送信中..."
+  },
+  "order": {
+    "title": "注文履歴",
+    "detail": "注文詳細",
+    "orderNumber": "注文番号",
+    "orderDate": "注文日時",
+    "status": {
+      "pending": "支払い待ち",
+      "paid": "支払い済み",
+      "processing": "処理中",
+      "shipped": "発送済み",
+      "delivered": "配達完了",
+      "cancelled": "キャンセル"
+    },
+    "payNow": "今すぐ支払う",
+    "viewDetail": "詳細を見る",
+    "empty": "注文がありません",
+    "emptyDesc": "配信機材を探しましょう",
+    "logistics": "配送情報",
+    "shippedAt": "発送日時",
+    "deliveredAt": "配達日時",
+    "paymentInfo": "支払い情報",
+    "actualPayment": "支払い金額"
+  },
+  "compare": {
+    "title": "商品比較",
+    "empty": "比較する商品がありません",
+    "emptyDesc": "最大4つの商品を比較できます",
+    "selectProducts": "商品を選ぶ",
+    "clear": "すべてクリア",
+    "price": "価格",
+    "brand": "ブランド",
+    "tier": "グレード",
+    "stock": "在庫",
+    "action": "操作"
+  },
+  "priceTier": {
+    "entry": "エントリー",
+    "mid": "ミドル",
+    "high": "ハイエンド"
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "noData": "データなし",
+    "back": "戻る",
+    "confirm": "確認",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "edit": "編集",
+    "save": "保存"
+  }
+}

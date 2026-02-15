@@ -1,0 +1,651 @@
+{
+  "name": "手机验证组件",
+  "description": "手机号验证组件，支持发送验证码、倒计时、验证码输入和验证",
+  "type": "component",
+  "framework": "React",
+  "styling": "Tailwind CSS",
+  "layout": {
+    "container": {
+      "width": "100%",
+      "maxWidth": "400px",
+      "margin": "0 auto",
+      "padding": "24px"
+    },
+    "spacing": {
+      "sectionGap": "24px",
+      "itemGap": "16px",
+      "inputGap": "8px"
+    }
+  },
+  "components": {
+    "phoneDisplay": {
+      "container": {
+        "display": "flex",
+        "alignItems": "center",
+        "gap": "12px",
+        "padding": "16px",
+        "backgroundColor": "#f9fafb",
+        "borderRadius": "8px",
+        "border": "1px solid #e5e7eb"
+      },
+      "icon": {
+        "width": "20px",
+        "height": "20px",
+        "color": "#6b7280",
+        "flexShrink": "0"
+      },
+      "content": {
+        "flex": "1"
+      },
+      "label": {
+        "fontSize": "14px",
+        "color": "#6b7280",
+        "marginBottom": "2px"
+      },
+      "phoneNumber": {
+        "fontSize": "16px",
+        "fontWeight": "500",
+        "color": "#111827"
+      }
+    },
+    "sendCodeButton": {
+      "width": "100%",
+      "padding": "12px 24px",
+      "fontSize": "16px",
+      "fontWeight": "500",
+      "backgroundColor": "#3b82f6",
+      "color": "#ffffff",
+      "border": "none",
+      "borderRadius": "8px",
+      "cursor": "pointer",
+      "display": "flex",
+      "alignItems": "center",
+      "justifyContent": "center",
+      "gap": "8px",
+      "transition": "all 0.2s ease"
+    },
+    "codeInput": {
+      "container": {
+        "display": "flex",
+        "flexDirection": "column",
+        "gap": "8px"
+      },
+      "label": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "#374151",
+        "marginBottom": "8px"
+      },
+      "inputGroup": {
+        "display": "flex",
+        "gap": "8px",
+        "justifyContent": "center",
+        "marginBottom": "8px"
+      },
+      "digitInput": {
+        "width": "48px",
+        "height": "48px",
+        "fontSize": "20px",
+        "fontWeight": "700",
+        "textAlign": "center",
+        "border": "2px solid #d1d5db",
+        "borderRadius": "8px",
+        "backgroundColor": "#ffffff",
+        "color": "#111827",
+        "outline": "none",
+        "transition": "all 0.2s ease"
+      },
+      "hint": {
+        "fontSize": "12px",
+        "color": "#6b7280",
+        "textAlign": "center"
+      }
+    },
+    "resendButton": {
+      "padding": "8px 16px",
+      "fontSize": "14px",
+      "backgroundColor": "transparent",
+      "color": "#6b7280",
+      "border": "none",
+      "borderRadius": "6px",
+      "cursor": "pointer",
+      "display": "flex",
+      "alignItems": "center",
+      "justifyContent": "center",
+      "gap": "8px",
+      "margin": "0 auto",
+      "transition": "all 0.2s ease"
+    },
+    "actionButtons": {
+      "display": "flex",
+      "gap": "12px"
+    },
+    "cancelButton": {
+      "flex": "1",
+      "padding": "12px 24px",
+      "fontSize": "16px",
+      "backgroundColor": "transparent",
+      "color": "#6b7280",
+      "border": "1px solid #d1d5db",
+      "borderRadius": "8px",
+      "cursor": "pointer",
+      "transition": "all 0.2s ease"
+    },
+    "verifyButton": {
+      "flex": "1",
+      "padding": "12px 24px",
+      "fontSize": "16px",
+      "fontWeight": "500",
+      "backgroundColor": "#3b82f6",
+      "color": "#ffffff",
+      "border": "none",
+      "borderRadius": "8px",
+      "cursor": "pointer",
+      "display": "flex",
+      "alignItems": "center",
+      "justifyContent": "center",
+      "gap": "8px",
+      "transition": "all 0.2s ease"
+    },
+    "errorAlert": {
+      "padding": "12px 16px",
+      "backgroundColor": "#fef2f2",
+      "border": "1px solid #fecaca",
+      "borderRadius": "8px",
+      "color": "#dc2626",
+      "fontSize": "14px"
+    },
+    "successState": {
+      "textAlign": "center",
+      "padding": "64px 0"
+    },
+    "successIcon": {
+      "width": "64px",
+      "height": "64px",
+      "color": "#10b981",
+      "margin": "0 auto 16px"
+    },
+    "successTitle": {
+      "fontSize": "18px",
+      "fontWeight": "600",
+      "color": "#10b981",
+      "marginBottom": "8px"
+    },
+    "successMessage": {
+      "fontSize": "16px",
+      "color": "#6b7280"
+    }
+  },
+  "states": {
+    "initial": {
+      "sendCodeButton": {
+        "backgroundColor": "#3b82f6",
+        "cursor": "pointer",
+        "disabled": false
+      },
+      "codeInput": {
+        "display": "none"
+      },
+      "actionButtons": {
+        "display": "none"
+      }
+    },
+    "sending": {
+      "sendCodeButton": {
+        "backgroundColor": "#9ca3af",
+        "cursor": "not-allowed",
+        "disabled": true
+      },
+      "loadingSpinner": {
+        "display": "inline-block"
+      }
+    },
+    "countdown": {
+      "sendCodeButton": {
+        "backgroundColor": "#9ca3af",
+        "cursor": "not-allowed",
+        "disabled": true
+      }
+    },
+    "codeSent": {
+      "sendCodeButton": {
+        "display": "none"
+      },
+      "codeInput": {
+        "display": "flex"
+      },
+      "actionButtons": {
+        "display": "flex"
+      }
+    },
+    "verifying": {
+      "verifyButton": {
+        "backgroundColor": "#9ca3af",
+        "cursor": "not-allowed",
+        "disabled": true
+      },
+      "digitInput": {
+        "disabled": true
+      }
+    },
+    "verified": {
+      "display": "successState"
+    },
+    "inputFocused": {
+      "digitInput": {
+        "borderColor": "#3b82f6",
+        "boxShadow": "0 0 0 3px rgba(59, 130, 246, 0.1)"
+      }
+    },
+    "inputFilled": {
+      "digitInput": {
+        "borderColor": "#10b981",
+        "backgroundColor": "#f0fdf4"
+      }
+    },
+    "buttonHover": {
+      "sendCodeButton": {
+        "backgroundColor": "#2563eb"
+      },
+      "verifyButton": {
+        "backgroundColor": "#2563eb"
+      },
+      "cancelButton": {
+        "backgroundColor": "#f9fafb"
+      },
+      "resendButton": {
+        "backgroundColor": "#f3f4f6"
+      }
+    }
+  },
+  "interactions": {
+    "sendCode": {
+      "trigger": "click",
+      "target": "sendCodeButton",
+      "conditions": ["!sending", "countdown === 0"],
+      "actions": [
+        "setState: sending",
+        "apiCall: /api/auth/verify-phone",
+        "setState: codeSent",
+        "startCountdown: 60"
+      ],
+      "feedback": "loading spinner + button disabled"
+    },
+    "digitInput": {
+      "trigger": "input",
+      "target": "digitInput",
+      "actions": [
+        "updateCode",
+        "autoFocusNext",
+        "validateLength"
+      ],
+      "feedback": "visual state change + auto focus"
+    },
+    "backspace": {
+      "trigger": "keydown",
+      "key": "Backspace",
+      "target": "digitInput",
+      "actions": [
+        "clearDigit",
+        "focusPrevious"
+      ],
+      "feedback": "focus management"
+    },
+    "verifyCode": {
+      "trigger": "click",
+      "target": "verifyButton",
+      "conditions": ["code.length === 6", "!verifying"],
+      "actions": [
+        "setState: verifying",
+        "apiCall: /api/auth/confirm-phone",
+        "setState: verified"
+      ],
+      "feedback": "loading spinner + success state"
+    },
+    "resendCode": {
+      "trigger": "click",
+      "target": "resendButton",
+      "conditions": ["!sending", "countdown === 0"],
+      "actions": [
+        "setState: sending",
+        "apiCall: /api/auth/verify-phone",
+        "startCountdown: 60"
+      ],
+      "feedback": "loading spinner + countdown restart"
+    }
+  },
+  "responsive": {
+    "mobile": {
+      "breakpoint": "640px",
+      "changes": {
+        "container.padding": "16px",
+        "digitInput.width": "40px",
+        "digitInput.height": "40px",
+        "digitInput.fontSize": "18px",
+        "inputGroup.gap": "6px",
+        "actionButtons.flexDirection": "column",
+        "cancelButton.flex": "none",
+        "verifyButton.flex": "none"
+      }
+    },
+    "tablet": {
+      "breakpoint": "768px",
+      "changes": {
+        "container.maxWidth": "360px"
+      }
+    }
+  },
+  "accessibility": {
+    "keyboardNavigation": true,
+    "screenReader": {
+      "phoneDisplay": "验证手机号显示",
+      "codeInput": "验证码输入框",
+      "sendButton": "发送验证码",
+      "verifyButton": "验证验证码",
+      "resendButton": "重新发送验证码",
+      "countdown": "倒计时剩余时间"
+    },
+    "focusManagement": {
+      "digitInputs": "auto focus next/previous",
+      "buttons": "visible focus indicators"
+    },
+    "announcements": {
+      "codeSent": "验证码已发送",
+      "codeVerified": "验证成功",
+      "countdownUpdate": "倒计时更新"
+    }
+  },
+  "performance": {
+    "lazyLoading": false,
+    "virtualization": false,
+    "memoization": ["phone number", "countdown timer"],
+    "bundleSize": "~12KB gzipped"
+  },
+  "errorHandling": {
+    "networkError": {
+      "display": "error alert",
+      "message": "网络错误，请稍后重试",
+      "retry": true
+    },
+    "apiError": {
+      "display": "error alert",
+      "message": "发送失败，请稍后重试",
+      "retry": true
+    },
+    "rateLimitError": {
+      "display": "error alert + countdown",
+      "message": "发送过于频繁，请等待",
+      "retry": false
+    },
+    "invalidCode": {
+      "display": "error alert",
+      "message": "验证码错误，请重新输入",
+      "retry": true
+    },
+    "expiredCode": {
+      "display": "error alert",
+      "message": "验证码已过期，请重新发送",
+      "retry": true
+    }
+  },
+  "animations": {
+    "codeInputAppear": {
+      "type": "slideDown",
+      "duration": "300ms",
+      "easing": "ease-out"
+    },
+    "digitFocus": {
+      "type": "scale",
+      "duration": "150ms",
+      "easing": "ease-out"
+    },
+    "successStateAppear": {
+      "type": "fadeIn + scaleUp",
+      "duration": "400ms",
+      "easing": "ease-out"
+    },
+    "errorShake": {
+      "type": "shake",
+      "duration": "400ms",
+      "easing": "ease-in-out"
+    },
+    "loadingSpinner": {
+      "type": "rotate",
+      "duration": "1s",
+      "iteration": "infinite",
+      "timing": "linear"
+    }
+  },
+  "validation": {
+    "phoneNumber": {
+      "pattern": "^1[3-9]\\d{9}$",
+      "message": "请输入有效的手机号码"
+    },
+    "verificationCode": {
+      "length": 6,
+      "pattern": "^\\d{6}$",
+      "message": "请输入6位数字验证码"
+    }
+  }
+}
+
+---
+
+# 手机验证组件设计文档
+
+## 概述
+手机验证组件是一个完整的手机号验证解决方案，支持发送短信验证码、倒计时管理、验证码输入和验证确认等功能。
+
+## 核心功能
+
+### 1. 手机号显示
+- **号码展示**：清晰显示待验证的手机号码
+- **图标标识**：使用手机图标增强视觉识别
+- **用途说明**：显示验证用途（注册、重置密码、绑定手机等）
+
+### 2. 验证码发送
+- **一键发送**：点击按钮发送短信验证码
+- **倒计时功能**：发送后启动60秒倒计时，防止频繁发送
+- **重新发送**：倒计时结束后允许重新发送
+- **状态反馈**：显示发送中、已发送等状态
+
+### 3. 验证码输入
+- **6位数字输入**：提供6个独立的数字输入框
+- **自动焦点管理**：输入时自动跳转到下一个输入框
+- **退格支持**：支持退格键删除和焦点回退
+- **实时验证**：输入完成后自动启用验证按钮
+
+### 4. 验证确认
+- **验证提交**：验证输入的6位验证码
+- **成功状态**：验证成功后显示成功页面
+- **错误处理**：处理验证码错误、过期等情况
+
+## 视觉设计
+
+### 布局结构
+```
+┌─────────────────────────────────────────┐
+│ 📱 验证手机号                            │
+│    13800138001                          │
+├─────────────────────────────────────────┤
+│ [发送验证码]                             │
+├─────────────────────────────────────────┤
+│ 输入验证码                               │
+│ [1] [2] [3] [4] [5] [6]                 │
+│ 验证码已发送至 13800138001               │
+├─────────────────────────────────────────┤
+│ 🔄 60秒后可重发                         │
+├─────────────────────────────────────────┤
+│ [取消]  [确认验证]                       │
+└─────────────────────────────────────────┘
+```
+
+### 颜色方案
+- **主色调**：#3b82f6 (蓝色)
+- **成功色**：#10b981 (绿色)
+- **错误色**：#dc2626 (红色)
+- **背景色**：#f9fafb (浅灰色)
+- **边框色**：#d1d5db (中灰色)
+- **文本色**：#111827 (深灰色)
+- **次要文本**：#6b7280 (中灰色)
+
+### 图标系统
+- **手机图标**：Phone (20px)
+- **刷新图标**：RefreshCw (16px)
+- **成功图标**：CheckCircle2 (64px)
+- **加载图标**：Loader2 (16px, 旋转动画)
+
+## 交互设计
+
+### 用户操作流程
+1. **初始状态**
+   - 显示待验证的手机号码
+   - 提供"发送验证码"按钮
+
+2. **发送验证码**
+   - 点击发送按钮
+   - 显示发送中状态
+   - 启动60秒倒计时
+   - 显示验证码输入界面
+
+3. **输入验证码**
+   - 6个独立的数字输入框
+   - 自动焦点管理和跳转
+   - 实时输入验证
+
+4. **验证确认**
+   - 输入完成后启用验证按钮
+   - 点击验证按钮提交
+   - 显示验证结果
+
+### 状态管理
+- **初始状态**：显示发送按钮
+- **发送中状态**：按钮禁用，显示加载图标
+- **倒计时状态**：显示剩余时间，按钮禁用
+- **输入状态**：显示验证码输入框和操作按钮
+- **验证中状态**：验证按钮禁用，显示加载图标
+- **成功状态**：显示验证成功页面
+
+## 响应式设计
+
+### 移动端适配 (< 640px)
+- 减少容器内边距
+- 调整验证码输入框尺寸
+- 操作按钮改为垂直布局
+- 优化触摸目标大小
+
+### 平板端适配 (768px - 1024px)
+- 适当调整容器最大宽度
+- 保持桌面端的交互体验
+- 优化按钮和输入框尺寸
+
+## 无障碍设计
+
+### 键盘导航
+- 所有交互元素支持 Tab 键导航
+- 验证码输入框的焦点管理
+- 支持方向键在输入框间移动
+
+### 屏幕阅读器支持
+- 语义化的表单结构
+- 适当的标签和描述
+- 状态变化的语音播报
+
+### 视觉辅助
+- 高对比度的颜色搭配
+- 清晰的状态指示
+- 足够大的点击目标
+
+## 性能优化
+
+### 组件优化
+- 手机号码和倒计时的记忆化
+- 避免不必要的重新渲染
+- 合理的状态更新策略
+
+### 输入优化
+- 防抖处理用户输入
+- 自动焦点管理优化
+- 减少DOM操作
+
+## 错误处理
+
+### 网络错误
+- 显示友好的错误提示
+- 保持界面可用性
+- 提供重试选项
+
+### 验证码错误
+- **无效验证码**：提示重新输入
+- **验证码过期**：提示重新发送
+- **验证码错误**：清空输入，允许重试
+
+### 频率限制
+- 检测发送频率限制
+- 显示等待时间
+- 自动启动倒计时
+
+## 技术实现
+
+### 状态管理
+```typescript
+interface PhoneVerificationState {
+  code: string;
+  loading: boolean;
+  sending: boolean;
+  error: string;
+  success: boolean;
+  countdown: number;
+  codeSent: boolean;
+}
+```
+
+### 组件属性
+```typescript
+interface PhoneVerificationProps {
+  phone: string;
+  purpose?: "REGISTER" | "RESET_PASSWORD" | "BIND_PHONE";
+  onVerified?: (token: string) => void;
+  onCancel?: () => void;
+}
+```
+
+### API 接口
+- `POST /api/auth/verify-phone` - 发送验证码
+- `POST /api/auth/confirm-phone` - 验证验证码
+
+### 输入框管理
+- 使用 useRef 管理输入框引用
+- 自动焦点跳转逻辑
+- 退格键处理逻辑
+
+## 安全考虑
+
+### 验证码安全
+- 6位数字验证码
+- 有效期限制（通常5-10分钟）
+- 尝试次数限制
+
+### 频率控制
+- 60秒发送间隔
+- 每日发送次数限制
+- IP地址频率限制
+
+### 数据保护
+- 验证码不在前端存储
+- 敏感信息加密传输
+- 验证成功后立即清理
+
+## 开发环境支持
+
+### 测试模式
+- 开发环境自动填充验证码
+- 跳过实际短信发送
+- 模拟各种错误场景
+
+### 调试功能
+- 详细的错误日志
+- 状态变化追踪
+- 性能监控
+
+这个手机验证组件提供了完整的手机号验证流程，具有良好的用户体验、无障碍支持和安全性，适合在各种需要手机验证的场景中使用。

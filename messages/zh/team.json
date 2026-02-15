@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "title": "团队成员 | 创意数字代理机构",
+    "description": "认识我们的专业团队，他们是我们成功的关键。"
+  },
+  "hero": {
+    "title": "我们的团队",
+    "subtitle": "认识我们的团队成员，他们是我们成功的关键"
+  },
+  "members": {
+    "zhangming": {
+      "name": "张明",
+      "position": "CEO & 创始人",
+      "bio": "拥有10年互联网行业经验，专注于产品战略和团队管理"
+    },
+    "lihua": {
+      "name": "李华",
+      "position": "CTO",
+      "bio": "全栈开发专家，精通多种编程语言和框架"
+    },
+    "wangfang": {
+      "name": "王芳",
+      "position": "首席设计师",
+      "bio": "资深UI/UX设计师，擅长创造美观且易用的界面"
+    },
+    "liuqiang": {
+      "name": "刘强",
+      "position": "项目经理",
+      "bio": "敏捷项目管理专家，确保项目按时高质量交付"
+    }
+  },
+  "social": {
+    "linkedin": "LinkedIn",
+    "twitter": "Twitter",
+    "github": "GitHub",
+    "email": "邮箱"
+  }
+}

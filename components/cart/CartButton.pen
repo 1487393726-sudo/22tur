@@ -1,0 +1,470 @@
+{
+  "name": "购物车按钮",
+  "description": "显示购物车图标和商品数量的导航按钮组件",
+  "type": "component",
+  "framework": "React",
+  "styling": "Tailwind CSS",
+  "layout": {
+    "container": {
+      "position": "relative",
+      "display": "inline-flex",
+      "alignItems": "center",
+      "justifyContent": "center",
+      "padding": "8px",
+      "borderRadius": "8px",
+      "cursor": "pointer",
+      "transition": "all 0.2s ease"
+    },
+    "badge": {
+      "position": "absolute",
+      "top": "-4px",
+      "right": "-4px",
+      "minWidth": "20px",
+      "height": "20px",
+      "borderRadius": "50%",
+      "display": "flex",
+      "alignItems": "center",
+      "justifyContent": "center"
+    }
+  },
+  "components": {
+    "cartIcon": {
+      "width": "20px",
+      "height": "20px",
+      "color": "currentColor",
+      "strokeWidth": "2"
+    },
+    "countBadge": {
+      "minWidth": "20px",
+      "height": "20px",
+      "backgroundColor": "#3b82f6",
+      "color": "#ffffff",
+      "fontSize": "12px",
+      "fontWeight": "600",
+      "borderRadius": "50%",
+      "display": "flex",
+      "alignItems": "center",
+      "justifyContent": "center",
+      "position": "absolute",
+      "top": "-4px",
+      "right": "-4px",
+      "border": "2px solid #ffffff",
+      "boxShadow": "0 1px 3px rgba(0, 0, 0, 0.1)"
+    },
+    "loadingState": {
+      "opacity": "0.7",
+      "cursor": "default"
+    }
+  },
+  "states": {
+    "default": {
+      "container": {
+        "backgroundColor": "transparent",
+        "color": "#6b7280"
+      },
+      "countBadge": {
+        "display": "none"
+      }
+    },
+    "withItems": {
+      "countBadge": {
+        "display": "flex"
+      }
+    },
+    "hover": {
+      "container": {
+        "backgroundColor": "rgba(0, 0, 0, 0.05)",
+        "color": "#374151"
+      }
+    },
+    "active": {
+      "container": {
+        "backgroundColor": "rgba(0, 0, 0, 0.1)",
+        "transform": "scale(0.95)"
+      }
+    },
+    "loading": {
+      "container": {
+        "opacity": "0.7",
+        "cursor": "default"
+      },
+      "countBadge": {
+        "display": "none"
+      }
+    },
+    "focused": {
+      "container": {
+        "outline": "2px solid #3b82f6",
+        "outlineOffset": "2px"
+      }
+    }
+  },
+  "interactions": {
+    "cartNavigation": {
+      "trigger": "click",
+      "target": "container",
+      "action": "navigate: /client/cart",
+      "feedback": "page navigation"
+    },
+    "hover": {
+      "trigger": "mouseenter",
+      "target": "container",
+      "action": "setState: hover",
+      "feedback": "background color change"
+    },
+    "leave": {
+      "trigger": "mouseleave",
+      "target": "container",
+      "action": "removeState: hover",
+      "feedback": "revert background color"
+    },
+    "mouseDown": {
+      "trigger": "mousedown",
+      "target": "container",
+      "action": "setState: active",
+      "feedback": "scale down animation"
+    },
+    "mouseUp": {
+      "trigger": "mouseup",
+      "target": "container",
+      "action": "removeState: active",
+      "feedback": "scale up animation"
+    },
+    "focus": {
+      "trigger": "focus",
+      "target": "container",
+      "action": "setState: focused",
+      "feedback": "focus ring appearance"
+    },
+    "blur": {
+      "trigger": "blur",
+      "target": "container",
+      "action": "removeState: focused",
+      "feedback": "focus ring removal"
+    }
+  },
+  "badgeLogic": {
+    "displayCondition": "itemCount > 0",
+    "maxDisplay": "99+",
+    "countSource": "useCartStore.getItemCount()",
+    "updateTrigger": "cart state changes"
+  },
+  "responsive": {
+    "mobile": {
+      "breakpoint": "640px",
+      "changes": {
+        "container.padding": "10px",
+        "cartIcon.width": "22px",
+        "cartIcon.height": "22px",
+        "countBadge.minWidth": "22px",
+        "countBadge.height": "22px",
+        "countBadge.fontSize": "13px"
+      }
+    },
+    "tablet": {
+      "breakpoint": "768px",
+      "changes": {
+        "container.padding": "9px"
+      }
+    }
+  },
+  "accessibility": {
+    "keyboardNavigation": true,
+    "screenReader": {
+      "cartButton": "购物车按钮",
+      "itemCount": "购物车中有 {count} 件商品",
+      "emptyCart": "购物车为空",
+      "navigation": "前往购物车页面"
+    },
+    "focusManagement": {
+      "focusRing": "visible focus indicator",
+      "tabIndex": "0"
+    },
+    "announcements": {
+      "itemAdded": "商品已添加到购物车",
+      "itemRemoved": "商品已从购物车移除",
+      "cartUpdated": "购物车已更新"
+    }
+  },
+  "performance": {
+    "lazyLoading": false,
+    "memoization": ["item count", "mounted state"],
+    "bundleSize": "~3KB gzipped",
+    "hydration": "client-side hydration safe"
+  },
+  "errorHandling": {
+    "storeError": {
+      "display": "fallback state",
+      "message": "购物车暂时不可用",
+      "retry": false
+    },
+    "navigationError": {
+      "display": "error boundary",
+      "message": "导航失败",
+      "retry": true
+    },
+    "hydrationMismatch": {
+      "prevention": "mounted state check",
+      "fallback": "loading state display"
+    }
+  },
+  "animations": {
+    "badgeAppear": {
+      "type": "scaleIn + fadeIn",
+      "duration": "200ms",
+      "easing": "ease-out"
+    },
+    "badgeDisappear": {
+      "type": "scaleOut + fadeOut",
+      "duration": "150ms",
+      "easing": "ease-in"
+    },
+    "countUpdate": {
+      "type": "bounce",
+      "duration": "300ms",
+      "easing": "ease-out"
+    },
+    "hover": {
+      "type": "backgroundTransition",
+      "duration": "200ms",
+      "easing": "ease-out"
+    },
+    "active": {
+      "type": "scale",
+      "duration": "100ms",
+      "easing": "ease-in-out"
+    }
+  },
+  "stateManagement": {
+    "store": "Zustand cart store",
+    "subscription": "automatic re-render on count change",
+    "persistence": "localStorage/sessionStorage",
+    "hydration": "SSR-safe implementation"
+  },
+  "theming": {
+    "colorScheme": "adaptive",
+    "variants": {
+      "light": {
+        "container": "#ffffff",
+        "icon": "#6b7280",
+        "badge": "#3b82f6",
+        "hover": "rgba(0, 0, 0, 0.05)"
+      },
+      "dark": {
+        "container": "#1f2937",
+        "icon": "#9ca3af",
+        "badge": "#3b82f6",
+        "hover": "rgba(255, 255, 255, 0.05)"
+      }
+    }
+  }
+}
+
+---
+
+# 购物车按钮组件设计文档
+
+## 概述
+购物车按钮是一个导航组件，显示购物车图标和当前商品数量，用户点击后可跳转到购物车页面。该组件集成了状态管理，能够实时反映购物车中的商品数量变化。
+
+## 核心功能
+
+### 1. 购物车状态显示
+- **图标展示**：使用购物车图标表示功能
+- **数量徽章**：显示购物车中的商品总数
+- **实时更新**：购物车状态变化时自动更新显示
+- **数量限制**：超过99件商品显示"99+"
+
+### 2. 导航功能
+- **页面跳转**：点击后跳转到购物车页面
+- **链接语义**：使用 Next.js Link 组件实现
+- **键盘导航**：支持 Tab 键和 Enter 键操作
+
+### 3. 状态管理集成
+- **Zustand 集成**：连接到全局购物车状态
+- **自动订阅**：状态变化时自动重新渲染
+- **SSR 安全**：防止服务端和客户端渲染不一致
+
+## 视觉设计
+
+### 基础布局
+```
+┌─────────────────┐
+│  🛒             │  ← 无商品状态
+└─────────────────┘
+
+┌─────────────────┐
+│  🛒      ⭕3    │  ← 有商品状态
+└─────────────────┘
+```
+
+### 组件结构
+- **容器**：8px 内边距，圆角边框
+- **图标**：20px × 20px 购物车图标
+- **徽章**：20px × 20px 圆形数量显示
+- **定位**：徽章相对容器右上角定位
+
+### 颜色方案
+- **默认状态**：图标为中灰色 (#6b7280)
+- **悬停状态**：背景为浅灰色，图标变深
+- **徽章背景**：主题蓝色 (#3b82f6)
+- **徽章文字**：白色 (#ffffff)
+- **边框**：白色边框增强对比度
+
+### 尺寸规格
+- **容器尺寸**：36px × 36px (含内边距)
+- **图标尺寸**：20px × 20px
+- **徽章尺寸**：20px × 20px (最小宽度)
+- **字体大小**：12px，粗体
+
+## 交互设计
+
+### 用户操作流程
+1. **查看状态**
+   - 用户看到购物车图标
+   - 如有商品，显示数量徽章
+
+2. **交互反馈**
+   - 鼠标悬停时背景色变化
+   - 点击时轻微缩放效果
+   - 键盘焦点时显示焦点环
+
+3. **导航跳转**
+   - 点击后跳转到购物车页面
+   - 保持当前购物车状态
+
+### 状态变化动画
+- **徽章出现**：缩放 + 淡入动画
+- **徽章消失**：缩放 + 淡出动画
+- **数量更新**：轻微弹跳效果
+- **悬停效果**：背景色平滑过渡
+
+## 响应式设计
+
+### 移动端适配 (< 640px)
+- 增加容器内边距到 10px
+- 图标尺寸增加到 22px × 22px
+- 徽章尺寸增加到 22px × 22px
+- 字体大小增加到 13px
+
+### 平板端适配 (768px - 1024px)
+- 容器内边距调整为 9px
+- 保持其他尺寸不变
+- 优化触摸目标大小
+
+### 桌面端优化
+- 保持默认尺寸
+- 优化鼠标悬停效果
+- 支持键盘导航
+
+## 无障碍设计
+
+### 键盘导航
+- 支持 Tab 键导航到按钮
+- 支持 Enter 键和 Space 键激活
+- 明显的焦点指示器
+
+### 屏幕阅读器支持
+- 语义化的链接结构
+- 动态的商品数量播报
+- 购物车状态的描述
+
+### 视觉辅助
+- 高对比度的颜色搭配
+- 清晰的图标设计
+- 足够大的点击目标
+
+## 性能优化
+
+### 组件优化
+- 商品数量的记忆化处理
+- 挂载状态的优化管理
+- 避免不必要的重新渲染
+
+### 状态管理优化
+- 高效的状态订阅机制
+- 最小化状态更新范围
+- 防抖处理频繁更新
+
+### 渲染优化
+- SSR 安全的实现方式
+- 客户端水合的优化
+- 条件渲染的性能考虑
+
+## 错误处理
+
+### 状态管理错误
+- 购物车状态获取失败
+- 显示默认的空状态
+- 不影响基本导航功能
+
+### 导航错误
+- 页面跳转失败处理
+- 错误边界的保护
+- 用户友好的错误提示
+
+### 水合错误
+- 服务端客户端不一致
+- 使用挂载状态防护
+- 优雅降级处理
+
+## 技术实现
+
+### 状态管理
+```typescript
+const itemCount = useCartStore((state) => state.getItemCount());
+```
+
+### SSR 安全处理
+```typescript
+const [mounted, setMounted] = useState(false);
+
+useEffect(() => {
+  setMounted(true);
+}, []);
+
+if (!mounted) {
+  return <LoadingState />;
+}
+```
+
+### 数量显示逻辑
+```typescript
+const displayCount = itemCount > 99 ? "99+" : itemCount.toString();
+```
+
+## 集成要求
+
+### 状态管理依赖
+- Zustand 购物车状态管理
+- getItemCount 方法的实现
+- 状态变化的自动通知
+
+### 路由依赖
+- Next.js Link 组件
+- 购物车页面路由 (/client/cart)
+- 页面间状态保持
+
+### 样式依赖
+- Tailwind CSS 类名
+- 主题色彩变量
+- 响应式断点配置
+
+## 扩展性设计
+
+### 功能扩展
+- 支持购物车预览弹窗
+- 支持快速添加/移除商品
+- 支持多种徽章样式
+
+### 样式定制
+- 可配置的颜色主题
+- 可调整的尺寸规格
+- 自定义图标支持
+
+### 行为定制
+- 可配置的导航目标
+- 可自定义的数量显示逻辑
+- 可扩展的交互动画
+
+这个购物车按钮组件提供了完整的购物车状态显示和导航功能，具有良好的用户体验、性能和可访问性，适合在电商和购物相关的应用中使用。

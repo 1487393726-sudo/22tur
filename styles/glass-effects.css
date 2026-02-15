@@ -1,0 +1,186 @@
+/**
+ * Glass Effects CSS Variables
+ * 玻璃态效果CSS变量定义
+ * 
+ * This file defines all CSS custom properties for glassmorphism effects
+ * including opacity, blur intensity, border colors, and shadow definitions
+ * for both light and dark themes.
+ */
+
+:root {
+  /* Glass Background Opacity - 玻璃背景不透明度 */
+  --glass-opacity-light: 0.1;
+  --glass-opacity-medium: 0.15;
+  --glass-opacity-heavy: 0.25;
+  
+  /* Blur Intensity - 模糊强度 */
+  --glass-blur-light: 8px;
+  --glass-blur-medium: 12px;
+  --glass-blur-heavy: 20px;
+  
+  /* Border Colors - 边框颜色 */
+  --glass-border-light: rgba(255, 255, 255, 0.1);
+  --glass-border-medium: rgba(255, 255, 255, 0.18);
+  
+  /* Shadow Layers - 阴影层 */
+  --glass-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04),
+                     0 1px 2px rgba(0, 0, 0, 0.06);
+  --glass-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08),
+                     0 2px 4px rgba(0, 0, 0, 0.06),
+                     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --glass-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12),
+                     0 4px 8px rgba(0, 0, 0, 0.08),
+                     inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Dark Mode Adjustments - 深色模式调整 */
+[data-theme="dark"],
+.dark {
+  /* Dark mode adjustments - 深色模式调整 */
+  --glass-opacity-light: 0.08;
+  --glass-opacity-medium: 0.12;
+  --glass-opacity-heavy: 0.2;
+  
+  --glass-border-light: rgba(255, 255, 255, 0.08);
+  --glass-border-medium: rgba(255, 255, 255, 0.12);
+  
+  --glass-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2),
+                     0 1px 2px rgba(0, 0, 0, 0.3);
+  --glass-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3),
+                     0 2px 4px rgba(0, 0, 0, 0.4),
+                     inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --glass-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4),
+                     0 4px 8px rgba(0, 0, 0, 0.5),
+                     inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Mobile Optimizations - 移动端优化 */
+@media (max-width: 768px) {
+  :root {
+    /* Reduce blur intensity for better performance - 减少模糊强度以提升性能 */
+    /* Blur reduction: 25-40% from desktop values for performance */
+    --glass-blur-light: 6px;   /* 25% reduction from 8px */
+    --glass-blur-medium: 8px;  /* 33% reduction from 12px */
+    --glass-blur-heavy: 12px;  /* 40% reduction from 20px */
+    
+    /* Simplify shadows - 简化阴影 (reduced to 1-2 layers) */
+    --glass-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --glass-shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --glass-shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    /* Further reduce effects for small screens - 进一步减少小屏幕效果 */
+    /* Additional blur reduction: 50-60% from desktop values */
+    --glass-blur-light: 4px;   /* 50% reduction from 8px */
+    --glass-blur-medium: 6px;  /* 50% reduction from 12px */
+    --glass-blur-heavy: 8px;   /* 60% reduction from 20px */
+    
+    /* Further simplify shadows for smallest screens */
+    --glass-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.08);
+    --glass-shadow-md: 0 2px 6px rgba(0, 0, 0, 0.12);
+    --glass-shadow-lg: 0 3px 12px rgba(0, 0, 0, 0.18);
+  }
+}
+
+/* Browser Fallback - 浏览器降级方案 */
+/* Base styles for all browsers - 所有浏览器的基础样式 */
+.glass-fallback {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced styles for browsers supporting backdrop-filter */
+/* 支持backdrop-filter的浏览器的增强样式 */
+@supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+  .glass-fallback {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+/* Fallback for browsers not supporting backdrop-filter */
+/* 不支持backdrop-filter的浏览器的降级方案 */
+@supports not (backdrop-filter: blur(10px)) {
+  .glass-fallback {
+    background: rgba(255, 255, 255, 0.92);
+  }
+}
+
+/* Accessibility - User Preferences - 可访问性 - 用户偏好 */
+
+/* High Contrast Mode - 高对比度模式 */
+@media (prefers-contrast: high) {
+  :root {
+    --glass-opacity-light: 0.9;
+    --glass-opacity-medium: 0.92;
+    --glass-opacity-heavy: 0.95;
+    
+    --glass-blur-light: 2px;
+    --glass-blur-medium: 3px;
+    --glass-blur-heavy: 4px;
+  }
+}
+
+/* Reduced Transparency - 减少透明度 */
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --glass-opacity-light: 0.95;
+    --glass-opacity-medium: 0.96;
+    --glass-opacity-heavy: 0.98;
+  }
+}
+
+/* Reduced Motion - 减少动画 */
+@media (prefers-reduced-motion: reduce) {
+  .glass-interactive,
+  .glass-light,
+  .glass-medium,
+  .glass-heavy {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Pricing Page Animations - 定价页面动画 */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-slide-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "network": {
+    "connectionError": "Network connection error, please check your network",
+    "timeout": "Request timed out, please try again later",
+    "offline": "You are currently offline"
+  },
+  "server": {
+    "internalError": "Internal server error",
+    "serviceUnavailable": "Service temporarily unavailable",
+    "maintenance": "System is under maintenance, please try again later"
+  },
+  "auth": {
+    "unauthorized": "Unauthorized, please login first",
+    "forbidden": "You don't have permission to perform this action",
+    "sessionExpired": "Session expired, please login again",
+    "invalidToken": "Invalid token"
+  },
+  "resource": {
+    "notFound": "Requested resource not found",
+    "alreadyExists": "Resource already exists",
+    "conflict": "Resource conflict, please refresh and try again"
+  },
+  "validation": {
+    "invalidInput": "Invalid input data",
+    "missingRequired": "Missing required fields",
+    "invalidFormat": "Invalid data format"
+  },
+  "file": {
+    "uploadFailed": "File upload failed",
+    "downloadFailed": "File download failed",
+    "fileTooLarge": "File is too large",
+    "invalidType": "Unsupported file type"
+  },
+  "payment": {
+    "paymentFailed": "Payment failed",
+    "insufficientFunds": "Insufficient funds",
+    "cardDeclined": "Card declined",
+    "transactionError": "Transaction error"
+  },
+  "generic": {
+    "unknownError": "An unknown error occurred",
+    "tryAgain": "Please try again later",
+    "contactSupport": "If the problem persists, please contact support"
+  }
+}

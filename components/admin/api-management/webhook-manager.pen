@@ -1,0 +1,180 @@
+{
+  "version": "2.6",
+  "name": "Webhook Manager",
+  "description": "Webhook管理器 - 事件订阅与通知配置",
+  "children": [{"type": "frame", "id": "canvas", "x": 0, "y": 0, "width": 1920, "height": 1200, "fill": "#0f172a"}]
+}
+
+## 页面布局设计 (1920x1200)
+
+### 标题栏 (60, 40)
+- 主标题: "Webhook 管理器" - 42px, 粗体, 白色
+- 创建按钮: 右上角, 蓝色 #3b82f6, "+ 创建 Webhook"
+
+### Webhook 列表表格 (60, 140, 1800x800)
+背景: rgba(255,255,255,0.05), 圆角12px, 边框 rgba(255,255,255,0.2)
+
+表头:
+| 名称 | URL | 事件 | 状态 | 操作 |
+
+表格行示例:
+
+行1 - 支付通知:
+- 名称: 🪝 "支付通知" (Webhook图标 + 文字)
+- URL: "https://api.example.com/webhooks/payment" (等宽字体, 截断)
+- 事件: [payment.success] [payment.failed] +3 (徽章显示)
+- 状态: [活跃] 徽章(绿色 #10b981)
+- 操作: [📋复制] [🔄重新生成] [🗑️删除]
+
+行2 - 订阅事件:
+- 名称: 🪝 "订阅事件"
+- URL: "https://api.example.com/webhooks/subscription"
+- 事件: [subscription.*] (通配符)
+- 状态: [活跃] 徽章(绿色)
+- 操作: [📋] [🔄] [🗑️]
+
+行3 - 退款通知:
+- 名称: 🪝 "退款通知"
+- URL: "https://api.example.com/webhooks/refund"
+- 事件: [refund.created]
+- 状态: [停用] 徽章(灰色 #6b7280)
+- 操作: [📋] [🔄] [🗑️]
+
+### 创建 Webhook 对话框 (居中弹窗, 600x500)
+背景: #1e293b, 圆角12px
+
+**步骤1 - 配置信息:**
+
+标题: "创建 Webhook"
+描述: "配置 Webhook 接收事件通知"
+
+表单字段:
+1. 名称输入框:
+   - 标签: "名称"
+   - 占位符: "例如：支付通知"
+   - 必填
+
+2. 订阅事件 (复选框网格, 2列):
+   - ☐ 支付成功 (payment.success)
+   - ☐ 支付失败 (payment.failed)
+   - ☐ 退款创建 (refund.created)
+   - ☐ 订阅创建 (subscription.created)
+   - ☐ 订阅取消 (subscription.cancelled)
+   - ☐ 所有事件 (*)
+
+按钮组:
+- [取消] 灰色边框
+- [创建] 蓝色 #3b82f6
+
+**步骤2 - 显示密钥:**
+
+⚠️ 警告框 (黄色背景 #fef3c7):
+"请保存此密钥用于验证签名："
+
+密钥显示框:
+- 输入框: "whsec_1234567890abcdef..." (等宽字体, 只读)
+- 按钮: [📋 复制]
+
+提示文字:
+"使用此密钥验证 Webhook 请求的签名，确保请求来自可信源"
+
+按钮:
+- [完成] 蓝色
+
+### 事件类型说明面板 (60, 980, 1800x180)
+背景: #1e293b, 圆角12px
+
+标题: "支持的事件类型" - 24px, 粗体
+
+事件列表 (横向布局):
+- payment.success - 支付成功
+- payment.failed - 支付失败
+- refund.created - 退款创建
+- subscription.created - 订阅创建
+- subscription.cancelled - 订阅取消
+- * - 所有事件 (通配符)
+
+### Webhook 配置示例 (右侧边栏, 可选)
+背景: #1e293b, 圆角12px
+
+标题: "接收 Webhook"
+
+代码示例:
+```javascript
+// 验证签名
+const crypto = require('crypto');
+
+function verifySignature(payload, signature, secret) {
+  const hmac = crypto
+    .createHmac('sha256', secret)
+    .update(payload)
+    .digest('hex');
+  return hmac === signature;
+}
+
+// 处理事件
+app.post('/webhooks', (req, res) => {
+  const signature = req.headers['x-webhook-signature'];
+  const payload = JSON.stringify(req.body);
+  
+  if (!verifySignature(payload, signature, secret)) {
+    return res.status(401).send('Invalid signature');
+  }
+  
+  // 处理事件
+  const event = req.body;
+  console.log('Event:', event.type);
+  
+  res.status(200).send('OK');
+});
+```
+
+### 空状态 (无 Webhook 时)
+居中显示:
+- 图标: 🪝 大号 Webhook 图标
+- 文字: "暂无 Webhook"
+- 描述: "创建 Webhook 以接收事件通知"
+- 按钮: "创建第一个 Webhook"
+
+### 操作按钮说明
+- 📋 复制 URL: 复制 Webhook URL 到剪贴板
+- 🔄 重新生成: 重新生成密钥，旧密钥失效
+- 🗑️ 删除: 删除 Webhook 配置
+
+### 状态徽章
+- 活跃 (ACTIVE): 绿色背景 #10b981
+- 停用 (INACTIVE): 灰色背景 #6b7280
+
+### 事件徽章
+- 单个事件: 灰色边框, 小号字体
+- 通配符 (*): 蓝色边框
+- 超过2个: 显示前2个 + "+N" 徽章
+
+### 色彩方案
+- 背景: #0f172a
+- 卡片/对话框: #1e293b
+- 边框: rgba(255,255,255,0.2)
+- 主文本: #ffffff
+- 次文本: #94a3b8
+- 警告背景: #fef3c7
+- 警告文字: #92400e
+- 成功: #10b981
+- 主按钮: #3b82f6
+- 危险: #ef4444
+
+### 安全提示
+- 密钥仅在创建时显示一次
+- 使用 HMAC-SHA256 验证签名
+- 支持密钥轮换
+- 建议使用 HTTPS
+
+### 响应式设计
+- 桌面: 完整表格
+- 平板: 简化列
+- 手机: 卡片式布局
+
+### 交互状态
+- 表格行悬停: 背景变亮
+- 按钮悬停: 颜色加深
+- 复制成功: Toast 提示
+- 加载: 按钮禁用 + 旋转图标

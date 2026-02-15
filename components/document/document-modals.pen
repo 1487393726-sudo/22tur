@@ -1,0 +1,578 @@
+{
+  "version": "2.0",
+  "type": "design-specification",
+  "component": "DocumentModals",
+  "lastModified": "2026-01-26",
+  "description": "文档管理模态框组件设计规范 - 包含创建、编辑、分享、查看文档的完整功能",
+  "dimensions": {
+    "artboard": {
+      "width": 1400,
+      "height": 2000
+    },
+    "components": {
+      "modal": {
+        "width": 600,
+        "maxWidth": 800,
+        "maxHeight": "90vh",
+        "borderRadius": 12
+      },
+      "form": {
+        "spacing": 16,
+        "inputHeight": 40,
+        "textareaHeight": 96
+      },
+      "fileUpload": {
+        "dropZone": {
+          "height": 120,
+          "borderRadius": 8,
+          "borderWidth": 2
+        },
+        "fileItem": {
+          "height": 56,
+          "padding": 12,
+          "borderRadius": 6
+        }
+      },
+      "shareTab": {
+        "height": 40,
+        "borderRadius": "6px 6px 0 0"
+      }
+    }
+  },
+  "colorScheme": {
+    "modal": {
+      "background": "#ffffff",
+      "overlay": "rgba(0, 0, 0, 0.5)",
+      "border": "#e5e7eb",
+      "shadow": "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+    },
+    "form": {
+      "label": "#374151",
+      "input": {
+        "background": "#ffffff",
+        "border": "#d1d5db",
+        "focusBorder": "#3b82f6",
+        "errorBorder": "#ef4444"
+      },
+      "error": "#dc2626",
+      "helper": "#6b7280"
+    },
+    "fileUpload": {
+      "dropZone": {
+        "background": "#ffffff",
+        "border": "#d1d5db",
+        "borderDashed": "2px dashed",
+        "hover": "#f3f4f6",
+        "active": "#dbeafe"
+      },
+      "fileItem": {
+        "background": "#f9fafb",
+        "border": "#e5e7eb"
+      }
+    },
+    "badges": {
+      "contract": { "bg": "#fef2f2", "text": "#dc2626" },
+      "report": { "bg": "#eff6ff", "text": "#2563eb" },
+      "proposal": { "bg": "#faf5ff", "text": "#9333ea" },
+      "design": { "bg": "#f0fdf4", "text": "#16a34a" },
+      "technical": { "bg": "#fefce8", "text": "#ca8a04" },
+      "other": { "bg": "#f3f4f6", "text": "#6b7280" }
+    },
+    "permissions": {
+      "private": { "bg": "#fef2f2", "text": "#dc2626", "icon": "#dc2626" },
+      "internal": { "bg": "#fefce8", "text": "#ca8a04", "icon": "#ca8a04" },
+      "public": { "bg": "#f0fdf4", "text": "#16a34a", "icon": "#16a34a" }
+    }
+  },
+  "layout": {
+    "modal": {
+      "structure": "header + content + footer",
+      "padding": "24px",
+      "gap": "24px"
+    },
+    "form": {
+      "structure": "vertical stack",
+      "fieldSpacing": "16px",
+      "gridColumns": "1fr 1fr on md+"
+    },
+    "fileUpload": {
+      "dropZone": "centered content",
+      "fileList": "vertical stack",
+      "progressBar": "full width"
+    },
+    "shareModal": {
+      "tabs": "horizontal navigation",
+      "content": "dynamic based on tab",
+      "linkList": "vertical stack with actions"
+    }
+  },
+  "interactions": {
+    "createDocument": {
+      "fileUpload": {
+        "dragDrop": "visual feedback on drag over",
+        "fileSelect": "click to browse files",
+        "validation": "size and type checking",
+        "preview": "file list with remove option"
+      },
+      "formValidation": {
+        "realTime": "on blur validation",
+        "submission": "complete form validation",
+        "errors": "inline error messages"
+      },
+      "clientProject": {
+        "cascade": "project filtered by client",
+        "optional": "both fields optional"
+      }
+    },
+    "editDocument": {
+      "prefill": "populate form with existing data",
+      "changes": "track form changes",
+      "validation": "same as create"
+    },
+    "shareDocument": {
+      "tabs": {
+        "email": "email input + message",
+        "link": "expiry settings + generation",
+        "user": "user selection dropdown"
+      },
+      "linkGeneration": {
+        "create": "generate shareable URL",
+        "copy": "copy to clipboard",
+        "manage": "view and revoke existing"
+      }
+    },
+    "viewDocument": {
+      "preview": "file type based preview",
+      "download": "direct file download",
+      "metadata": "comprehensive info display"
+    }
+  },
+  "responsive": {
+    "mobile": {
+      "maxWidth": "768px",
+      "modal": {
+        "width": "95vw",
+        "padding": "16px",
+        "maxHeight": "95vh"
+      },
+      "form": {
+        "singleColumn": true,
+        "inputSpacing": "12px"
+      },
+      "fileUpload": {
+        "dropZone": { "height": 100 },
+        "fileItem": { "height": 48 }
+      }
+    },
+    "tablet": {
+      "maxWidth": "1024px",
+      "modal": {
+        "width": "600px",
+        "padding": "20px"
+      },
+      "form": {
+        "gridColumns": "1fr 1fr",
+        "inputSpacing": "14px"
+      }
+    },
+    "desktop": {
+      "minWidth": "1025px",
+      "modal": {
+        "width": "600px",
+        "maxWidth": "800px",
+        "padding": "24px"
+      },
+      "form": {
+        "gridColumns": "1fr 1fr",
+        "inputSpacing": "16px"
+      }
+    }
+  },
+  "accessibility": {
+    "modal": {
+      "focusTrap": "trap focus within modal",
+      "escapeClose": "close on Escape key",
+      "ariaLabel": "descriptive modal labels",
+      "backdrop": "click outside to close"
+    },
+    "form": {
+      "labels": "associated with inputs",
+      "errors": "announced to screen readers",
+      "required": "marked with asterisk",
+      "fieldsets": "grouped related fields"
+    },
+    "fileUpload": {
+      "dragDrop": "keyboard accessible alternative",
+      "fileList": "navigable with keyboard",
+      "progress": "announced progress updates"
+    },
+    "shareModal": {
+      "tabs": "keyboard navigable",
+      "linkCopy": "success feedback",
+      "permissions": "clear permission descriptions"
+    }
+  },
+  "validation": {
+    "createDocument": {
+      "title": "required, min 1 character",
+      "type": "required enum value",
+      "category": "required selection",
+      "permission": "required enum value",
+      "files": "optional, size and type limits",
+      "email": "valid email format when provided"
+    },
+    "editDocument": {
+      "same": "same as create validation",
+      "changes": "detect and highlight changes"
+    },
+    "shareDocument": {
+      "email": "valid email when email share",
+      "user": "required when user share",
+      "permission": "required enum value",
+      "expiry": "valid date when provided"
+    }
+  },
+  "fileHandling": {
+    "supportedTypes": [
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "application/vnd.ms-excel",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "application/vnd.ms-powerpoint",
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+      "text/plain",
+      "image/jpeg",
+      "image/png",
+      "image/gif"
+    ],
+    "maxSize": "10MB per file",
+    "validation": {
+      "size": "check file size before upload",
+      "type": "validate MIME type",
+      "errors": "user-friendly error messages"
+    },
+    "preview": {
+      "icons": "file type specific icons",
+      "size": "human readable file sizes",
+      "remove": "remove files before upload"
+    }
+  },
+  "performance": {
+    "fileUpload": {
+      "chunked": "large file chunked upload",
+      "progress": "real-time upload progress",
+      "validation": "client-side validation first"
+    },
+    "formHandling": {
+      "debouncing": "debounced validation",
+      "memoization": "memoized form components",
+      "lazyLoading": "lazy load heavy components"
+    },
+    "dataFetching": {
+      "caching": "cache client/project data",
+      "prefetch": "prefetch related data",
+      "optimistic": "optimistic UI updates"
+    }
+  }
+}
+
+---
+
+# 文档管理模态框组件设计规范
+
+## 概述
+文档管理模态框组件提供完整的文档生命周期管理功能，包括创建、编辑、分享和查看文档，支持文件上传、权限管理和协作分享。
+
+## 核心功能
+
+### 1. 创建文档模态框 (CreateDocumentModal)
+- **基本信息**: 标题、描述、类型、分类
+- **文件上传**: 拖拽上传、文件选择、进度显示
+- **权限设置**: 私有、内部、公开三级权限
+- **关联信息**: 客户、项目关联选择
+- **表单验证**: 实时验证和错误提示
+
+### 2. 编辑文档模态框 (EditDocumentModal)
+- **信息修改**: 编辑文档基本信息
+- **权限调整**: 修改访问权限设置
+- **关联更新**: 更改客户和项目关联
+- **数据预填**: 自动填充现有数据
+
+### 3. 分享文档模态框 (ShareDocumentModal)
+- **多种分享方式**: 邮件、链接、用户分享
+- **权限控制**: 查看、编辑、管理权限
+- **有效期设置**: 可设置链接过期时间
+- **分享管理**: 查看和撤销现有分享
+
+### 4. 查看文档模态框 (ViewDocumentModal)
+- **文档预览**: 基于文件类型的预览
+- **详细信息**: 完整的文档元数据
+- **下载功能**: 直接下载文档文件
+- **关联展示**: 显示客户、项目关联
+
+## 视觉设计
+
+### 模态框结构
+```
+┌─────────────────────────────────────────────────────────┐
+│                    模态框标题                            │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│                    表单内容区域                          │
+│                                                         │
+│  ┌─────────────┐  ┌─────────────┐                      │
+│  │   输入框1    │  │   输入框2    │                      │
+│  └─────────────┘  └─────────────┘                      │
+│                                                         │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │              文件上传区域                        │   │
+│  │         [拖拽或点击上传文件]                      │   │
+│  └─────────────────────────────────────────────────┘   │
+│                                                         │
+├─────────────────────────────────────────────────────────┤
+│                 [取消]  [确认]                          │
+└─────────────────────────────────────────────────────────┘
+```
+
+### 颜色系统
+- **模态框背景**: #ffffff (纯白)
+- **遮罩层**: rgba(0, 0, 0, 0.5) (半透明黑)
+- **边框**: #e5e7eb (浅灰)
+- **阴影**: 0 25px 50px -12px rgba(0, 0, 0, 0.25)
+
+### 文档类型徽章
+- **合同**: 红色系 (#fef2f2 背景, #dc2626 文字)
+- **报告**: 蓝色系 (#eff6ff 背景, #2563eb 文字)
+- **提案**: 紫色系 (#faf5ff 背景, #9333ea 文字)
+- **设计**: 绿色系 (#f0fdf4 背景, #16a34a 文字)
+- **技术**: 黄色系 (#fefce8 背景, #ca8a04 文字)
+- **其他**: 灰色系 (#f3f4f6 背景, #6b7280 文字)
+
+### 权限徽章
+- **私有**: 红色系 + 锁定图标
+- **内部**: 黄色系 + 文件夹图标
+- **公开**: 绿色系 + 地球图标
+
+## 交互设计
+
+### 文件上传流程
+1. 用户拖拽文件到上传区域
+2. 显示拖拽悬停状态
+3. 释放文件触发选择
+4. 验证文件类型和大小
+5. 显示文件列表和进度
+6. 提供移除文件选项
+
+### 表单验证流程
+1. 实时验证 (onBlur)
+2. 显示内联错误消息
+3. 提交前完整验证
+4. 阻止无效表单提交
+5. 成功提示和关闭
+
+### 分享功能流程
+1. 选择分享方式 (标签页)
+2. 填写相应的分享信息
+3. 设置权限和有效期
+4. 生成分享链接或发送邮件
+5. 管理现有分享链接
+
+## 组件变体
+
+### CreateDocumentModal
+```tsx
+<CreateDocumentModal
+  open={isOpen}
+  onOpenChange={setIsOpen}
+  onSuccess={handleSuccess}
+/>
+```
+
+### EditDocumentModal
+```tsx
+<EditDocumentModal
+  open={isOpen}
+  onOpenChange={setIsOpen}
+  document={selectedDocument}
+  onSuccess={handleSuccess}
+/>
+```
+
+### ShareDocumentModal
+```tsx
+<ShareDocumentModal
+  open={isOpen}
+  onOpenChange={setIsOpen}
+  document={selectedDocument}
+/>
+```
+
+### ViewDocumentModal
+```tsx
+<ViewDocumentModal
+  open={isOpen}
+  onOpenChange={setIsOpen}
+  document={selectedDocument}
+  onDownload={handleDownload}
+/>
+```
+
+## 响应式设计
+
+### 移动端 (≤768px)
+- 模态框宽度: 95vw
+- 单列表单布局
+- 内边距: 16px
+- 文件上传区域高度: 100px
+
+### 平板端 (769px-1024px)
+- 模态框宽度: 600px
+- 双列表单布局
+- 内边距: 20px
+- 标准的交互元素
+
+### 桌面端 (≥1025px)
+- 模态框宽度: 600px-800px
+- 双列表单布局
+- 内边距: 24px
+- 完整的悬停效果
+
+## 文件处理
+
+### 支持的文件类型
+- **文档**: PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX
+- **文本**: TXT
+- **图片**: JPEG, PNG, GIF
+
+### 文件验证
+- **大小限制**: 单文件最大 10MB
+- **类型检查**: MIME 类型验证
+- **数量限制**: 支持多文件上传
+- **错误处理**: 友好的错误提示
+
+### 文件预览
+- **图标显示**: 基于文件类型的图标
+- **大小格式化**: 人类可读的文件大小
+- **移除功能**: 上传前可移除文件
+- **进度显示**: 实时上传进度
+
+## 无障碍设计
+
+### 键盘导航
+- Tab 键遍历所有表单元素
+- Enter 键提交表单
+- Escape 键关闭模态框
+- 箭头键在选项间导航
+
+### 屏幕阅读器
+- 表单标签正确关联
+- 错误消息实时播报
+- 必填字段明确标识
+- 文件上传状态播报
+
+### 视觉辅助
+- 高对比度模式兼容
+- 焦点指示器清晰可见
+- 颜色不是唯一信息载体
+- 支持用户字体大小设置
+
+## 性能优化
+
+### 文件上传优化
+- 分块上传大文件
+- 实时进度反馈
+- 客户端预验证
+- 错误重试机制
+
+### 表单性能
+- 防抖验证输入
+- 记忆化表单组件
+- 懒加载重型组件
+- 批量状态更新
+
+### 数据获取优化
+- 缓存客户项目数据
+- 预取相关数据
+- 乐观UI更新
+- 智能缓存策略
+
+## 错误处理
+
+### 表单验证错误
+- 内联错误消息显示
+- 字段级别的错误状态
+- 提交时的完整验证
+- 用户友好的错误描述
+
+### 文件上传错误
+- 文件大小超限提示
+- 不支持格式提示
+- 网络错误重试
+- 上传失败恢复
+
+### 网络请求错误
+- 请求超时处理
+- 服务器错误提示
+- 权限不足提示
+- 自动重试机制
+
+## 数据流管理
+
+### 表单状态
+- React Hook Form 管理
+- Zod 模式验证
+- 实时状态同步
+- 错误状态管理
+
+### 文件状态
+- 本地文件列表管理
+- 上传进度跟踪
+- 验证状态管理
+- 清理机制
+
+### 分享状态
+- 分享链接列表
+- 权限状态管理
+- 有效期跟踪
+- 撤销状态同步
+
+## 最佳实践
+
+### 用户体验
+- 清晰的操作反馈
+- 直观的表单布局
+- 友好的错误提示
+- 流畅的交互动画
+
+### 数据安全
+- 客户端验证
+- 服务端验证
+- 权限检查
+- 安全的文件处理
+
+### 性能考虑
+- 合理的组件拆分
+- 高效的状态管理
+- 优化的网络请求
+- 内存泄漏防护
+
+## 技术实现
+
+### 核心依赖
+- React Hook Form (表单管理)
+- Zod (数据验证)
+- Lucide React (图标)
+- Tailwind CSS (样式)
+
+### 文件上传
+- FormData API
+- File API
+- Drag and Drop API
+- Progress Events
+
+### 状态管理
+- useState (本地状态)
+- useEffect (副作用)
+- useCallback (性能优化)
+- 自定义 Hooks

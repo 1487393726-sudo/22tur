@@ -1,0 +1,722 @@
+{
+  "name": "增强版登录表单",
+  "description": "支持多种登录方式的增强版登录表单，可识别邮箱、手机号、用户ID三种登录方式",
+  "type": "component",
+  "framework": "React",
+  "styling": "Tailwind CSS",
+  "layout": {
+    "container": {
+      "width": "100%",
+      "maxWidth": "400px",
+      "margin": "0 auto",
+      "padding": "24px"
+    },
+    "card": {
+      "width": "100%",
+      "borderRadius": "12px",
+      "border": "1px solid #e5e7eb",
+      "backgroundColor": "#ffffff",
+      "boxShadow": "0 4px 6px rgba(0, 0, 0, 0.05)"
+    }
+  },
+  "components": {
+    "header": {
+      "container": {
+        "padding": "32px 24px 0",
+        "textAlign": "center"
+      },
+      "title": {
+        "fontSize": "24px",
+        "fontWeight": "700",
+        "color": "#111827",
+        "marginBottom": "8px"
+      },
+      "description": {
+        "fontSize": "14px",
+        "color": "#6b7280",
+        "marginBottom": "32px"
+      }
+    },
+    "form": {
+      "container": {
+        "padding": "0 24px 32px",
+        "display": "flex",
+        "flexDirection": "column",
+        "gap": "16px"
+      },
+      "fieldGroup": {
+        "display": "flex",
+        "flexDirection": "column",
+        "gap": "8px"
+      },
+      "label": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "#374151"
+      },
+      "inputContainer": {
+        "position": "relative",
+        "display": "flex",
+        "alignItems": "center"
+      },
+      "input": {
+        "width": "100%",
+        "padding": "12px 40px 12px 16px",
+        "fontSize": "16px",
+        "border": "1px solid #d1d5db",
+        "borderRadius": "8px",
+        "backgroundColor": "#ffffff",
+        "color": "#111827",
+        "outline": "none",
+        "transition": "all 0.2s ease"
+      },
+      "inputIcon": {
+        "position": "absolute",
+        "right": "12px",
+        "width": "16px",
+        "height": "16px",
+        "pointerEvents": "none"
+      },
+      "inputHint": {
+        "fontSize": "12px",
+        "marginTop": "4px",
+        "transition": "color 0.2s ease"
+      },
+      "submitButton": {
+        "width": "100%",
+        "padding": "12px 24px",
+        "fontSize": "16px",
+        "fontWeight": "500",
+        "backgroundColor": "#3b82f6",
+        "color": "#ffffff",
+        "border": "none",
+        "borderRadius": "8px",
+        "cursor": "pointer",
+        "display": "flex",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "gap": "8px",
+        "transition": "all 0.2s ease",
+        "marginTop": "8px"
+      },
+      "forgotPassword": {
+        "textAlign": "center",
+        "marginTop": "16px"
+      },
+      "forgotLink": {
+        "fontSize": "14px",
+        "color": "#3b82f6",
+        "textDecoration": "none",
+        "cursor": "pointer",
+        "transition": "color 0.2s ease"
+      }
+    },
+    "errorAlert": {
+      "padding": "12px 16px",
+      "backgroundColor": "#fef2f2",
+      "border": "1px solid #fecaca",
+      "borderRadius": "8px",
+      "marginBottom": "16px"
+    },
+    "errorText": {
+      "fontSize": "14px",
+      "color": "#dc2626"
+    },
+    "loginMethods": {
+      "container": {
+        "margin": "24px 24px 0",
+        "padding": "16px",
+        "backgroundColor": "#f9fafb",
+        "border": "1px solid #e5e7eb",
+        "borderRadius": "8px"
+      },
+      "title": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "#111827",
+        "marginBottom": "8px"
+      },
+      "methodList": {
+        "display": "flex",
+        "flexDirection": "column",
+        "gap": "4px"
+      },
+      "methodItem": {
+        "display": "flex",
+        "alignItems": "center",
+        "gap": "8px",
+        "fontSize": "12px",
+        "color": "#6b7280"
+      },
+      "methodIcon": {
+        "width": "12px",
+        "height": "12px",
+        "flexShrink": "0"
+      }
+    },
+    "testAccount": {
+      "container": {
+        "margin": "16px 24px 0",
+        "padding": "16px",
+        "backgroundColor": "#eff6ff",
+        "border": "1px solid #bfdbfe",
+        "borderRadius": "8px"
+      },
+      "title": {
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "color": "#1e40af",
+        "marginBottom": "8px"
+      },
+      "credential": {
+        "fontSize": "12px",
+        "color": "#1e40af",
+        "marginBottom": "4px"
+      }
+    },
+    "loadingSpinner": {
+      "width": "16px",
+      "height": "16px",
+      "animation": "spin 1s linear infinite"
+    }
+  },
+  "identifierTypes": {
+    "email": {
+      "icon": "Mail",
+      "color": "#22c55e",
+      "hint": "邮箱格式",
+      "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+    },
+    "phone": {
+      "icon": "Phone", 
+      "color": "#3b82f6",
+      "hint": "手机号格式",
+      "pattern": "^1[3-9]\\d{9}$"
+    },
+    "userId": {
+      "icon": "User",
+      "color": "#8b5cf6",
+      "hint": "用户ID格式",
+      "pattern": "^UID-[A-Z0-9]{7,}$"
+    },
+    "unknown": {
+      "icon": null,
+      "color": "#dc2626",
+      "hint": "格式不正确",
+      "pattern": null
+    }
+  },
+  "states": {
+    "default": {
+      "input": {
+        "borderColor": "#d1d5db",
+        "backgroundColor": "#ffffff"
+      },
+      "submitButton": {
+        "backgroundColor": "#3b82f6",
+        "cursor": "pointer",
+        "disabled": false
+      },
+      "errorAlert": {
+        "display": "none"
+      },
+      "inputIcon": {
+        "display": "none"
+      },
+      "inputHint": {
+        "display": "none"
+      }
+    },
+    "loading": {
+      "input": {
+        "backgroundColor": "#f9fafb",
+        "cursor": "not-allowed",
+        "disabled": true
+      },
+      "submitButton": {
+        "backgroundColor": "#9ca3af",
+        "cursor": "not-allowed",
+        "disabled": true
+      },
+      "loadingSpinner": {
+        "display": "inline-block"
+      }
+    },
+    "error": {
+      "errorAlert": {
+        "display": "block"
+      },
+      "input": {
+        "borderColor": "#f87171"
+      }
+    },
+    "inputFocused": {
+      "input": {
+        "borderColor": "#3b82f6",
+        "boxShadow": "0 0 0 3px rgba(59, 130, 246, 0.1)"
+      }
+    },
+    "identifierDetected": {
+      "inputIcon": {
+        "display": "block"
+      },
+      "inputHint": {
+        "display": "block"
+      }
+    },
+    "validIdentifier": {
+      "inputHint": {
+        "color": "#6b7280"
+      }
+    },
+    "invalidIdentifier": {
+      "inputHint": {
+        "color": "#dc2626"
+      }
+    },
+    "buttonHover": {
+      "submitButton": {
+        "backgroundColor": "#2563eb"
+      },
+      "forgotLink": {
+        "color": "#1d4ed8"
+      }
+    }
+  },
+  "interactions": {
+    "identifierInput": {
+      "trigger": "input",
+      "target": "identifierInput",
+      "actions": [
+        "detectIdentifierType",
+        "updateIcon",
+        "updateHint",
+        "validateFormat"
+      ],
+      "feedback": "real-time type detection + icon display"
+    },
+    "formSubmit": {
+      "trigger": "submit",
+      "target": "form",
+      "conditions": ["identifier.length > 0", "password.length > 0"],
+      "actions": [
+        "preventDefault",
+        "setState: loading",
+        "signIn: credentials",
+        "checkUserRole",
+        "redirectBasedOnRole"
+      ],
+      "feedback": "loading spinner + disabled inputs"
+    },
+    "inputFocus": {
+      "trigger": "focus",
+      "target": "input",
+      "action": "setState: inputFocused",
+      "feedback": "border color change + shadow"
+    },
+    "inputBlur": {
+      "trigger": "blur",
+      "target": "input",
+      "action": "removeState: inputFocused",
+      "feedback": "remove focus styles"
+    },
+    "forgotPasswordClick": {
+      "trigger": "click",
+      "target": "forgotLink",
+      "action": "navigate: /forgot-password",
+      "feedback": "page navigation"
+    },
+    "buttonHover": {
+      "trigger": "mouseenter",
+      "target": "submitButton",
+      "action": "setState: buttonHover"
+    },
+    "buttonLeave": {
+      "trigger": "mouseleave",
+      "target": "submitButton",
+      "action": "removeState: buttonHover"
+    }
+  },
+  "responsive": {
+    "mobile": {
+      "breakpoint": "640px",
+      "changes": {
+        "container.padding": "16px",
+        "header.padding": "24px 16px 0",
+        "form.padding": "0 16px 24px",
+        "loginMethods.margin": "16px 16px 0",
+        "testAccount.margin": "16px 16px 0",
+        "input.fontSize": "16px",
+        "submitButton.padding": "14px 24px"
+      }
+    },
+    "tablet": {
+      "breakpoint": "768px",
+      "changes": {
+        "container.maxWidth": "380px"
+      }
+    }
+  },
+  "accessibility": {
+    "keyboardNavigation": true,
+    "screenReader": {
+      "form": "增强版登录表单",
+      "identifierInput": "账号输入框，支持邮箱、手机号或用户ID",
+      "passwordInput": "密码输入框",
+      "submitButton": "登录按钮",
+      "errorAlert": "错误提示",
+      "identifierHint": "输入格式提示",
+      "loginMethods": "支持的登录方式说明"
+    },
+    "focusManagement": {
+      "inputs": "visible focus indicators",
+      "submitButton": "keyboard accessible"
+    },
+    "announcements": {
+      "typeDetected": "检测到输入类型",
+      "loginStart": "正在登录",
+      "loginSuccess": "登录成功",
+      "loginError": "登录失败"
+    }
+  },
+  "performance": {
+    "lazyLoading": false,
+    "memoization": ["identifier type detection", "validation logic"],
+    "bundleSize": "~12KB gzipped"
+  },
+  "errorHandling": {
+    "networkError": {
+      "display": "error alert",
+      "message": "登录失败，请稍后重试",
+      "retry": true
+    },
+    "credentialsError": {
+      "display": "error alert", 
+      "message": "登录失败，请检查您的账号和密码",
+      "retry": true
+    },
+    "roleError": {
+      "display": "error alert",
+      "message": "您没有管理员权限",
+      "retry": false
+    },
+    "validationError": {
+      "display": "inline hint",
+      "message": "请输入有效的账号格式",
+      "retry": true
+    }
+  },
+  "animations": {
+    "iconAppear": {
+      "type": "fadeIn + scaleUp",
+      "duration": "200ms",
+      "easing": "ease-out"
+    },
+    "hintAppear": {
+      "type": "slideDown + fadeIn",
+      "duration": "200ms",
+      "easing": "ease-out"
+    },
+    "errorAppear": {
+      "type": "slideDown + fadeIn",
+      "duration": "300ms",
+      "easing": "ease-out"
+    },
+    "inputFocus": {
+      "type": "borderTransition + shadowAppear",
+      "duration": "200ms",
+      "easing": "ease-out"
+    },
+    "buttonHover": {
+      "type": "backgroundTransition",
+      "duration": "150ms",
+      "easing": "ease-out"
+    },
+    "loadingSpinner": {
+      "type": "rotate",
+      "duration": "1s",
+      "iteration": "infinite",
+      "timing": "linear"
+    }
+  },
+  "validation": {
+    "identifier": {
+      "required": true,
+      "customValidation": "detectAndValidateType",
+      "message": "请输入有效的邮箱、手机号或用户ID"
+    },
+    "password": {
+      "required": true,
+      "minLength": 6,
+      "message": "密码至少6位字符"
+    }
+  },
+  "security": {
+    "authentication": {
+      "method": "NextAuth.js credentials provider",
+      "multipleIdentifiers": "email, phone, userId support",
+      "encryption": "bcrypt password hashing"
+    },
+    "inputSanitization": {
+      "xssProtection": "input sanitization",
+      "sqlInjectionProtection": "parameterized queries"
+    },
+    "rateLimiting": {
+      "loginAttempts": "5 attempts per 15 minutes",
+      "ipBasedLimiting": "IP-based rate limiting"
+    }
+  }
+}
+
+---
+
+# 增强版登录表单组件设计文档
+
+## 概述
+增强版登录表单是一个智能的多方式登录组件，能够自动识别用户输入的账号类型（邮箱、手机号、用户ID），并提供相应的视觉反馈和验证。
+
+## 核心功能
+
+### 1. 智能账号识别
+- **实时类型检测**：输入时自动识别账号类型
+- **视觉反馈**：显示对应的图标和颜色
+- **格式提示**：实时显示输入格式状态
+- **多种支持**：邮箱、手机号、用户ID 三种方式
+
+### 2. 账号类型支持
+- **邮箱登录**：标准邮箱格式 (user@example.com)
+- **手机号登录**：中国大陆手机号 (13800138001)
+- **用户ID登录**：系统用户ID (UID-XXXXXXX)
+- **格式验证**：每种类型的实时格式验证
+
+### 3. 增强用户体验
+- **智能提示**：根据输入类型显示相应提示
+- **状态指示**：清晰的输入状态和验证结果
+- **登录方式说明**：详细的支持方式说明
+- **测试账户**：开发环境的测试信息
+
+## 视觉设计
+
+### 布局结构
+```
+┌─────────────────────────────────────────┐
+│           企业管理系统                   │
+│      支持邮箱、手机号或用户ID登录         │
+├─────────────────────────────────────────┤
+│ 账号                                    │
+│ [user@example.com           ] 📧        │
+│ 邮箱格式                                │
+├─────────────────────────────────────────┤
+│ 密码                                    │
+│ [••••••••••••••••••••••••••••]         │
+├─────────────────────────────────────────┤
+│ ⚠️ 登录失败，请检查您的账号和密码          │
+├─────────────────────────────────────────┤
+│              [登录]                     │
+│           忘记密码？                     │
+├─────────────────────────────────────────┤
+│ 📋 支持的登录方式：                      │
+│ 📧 邮箱：admin@example.com              │
+│ 📱 手机号：13800138001                  │
+│ 👤 用户ID：UID-XXXXXXX                  │
+├─────────────────────────────────────────┤
+│ 🧪 测试账户：                           │
+│ 邮箱：admin@example.com                 │
+│ 密码：admin123                          │
+└─────────────────────────────────────────┘
+```
+
+### 颜色方案
+- **主色调**：#3b82f6 (蓝色)
+- **成功色**：#22c55e (绿色，邮箱)
+- **信息色**：#3b82f6 (蓝色，手机号)
+- **特殊色**：#8b5cf6 (紫色，用户ID)
+- **错误色**：#dc2626 (红色，格式错误)
+- **背景色**：#ffffff (白色)
+- **边框色**：#d1d5db (浅灰色)
+
+### 图标系统
+- **邮箱图标**：Mail (16px, 绿色)
+- **手机图标**：Phone (16px, 蓝色)
+- **用户图标**：User (16px, 紫色)
+- **加载图标**：Loader2 (16px, 旋转动画)
+
+## 交互设计
+
+### 智能识别逻辑
+1. **输入监听**
+   - 实时监听用户输入
+   - 去除首尾空格进行检测
+
+2. **类型检测**
+   - 邮箱：包含 @ 符号且符合邮箱格式
+   - 手机号：11位数字且以1开头，第二位为3-9
+   - 用户ID：以 UID- 开头，后跟7位以上字母数字
+
+3. **视觉反馈**
+   - 显示对应类型的图标
+   - 使用类型专属的颜色
+   - 显示格式状态提示
+
+### 用户操作流程
+1. **开始输入**
+   - 在账号输入框中输入
+   - 系统自动检测输入类型
+
+2. **类型识别**
+   - 显示对应的图标和颜色
+   - 显示格式状态提示
+   - 实时验证输入格式
+
+3. **完成登录**
+   - 输入密码
+   - 点击登录按钮
+   - 执行身份验证
+
+## 响应式设计
+
+### 移动端适配 (< 640px)
+- 调整容器和内边距
+- 优化输入框和按钮尺寸
+- 保持图标和提示的可见性
+- 确保触摸目标足够大
+
+### 平板端适配 (768px - 1024px)
+- 保持桌面端的交互体验
+- 适当调整容器宽度
+- 优化触摸交互
+
+## 无障碍设计
+
+### 键盘导航
+- 支持 Tab 键在表单元素间导航
+- Enter 键提交表单
+- 明显的焦点指示器
+
+### 屏幕阅读器支持
+- 语义化的表单结构
+- 输入类型的语音描述
+- 格式状态的语音播报
+
+### 视觉辅助
+- 高对比度的颜色搭配
+- 清晰的状态指示
+- 图标和文字的双重提示
+
+## 性能优化
+
+### 智能检测优化
+- 防抖处理用户输入
+- 记忆化类型检测逻辑
+- 避免不必要的重新渲染
+
+### 组件优化
+- 表单验证逻辑的记忆化
+- 图标组件的复用
+- 合理的状态更新策略
+
+## 错误处理
+
+### 格式验证错误
+- **邮箱格式错误**：提示正确的邮箱格式
+- **手机号格式错误**：提示正确的手机号格式
+- **用户ID格式错误**：提示正确的用户ID格式
+
+### 认证错误
+- **凭据错误**：账号或密码不正确
+- **账户不存在**：输入的账号未注册
+- **权限错误**：非管理员用户尝试登录
+
+### 网络错误
+- **连接超时**：网络连接问题
+- **服务器错误**：后端服务异常
+- **请求失败**：API 调用失败
+
+## 技术实现
+
+### 类型检测逻辑
+```typescript
+const detectIdentifierType = (input: string): IdentifierType => {
+  const trimmed = input.trim();
+  
+  // 邮箱格式检测
+  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+    return 'email';
+  }
+  
+  // 手机号格式检测
+  if (/^1[3-9]\d{9}$/.test(trimmed)) {
+    return 'phone';
+  }
+  
+  // 用户ID格式检测
+  if (/^UID-[A-Z0-9]{7,}$/i.test(trimmed)) {
+    return 'userId';
+  }
+  
+  return 'unknown';
+};
+```
+
+### 状态管理
+```typescript
+interface EnhancedLoginState {
+  identifier: string;
+  password: string;
+  identifierType: IdentifierType;
+  loading: boolean;
+  error: string;
+}
+```
+
+### 视觉反馈组件
+```typescript
+const getInputIcon = (type: IdentifierType) => {
+  switch (type) {
+    case 'email':
+      return <Mail className="h-4 w-4 text-green-600" />;
+    case 'phone':
+      return <Phone className="h-4 w-4 text-blue-600" />;
+    case 'userId':
+      return <User className="h-4 w-4 text-purple-600" />;
+    default:
+      return null;
+  }
+};
+```
+
+## 安全考虑
+
+### 输入验证
+- 客户端和服务端双重验证
+- 防止 XSS 和 SQL 注入攻击
+- 输入长度和格式限制
+
+### 认证安全
+- 支持多种标识符的统一认证
+- 安全的密码哈希和验证
+- 会话管理和令牌安全
+
+### 频率限制
+- 登录尝试次数限制
+- IP 地址频率限制
+- 账户锁定机制
+
+## 扩展性设计
+
+### 新类型支持
+- 模块化的类型检测逻辑
+- 可配置的验证规则
+- 灵活的图标和颜色系统
+
+### 国际化支持
+- 多语言的提示信息
+- 不同地区的手机号格式
+- 本地化的用户ID规则
+
+### 主题定制
+- 可配置的颜色方案
+- 自定义图标支持
+- 灵活的布局选项
+
+这个增强版登录表单组件提供了智能的多方式登录体验，具有良好的用户体验、无障碍支持和扩展性，适合在需要支持多种登录方式的企业级应用中使用。

@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "合作伙伴 | 创意数字代理机构",
+    "description": "我们与行业领导者合作，共同提供卓越的解决方案并推动创新。"
+  },
+  "hero": {
+    "badge": "我们的合作伙伴",
+    "title": "信任的合作伙伴",
+    "subtitle": "我们与行业领导者合作，共同提供卓越的解决方案并推动创新。"
+  },
+  "stats": {
+    "globalPartners": "全球合作伙伴",
+    "countries": "个国家",
+    "projectValue": "项目价值",
+    "successRate": "成功率"
+  },
+  "search": {
+    "placeholder": "搜索合作伙伴...",
+    "allCategories": "所有类别"
+  },
+  "categories": {
+    "all": "所有类别",
+    "technology": "科技",
+    "automotive": "汽车",
+    "finance": "金融",
+    "healthcare": "医疗"
+  },
+  "sections": {
+    "featured": "特色合作伙伴",
+    "all": "所有合作伙伴"
+  },
+  "card": {
+    "partnerSince": "合作始于",
+    "employees": "员工",
+    "projects": "个项目",
+    "viewDetails": "查看详情"
+  },
+  "detail": {
+    "companyInfo": "公司信息",
+    "contactInfo": "联系信息",
+    "recentProjects": "近期项目",
+    "about": "关于",
+    "visitWebsite": "访问网站",
+    "revenue": "营收"
+  },
+  "empty": {
+    "title": "未找到合作伙伴",
+    "description": "请尝试调整搜索或筛选条件"
+  }
+}
