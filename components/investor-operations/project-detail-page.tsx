@@ -236,13 +236,13 @@ export function ProjectDetailPage({ projectId }: ProjectDetailPageProps) {
 
   const getExpenseCategoryLabel = (category: ExpenseCategory) => {
     const labels: Record<ExpenseCategory, { zh: string; en: string }> = {
-      [ExpenseCategory.RAW_MATERIALS]: { zh: '?, en: 'Raw Materials' },
-      [ExpenseCategory.LABOR]: { zh: '', en: 'Labor' },
-      [ExpenseCategory.RENT]: { zh: '', en: 'Rent' },
-      [ExpenseCategory.UTILITIES]: { zh: '', en: 'Utilities' },
-      [ExpenseCategory.MARKETING]: { zh: '', en: 'Marketing' },
-      [ExpenseCategory.EQUIPMENT]: { zh: '', en: 'Equipment' },
-      [ExpenseCategory.MAINTENANCE]: { zh: '', en: 'Maintenance' },
+      [ExpenseCategory.RAW_MATERIALS]: { zh: '原材料', en: 'Raw Materials' },
+      [ExpenseCategory.LABOR]: { zh: '人工', en: 'Labor' },
+      [ExpenseCategory.RENT]: { zh: '租金', en: 'Rent' },
+      [ExpenseCategory.UTILITIES]: { zh: '水电', en: 'Utilities' },
+      [ExpenseCategory.MARKETING]: { zh: '营销', en: 'Marketing' },
+      [ExpenseCategory.EQUIPMENT]: { zh: '设备', en: 'Equipment' },
+      [ExpenseCategory.MAINTENANCE]: { zh: '维护', en: 'Maintenance' },
       [ExpenseCategory.OTHER]: { zh: '', en: 'Other' },
     };
     return locale === 'en' ? labels[category].en : labels[category].zh;

@@ -223,15 +223,15 @@ export default function ReportBuilderPage() {
 
       if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.error || "");
+        throw new Error(error.error || "创建报告失败");
       }
 
       const data = await response.json();
-      toast.success("?);
+      toast.success("报告创建成功");
       router.push("/reports");
     } catch (error) {
-      console.error(":", error);
-      toast.error(error instanceof Error ? error.message : "");
+      console.error("创建报告失败:", error);
+      toast.error(error instanceof Error ? error.message : "创建报告失败");
     }
   };
 

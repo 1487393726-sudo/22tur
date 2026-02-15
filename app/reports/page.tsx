@@ -113,15 +113,15 @@ export default function ReportsPage() {
   const getChartTypeName = (type: string) => {
     switch (type) {
       case "table":
-        return "";
+        return "表格";
       case "bar":
-        return "?;
+        return "柱状图";
       case "line":
-        return "?;
+        return "折线图";
       case "pie":
-        return "";
+        return "饼图";
       default:
-        return "";
+        return "未知";
     }
   };
 
@@ -143,8 +143,8 @@ export default function ReportsPage() {
         {/*  */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="purple-gradient-title text-3xl font-bold text-slate-900"></h1>
-            <p className="text-slate-600 mt-1">?/p>
+            <h1 className="purple-gradient-title text-3xl font-bold text-slate-900">报告管理</h1>
+            <p className="text-slate-600 mt-1">创建和管理您的业务报告</p>
           </div>
           <Button
             onClick={() => router.push("/reports/new")}

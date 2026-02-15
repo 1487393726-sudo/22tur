@@ -109,7 +109,7 @@ export default function TasksPage() {
     e.preventDefault();
 
     if (!formData.title.trim()) {
-      alert("?);
+      alert("请输入任务标题");
       return;
     }
 

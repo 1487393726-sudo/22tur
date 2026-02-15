@@ -404,15 +404,15 @@ export default function SupportPage() {
                       </Label>
                       <Input
                         id="subject"
-                        placeholder="?
+                        placeholder="请输入问题主题"
                         value={ticketSubject}
                         onChange={(e) => setTicketSubject(e.target.value)}
-                        data-oid="5_gxh6-"
+                        data-oid="5gxh6"
                       />
                     </div>
 
                     <div data-oid="2akx2o7">
-                      <Label htmlFor="category" data-oid="yzu:dw.">
+                      <Label htmlFor="category" data-oid="yzudw">
                         
                       </Label>
                       <Select

@@ -92,8 +92,8 @@ const mockNotifications: Notification[] = [
   },
   {
     id: "4",
-    title: "",
-    message: "?,
+    title: "报告生成完成",
+    message: "您的月度财务报告已生成完成",
     type: "REPORT",
     priority: "MEDIUM",
     isRead: false,

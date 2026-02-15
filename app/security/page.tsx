@@ -193,15 +193,15 @@ export default function SecurityPage() {
 
   const getEventSeverityBadge = (severity: string) => {
     const severityConfig = {
-      LOW: { variant: "secondary" as const, label: "?, color: "bg-blue-500" },
+      LOW: { variant: "secondary" as const, label: "低", color: "bg-blue-500" },
       MEDIUM: {
         variant: "default" as const,
-        label: "?,
+        label: "中",
         color: "bg-yellow-500",
       },
       HIGH: {
         variant: "default" as const,
-        label: "?,
+        label: "高",
         color: "bg-orange-500",
       },
       CRITICAL: {

@@ -188,13 +188,13 @@ export default function WorkflowPage() {
       ACTIVE: {
         variant: "default" as const,
         icon: Play,
-        label: "?,
+        label: "运行中",
         color: "bg-green-500",
       },
       INACTIVE: {
         variant: "secondary" as const,
         icon: Pause,
-        label: "?,
+        label: "已暂停",
         color: "bg-gray-500",
       },
       DRAFT: {

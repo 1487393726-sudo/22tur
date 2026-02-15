@@ -86,7 +86,7 @@ const researchReports: ResearchReport[] = [
     downloadCount: 2156,
     rating: 4.8,
     publishDate: "2024-01-10",
-    tags: ["ESG", "", "?, ""],
+    tags: ["ESG", "绿色金融", "可持续发展", "环保"],
     tagsEn: ["ESG Investment", "Green Finance", "Sustainable Development", "Environmental"],
     isPremium: false,
     previewAvailable: true,

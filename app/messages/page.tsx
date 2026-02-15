@@ -77,8 +77,8 @@ const mockMessages: Message[] = [
   {
     id: '2',
     senderId: 'me',
-    senderName: ',
-    content: '',
+    senderName: '我',
+    content: '好的，我会尽快处理',
     timestamp: '2024-01-15T14:26:00Z',
     isRead: true,
     isSent: true,
@@ -86,8 +86,8 @@ const mockMessages: Message[] = [
   {
     id: '3',
     senderId: 'user1',
-    senderName: ',
-    content: ',
+    senderName: '张经理',
+    content: '谢谢',
     timestamp: '2024-01-15T14:30:00Z',
     isRead: false,
     isSent: false,
