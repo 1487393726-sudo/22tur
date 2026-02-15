@@ -241,7 +241,7 @@ export default function PaymentsPage() {
 
           {/* 支付记录列表 */}
           <TabsContent value="all" className="space-y-6">
-            {loading  (
+            {loading ? (
               <div className="flex items-center justify-center h-64">
                 <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
               </div>
@@ -254,7 +254,7 @@ export default function PaymentsPage() {
                   </div>
                 </CardContent>
               </Card>
-            ) : payments.length === 0  (
+            ) : payments.length === 0 ? (
               <Card className="purple-gradient-card">
                 <CardContent className="purple-gradient-card pt-6">
                   <div className="text-center py-8">
@@ -279,16 +279,16 @@ export default function PaymentsPage() {
                           <div className="flex items-start gap-4 flex-1">
                             <div className={`p-3 rounded-lg ${
                               payment.status === "COMPLETED"
-                                 "bg-green-100"
+                                ? "bg-green-100"
                                 : payment.status === "PENDING"
-                                   "bg-yellow-100"
+                                  ? "bg-yellow-100"
                                   : "bg-gray-100"
                             }`}>
                               <StatusIcon className={`w-6 h-6 ${
                                 payment.status === "COMPLETED"
-                                   "text-green-600"
+                                  ? "text-green-600"
                                   : payment.status === "PENDING"
-                                     "text-yellow-600"
+                                    ? "text-yellow-600"
                                     : "text-gray-400"
                               }`} />
                             </div>

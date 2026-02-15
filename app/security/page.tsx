@@ -206,7 +206,7 @@ export default function SecurityPage() {
       },
       CRITICAL: {
         variant: "destructive" as const,
-        label: "",
+        label: "严重",
         color: "bg-red-500",
       },
     };
@@ -239,10 +239,10 @@ export default function SecurityPage() {
       },
       RESOLVED: {
         variant: "default" as const,
-        label: "?,
+        label: "已解决",
         icon: CheckCircle,
       },
-      IGNORED: { variant: "secondary" as const, label: "?, icon: EyeOff },
+      IGNORED: { variant: "secondary" as const, label: "已忽略", icon: EyeOff },
     };
 
     const config =
@@ -610,7 +610,7 @@ export default function SecurityPage() {
                     data-oid="zb840ng"
                   >
                     <SelectTrigger className="w-32" data-oid=":4iqd3p">
-                      <SelectValue placeholder="? data-oid="9sch-3c" />
+                      <SelectValue placeholder="状态" data-oid="9sch-3c" />
                     </SelectTrigger>
                     <SelectContent data-oid="12qibod">
                       <SelectItem value="" data-oid="840gykm">
@@ -880,7 +880,7 @@ export default function SecurityPage() {
                     </div>
                   </div>
                   <div data-oid="kko_4cj">
-                    <Label data-oid="35.4xj5">?/Label>
+                    <Label data-oid="35.4xj5">状态</Label>
                     <div className="mt-1" data-oid="6k29h26">
                       {getEventStatusBadge(selectedEvent.status)}
                     </div>

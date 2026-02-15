@@ -299,9 +299,9 @@ export function ProjectDetailPage({ projectId }: ProjectDetailPageProps) {
             <p className="purple-gradient-subtitle text-sm">{locale === 'en' ? 'Project Type' : ''}</p>
             <p className="purple-gradient-text font-medium flex items-center gap-2">
               {projectData.type === ProjectType.PHYSICAL ? (
-                <><Building2 className="w-4 h-4" /> {locale === 'en' ? 'Physical' : '?}</>
+                <><Building2 className="w-4 h-4" /> {locale === 'en' ? 'Physical' : '实体项目'}</>
               ) : (
-                <><Globe className="w-4 h-4" /> {locale === 'en' ? 'Online' : '?}</>
+                <><Globe className="w-4 h-4" /> {locale === 'en' ? 'Online' : '线上项目'}</>
               )}
             </p>
           </div>
@@ -341,12 +341,12 @@ export function ProjectDetailPage({ projectId }: ProjectDetailPageProps) {
         <div className="purple-gradient-stat text-center">
           <Calendar className="w-6 h-6 text-white mx-auto mb-2" />
           <p className="text-xl font-bold text-white">{formatDate(projectData.startDate)}</p>
-          <p className="purple-gradient-subtitle text-sm">{locale === 'en' ? 'Start Date' : '?}</p>
+          <p className="purple-gradient-subtitle text-sm">{locale === 'en' ? 'Start Date' : '开始日期'}</p>
         </div>
         <div className="purple-gradient-stat text-center">
           <TrendingUp className="w-6 h-6 text-green-400 mx-auto mb-2" />
           <p className="text-xl font-bold text-green-400">{projectData.profitLossAnalysis.roi.toFixed(1)}%</p>
-          <p className="purple-gradient-subtitle text-sm">{locale === 'en' ? 'ROI' : '?}</p>
+          <p className="purple-gradient-subtitle text-sm">{locale === 'en' ? 'ROI' : '投资回报率'}</p>
         </div>
         <div className="purple-gradient-stat text-center">
           <Clock className="w-6 h-6 text-yellow-400 mx-auto mb-2" />
@@ -377,7 +377,7 @@ export function ProjectDetailPage({ projectId }: ProjectDetailPageProps) {
             </p>
           </div>
           <div className="bg-white/5 rounded-lg p-4">
-            <p className="purple-gradient-subtitle text-sm mb-1">{locale === 'en' ? 'Customers' : '?}</p>
+            <p className="purple-gradient-subtitle text-sm mb-1">{locale === 'en' ? 'Customers' : '客户数量'}</p>
             <p className="text-xl font-bold text-white">{projectData.dailyOperations.customerCount}</p>
           </div>
         </div>
@@ -436,7 +436,7 @@ export function ProjectDetailPage({ projectId }: ProjectDetailPageProps) {
 
       {/*  */}
       <div className="purple-gradient-card p-6">
-        <h4 className="purple-gradient-title font-semibold mb-4">{locale === 'en' ? 'Profit Margin' : '?}</h4>
+        <h4 className="purple-gradient-title font-semibold mb-4">{locale === 'en' ? 'Profit Margin' : '利润率'}</h4>
         <div className="relative h-4 bg-white/10 rounded-full overflow-hidden">
           <div 
             className={`absolute left-0 top-0 h-full rounded-full ${
@@ -513,7 +513,7 @@ export function ProjectDetailPage({ projectId }: ProjectDetailPageProps) {
               <p className="text-lg font-bold text-white">{formatCurrency(projectData.annualExpenses.rent)}</p>
             </div>
             <div className="bg-white/5 rounded-lg p-4 text-center">
-              <p className="purple-gradient-subtitle text-sm mb-1">{locale === 'en' ? 'Utilities' : '?}</p>
+              <p className="purple-gradient-subtitle text-sm mb-1">{locale === 'en' ? 'Utilities' : '水电费'}</p>
               <p className="text-lg font-bold text-white">{formatCurrency(projectData.annualExpenses.utilities)}</p>
             </div>
             <div className="bg-white/5 rounded-lg p-4 text-center">

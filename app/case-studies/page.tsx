@@ -335,12 +335,12 @@ export default function CaseStudiesPage() {
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-12">
             <h1 className="purple-gradient-title text-4xl md:text-5xl font-bold mb-6">
-              {locale === "en"  "Success Stories" : ""}
+              {locale === "en" ? "Success Stories" : ""}
             </h1>
             <p className="purple-gradient-subtitle text-xl max-w-3xl mx-auto">
               {locale === "en" 
-                 "Discover how we've helped businesses achieve remarkable results through strategic investments and comprehensive brand solutions"
-                : ""
+                ? "Discover how we've helped businesses achieve remarkable results through strategic investments and comprehensive brand solutions"
+                : "了解我们如何通过战略投资和全面的品牌解决方案帮助企业取得卓越成果"
               }
             </p>
           </div>
@@ -350,19 +350,19 @@ export default function CaseStudiesPage() {
             <div className="purple-gradient-stat">
               <div className="text-3xl font-bold purple-gradient-title mb-2">50+</div>
               <div className="purple-gradient-text text-sm">
-                {locale === "en"  "Successful Projects" : ""}
+                {locale === "en" ? "Successful Projects" : "成功项目"}
               </div>
             </div>
             <div className="purple-gradient-stat">
               <div className="text-3xl font-bold purple-gradient-title mb-2">$12M+</div>
               <div className="purple-gradient-text text-sm">
-                {locale === "en"  "Total Investment" : ""}
+                {locale === "en" ? "Total Investment" : "总投资额"}
               </div>
             </div>
             <div className="purple-gradient-stat">
               <div className="text-3xl font-bold purple-gradient-title mb-2">285%</div>
               <div className="purple-gradient-text text-sm">
-                {locale === "en"  "Average ROI" : ""}
+                {locale === "en" ? "Average ROI" : "平均投资回报率"}
               </div>
             </div>
             <div className="purple-gradient-stat">

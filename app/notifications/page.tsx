@@ -105,9 +105,9 @@ const mockNotifications: Notification[] = [
 const mockMessages: Message[] = [
   {
     id: "1",
-    sender: "?,
-    subject: "Q1",
-    content: "Q1...",
+    sender: "财务部",
+    subject: "Q1财务报告",
+    content: "Q1财务报告已完成...",
     type: "MESSAGE",
     priority: "NORMAL",
     isRead: false,
@@ -116,9 +116,9 @@ const mockMessages: Message[] = [
   },
   {
     id: "2",
-    sender: "?,
-    subject: "?,
-    content: "A?-4?..",
+    sender: "人力资源部",
+    subject: "年度体检通知",
+    content: "A栋4楼体检中心...",
     type: "ANNOUNCEMENT",
     priority: "NORMAL",
     isRead: true,
@@ -127,7 +127,7 @@ const mockMessages: Message[] = [
   },
   {
     id: "3",
-    sender: "?,
+    sender: "技术部",
     subject: "",
     content: "??..",
     type: "REMINDER",
@@ -334,11 +334,11 @@ export default function NotificationsPage() {
       });
 
       if (response.ok) {
-        // ?        setNotifications((prev) =>
+        setNotifications((prev) =>
           prev.map((n) => (n.id === id ? { ...n, isRead: true } : n)),
         );
       } else {
-        console.error('');
+        console.error('标记为已读失败');
       }
     } catch (error) {
       console.error(':', error);

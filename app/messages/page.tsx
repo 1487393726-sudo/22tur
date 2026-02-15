@@ -136,19 +136,19 @@ export default function MessagesPage() {
     if (!selectedConversation) return;
 
     try {
-      const displayContent = content || (attachments && attachments.length > 0  `[${attachments.length}]` : '');
+      const displayContent = content || (attachments && attachments.length > 0 ? `[${attachments.length}个附件]` : '');
 
-      //  hook
+      // 使用 hook
       await sendMessage(displayContent, attachments);
 
-      // 
+      // 更新会话列表
       updateConversation(selectedConversation.id, {
         lastMessage: displayContent,
         lastMessageTime: new Date().toISOString(),
       });
     } catch (error) {
-      console.error('?', error);
-      toast.error(');
+      console.error('发送消息失败', error);
+      toast.error('发送失败');
     }
   };
 
@@ -191,7 +191,7 @@ export default function MessagesPage() {
             onClick={() => setShowSearch(!showSearch)}
             className={`${
               showSearch
-                 'bg-purple-500 hover:bg-purple-600'
+                ? 'bg-purple-500 hover:bg-purple-600'
                 : 'bg-white/10 hover:bg-white/20'
             } text-white border-white/20`}
           >
@@ -204,7 +204,7 @@ export default function MessagesPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-[calc(100vh-200px)]">
           {/*  */}
           <Card className="purple-gradient-card lg:col-span-4 bg-white/10 backdrop-blur-sm border-white/20">
-            {showSearch  (
+            {showSearch ? (
               <MessageSearch
                 onSelectResult={handleSelectSearchResult}
                 onClose={() => setShowSearch(false)}

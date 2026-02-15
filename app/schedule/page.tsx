@@ -145,8 +145,8 @@ export default function SchedulePage() {
             title: "",
             start: new Date(2024, 0, 10, 14, 0),
             end: new Date(2024, 0, 10, 16, 0),
-            description: "?,
-            location: "B",
+            description: "讨论Q2市场策略",
+            location: "会议室B",
             type: "MEETING",
             priority: "HIGH",
             status: "SCHEDULED",
@@ -253,7 +253,7 @@ export default function SchedulePage() {
             data-oid="dae.zp4"
           ></div>
           <p className="text-gray-600" data-oid="d4294.6">
-            ?..
+            加载中...
           </p>
         </div>
       </div>
@@ -752,13 +752,14 @@ export default function SchedulePage() {
                   
                 </Label>
                 <p className="text-sm text-gray-600 mt-1" data-oid="di-lt4:">
-                  {selectedEvent.description || "?}
+                  {selectedEvent.description || "无描述"}
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-4" data-oid="c-v:69v">
                 <div data-oid="qtm7b44">
                   <Label className="text-sm font-medium" data-oid="i741eei">
-                    ?                  </Label>
+                    开始时间
+                  </Label>
                   <p className="text-sm text-gray-600 mt-1" data-oid="cgi8fej">
                     {format(selectedEvent.start, "yyyy-MM-dd HH:mm")}
                   </p>

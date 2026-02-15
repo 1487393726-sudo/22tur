@@ -200,37 +200,37 @@ export default function WorkflowPage() {
       DRAFT: {
         variant: "outline" as const,
         icon: Edit,
-        label: "",
+        label: "草稿",
         color: "bg-yellow-500",
       },
       PENDING: {
         variant: "secondary" as const,
         icon: Clock,
-        label: "?,
+        label: "等待中",
         color: "bg-yellow-500",
       },
       RUNNING: {
         variant: "default" as const,
         icon: Play,
-        label: "?,
+        label: "运行中",
         color: "bg-blue-500",
       },
       COMPLETED: {
         variant: "default" as const,
         icon: CheckCircle,
-        label: "?,
+        label: "已完成",
         color: "bg-green-500",
       },
       FAILED: {
         variant: "destructive" as const,
         icon: XCircle,
-        label: "",
+        label: "失败",
         color: "bg-red-500",
       },
       CANCELLED: {
         variant: "outline" as const,
         icon: XCircle,
-        label: "?,
+        label: "已取消",
         color: "bg-gray-500",
       },
     };
@@ -253,9 +253,9 @@ export default function WorkflowPage() {
 
   const getPriorityBadge = (priority: string) => {
     const priorityConfig = {
-      LOW: { label: "?, color: "bg-blue-500" },
-      MEDIUM: { label: "?, color: "bg-yellow-500" },
-      HIGH: { label: "?, color: "bg-red-500" },
+      LOW: { label: "低", color: "bg-blue-500" },
+      MEDIUM: { label: "中", color: "bg-yellow-500" },
+      HIGH: { label: "高", color: "bg-red-500" },
     };
 
     const config =
@@ -413,10 +413,10 @@ export default function WorkflowPage() {
                           data-oid=":4oebs9"
                         >
                           {workflow.triggerType === "MANUAL"
-                            ? ""
+                            ? "手动触发"
                             : workflow.triggerType === "AUTOMATIC"
-                              ? ""
-                              : ""}
+                              ? "自动触发"
+                              : "定时触发"}
                         </Badge>
                       </div>
 

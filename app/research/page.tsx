@@ -107,7 +107,7 @@ const researchReports: ResearchReport[] = [
     downloadCount: 4123,
     rating: 4.7,
     publishDate: "2024-01-05",
-    tags: ["", "?, "", ""],
+    tags: ["加密货币", "区块链", "数字资产", "市场分析"],
     tagsEn: ["Cryptocurrency", "Blockchain", "Digital Assets", "Market Analysis"],
     isPremium: true,
     previewAvailable: false,
@@ -119,7 +119,7 @@ const researchReports: ResearchReport[] = [
     id: "global-economy-outlook",
     title: "",
     titleEn: "Global Economic Outlook Report",
-    description: "2024?,
+    description: "2024年全球经济形势分析",
     descriptionEn: "2024 global economic situation analysis, major economies development forecast and investment recommendations",
     category: "",
     categoryEn: "Macroeconomics",
@@ -141,7 +141,7 @@ const researchReports: ResearchReport[] = [
 const categories = [
   { id: "all", name: "", nameEn: "All Research" },
   { id: "tech-investment", name: "", nameEn: "Tech Investment" },
-  { id: "sustainable-investment", name: "?, nameEn: "Sustainable Investment" },
+  { id: "sustainable-investment", name: "可持续投资", nameEn: "Sustainable Investment" },
   { id: "digital-assets", name: "", nameEn: "Digital Assets" },
   { id: "macroeconomics", name: "", nameEn: "Macroeconomics" }
 ];
@@ -343,7 +343,7 @@ export default function ResearchPage() {
                       <div className="p-6">
                         <div className="flex items-center justify-between mb-4">
                           <span className="purple-gradient-text text-sm">
-                            {locale === "en" ? "File Size:" : "?} {report.fileSize}
+                            {locale === "en" ? "File Size:" : "文件大小:"} {report.fileSize}
                           </span>
                           <span className={`px-2 py-1 rounded-full text-xs ${
                             report.isPremium 
@@ -401,7 +401,7 @@ export default function ResearchPage() {
                     }}
                     className="purple-gradient-button px-6 py-2 rounded-lg"
                   >
-                    {locale === "en" ? "Clear Filters" : "?}
+                    {locale === "en" ? "Clear Filters" : "清除筛选"}
                   </button>
                 </div>
               )}

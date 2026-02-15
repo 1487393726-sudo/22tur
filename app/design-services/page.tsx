@@ -151,13 +151,13 @@ export default function DesignServicesPage() {
                         <IconComponent className={`purple-gradient-icon w-8 h-8 text-${service.color}-400`} />
                       </div>
                       <h3 className="purple-gradient-title text-xl font-bold mb-4">
-                        {locale === "en"  service.nameEn : service.name}
+                        {locale === "en" ? service.nameEn : service.name}
                       </h3>
                       <p className="purple-gradient-subtitle mb-6">
-                        {locale === "en"  service.descriptionEn : service.description}
+                        {locale === "en" ? service.descriptionEn : service.description}
                       </p>
                       <div className="flex items-center purple-gradient-text font-medium">
-                        {locale === "en"  "Learn More" : ""}
+                        {locale === "en" ? "Learn More" : "了解更多"}
                         <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                       </div>
                     </div>
@@ -173,12 +173,12 @@ export default function DesignServicesPage() {
           <div className="container mx-auto max-w-7xl">
             <div className="text-center mb-16">
               <h2 className="purple-gradient-title text-3xl md:text-4xl font-bold mb-4">
-                {locale === "en"  "Industry Solutions" : ""}
+                {locale === "en" ? "Industry Solutions" : "行业解决方案"}
               </h2>
               <p className="purple-gradient-subtitle text-lg max-w-2xl mx-auto">
                 {locale === "en" 
-                   "Specialized design expertise for different industries"
-                  : ""
+                  ? "Specialized design expertise for different industries"
+                  : "针对不同行业的专业设计服务"
                 }
               </p>
             </div>
@@ -193,7 +193,7 @@ export default function DesignServicesPage() {
                         <IconComponent className="purple-gradient-icon w-6 h-6 text-purple-400" />
                       </div>
                       <h3 className="purple-gradient-text text-sm font-medium">
-                        {locale === "en"  industry.nameEn : industry.name}
+                        {locale === "en" ? industry.nameEn : industry.name}
                       </h3>
                     </div>
                   </div>

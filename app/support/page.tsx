@@ -451,7 +451,7 @@ export default function SupportPage() {
                       </Label>
                       <Textarea
                         id="message"
-                        placeholder="?
+                        placeholder="请详细描述您的问题"
                         value={ticketMessage}
                         onChange={(e) => setTicketMessage(e.target.value)}
                         rows={4}

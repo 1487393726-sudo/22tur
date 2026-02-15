@@ -269,11 +269,11 @@ export default function ConsultationPage() {
       if (response.ok) {
         setStep(5); // Success step
       } else {
-        alert(locale === "en"  "Booking failed. Please try again." : "");
+        alert(locale === "en" ? "Booking failed. Please try again." : "预约失败，请重试");
       }
     } catch (error) {
       console.error("Consultation booking error:", error);
-      alert(locale === "en"  "Booking failed. Please try again." : "");
+      alert(locale === "en" ? "Booking failed. Please try again." : "预约失败，请重试");
     }
   };
 
@@ -297,12 +297,12 @@ export default function ConsultationPage() {
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              {locale === "en"  "Expert Consultation" : ""}
+              {locale === "en" ? "Expert Consultation" : "专家咨询"}
             </h1>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               {locale === "en" 
-                 "Schedule a consultation with our experts to discuss your investment goals and brand strategy"
-                : ""
+                ? "Schedule a consultation with our experts to discuss your investment goals and brand strategy"
+                : "与我们的专家预约咨询，讨论您的投资目标和品牌策略"
               }
             </p>
           </div>
@@ -314,14 +314,14 @@ export default function ConsultationPage() {
                 <div key={stepNumber} className="flex items-center">
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
                     step >= stepNumber 
-                       "bg-gradient-to-r from-primary to-secondary text-white" 
+                      ? "bg-gradient-to-r from-primary to-secondary text-white" 
                       : "bg-white/10 text-gray-400"
                   }`}>
-                    {step > stepNumber  <CheckCircle className="w-5 h-5" /> : stepNumber}
+                    {step > stepNumber ? <CheckCircle className="w-5 h-5" /> : stepNumber}
                   </div>
                   {stepNumber < 4 && (
                     <div className={`w-12 h-1 mx-2 ${
-                      step > stepNumber  "purple-gradient-button bg-primary" : "bg-white/20"
+                      step > stepNumber ? "purple-gradient-button bg-primary" : "bg-white/20"
                     }`} />
                   )}
                 </div>
@@ -334,7 +334,7 @@ export default function ConsultationPage() {
             {step === 1 && (
               <div>
                 <h2 className="text-2xl font-bold text-white mb-6 text-center">
-                  {locale === "en"  "Choose Consultation Type" : ""}
+                  {locale === "en" ? "Choose Consultation Type" : ""}
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {consultationTypes.map((type) => {

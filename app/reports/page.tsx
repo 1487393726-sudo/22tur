@@ -183,8 +183,8 @@ export default function ReportsPage() {
         ) : error ? (
           <Card className="purple-gradient-card">
             <CardContent className="purple-gradient-card p-12 text-center">
-              <div className="text-red-500 mb-2">?/div>
-              <p className="text-gray-600"></p>
+              <div className="text-red-500 mb-2">加载失败</div>
+              <p className="text-gray-600">无法加载报告列表</p>
             </CardContent>
           </Card>
         ) : reports.length === 0 ? (
@@ -192,12 +192,12 @@ export default function ReportsPage() {
             <CardContent className="purple-gradient-card p-12 text-center">
               <BarChart3 className="w-16 h-16 mx-auto mb-4 text-gray-300" />
               <h3 className="text-lg font-medium text-gray-900 mb-2">
-                {searchQuery ? "" : "?}
+                {searchQuery ? "未找到报告" : "暂无报告"}
               </h3>
               <p className="text-gray-600 mb-4">
                 {searchQuery
-                  ? "?
-                  : '""?}
+                  ? "尝试调整搜索条件"
+                  : "创建您的第一个报告"}
               </p>
               {!searchQuery && (
                 <Button
@@ -241,16 +241,16 @@ export default function ReportsPage() {
                       {/*  */}
                       <div className="text-xs text-gray-600 space-y-1">
                         <div className="flex items-center gap-2">
-                          <span className="font-medium">?</span>
+                          <span className="font-medium">数据源:</span>
                           <span>{report.config?.datasource || ""}</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="font-medium">:</span>
-                          <span>{report.config?.fields?.length || 0} ?/span>
+                          <span className="font-medium">字段:</span>
+                          <span>{report.config?.fields?.length || 0} 个</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="font-medium">?</span>
-                          <span>{report.config?.filters?.length || 0} ?/span>
+                          <span className="font-medium">筛选:</span>
+                          <span>{report.config?.filters?.length || 0} 个</span>
                         </div>
                       </div>
 

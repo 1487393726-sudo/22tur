@@ -49,7 +49,7 @@ function CartContent() {
 
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
-          {items.length === 0  (
+          {items.length === 0 ? (
             <div className="text-center py-16">
               <ShoppingCart className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
               <h2 className="purple-gradient-title text-xl font-semibold mb-2">Your cart is empty</h2>

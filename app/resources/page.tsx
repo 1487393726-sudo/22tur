@@ -81,7 +81,7 @@ const resources: Resource[] = [
     downloadCount: 1923,
     rating: 4.9,
     publishDate: "2024-01-10",
-    tags: ["", "", "?, "?],
+    tags: ["品牌管理", "质量控制", "检查清单", "标准化"],
     tagsEn: ["Brand Management", "Quality Control", "Checklist", "Standardization"],
     isPremium: false,
     previewAvailable: true,
@@ -144,7 +144,7 @@ const fileTypes = [
   { id: "Excel", name: "Excel", nameEn: "Excel Spreadsheets" },
   { id: "PowerPoint", name: "PPT", nameEn: "PowerPoint Presentations" },
   { id: "Template", name: "", nameEn: "Template Files" },
-  { id: "Checklist", name: "?, nameEn: "Checklists" }
+  { id: "Checklist", name: "检查清单", nameEn: "Checklists" }
 ];
 
 export default function ResourcesPage() {
@@ -221,7 +221,7 @@ export default function ResourcesPage() {
                 <div className="purple-gradient-stat">
                   <div className="text-3xl font-bold purple-gradient-title mb-2">24/7</div>
                   <div className="purple-gradient-text text-sm">
-                    {locale === "en" ? "Access Available" : "?}
+                    {locale === "en" ? "Access Available" : "随时访问"}
                   </div>
                 </div>
               </div>
@@ -320,7 +320,7 @@ export default function ResourcesPage() {
                       <div className="p-6">
                         <div className="flex items-center justify-between mb-4">
                           <span className="purple-gradient-text text-sm">
-                            {locale === "en" ? "File Size:" : "?} {resource.fileSize}
+                            {locale === "en" ? "File Size:" : "文件大小:"} {resource.fileSize}
                           </span>
                           <span className={`px-2 py-1 rounded-full text-xs ${
                             resource.isPremium 
@@ -378,7 +378,7 @@ export default function ResourcesPage() {
                     }}
                     className="purple-gradient-button px-6 py-2 rounded-lg"
                   >
-                    {locale === "en" ? "Clear Filters" : "?}
+                    {locale === "en" ? "Clear Filters" : "清除筛选"}
                   </button>
                 </div>
               )}

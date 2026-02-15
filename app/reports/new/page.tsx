@@ -244,8 +244,8 @@ export default function ReportBuilderPage() {
           <div className="space-y-6">
             <Card className="purple-gradient-card">
               <CardHeader className="purple-gradient-card">
-                <CardTitle className="purple-gradient-title purple-gradient-card">?/CardTitle>
-                <CardDescription className="purple-gradient-card"></CardDescription>
+                <CardTitle className="purple-gradient-title purple-gradient-card">选择数据源</CardTitle>
+                <CardDescription className="purple-gradient-card">选择报告的数据来源</CardDescription>
               </CardHeader>
               <CardContent className="purple-gradient-card">
                 <div className="space-y-4">
@@ -269,7 +269,7 @@ export default function ReportBuilderPage() {
                         }}
                         className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2"
                       >
-                        <option value="">?/option>
+                        <option value="">请选择数据源</option>
                         {datasources.map((ds) => (
                           <option key={ds.id} value={ds.id}>
                             {ds.name} - {ds.description}
@@ -298,8 +298,8 @@ export default function ReportBuilderPage() {
                           }}
                         >
                           {reportConfig.fields.length === currentDatasource.fields.length
-                            ? "?
-                            : "?}
+                            ? "取消全选"
+                            : "全选"}
                         </Button>
                       </div>
                       <div className="space-y-2 max-h-64 overflow-y-auto border border-gray-200 rounded-lg p-3">
@@ -874,8 +874,8 @@ export default function ReportBuilderPage() {
                     <CardTitle className="purple-gradient-title purple-gradient-card"></CardTitle>
                     <CardDescription className="purple-gradient-card">
                       {reportConfig.chartType === "table"
-                        ? ""
-                        : "?}
+                        ? "表格预览"
+                        : "图表预览"}
                     </CardDescription>
                   </div>
                   <Button

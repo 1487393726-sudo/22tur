@@ -156,7 +156,7 @@ export default function TasksPage() {
   };
 
   const handleDelete = async (taskId: string) => {
-    if (!confirm("?)) {
+    if (!confirm("确定要删除这个任务吗？")) {
       return;
     }
 
@@ -193,13 +193,13 @@ export default function TasksPage() {
 
       if (response.ok) {
         await fetchTasks();
-        alert("?);
+        alert("任务已删除");
       } else {
-        alert("");
+        alert("删除失败");
       }
     } catch (error) {
-      console.error(":", error);
-      alert("");
+      console.error("删除任务失败:", error);
+      alert("删除失败");
     }
   };
 
@@ -290,7 +290,8 @@ export default function TasksPage() {
     }
   };
 
-  // ?  const filteredTasks = tasks.filter((task) => {
+  // 过滤任务
+  const filteredTasks = tasks.filter((task) => {
     let matchesTab = true;
     let matchesPriority = true;
     let matchesSearch = true;

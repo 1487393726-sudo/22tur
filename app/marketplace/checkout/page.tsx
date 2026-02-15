@@ -231,7 +231,7 @@ function CheckoutContent() {
                   </div>
                 </div>
                 <Button type="submit" className="purple-gradient-button w-full mt-6" size="lg" disabled={loading}>
-                  {loading  (
+                  {loading ? (
                     <>
                       <Loader2 className="h-4 w-4 mr-2 animate-spin" />
                       Processing...
