@@ -5,11 +5,8 @@
  * Displays and manages AI recommendations
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-
-// Force dynamic rendering to avoid prerender issues with useSearchParams
-export const dynamic = 'force-dynamic';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -41,7 +38,10 @@ import {
 } from 'lucide-react';
 import { Recommendation } from '@/lib/ai-assistant/types';
 
-export default function RecommendationsPage() {
+// Force dynamic rendering to avoid prerender issues with useSearchParams
+export const dynamic = 'force-dynamic';
+
+function RecommendationsPageContent() {
   const searchParams = useSearchParams();
   const projectId = searchParams.get('projectId');
 
@@ -452,5 +452,17 @@ export default function RecommendationsPage() {
         </DialogContent>
       </Dialog>
     </div>
+  );
+}
+
+export default function RecommendationsPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center h-screen">
+        <Loader2 className="w-8 h-8 animate-spin" />
+      </div>
+    }>
+      <RecommendationsPageContent />
+    </Suspense>
   );
 }

@@ -5,11 +5,8 @@
  * Displays project analysis results and recommendations
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-
-// Force dynamic rendering to avoid prerender issues with useSearchParams
-export const dynamic = 'force-dynamic';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -39,6 +36,9 @@ import {
   RefreshCw,
 } from 'lucide-react';
 
+// Force dynamic rendering to avoid prerender issues with useSearchParams
+export const dynamic = 'force-dynamic';
+
 interface AnalysisResults {
   taskOptimization?: any;
   progressPrediction?: any;
@@ -46,7 +46,7 @@ interface AnalysisResults {
   resourceAllocation?: any;
 }
 
-export default function AnalysisDashboard() {
+function AnalysisDashboardContent() {
   const searchParams = useSearchParams();
   const projectId = searchParams.get('projectId');
 
@@ -337,5 +337,17 @@ export default function AnalysisDashboard() {
         </TabsContent>
       </Tabs>
     </div>
+  );
+}
+
+export default function AnalysisDashboard() {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center h-screen">
+        <Loader2 className="w-8 h-8 animate-spin" />
+      </div>
+    }>
+      <AnalysisDashboardContent />
+    </Suspense>
   );
 }
