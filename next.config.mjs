@@ -30,6 +30,19 @@ const nextConfig = {
   },
   poweredByHeader: false,
   compress: true,
+  // Webpack configuration to handle optional database drivers
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      // Mark optional database drivers as external to avoid bundling warnings
+      config.externals = config.externals || [];
+      config.externals.push({
+        'pg': 'commonjs pg',
+        'mysql2/promise': 'commonjs mysql2/promise',
+        'mongodb': 'commonjs mongodb',
+      });
+    }
+    return config;
+  },
   // 安全头配置
   async headers() {
     const securityHeaders = [

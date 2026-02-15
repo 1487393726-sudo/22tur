@@ -1,12 +1,15 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CardGrid3D } from '@/components/website/3d/CardGrid3D';
 import { Card3D } from '@/components/website/3d/Card3D';
 import { FadeInView } from '@/components/website/animations/FadeInView';
 import { CaseDetailModal, type CaseDetailData } from '@/components/website/ui/CaseDetailModal';
+import { useLanguage } from '@/lib/i18n/context';
+
+// Force dynamic rendering to avoid prerender errors
+export const dynamic = 'force-dynamic';
 
 interface CaseItem {
   title: string;
@@ -17,22 +20,67 @@ interface CaseItem {
   tags: string[];
 }
 
+// Static case data - TODO: Move to translations file
+const staticCases: CaseItem[] = [
+  {
+    title: 'E-commerce Platform Redesign',
+    client: 'TechMart Inc.',
+    category: 'E-commerce',
+    description: 'Complete redesign of an e-commerce platform to improve user experience and increase conversion rates.',
+    results: ['50% increase in conversion rate', '35% reduction in cart abandonment', '2x faster page load times'],
+    tags: ['UI/UX', 'React', 'Performance'],
+  },
+  {
+    title: 'Brand Identity & Website',
+    client: 'Creative Studio',
+    category: 'Branding',
+    description: 'Developed a comprehensive brand identity and modern website for a creative agency.',
+    results: ['100+ new client inquiries', 'Award-winning design', '90% client satisfaction'],
+    tags: ['Branding', 'Web Design', 'Next.js'],
+  },
+  {
+    title: 'Mobile App Development',
+    client: 'FinTech Solutions',
+    category: 'Mobile',
+    description: 'Built a secure mobile banking application with advanced features and seamless UX.',
+    results: ['500K+ downloads', '4.8 star rating', 'Zero security incidents'],
+    tags: ['React Native', 'Security', 'FinTech'],
+  },
+  {
+    title: 'Enterprise Dashboard',
+    client: 'DataCorp',
+    category: 'Enterprise',
+    description: 'Created a comprehensive analytics dashboard for enterprise data management.',
+    results: ['40% faster data processing', 'Real-time insights', 'Scalable architecture'],
+    tags: ['Dashboard', 'Analytics', 'TypeScript'],
+  },
+  {
+    title: 'Marketing Campaign',
+    client: 'Growth Agency',
+    category: 'Marketing',
+    description: 'Executed a multi-channel digital marketing campaign with measurable results.',
+    results: ['300% ROI', '2M+ impressions', '50K+ conversions'],
+    tags: ['SEO', 'Social Media', 'Content'],
+  },
+  {
+    title: 'SaaS Platform',
+    client: 'CloudTech',
+    category: 'SaaS',
+    description: 'Developed a scalable SaaS platform with subscription management and analytics.',
+    results: ['1000+ active users', '99.9% uptime', 'Automated billing'],
+    tags: ['SaaS', 'Cloud', 'Automation'],
+  },
+];
+
 export default function CasesPage() {
-  const t = useTranslations('cases');
+  const { language } = useLanguage();
   const [selectedCase, setSelectedCase] = useState<CaseDetailData | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedTag, setSelectedTag] = useState<string>('all');
   
-  // Get cases from translations
-  const allCases: CaseItem[] = Array.from({ length: 6 }, (_, i) => ({
-    title: t(`cases.${i}.title`),
-    client: t(`cases.${i}.client`),
-    category: t(`cases.${i}.category`),
-    description: t(`cases.${i}.description`),
-    results: Array.from({ length: 3 }, (_, j) => t(`cases.${i}.results.${j}`)),
-    tags: t.raw(`cases.${i}.tags`) as string[],
-  }));
+  // Use static cases for now
+  const allCases = staticCases;
 
   // Extract unique categories and tags
   const categories = useMemo(() => {
@@ -54,20 +102,49 @@ export default function CasesPage() {
     });
   }, [allCases, selectedCategory, selectedTag]);
 
-  // Get translation for filter labels
-  const getFilterLabel = (type: 'category' | 'tag') => {
-    if (type === 'category') {
-      return t('filters.category');
-    }
-    return t('filters.tag');
-  };
-
-  const getAllLabel = () => t('filters.all');
-
-  // Icon mapping for case categories
-  const getCaseIcon = (index: number) => {
-    const icons = ['🛒', '🎨', '📱', '💼', '📈', '⚙️'];
-    return icons[index % icons.length];
+  // Static translations - TODO: Move to translations file
+  const translations = {
+    hero: {
+      title: language === 'zh' ? '成功案例' : 'Success Cases',
+      subtitle: language === 'zh' ? '探索我们为客户创造的卓越成果' : 'Explore the exceptional results we\'ve created for our clients',
+    },
+    filters: {
+      category: language === 'zh' ? '分类' : 'Category',
+      tag: language === 'zh' ? '标签' : 'Tags',
+      all: language === 'zh' ? '全部' : 'All',
+      showing: language === 'zh' ? `显示 ${filteredCases.length} 个案例` : `Showing ${filteredCases.length} cases`,
+      noResults: language === 'zh' ? '未找到案例' : 'No Cases Found',
+      noResultsDescription: language === 'zh' ? '请尝试调整筛选条件' : 'Try adjusting your filters',
+      clearFilters: language === 'zh' ? '清除筛选' : 'Clear Filters',
+    },
+    resultsLabel: language === 'zh' ? '成果' : 'Results',
+    detail: {
+      viewDetails: language === 'zh' ? '查看详情' : 'View Details',
+      timeline: language === 'zh' ? '时间线' : 'Timeline',
+      duration: language === 'zh' ? '持续时间' : 'Duration',
+      startDate: language === 'zh' ? '开始日期' : 'Start Date',
+      endDate: language === 'zh' ? '结束日期' : 'End Date',
+      keyMetrics: language === 'zh' ? '关键指标' : 'Key Metrics',
+      results: language === 'zh' ? '成果' : 'Results',
+      challenges: language === 'zh' ? '挑战' : 'Challenges',
+      solution: language === 'zh' ? '解决方案' : 'Solution',
+      technologies: language === 'zh' ? '技术' : 'Technologies',
+      gallery: language === 'zh' ? '图库' : 'Gallery',
+    },
+    mockData: {
+      timeline: {
+        duration: '3 months',
+        startDate: '2024-01-01',
+        endDate: '2024-03-31',
+      },
+      metrics: [
+        { label: 'Performance', value: '+150%' },
+        { label: 'User Satisfaction', value: '95%' },
+        { label: 'ROI', value: '300%' },
+      ],
+      challenges: 'The main challenge was to balance performance with rich features while maintaining excellent user experience.',
+      solution: 'We implemented a modern tech stack with optimized architecture and progressive enhancement strategies.',
+    },
   };
 
   // Handle case card click to show details
@@ -75,14 +152,10 @@ export default function CasesPage() {
     // Create detailed case data with mock timeline and metrics
     const detailData: CaseDetailData = {
       ...caseItem,
-      timeline: {
-        duration: t('mockData.timeline.duration'),
-        startDate: t('mockData.timeline.startDate'),
-        endDate: t('mockData.timeline.endDate'),
-      },
-      metrics: t.raw('mockData.metrics') as { label: string; value: string }[],
-      challenges: t('mockData.challenges'),
-      solution: t('mockData.solution'),
+      timeline: translations.mockData.timeline,
+      metrics: translations.mockData.metrics,
+      challenges: translations.mockData.challenges,
+      solution: translations.mockData.solution,
       images: ['1', '2', '3', '4', '5', '6'], // Mock image placeholders
     };
     
@@ -98,16 +171,22 @@ export default function CasesPage() {
 
   // Translation object for modal
   const modalTranslations = {
-    timeline: t('detail.timeline'),
-    duration: t('detail.duration'),
-    startDate: t('detail.startDate'),
-    endDate: t('detail.endDate'),
-    keyMetrics: t('detail.keyMetrics'),
-    results: t('detail.results'),
-    challenges: t('detail.challenges'),
-    solution: t('detail.solution'),
-    technologies: t('detail.technologies'),
-    gallery: t('detail.gallery'),
+    timeline: translations.detail.timeline,
+    duration: translations.detail.duration,
+    startDate: translations.detail.startDate,
+    endDate: translations.detail.endDate,
+    keyMetrics: translations.detail.keyMetrics,
+    results: translations.detail.results,
+    challenges: translations.detail.challenges,
+    solution: translations.detail.solution,
+    technologies: translations.detail.technologies,
+    gallery: translations.detail.gallery,
+  };
+
+  // Icon mapping for case categories
+  const getCaseIcon = (index: number) => {
+    const icons = ['🛒', '🎨', '📱', '💼', '📈', '⚙️'];
+    return icons[index % icons.length];
   };
 
   return (
@@ -120,12 +199,12 @@ export default function CasesPage() {
         <div className="container mx-auto px-4 text-center">
           <FadeInView>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              {t('hero.title')}
+              {translations.hero.title}
             </h1>
           </FadeInView>
           <FadeInView delay={0.2}>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              {t('hero.subtitle')}
+              {translations.hero.subtitle}
             </p>
           </FadeInView>
         </div>
@@ -138,7 +217,7 @@ export default function CasesPage() {
             {/* Category Filter */}
             <div className="mb-4">
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                {getFilterLabel('category')}
+                {translations.filters.category}
               </label>
               <div className="flex flex-wrap gap-2">
                 {categories.map((category) => (
@@ -162,7 +241,7 @@ export default function CasesPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {category === 'all' ? getAllLabel() : category}
+                    {category === 'all' ? translations.filters.all : category}
                   </motion.button>
                 ))}
               </div>
@@ -171,7 +250,7 @@ export default function CasesPage() {
             {/* Tag Filter */}
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                {getFilterLabel('tag')}
+                {translations.filters.tag}
               </label>
               <div className="flex flex-wrap gap-2">
                 {allTags.map((tag) => (
@@ -195,7 +274,7 @@ export default function CasesPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {tag === 'all' ? getAllLabel() : tag}
+                    {tag === 'all' ? translations.filters.all : tag}
                   </motion.button>
                 ))}
               </div>
@@ -208,7 +287,7 @@ export default function CasesPage() {
               animate={{ opacity: 1 }}
               key={`${selectedCategory}-${selectedTag}`}
             >
-              {t('filters.showing', { count: filteredCases.length })}
+              {translations.filters.showing}
             </motion.div>
           </div>
         </div>
@@ -297,7 +376,7 @@ export default function CasesPage() {
                           {/* Results */}
                           <div className="mb-4">
                             <h4 className="font-semibold text-gray-900 mb-2 text-sm">
-                              {t('resultsLabel')}
+                              {translations.resultsLabel}
                             </h4>
                             <ul className="space-y-1">
                               {caseItem.results.map((result, rIndex) => (
@@ -340,7 +419,7 @@ export default function CasesPage() {
                               className="text-sm font-medium inline-flex items-center gap-2 transition-colors"
                               style={{ color: 'var(--color-primary-600)' }}
                             >
-                              {t('detail.viewDetails')}
+                              {translations.detail.viewDetails}
                               <svg 
                                 className="w-4 h-4" 
                                 fill="none" 
@@ -370,10 +449,10 @@ export default function CasesPage() {
                 >
                   <div className="text-6xl mb-4">🔍</div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    {t('filters.noResults')}
+                    {translations.filters.noResults}
                   </h3>
                   <p className="text-gray-600 mb-6">
-                    {t('filters.noResultsDescription')}
+                    {translations.filters.noResultsDescription}
                   </p>
                   <button
                     onClick={() => {
@@ -388,7 +467,7 @@ export default function CasesPage() {
                       borderColor: 'var(--color-primary-300)',
                     }}
                   >
-                    {t('filters.clearFilters')}
+                    {translations.filters.clearFilters}
                   </button>
                 </motion.div>
               )}
