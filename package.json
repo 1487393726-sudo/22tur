@@ -13,7 +13,8 @@
     "test:coverage": "jest --coverage",
     "test:ci": "jest --ci --coverage",
     "spec:generate": "ts-node scripts/generate-spec-tasks.ts",
-    "spec:generate:all": "ts-node scripts/generate-spec-tasks.ts --all"
+    "spec:generate:all": "ts-node scripts/generate-spec-tasks.ts --all",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@cloudbase/js-sdk": "^2.24.7",
