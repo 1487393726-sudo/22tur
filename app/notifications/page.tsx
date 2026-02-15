@@ -252,10 +252,11 @@ export default function NotificationsPage() {
     fetchNotifications();
     fetchNotificationPreferences();
     
-    // ?0
+    // 每30秒刷新一次
     const interval = setInterval(fetchNotifications, 30000);
     
-    // ?    const timer = setTimeout(() => {
+    // 模拟加载消息
+    const timer = setTimeout(() => {
       setMessages(mockMessages);
     }, 300);
     
@@ -378,11 +379,12 @@ export default function NotificationsPage() {
       });
 
       if (response.ok) {
-        // ?        setNotifications((prev) =>
+        // 标记所有为已读
+        setNotifications((prev) =>
           prev.map((n) => ({ ...n, isRead: true })),
         );
       } else {
-        console.error('');
+        console.error('标记失败');
       }
     } catch (error) {
       console.error(':', error);

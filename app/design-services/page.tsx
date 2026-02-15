@@ -207,20 +207,20 @@ export default function DesignServicesPage() {
         <section className="purple-gradient-hero py-20 px-4 rounded-2xl">
           <div className="container mx-auto max-w-4xl text-center">
             <h2 className="purple-gradient-title text-3xl md:text-4xl font-bold mb-6">
-              {locale === "en"  "Ready to Start Your Project"" : ""}
+              {locale === "en" ? "Ready to Start Your Project?" : "准备开始您的项目了吗？"}
             </h2>
             <p className="purple-gradient-subtitle text-lg mb-8">
               {locale === "en" 
-                 "Let's discuss your design needs and create something amazing together"
-                : ""
+                ? "Let's discuss your design needs and create something amazing together"
+                : "让我们讨论您的设计需求，共同创造精彩"
               }
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="purple-gradient-button">
-                {locale === "en"  "Get Started" : ""}
+                {locale === "en" ? "Get Started" : "开始咨询"}
               </button>
               <button className="purple-gradient-button bg-transparent border border-white/20 hover:bg-white/10">
-                {locale === "en"  "Contact Us" : ""}
+                {locale === "en" ? "Contact Us" : "联系我们"}
               </button>
             </div>
           </div>

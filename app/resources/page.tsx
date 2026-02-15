@@ -391,12 +391,12 @@ export default function ResourcesPage() {
                 <p className="purple-gradient-subtitle mb-6 max-w-2xl mx-auto">
                   {locale === "en" 
                     ? "Our team can create custom templates, tools, and guides tailored to your specific business needs and industry requirements."
-                    : "?
+                    : "我们的团队可以根据您的具体业务需求和行业要求创建定制模板、工具和指南。"
                   }
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button className="purple-gradient-button inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold">
-                    {locale === "en" ? "Request Custom Resource" : ""}
+                    {locale === "en" ? "Request Custom Resource" : "申请定制资源"}
                     <ArrowRight className="w-5 h-5" />
                   </button>
                   <button className="inline-flex items-center gap-2 bg-transparent border-2 border-white/20 purple-gradient-text px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-colors">

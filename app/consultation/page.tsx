@@ -345,13 +345,13 @@ export default function ConsultationPage() {
                         onClick={() => setSelectedType(type)}
                         className={`relative p-6 rounded-lg border-2 cursor-pointer transition-all ${
                           selectedType?.id === type.id
-                             "border-primary purple-gradient-button bg-primary/10"
+                            ? "border-primary purple-gradient-button bg-primary/10"
                             : "border-white/20 bg-white/5 hover:border-white/40"
                         }`}
                       >
                         {type.popular && (
                           <div className="absolute -top-2 -right-2 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-3 py-1 rounded-full text-xs font-bold">
-                            {locale === "en"  "Popular" : ""}
+                            {locale === "en" ? "Popular" : "热门"}
                           </div>
                         )}
                         
@@ -361,7 +361,7 @@ export default function ConsultationPage() {
                           </div>
                           <div>
                             <h3 className="text-lg font-bold text-white">
-                              {locale === "en"  type.nameEn : type.name}
+                              {locale === "en" ? type.nameEn : type.name}
                             </h3>
                             <div className="flex items-center gap-4 text-sm text-gray-400">
                               <span className="flex items-center gap-1">

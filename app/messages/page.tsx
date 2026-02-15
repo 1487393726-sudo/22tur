@@ -234,7 +234,7 @@ export default function MessagesPage() {
                     <div>
                       <h3 className="font-medium text-white">{selectedConversation.userName}</h3>
                       <p className="text-xs text-white/60">
-                        {selectedConversation.isOnline  '' : ''}
+                        {selectedConversation.isOnline ? '在线' : '离线'}
                       </p>
                     </div>
                   </div>
@@ -288,7 +288,7 @@ export default function MessagesPage() {
                 />
               </>
             ) : (
-              // 
+              // 未选择对话
               <div className="flex-1 flex items-center justify-center">
                 <div className="text-center">
                   <MessageSquare className="w-16 h-16 text-white/20 mx-auto mb-4" />

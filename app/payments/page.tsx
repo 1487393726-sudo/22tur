@@ -367,17 +367,17 @@ export default function PaymentsPage() {
               <CardContent className="purple-gradient-card">
                 <div className="flex flex-wrap gap-2">
                   <Button
-                    variant={filterStatus === null  "default" : "outline"}
+                    variant={filterStatus === null ? "default" : "outline"}
                     size="sm"
                     onClick={() => setFilterStatus(null)}
                   >
-                    
+                    全部
                   </Button>
                   {Object.entries(statusLabels).map(([status, label]) => (
                     <Button
                       key={status}
                       variant={
-                        filterStatus === status  "default" : "outline"
+                        filterStatus === status ? "default" : "outline"
                       }
                       size="sm"
                       onClick={() => setFilterStatus(status)}

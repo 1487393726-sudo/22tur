@@ -410,12 +410,12 @@ export default function ReportBuilderPage() {
             <CardHeader className="purple-gradient-card">
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle className="purple-gradient-title purple-gradient-card">?/CardTitle>
-                  <CardDescription className="purple-gradient-card"></CardDescription>
+                  <CardTitle className="purple-gradient-title purple-gradient-card">筛选条件</CardTitle>
+                  <CardDescription className="purple-gradient-card">添加筛选条件来过滤数据</CardDescription>
                 </div>
                 <Button type="button" onClick={addFilter} size="sm" className="purple-gradient-button">
                   <Filter className="w-4 h-4 mr-2" />
-                  
+                  添加筛选
                 </Button>
               </div>
             </CardHeader>
@@ -423,8 +423,8 @@ export default function ReportBuilderPage() {
               {reportConfig.filters.length === 0 ? (
                 <div className="text-center py-12 text-gray-500">
                   <Filter className="w-12 h-12 mx-auto mb-4 text-gray-300" />
-                  <p>?/p>
-                  <p className="text-sm mt-2">""?/p>
+                  <p>暂无筛选条件</p>
+                  <p className="text-sm mt-2">点击"添加筛选"按钮开始</p>
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -495,8 +495,8 @@ export default function ReportBuilderPage() {
                               onChange={(e) => updateFilter(filter.id, { value: e.target.value })}
                               placeholder={
                                 filter.operator.includes("IN")
-                                  ? "?
-                                  : "?
+                                  ? "用逗号分隔多个值"
+                                  : "输入筛选值"
                               }
                               className="w-full bg-white border border-gray-300 rounded px-3 py-1.5 text-sm"
                             />
@@ -1206,7 +1206,7 @@ function formatCellValue(value: any): string {
     }
   }
   if (typeof value === "boolean") {
-    return value ? "? : "?;
+    return value ? "是" : "否";
   }
   if (typeof value === "number") {
     return value.toLocaleString("zh-CN");

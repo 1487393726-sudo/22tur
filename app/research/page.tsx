@@ -151,7 +151,7 @@ const reportTypes = [
   { id: "Market Analysis", name: "", nameEn: "Market Analysis" },
   { id: "Industry Report", name: "", nameEn: "Industry Report" },
   { id: "Trend Study", name: "", nameEn: "Trend Study" },
-  { id: "White Paper", name: "?, nameEn: "White Paper" }
+  { id: "White Paper", name: "白皮书", nameEn: "White Paper" }
 ];
 
 export default function ResearchPage() {
@@ -414,12 +414,12 @@ export default function ResearchPage() {
                 <p className="purple-gradient-subtitle mb-6 max-w-2xl mx-auto">
                   {locale === "en" 
                     ? "Our research team can conduct custom studies and analysis tailored to your specific investment needs and market interests."
-                    : "?
+                    : "我们的研究团队可以根据您的具体投资需求和市场兴趣进行定制研究和分析。"
                   }
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button className="purple-gradient-button inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold">
-                    {locale === "en" ? "Request Custom Research" : ""}
+                    {locale === "en" ? "Request Custom Research" : "申请定制研究"}
                     <ArrowRight className="w-5 h-5" />
                   </button>
                   <button className="inline-flex items-center gap-2 bg-transparent border-2 border-white/20 purple-gradient-text px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-colors">

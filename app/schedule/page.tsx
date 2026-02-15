@@ -775,16 +775,16 @@ export default function SchedulePage() {
               </div>
               <div data-oid="5ejnvpr">
                 <Label className="text-sm font-medium" data-oid="5eorcz4">
-                  
+                  地点
                 </Label>
                 <p className="text-sm text-gray-600 mt-1" data-oid="jmqt_43">
-                  {selectedEvent.location || "?}
+                  {selectedEvent.location || "未指定"}
                 </p>
               </div>
               <div className="grid grid-cols-3 gap-4" data-oid="gzrtoiu">
                 <div data-oid="la7dzrx">
                   <Label className="text-sm font-medium" data-oid="mc6e.to">
-                    
+                    类型
                   </Label>
                   <Badge variant="outline" className="mt-1" data-oid="m7k7vl-">
                     {selectedEvent.type}

@@ -676,7 +676,7 @@ export function ProjectDetailPage({ projectId }: ProjectDetailPageProps) {
                     <div><p className="purple-gradient-subtitle text-sm">{locale === 'en' ? 'Base Salary' : ''}</p><p className="text-white">{formatCurrency(selectedEmployee.salary.baseSalary)}</p></div>
                     <div><p className="purple-gradient-subtitle text-sm">{locale === 'en' ? 'Bonus' : ''}</p><p className="text-white">{formatCurrency(selectedEmployee.salary.bonus)}</p></div>
                     <div><p className="purple-gradient-subtitle text-sm">{locale === 'en' ? 'Allowance' : ''}</p><p className="text-white">{formatCurrency(selectedEmployee.salary.allowance)}</p></div>
-                    <div><p className="purple-gradient-subtitle text-sm">{locale === 'en' ? 'Overtime' : '?}</p><p className="text-white">{formatCurrency(selectedEmployee.salary.overtimePay)}</p></div>
+                    <div><p className="purple-gradient-subtitle text-sm">{locale === 'en' ? 'Overtime' : '加班费'}</p><p className="text-white">{formatCurrency(selectedEmployee.salary.overtimePay)}</p></div>
                   </div>
                 </div>
                 
@@ -713,7 +713,7 @@ export function ProjectDetailPage({ projectId }: ProjectDetailPageProps) {
           <div className="purple-gradient-stat text-center">
             <DollarSign className="w-6 h-6 text-blue-400 mx-auto mb-2" />
             <p className="text-2xl font-bold text-white">{formatCurrency(salaryTransparency.totalLaborCost)}</p>
-            <p className="purple-gradient-subtitle text-sm">{locale === 'en' ? 'Total Labor Cost' : '?}</p>
+            <p className="purple-gradient-subtitle text-sm">{locale === 'en' ? 'Total Labor Cost' : '总人工成本'}</p>
           </div>
           <div className="purple-gradient-stat text-center">
             <Users className="w-6 h-6 text-green-400 mx-auto mb-2" />

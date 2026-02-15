@@ -572,8 +572,8 @@ export default function WorkflowPage() {
                 },
                 {
                   title: "",
-                  description: " ->  ->  -> ?,
-                  category: "",
+                  description: "审批 -> 采购 -> 入库 -> 付款",
+                  category: "采购管理",
                   nodes: 6,
                   icon: "",
                 },
@@ -763,7 +763,7 @@ export default function WorkflowPage() {
                 </div>
               </div>
               <div className="grid gap-2" data-oid="pyx:o-d">
-                <Label data-oid="::01z45">?/Label>
+                <Label data-oid="::01z45">优先级</Label>
                 <Select
                   value={formData.priority}
                   onValueChange={(value: any) =>
@@ -772,11 +772,12 @@ export default function WorkflowPage() {
                   data-oid="5d3c-68"
                 >
                   <SelectTrigger data-oid="rxp1iew">
-                    <SelectValue placeholder="? data-oid="dapas4f" />
+                    <SelectValue placeholder="选择优先级" data-oid="dapas4f" />
                   </SelectTrigger>
                   <SelectContent data-oid="ha_6_ip">
                     <SelectItem value="LOW" data-oid="1ft99_4">
-                      ?                    </SelectItem>
+                      低
+                    </SelectItem>
                     <SelectItem value="MEDIUM" data-oid="62z7r_4">
                       ?                    </SelectItem>
                     <SelectItem value="HIGH" data-oid="lbd2u1b">

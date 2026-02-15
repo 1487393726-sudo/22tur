@@ -368,7 +368,7 @@ export default function CaseStudiesPage() {
             <div className="purple-gradient-stat">
               <div className="text-3xl font-bold purple-gradient-title mb-2">98%</div>
               <div className="purple-gradient-text text-sm">
-                {locale === "en"  "Client Satisfaction" : ""}
+                {locale === "en" ? "Client Satisfaction" : "客户满意度"}
               </div>
             </div>
           </div>
@@ -378,7 +378,7 @@ export default function CaseStudiesPage() {
       {/* Featured Cases */}
       <div className="mb-12">
         <h2 className="text-2xl font-bold text-white mb-6">
-          {locale === "en"  "Featured Case Studies" : ""}
+          {locale === "en" ? "Featured Case Studies" : "精选案例研究"}
         </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {featuredCases.slice(0, 2).map((caseStudy) => {

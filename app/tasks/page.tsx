@@ -421,7 +421,7 @@ export default function TasksPage() {
                     </Label>
                     <Input
                       id="title"
-                      placeholder="?
+                      placeholder="输入任务标题"
                       value={formData.title}
                       onChange={(e) =>
                         setFormData((prev) => ({
@@ -441,7 +441,7 @@ export default function TasksPage() {
                       className="text-white"
                       data-oid="wz5fp8h"
                     >
-                      
+                      描述
                     </Label>
                     <Textarea
                       id="description"
@@ -778,9 +778,9 @@ export default function TasksPage() {
                         </h3>
                         <p className="text-gray-300 mb-4" data-oid="5cyl_bc">
                           {activeTab === "active"
-                            ? "?
+                            ? "创建新任务开始管理您的工作"
                             : activeTab === "completed"
-                              ? "?
+                              ? "您完成的任务会显示在这里"
                               : ""}
                         </p>
                         {activeTab === "active" && (
