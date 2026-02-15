@@ -519,10 +519,10 @@ export default function ReportBuilderPage() {
                     </div>
                   ))}
 
-                  {/* ?*/}
+                  {/* 应用的筛选条件 */}
                   {reportConfig.filters.length > 0 && (
                     <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
-                      <h4 className="text-sm font-medium text-blue-900 mb-2">?/h4>
+                      <h4 className="text-sm font-medium text-blue-900 mb-2">应用的筛选条件</h4>
                       <div className="text-sm text-blue-800 font-mono">
                         {reportConfig.filters.map((filter, index) => {
                           const field = currentDatasourceForFilter?.fields.find(
@@ -560,16 +560,16 @@ export default function ReportBuilderPage() {
           <div className="space-y-6">
             <Card className="purple-gradient-card">
               <CardHeader className="purple-gradient-card">
-                <CardTitle className="purple-gradient-title purple-gradient-card"></CardTitle>
-                <CardDescription className="purple-gradient-card">?/CardDescription>
+                <CardTitle className="purple-gradient-title purple-gradient-card">选择报告类型</CardTitle>
+                <CardDescription className="purple-gradient-card">选择最适合您需求的报告格式</CardDescription>
               </CardHeader>
               <CardContent className="purple-gradient-card">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {[
-                    { value: "table", label: "", icon: "", desc: "" },
-                    { value: "bar", label: "?, icon: "", desc: "" },
-                    { value: "line", label: "?, icon: "", desc: "" },
-                    { value: "pie", label: "", icon: "", desc: "" },
+                    { value: "table", label: "表格", icon: "📊", desc: "数据表格" },
+                    { value: "bar", label: "柱状图", icon: "📊", desc: "柱状图表" },
+                    { value: "line", label: "折线图", icon: "📈", desc: "趋势分析" },
+                    { value: "pie", label: "饼图", icon: "🥧", desc: "占比分析" },
                   ].map((chart) => (
                     <button
                       key={chart.value}
@@ -622,12 +622,12 @@ export default function ReportBuilderPage() {
                             },
                           })
                         }
-                        placeholder="?
+                        placeholder="输入字段名称"
                         className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2"
                       />
                     </div>
 
-                    {/* X ?*/}
+                    {/* X 轴和 Y 轴 */}
                     {needsAxes && (
                       <div>
                         <label className="text-sm font-medium mb-2 block">
@@ -644,10 +644,10 @@ export default function ReportBuilderPage() {
                               },
                             })
                           }
-                          aria-label="X?
+                          aria-label="X轴字段"
                           className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2"
                         >
-                          <option value=""> X ?/option>
+                          <option value="">选择 X 轴字段</option>
                           {reportConfig.fields.map((fieldName) => {
                             const field = currentDatasourceForChart?.fields.find(
                               (f) => f.name === fieldName
@@ -659,15 +659,15 @@ export default function ReportBuilderPage() {
                             );
                           })}
                         </select>
-                        <p className="text-xs text-gray-500 mt-1">?/p>
+                        <p className="text-xs text-gray-500 mt-1">选择用于 X 轴的字段</p>
                       </div>
                     )}
 
-                    {/* Y ?*/}
+                    {/* Y 轴字段 */}
                     {needsAxes && (
                       <div>
                         <label className="text-sm font-medium mb-2 block">
-                          Y ?<span className="text-red-500">*</span>
+                          Y 轴字段<span className="text-red-500">*</span>
                         </label>
                         <select
                           value={reportConfig.chartConfig.yAxis || ""}
@@ -680,10 +680,10 @@ export default function ReportBuilderPage() {
                               },
                             })
                           }
-                          aria-label="Y?
+                          aria-label="Y轴字段"
                           className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2"
                         >
-                          <option value=""> Y ?/option>
+                          <option value="">选择 Y 轴字段</option>
                           {reportConfig.fields.map((fieldName) => {
                             const field = currentDatasourceForChart?.fields.find(
                               (f) => f.name === fieldName
@@ -695,15 +695,15 @@ export default function ReportBuilderPage() {
                             );
                           })}
                         </select>
-                        <p className="text-xs text-gray-500 mt-1">?/p>
+                        <p className="text-xs text-gray-500 mt-1">选择用于 Y 轴的字段</p>
                       </div>
                     )}
 
-                    {/*  */}
+                    {/* 分组字段 */}
                     {needsGrouping && (
                       <div>
                         <label className="text-sm font-medium mb-2 block">
-                           <span className="text-red-500">*</span>
+                          分组字段<span className="text-red-500">*</span>
                         </label>
                         <select
                           value={reportConfig.chartConfig.groupBy || ""}
@@ -731,15 +731,15 @@ export default function ReportBuilderPage() {
                             );
                           })}
                         </select>
-                        <p className="text-xs text-gray-500 mt-1">?/p>
+                        <p className="text-xs text-gray-500 mt-1">选择用于分组的字段</p>
                       </div>
                     )}
 
-                    {/*  */}
+                    {/* 聚合函数 */}
                     {needsAggregation && (
                       <div>
                         <label className="text-sm font-medium mb-2 block">
-                           <span className="text-red-500">*</span>
+                          聚合函数<span className="text-red-500">*</span>
                         </label>
                         <select
                           value={reportConfig.chartConfig.aggregation || ""}

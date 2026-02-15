@@ -443,7 +443,6 @@ export default function ABTestsPage() {
 
         {/* 测试详情 */}
         <Card>
-          <Card>
           <CardHeader>
             <CardTitle>测试详情</CardTitle>
           </CardHeader>

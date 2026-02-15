@@ -381,7 +381,7 @@ export default function ConsultationPage() {
                         </p>
 
                         <div className="space-y-2">
-                          {(locale === "en"  type.featuresEn : type.features).map((feature, index) => (
+                          {(locale === "en" ? type.featuresEn : type.features).map((feature, index) => (
                             <div key={index} className="flex items-center gap-2">
                               <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
                               <span className="text-gray-300 text-sm">{feature}</span>
@@ -399,7 +399,7 @@ export default function ConsultationPage() {
                     disabled={!selectedType}
                     className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                   >
-                    {locale === "en"  "Continue" : ""}
+                    {locale === "en" ? "Continue" : "继续"}
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -409,7 +409,7 @@ export default function ConsultationPage() {
             {step === 2 && (
               <div>
                 <h2 className="text-2xl font-bold text-white mb-6 text-center">
-                  {locale === "en"  "Select Expert" : ""}
+                  {locale === "en" ? "Select Expert" : "选择专家"}
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {experts.map((expert) => (
@@ -418,7 +418,7 @@ export default function ConsultationPage() {
                       onClick={() => setSelectedExpert(expert)}
                       className={`p-6 rounded-lg border-2 cursor-pointer transition-all ${
                         selectedExpert?.id === expert.id
-                           "border-primary purple-gradient-button bg-primary/10"
+                          ? "border-primary purple-gradient-button bg-primary/10"
                           : "border-white/20 bg-white/5 hover:border-white/40"
                       }`}
                     >
@@ -429,10 +429,10 @@ export default function ConsultationPage() {
                           </span>
                         </div>
                         <h3 className="text-lg font-bold text-white">
-                          {locale === "en"  expert.nameEn : expert.name}
+                          {locale === "en" ? expert.nameEn : expert.name}
                         </h3>
                         <p className="text-gray-400 text-sm">
-                          {locale === "en"  expert.titleEn : expert.title}
+                          {locale === "en" ? expert.titleEn : expert.title}
                         </p>
                       </div>
 
@@ -445,12 +445,12 @@ export default function ConsultationPage() {
 
                         <div className="text-center">
                           <p className="text-gray-300 text-sm">
-                            {locale === "en"  expert.experienceEn : expert.experience}
+                            {locale === "en" ? expert.experienceEn : expert.experience}
                           </p>
                         </div>
 
                         <div className="flex flex-wrap gap-1 justify-center">
-                          {(locale === "en"  expert.expertiseEn : expert.expertise).map((skill, index) => (
+                          {(locale === "en" ? expert.expertiseEn : expert.expertise).map((skill, index) => (
                             <span 
                               key={index}
                               className="px-2 py-1 bg-white/10 text-white text-xs rounded-full"
@@ -477,14 +477,14 @@ export default function ConsultationPage() {
                     onClick={prevStep}
                     className="bg-white/10 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/20 transition-colors"
                   >
-                    {locale === "en"  "Back" : ""}
+                    {locale === "en" ? "Back" : "返回"}
                   </button>
                   <button
                     onClick={nextStep}
                     disabled={!selectedExpert}
                     className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                   >
-                    {locale === "en"  "Continue" : ""}
+                    {locale === "en" ? "Continue" : "继续"}
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -494,7 +494,7 @@ export default function ConsultationPage() {
             {step === 3 && (
               <div>
                 <h2 className="text-2xl font-bold text-white mb-6 text-center">
-                  {locale === "en"  "Select Date & Time" : ""}
+                  {locale === "en" ? "Select Date & Time" : "选择日期和时间"}
                 </h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

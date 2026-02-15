@@ -436,10 +436,11 @@ export default function NotificationsPage() {
       >
         <div data-oid="wkl0.ka">
           <h1 className="purple-gradient-title text-3xl font-bold text-gray-900" data-oid="9q5w0qo">
-            
+            通知中心
           </h1>
           <p className="text-gray-600 mt-1" data-oid="uw-whlf">
-            ?          </p>
+            管理您的通知和消息
+          </p>
         </div>
         <div className="flex items-center gap-3" data-oid="a10wo56">
           <Button 
@@ -578,7 +579,8 @@ export default function NotificationsPage() {
                                 onClick={() => markAsRead(notification.id)}
                                 data-oid="xjyn283"
                               >
-                                 ?                              </Button>
+                                查看详情
+                              </Button>
                             )}
                           </div>
                         </div>
@@ -694,11 +696,11 @@ export default function NotificationsPage() {
                                 onClick={() => markMessageAsRead(message.id)}
                                 data-oid="l9bjn0t"
                               >
-                                
+                                标记为已读
                               </Button>
                             )}
                             <Button size="sm" data-oid=".7:90y." className="purple-gradient-button">
-                              
+                              回复
                             </Button>
                             {message.isReplied && (
                               <Badge
@@ -706,7 +708,8 @@ export default function NotificationsPage() {
                                 className="text-xs"
                                 data-oid="y_1aa_y"
                               >
-                                ?                              </Badge>
+                                已回复
+                              </Badge>
                             )}
                           </div>
                         </div>
@@ -727,13 +730,14 @@ export default function NotificationsPage() {
           </Tabs>
         </div>
 
-        {/* ?*/}
+        {/* 右侧筛选面板 */}
         <div className="space-y-6" data-oid="xajfcj2">
-          {/* ?*/}
+          {/* 筛选器 */}
           <Card data-oid="5s08cb7" className="purple-gradient-card">
             <CardHeader data-oid="d7kuwuk" className="purple-gradient-card">
               <CardTitle className="purple-gradient-title purple-gradient-card text-lg" data-oid="yy4gppn">
-                ?              </CardTitle>
+                筛选器
+              </CardTitle>
             </CardHeader>
             <CardContent className="purple-gradient-card space-y-4" data-oid="r5jnwdp">
               <div className="relative" data-oid="e98r3qx">
@@ -742,7 +746,7 @@ export default function NotificationsPage() {
                   data-oid="kfhtlhy"
                 />
                 <Input
-                  placeholder="?.."
+                  placeholder="搜索通知..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="pl-10"
@@ -750,7 +754,7 @@ export default function NotificationsPage() {
                 />
               </div>
               <div data-oid="p:jicrl">
-                <Label data-oid="677y:o8"></Label>
+                <Label data-oid="677y:o8">通知类型</Label>
                 <Select
                   value={filterType}
                   onValueChange={setFilterType}
@@ -761,19 +765,19 @@ export default function NotificationsPage() {
                   </SelectTrigger>
                   <SelectContent data-oid="lbjt-lp">
                     <SelectItem value="all" data-oid="he-m7f_">
-                      
+                      全部
                     </SelectItem>
                     <SelectItem value="EVENT" data-oid="0mfag3k">
-                      
+                      事件
                     </SelectItem>
                     <SelectItem value="TASK" data-oid="ya86cv5">
-                      
+                      任务
                     </SelectItem>
                     <SelectItem value="INFO" data-oid="6ehdfpn">
-                      
+                      信息
                     </SelectItem>
                     <SelectItem value="REPORT" data-oid="xen3e2b">
-                      
+                      报告
                     </SelectItem>
                   </SelectContent>
                 </Select>
@@ -790,34 +794,39 @@ export default function NotificationsPage() {
                   </SelectTrigger>
                   <SelectContent data-oid="c2u:ktu">
                     <SelectItem value="all" data-oid="332_qo4">
-                      
+                      全部
                     </SelectItem>
                     <SelectItem value="URGENT" data-oid="1.1.ha8">
-                      ?                    </SelectItem>
+                      紧急
+                    </SelectItem>
                     <SelectItem value="HIGH" data-oid="nrhyc1e">
-                      ?                    </SelectItem>
+                      高
+                    </SelectItem>
                     <SelectItem value="MEDIUM" data-oid="90tps07">
-                      ?                    </SelectItem>
+                      中
+                    </SelectItem>
                     <SelectItem value="LOW" data-oid="re7z_83">
-                      ?                    </SelectItem>
+                      低
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
             </CardContent>
           </Card>
 
-          {/*  */}
+          {/* 通知设置 */}
           <Card data-oid="liooss." className="purple-gradient-card">
             <CardHeader data-oid="jpnprjv" className="purple-gradient-card">
               <CardTitle className="purple-gradient-title purple-gradient-card text-lg flex items-center justify-between" data-oid="d7tir2-">
-                <span></span>
+                <span>通知设置</span>
                 {settingsSaved && (
                   <Badge className="bg-green-500 text-white text-xs">
-                    ?                  </Badge>
+                    已保存
+                  </Badge>
                 )}
                 {settingsSaving && (
                   <Badge variant="outline" className="text-xs">
-                    ?..
+                    保存中...
                   </Badge>
                 )}
               </CardTitle>
@@ -829,7 +838,7 @@ export default function NotificationsPage() {
               >
                 <div className="flex items-center space-x-2" data-oid="8ttxcr8">
                   <Mail className="w-4 h-4 text-gray-600" data-oid="pt25px3" />
-                  <Label data-oid="1.ddf2x"></Label>
+                  <Label data-oid="1.ddf2x">邮件通知</Label>
                 </div>
                 <Switch
                   checked={notificationSettings.emailEnabled}
@@ -849,7 +858,7 @@ export default function NotificationsPage() {
                     className="w-4 h-4 text-gray-600"
                     data-oid="_6o:byz"
                   />
-                  <Label data-oid="ods4e8l"></Label>
+                  <Label data-oid="ods4e8l">推送通知</Label>
                 </div>
                 <Switch
                   checked={notificationSettings.pushEnabled}
@@ -864,7 +873,7 @@ export default function NotificationsPage() {
                 className="flex items-center justify-between"
                 data-oid="z0mzbah"
               >
-                <Label data-oid="j4o_jeg"></Label>
+                <Label data-oid="j4o_jeg">任务通知</Label>
                 <Switch
                   checked={notificationSettings.taskEnabled}
                   onCheckedChange={(checked) =>
@@ -878,7 +887,7 @@ export default function NotificationsPage() {
                 className="flex items-center justify-between"
                 data-oid="q0:plu3"
               >
-                <Label data-oid="ez.0y_y"></Label>
+                <Label data-oid="ez.0y_y">事件通知</Label>
                 <Switch
                   checked={notificationSettings.eventEnabled}
                   onCheckedChange={(checked) =>
@@ -892,7 +901,7 @@ export default function NotificationsPage() {
                 className="flex items-center justify-between"
                 data-oid="6dxk:rq"
               >
-                <Label data-oid="6zpbxr7"></Label>
+                <Label data-oid="6zpbxr7">提醒通知</Label>
                 <Switch
                   checked={notificationSettings.reminderEnabled}
                   onCheckedChange={(checked) =>
@@ -906,7 +915,7 @@ export default function NotificationsPage() {
                 className="flex items-center justify-between"
                 data-oid="1c46g4:"
               >
-                <Label data-oid="5digza1"></Label>
+                <Label data-oid="5digza1">报告通知</Label>
                 <Switch
                   checked={notificationSettings.reportEnabled}
                   onCheckedChange={(checked) =>
@@ -917,7 +926,7 @@ export default function NotificationsPage() {
                 />
               </div>
               <div data-oid="-.imoso">
-                <Label data-oid="ytrk:lv"></Label>
+                <Label data-oid="ytrk:lv">通知频率</Label>
                 <Select
                   value={notificationSettings.frequency}
                   onValueChange={(value) =>
@@ -931,15 +940,16 @@ export default function NotificationsPage() {
                   </SelectTrigger>
                   <SelectContent data-oid="qmct8cc">
                     <SelectItem value="IMMEDIATE" data-oid="8ap4j73">
-                      
+                      立即
                     </SelectItem>
                     <SelectItem value="HOURLY" data-oid="6b-9wz3">
-                      ?                    </SelectItem>
+                      每小时
+                    </SelectItem>
                     <SelectItem value="DAILY" data-oid="z4adg8x">
-                      
+                      每天
                     </SelectItem>
                     <SelectItem value="WEEKLY" data-oid="rd1y_5_">
-                      
+                      每周
                     </SelectItem>
                   </SelectContent>
                 </Select>
@@ -947,18 +957,18 @@ export default function NotificationsPage() {
             </CardContent>
           </Card>
 
-          {/*  */}
+          {/* 统计信息 */}
           <Card data-oid="7sau:xp" className="purple-gradient-card">
             <CardHeader data-oid="fhye1lh" className="purple-gradient-card">
               <CardTitle className="purple-gradient-title purple-gradient-card text-lg" data-oid="9748.wa">
-                
+                统计信息
               </CardTitle>
             </CardHeader>
             <CardContent data-oid="-emp0_a" className="purple-gradient-card">
               <div className="space-y-3" data-oid="uhh8ml2">
                 <div className="flex justify-between" data-oid="_0605hr">
                   <span className="text-sm text-gray-600" data-oid="0hrhw88">
-                    
+                    未读通知
                   </span>
                   <Badge variant="destructive" data-oid="qi6_qa4">
                     {unreadCount}
@@ -966,7 +976,7 @@ export default function NotificationsPage() {
                 </div>
                 <div className="flex justify-between" data-oid="-67no2x">
                   <span className="text-sm text-gray-600" data-oid="orpmeh5">
-                    
+                    未读消息
                   </span>
                   <Badge variant="destructive" data-oid="4tt03zm">
                     {unreadMessageCount}
@@ -974,7 +984,7 @@ export default function NotificationsPage() {
                 </div>
                 <div className="flex justify-between" data-oid="hfl16w9">
                   <span className="text-sm text-gray-600" data-oid="sxraejk">
-                    
+                    总数
                   </span>
                   <span className="text-sm font-medium" data-oid="de8au3:">
                     {notifications.length + messages.length}
@@ -982,7 +992,7 @@ export default function NotificationsPage() {
                 </div>
                 <div className="flex justify-between" data-oid="2kipg4s">
                   <span className="text-sm text-gray-600" data-oid="n2deab:">
-                    
+                    今日新增
                   </span>
                   <span className="text-sm font-medium" data-oid="du8xjlx">
                     24

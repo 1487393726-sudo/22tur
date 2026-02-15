@@ -292,7 +292,7 @@ export default function MessagesPage() {
               <div className="flex-1 flex items-center justify-center">
                 <div className="text-center">
                   <MessageSquare className="w-16 h-16 text-white/20 mx-auto mb-4" />
-                  <h3 className="text-xl font-medium text-white/60 mb-2">No conversation selected</h3>
+                  <h3 className="text-xl font-medium text-white/60 mb-2">未选择对话</h3>
                   <p className="text-white/40">Select a conversation to start messaging</p>
                 </div>
               </div>

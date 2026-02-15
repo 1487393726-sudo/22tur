@@ -406,16 +406,16 @@ export default function CaseStudiesPage() {
                           {locale === "en" ? caseStudy.industryEn : caseStudy.industry}
                         </span>
                         <span className="text-gray-400 text-xs">
-                          {new Date(caseStudy.completedDate).toLocaleDateString(locale === "en"  "en-US" : "zh-CN")}
+                          {new Date(caseStudy.completedDate).toLocaleDateString(locale === "en" ? "en-US" : "zh-CN")}
                         </span>
                       </div>
 
                       <h3 className="text-xl font-bold text-white mb-2">
-                        {locale === "en"  caseStudy.titleEn : caseStudy.title}
+                        {locale === "en" ? caseStudy.titleEn : caseStudy.title}
                       </h3>
 
                       <p className="text-gray-300 text-sm mb-4 line-clamp-2">
-                        {locale === "en"  caseStudy.descriptionEn : caseStudy.description}
+                        {locale === "en" ? caseStudy.descriptionEn : caseStudy.description}
                       </p>
 
                       {/* Key Results */}
@@ -426,7 +426,7 @@ export default function CaseStudiesPage() {
                               {result.value}
                             </div>
                             <div className="text-xs text-gray-400">
-                              {locale === "en"  result.metricEn : result.metric}
+                              {locale === "en" ? result.metricEn : result.metric}
                             </div>
                           </div>
                         ))}
@@ -438,7 +438,7 @@ export default function CaseStudiesPage() {
                         </div>
                         <div className="flex items-center gap-2 text-primary group-hover:gap-3 transition-all">
                           <span className="text-sm font-medium">
-                            {locale === "en"  "View Details" : ""}
+                            {locale === "en" ? "View Details" : "查看详情"}
                           </span>
                           <ArrowRight className="w-4 h-4" />
                         </div>
@@ -458,11 +458,11 @@ export default function CaseStudiesPage() {
                 onClick={() => setSelectedIndustry(industry.id)}
                 className={`px-4 py-2 rounded-lg font-medium transition-all ${
                   selectedIndustry === industry.id
-                     "bg-gradient-to-r from-primary to-secondary text-white"
+                    ? "bg-gradient-to-r from-primary to-secondary text-white"
                     : "bg-white/10 text-gray-300 hover:bg-white/20"
                 }`}
               >
-                {locale === "en"  industry.nameEn : industry.name}
+                {locale === "en" ? industry.nameEn : industry.name}
               </button>
             ))}
           </div>
@@ -485,27 +485,27 @@ export default function CaseStudiesPage() {
                       </div>
                       {caseStudy.featured && (
                         <span className="px-2 py-1 bg-yellow-500/20 text-yellow-400 text-xs rounded-full border border-yellow-500/30">
-                          {locale === "en"  "Featured" : ""}
+                          {locale === "en" ? "Featured" : "精选"}
                         </span>
                       )}
                     </div>
 
                     <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">
-                      {locale === "en"  caseStudy.titleEn : caseStudy.title}
+                      {locale === "en" ? caseStudy.titleEn : caseStudy.title}
                     </h3>
 
                     <p className="text-gray-300 text-sm mb-4 line-clamp-3">
-                      {locale === "en"  caseStudy.descriptionEn : caseStudy.description}
+                      {locale === "en" ? caseStudy.descriptionEn : caseStudy.description}
                     </p>
 
                     <div className="flex items-center gap-4 text-xs text-gray-400 mb-4">
                       <div className="flex items-center gap-1">
                         <Building2 className="w-3 h-3" />
-                        {locale === "en"  caseStudy.clientEn : caseStudy.client}
+                        {locale === "en" ? caseStudy.clientEn : caseStudy.client}
                       </div>
                       <div className="flex items-center gap-1">
                         <Clock className="w-3 h-3" />
-                        {locale === "en"  caseStudy.timelineEn : caseStudy.timeline}
+                        {locale === "en" ? caseStudy.timelineEn : caseStudy.timeline}
                       </div>
                     </div>
                   </div>
@@ -519,7 +519,7 @@ export default function CaseStudiesPage() {
                             {result.value}
                           </div>
                           <div className="text-xs text-gray-400">
-                            {locale === "en"  result.metricEn : result.metric}
+                            {locale === "en" ? result.metricEn : result.metric}
                           </div>
                         </div>
                       ))}
@@ -531,7 +531,7 @@ export default function CaseStudiesPage() {
                       </div>
                       <div className="flex items-center gap-2 text-primary group-hover:gap-3 transition-all">
                         <span className="text-sm font-medium">
-                          {locale === "en"  "Read More" : ""}
+                          {locale === "en" ? "Read More" : "阅读更多"}
                         </span>
                         <ArrowRight className="w-4 h-4" />
                       </div>
@@ -545,12 +545,12 @@ export default function CaseStudiesPage() {
           {/* CTA Section */}
           <div className="mt-16 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-xl p-8 text-center">
             <h2 className="text-2xl font-bold text-white mb-4">
-              {locale === "en"  "Ready to Create Your Success Story"" : ""}
+              {locale === "en" ? "Ready to Create Your Success Story?" : "准备创造您的成功故事？"}
             </h2>
             <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
               {locale === "en" 
-                 "Let's discuss how our investment expertise and brand solutions can help your business achieve similar remarkable results."
-                : ""
+                ? "Let's discuss how our investment expertise and brand solutions can help your business achieve similar remarkable results."
+                : "让我们讨论如何通过我们的投资专业知识和品牌解决方案帮助您的企业取得类似的卓越成果。"
               }
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -558,7 +558,7 @@ export default function CaseStudiesPage() {
                 href="/consultation"
                 className="inline-flex items-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
               >
-                {locale === "en"  "Schedule Consultation" : ""}
+                {locale === "en" ? "Schedule Consultation" : "预约咨询"}
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link

@@ -762,15 +762,15 @@ export function ProjectDetailPage({ projectId }: ProjectDetailPageProps) {
           </div>
         </div>
 
-        {/* ?*/}
+        {/* 社保详情 */}
         <div className="purple-gradient-card p-6">
           <h3 className="purple-gradient-title text-lg font-semibold mb-4 flex items-center gap-2">
             <CreditCard className="w-5 h-5" />
-            {locale === 'en' ? 'Social Insurance Details' : '?}
+            {locale === 'en' ? 'Social Insurance Details' : '社保详情'}
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             <div className="bg-white/5 rounded-lg p-4">
-              <p className="purple-gradient-subtitle text-sm mb-1">{locale === 'en' ? 'Pension' : '?}</p>
+              <p className="purple-gradient-subtitle text-sm mb-1">{locale === 'en' ? 'Pension' : '养老保险'}</p>
               <p className="text-lg font-bold text-white">{formatCurrency(salaryTransparency.socialInsurance.pension)}</p>
             </div>
             <div className="bg-white/5 rounded-lg p-4">
@@ -790,7 +790,7 @@ export function ProjectDetailPage({ projectId }: ProjectDetailPageProps) {
               <p className="text-lg font-bold text-white">{formatCurrency(salaryTransparency.socialInsurance.maternity)}</p>
             </div>
             <div className="bg-white/5 rounded-lg p-4">
-              <p className="purple-gradient-subtitle text-sm mb-1">{locale === 'en' ? 'Housing Fund' : '?}</p>
+              <p className="purple-gradient-subtitle text-sm mb-1">{locale === 'en' ? 'Housing Fund' : '住房公积金'}</p>
               <p className="text-lg font-bold text-white">{formatCurrency(salaryTransparency.socialInsurance.housingFund)}</p>
             </div>
           </div>
@@ -831,11 +831,11 @@ export function ProjectDetailPage({ projectId }: ProjectDetailPageProps) {
             <p className={`text-xl font-bold ${isProfit ? 'text-green-400' : 'text-red-400'}`}>
               {profitLossAnalysis.profitMargin.toFixed(1)}%
             </p>
-            <p className="purple-gradient-subtitle text-sm">{locale === 'en' ? 'Profit Margin' : '?}</p>
+            <p className="purple-gradient-subtitle text-sm">{locale === 'en' ? 'Profit Margin' : '利润率'}</p>
           </div>
         </div>
 
-        {/* ROI ?*/}
+        {/* ROI 分析 */}
         <div className="purple-gradient-card p-6">
           <h3 className="purple-gradient-title text-lg font-semibold mb-4 flex items-center gap-2">
             <BarChart3 className="w-5 h-5" />
@@ -860,13 +860,13 @@ export function ProjectDetailPage({ projectId }: ProjectDetailPageProps) {
                   </span>
                 </div>
               </div>
-              <p className="purple-gradient-title font-semibold">{locale === 'en' ? 'ROI' : '?}</p>
+              <p className="purple-gradient-title font-semibold">{locale === 'en' ? 'ROI' : '投资回报率'}</p>
             </div>
             <div className="text-center">
               <div className="w-24 h-24 mx-auto mb-4 flex items-center justify-center bg-white/5 rounded-full">
                 <div>
                   <p className="text-3xl font-bold text-white">{profitLossAnalysis.estimatedPaybackMonths}</p>
-                  <p className="purple-gradient-subtitle text-xs">{locale === 'en' ? 'months' : ''}</p>
+                  <p className="purple-gradient-subtitle text-xs">{locale === 'en' ? 'months' : '个月'}</p>
                 </div>
               </div>
               <p className="purple-gradient-title font-semibold">{locale === 'en' ? 'Est. Payback' : ''}</p>
@@ -899,7 +899,7 @@ export function ProjectDetailPage({ projectId }: ProjectDetailPageProps) {
                     <p className="text-red-400">{formatCurrency(month.expenses)}</p>
                   </div>
                   <div>
-                    <p className="purple-gradient-subtitle">{locale === 'en' ? 'Margin' : '?}</p>
+                    <p className="purple-gradient-subtitle">{locale === 'en' ? 'Margin' : '利润率'}</p>
                     <p className="text-white">{((month.profit / month.revenue) * 100).toFixed(1)}%</p>
                   </div>
                 </div>
@@ -927,14 +927,14 @@ export function ProjectDetailPage({ projectId }: ProjectDetailPageProps) {
 
   return (
     <div className="space-y-6">
-      {/* ?*/}
+      {/* 面包屑导航 */}
       <div className="flex items-center gap-2 text-sm">
         <Link href="/investor-portal" className="purple-gradient-subtitle hover:text-white transition-colors">
-          {locale === 'en' ? 'Investor Portal' : '?}
+          {locale === 'en' ? 'Investor Portal' : '投资者门户'}
         </Link>
         <ChevronRight className="w-4 h-4 purple-gradient-icon" />
         <Link href="/investor-portal/operations" className="purple-gradient-subtitle hover:text-white transition-colors">
-          {locale === 'en' ? 'Operations' : ''}
+          {locale === 'en' ? 'Operations' : '运营管理'}
         </Link>
         <ChevronRight className="w-4 h-4 purple-gradient-icon" />
         <span className="text-white">{locale === 'en' ? projectData.nameEn : projectData.name}</span>
