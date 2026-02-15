@@ -779,7 +779,7 @@ export default function NotificationsPage() {
                 </Select>
               </div>
               <div data-oid="6piqcpw">
-                <Label data-oid="7i2t.4h">?/Label>
+                <Label data-oid="7i2t.4h">优先级</Label>
                 <Select
                   value={filterPriority}
                   onValueChange={setFilterPriority}

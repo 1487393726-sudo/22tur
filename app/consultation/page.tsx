@@ -366,18 +366,18 @@ export default function ConsultationPage() {
                             <div className="flex items-center gap-4 text-sm text-gray-400">
                               <span className="flex items-center gap-1">
                                 <Clock className="w-4 h-4" />
-                                {locale === "en"  type.durationEn : type.duration}
+                                {locale === "en" ? type.durationEn : type.duration}
                               </span>
                               <span className="flex items-center gap-1">
                                 <DollarSign className="w-4 h-4" />
-                                {locale === "en"  type.priceEn : type.price}
+                                {locale === "en" ? type.priceEn : type.price}
                               </span>
                             </div>
                           </div>
                         </div>
 
                         <p className="text-gray-300 text-sm mb-4">
-                          {locale === "en"  type.descriptionEn : type.description}
+                          {locale === "en" ? type.descriptionEn : type.description}
                         </p>
 
                         <div className="space-y-2">

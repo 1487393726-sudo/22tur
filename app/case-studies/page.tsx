@@ -394,7 +394,7 @@ export default function CaseStudiesPage() {
                       <IconComponent className="w-16 h-16 text-white/50" />
                       <div className="absolute top-4 right-4">
                         <span className="px-3 py-1 bg-yellow-500/20 text-yellow-400 text-xs rounded-full border border-yellow-500/30">
-                          {locale === "en"  "Featured" : ""}
+                          {locale === "en" ? "Featured" : "精选"}
                         </span>
                       </div>
                     </div>
@@ -403,7 +403,7 @@ export default function CaseStudiesPage() {
                     <div className="p-6">
                       <div className="flex items-center gap-2 mb-3">
                         <span className={`px-2 py-1 bg-${caseStudy.color}-500/20 text-${caseStudy.color}-400 text-xs rounded-full`}>
-                          {locale === "en"  caseStudy.industryEn : caseStudy.industry}
+                          {locale === "en" ? caseStudy.industryEn : caseStudy.industry}
                         </span>
                         <span className="text-gray-400 text-xs">
                           {new Date(caseStudy.completedDate).toLocaleDateString(locale === "en"  "en-US" : "zh-CN")}

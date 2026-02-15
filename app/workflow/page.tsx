@@ -808,9 +808,9 @@ export default function WorkflowPage() {
         >
           <DialogContent className="sm:max-w-[400px]" data-oid="16m3e24">
             <DialogHeader data-oid="4mhfvyj">
-              <DialogTitle data-oid="7epefli">?/DialogTitle>
+              <DialogTitle data-oid="7epefli">执行工作流</DialogTitle>
               <DialogDescription data-oid="ffr25tj">
-                
+                确认执行此工作流
               </DialogDescription>
             </DialogHeader>
             {selectedWorkflow && (

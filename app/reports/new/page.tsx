@@ -441,7 +441,7 @@ export default function ReportBuilderPage() {
                                   logic: e.target.value as "AND" | "OR",
                                 })
                               }
-                              aria-label="?
+                              aria-label="筛选逻辑"
                               className="w-full bg-white border border-gray-300 rounded px-2 py-1.5 text-sm"
                             >
                               <option value="AND">AND</option>
@@ -468,13 +468,13 @@ export default function ReportBuilderPage() {
                           </select>
                         </div>
 
-                        {/*  */}
+                        {/* 筛选操作符 */}
                         <div className="flex-1">
-                          <label className="text-xs text-gray-600 mb-1 block">?/label>
+                          <label className="text-xs text-gray-600 mb-1 block">操作符</label>
                           <select
                             value={filter.operator}
                             onChange={(e) => updateFilter(filter.id, { operator: e.target.value })}
-                            aria-label="?
+                            aria-label="筛选操作符"
                             className="w-full bg-white border border-gray-300 rounded px-3 py-1.5 text-sm"
                           >
                             {OPERATORS.map((op) => (
@@ -485,10 +485,10 @@ export default function ReportBuilderPage() {
                           </select>
                         </div>
 
-                        {/* ?*/}
+                        {/* 筛选值 */}
                         {!["IS NULL", "IS NOT NULL"].includes(filter.operator) && (
                           <div className="flex-1">
-                            <label className="text-xs text-gray-600 mb-1 block">?/label>
+                            <label className="text-xs text-gray-600 mb-1 block">筛选值</label>
                             <input
                               type="text"
                               value={filter.value}

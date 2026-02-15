@@ -989,7 +989,7 @@ export default function TasksPage() {
               </Label>
               <Input
                 id="edit-title"
-                placeholder="?
+                placeholder="输入任务标题"
                 value={formData.title}
                 onChange={(e) =>
                   setFormData((prev) => ({ ...prev, title: e.target.value }))

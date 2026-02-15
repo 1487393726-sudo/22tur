@@ -738,7 +738,7 @@ export function ProjectDetailPage({ projectId }: ProjectDetailPageProps) {
               { label: locale === 'en' ? 'Base Salary' : '', value: salaryTransparency.salaryComposition.baseSalary, color: 'blue' },
               { label: locale === 'en' ? 'Bonus' : '', value: salaryTransparency.salaryComposition.bonus, color: 'green' },
               { label: locale === 'en' ? 'Allowance' : '', value: salaryTransparency.salaryComposition.allowance, color: 'purple' },
-              { label: locale === 'en' ? 'Overtime Pay' : '?, value: salaryTransparency.salaryComposition.overtimePay, color: 'yellow' },
+              { label: locale === 'en' ? 'Overtime Pay' : '加班费', value: salaryTransparency.salaryComposition.overtimePay, color: 'yellow' },
             ].map((item, index) => {
               const percentage = (item.value / totalSalaryComp) * 100;
               return (
