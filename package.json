@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "prisma generate && next build",
     "build:analyze": "cross-env ANALYZE=true next build",
     "dev": "next dev",
     "lint": "eslint .",
@@ -13,8 +13,7 @@
     "test:coverage": "jest --coverage",
     "test:ci": "jest --ci --coverage",
     "spec:generate": "ts-node scripts/generate-spec-tasks.ts",
-    "spec:generate:all": "ts-node scripts/generate-spec-tasks.ts --all",
-    "postinstall": "prisma generate"
+    "spec:generate:all": "ts-node scripts/generate-spec-tasks.ts --all"
   },
   "dependencies": {
     "@cloudbase/js-sdk": "^2.24.7",
