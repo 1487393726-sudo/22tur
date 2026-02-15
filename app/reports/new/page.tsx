@@ -848,17 +848,17 @@ export default function ReportBuilderPage() {
                       <dd className="font-medium">{reportConfig.filters.length} 个</dd>
                     </div>
                     <div className="flex gap-2">
-                      <dt className="text-gray-600 w-24">:</dt>
+                      <dt className="text-gray-600 w-24">图表类型:</dt>
                       <dd className="font-medium">
                         {reportConfig.chartType === "table"
-                          ? ""
+                          ? "表格"
                           : reportConfig.chartType === "bar"
-                            ? "?
+                            ? "柱状图"
                             : reportConfig.chartType === "line"
-                              ? "?
+                              ? "折线图"
                               : reportConfig.chartType === "pie"
-                                ? ""
-                                : ""}
+                                ? "饼图"
+                                : "未选择"}
                       </dd>
                     </div>
                   </dl>
@@ -943,26 +943,26 @@ export default function ReportBuilderPage() {
                         </div>
                       </div>
                     ) : (
-                      // ?
+                      // 图表预览占位符
                       <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center text-gray-500">
                         <BarChart3 className="w-16 h-16 mx-auto mb-4 text-gray-300" />
                         <p className="font-medium">
                           {reportConfig.chartType === "bar"
-                            ? "?
+                            ? "柱状图预览"
                             : reportConfig.chartType === "line"
-                              ? "?
-                              : ""}
+                              ? "折线图预览"
+                              : "图表预览"}
                           
                         </p>
-                        <p className="text-sm mt-2"></p>
+                        <p className="text-sm mt-2">配置完成后将显示图表</p>
                         <div className="mt-4 text-xs text-left max-w-md mx-auto bg-blue-50 p-3 rounded">
-                          <div className="font-medium text-blue-900 mb-2">?/div>
+                          <div className="font-medium text-blue-900 mb-2">当前配置</div>
                           {reportConfig.chartConfig.title && (
-                            <div>: {reportConfig.chartConfig.title}</div>
+                            <div>标题: {reportConfig.chartConfig.title}</div>
                           )}
                           {reportConfig.chartConfig.xAxis && (
                             <div>
-                              X?{" "}
+                              X轴:{" "}
                               {getCurrentDatasource()?.fields.find(
                                 (f) => f.name === reportConfig.chartConfig.xAxis
                               )?.label || reportConfig.chartConfig.xAxis}
@@ -970,7 +970,7 @@ export default function ReportBuilderPage() {
                           )}
                           {reportConfig.chartConfig.yAxis && (
                             <div>
-                              Y?{" "}
+                              Y轴:{" "}
                               {getCurrentDatasource()?.fields.find(
                                 (f) => f.name === reportConfig.chartConfig.yAxis
                               )?.label || reportConfig.chartConfig.yAxis}
@@ -978,14 +978,14 @@ export default function ReportBuilderPage() {
                           )}
                           {reportConfig.chartConfig.groupBy && (
                             <div>
-                              :{" "}
+                              分组:{" "}
                               {getCurrentDatasource()?.fields.find(
                                 (f) => f.name === reportConfig.chartConfig.groupBy
                               )?.label || reportConfig.chartConfig.groupBy}
                             </div>
                           )}
                           {reportConfig.chartConfig.aggregation && (
-                            <div>: {reportConfig.chartConfig.aggregation}</div>
+                            <div>聚合: {reportConfig.chartConfig.aggregation}</div>
                           )}
                         </div>
                       </div>
@@ -994,7 +994,7 @@ export default function ReportBuilderPage() {
                 ) : (
                   <div className="text-center py-12 text-gray-500">
                     <BarChart3 className="w-16 h-16 mx-auto mb-4 text-gray-300" />
-                    <p></p>
+                    <p>请先配置报告</p>
                   </div>
                 )}
               </CardContent>
@@ -1021,7 +1021,7 @@ export default function ReportBuilderPage() {
                     onChange={(e) =>
                       setReportConfig({ ...reportConfig, name: e.target.value })
                     }
-                    placeholder="?
+                    placeholder="输入报告名称"
                     className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2"
                   />
                 </div>
@@ -1052,25 +1052,25 @@ export default function ReportBuilderPage() {
                       </dd>
                     </div>
                     <div className="flex gap-2">
-                      <dt className="font-medium w-24">:</dt>
-                      <dd>{reportConfig.fields.length} ?/dd>
+                      <dt className="font-medium w-24">字段数量:</dt>
+                      <dd>{reportConfig.fields.length} 个</dd>
                     </div>
                     <div className="flex gap-2">
-                      <dt className="font-medium w-24">?</dt>
-                      <dd>{reportConfig.filters.length} ?/dd>
+                      <dt className="font-medium w-24">筛选条件:</dt>
+                      <dd>{reportConfig.filters.length} 个</dd>
                     </div>
                     <div className="flex gap-2">
-                      <dt className="font-medium w-24">:</dt>
+                      <dt className="font-medium w-24">图表类型:</dt>
                       <dd>
                         {reportConfig.chartType === "table"
-                          ? ""
+                          ? "表格"
                           : reportConfig.chartType === "bar"
-                            ? "?
+                            ? "柱状图"
                             : reportConfig.chartType === "line"
-                              ? "?
+                              ? "折线图"
                               : reportConfig.chartType === "pie"
-                                ? ""
-                                : ""}
+                                ? "饼图"
+                                : "未选择"}
                       </dd>
                     </div>
                   </dl>
@@ -1103,12 +1103,12 @@ export default function ReportBuilderPage() {
             <ArrowLeft className="w-5 h-5" />
           </Button>
           <div>
-            <h1 className="purple-gradient-title text-3xl font-bold text-slate-900"></h1>
-            <p className="text-slate-600 mt-1">?/p>
+            <h1 className="purple-gradient-title text-3xl font-bold text-slate-900">创建新报告</h1>
+            <p className="text-slate-600 mt-1">配置数据源、字段和可视化选项</p>
           </div>
         </div>
 
-        {/* ?*/}
+        {/* 步骤指示器 */}
         <Card className="purple-gradient-card">
           <CardContent className="purple-gradient-card p-6">
             <div className="flex items-center justify-between">

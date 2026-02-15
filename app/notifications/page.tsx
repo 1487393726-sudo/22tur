@@ -450,15 +450,15 @@ export default function NotificationsPage() {
             data-oid="mark-all-read"
           >
             <CheckCircle className="w-4 h-4 mr-2" />
-            
+            全部标记为已读
           </Button>
           <Button variant="outline" data-oid="r:y0g76">
             <Settings className="w-4 h-4 mr-2" data-oid="n00pmqx" />
-            
+            设置
           </Button>
           <Button variant="outline" data-oid="q_rz1pa">
             <Archive className="w-4 h-4 mr-2" data-oid="g_:4bmi" />
-            
+            归档
           </Button>
         </div>
       </div>

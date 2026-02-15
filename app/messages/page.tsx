@@ -218,11 +218,11 @@ export default function MessagesPage() {
             )}
           </Card>
 
-          {/*  */}
+          {/* 消息区域 */}
           <Card className="purple-gradient-card lg:col-span-8 bg-white/10 backdrop-blur-sm border-white/20 flex flex-col">
-            {selectedConversation  (
+            {selectedConversation ? (
               <>
-                {/*  */}
+                {/* 消息头部 */}
                 <div className="p-4 border-b border-white/10 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <Avatar className="w-10 h-10">
@@ -239,7 +239,7 @@ export default function MessagesPage() {
                     </div>
                   </div>
 
-                  {/*  */}
+                  {/* 操作按钮 */}
                   <div className="flex items-center gap-2">
                     <Button
                       variant="ghost"
