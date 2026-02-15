@@ -207,16 +207,16 @@ const experts: Expert[] = [
     id: "david-wang",
     name: "",
     nameEn: "David Wang",
-    title: "",
+    title: "企业发展专家",
     titleEn: "Business Development Expert",
-    expertise: ["", "", ""],
+    expertise: ["商业策略", "市场拓展", "企业管理"],
     expertiseEn: ["Business Strategy", "Market Expansion", "Corporate Management"],
-    experience: "18,
+    experience: "18年企业经验",
     experienceEn: "18 years corporate experience",
     rating: 4.9,
     reviews: 156,
     avatar: "/experts/david-wang.jpg",
-    languages: ["", "English"]
+    languages: ["中文", "English"]
   }
 ];
 

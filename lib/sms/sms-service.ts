@@ -423,3 +423,22 @@ export function resetSMSService(): void {
   }
   smsServiceInstance = null;
 }
+
+/**
+ * 默认短信服务实例（用于简单场景）
+ * 注意：需要先通过 initSMSService 初始化
+ */
+export const smsService = {
+  send: async (params: SendSMSParams) => {
+    const service = getSMSService();
+    return service.send(params);
+  },
+  sendBatch: async (params: SendBatchSMSParams) => {
+    const service = getSMSService();
+    return service.sendBatch(params);
+  },
+  sendVerificationCode: async (phoneNumber: string, code: string) => {
+    const service = getSMSService();
+    return service.sendVerificationCode(phoneNumber, code);
+  },
+};

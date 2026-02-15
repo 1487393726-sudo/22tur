@@ -150,3 +150,36 @@ export class PushService {
 export function createPushService(wsService: IWebSocketService): PushService {
   return new PushService(wsService);
 }
+
+// 全局推送服务实例
+let pushServiceInstance: PushService | null = null;
+
+/**
+ * 获取推送服务实例
+ */
+export function getPushService(wsService?: IWebSocketService): PushService {
+  if (!pushServiceInstance && wsService) {
+    pushServiceInstance = createPushService(wsService);
+  }
+  if (!pushServiceInstance) {
+    throw new Error('Push service not initialized. Please provide wsService.');
+  }
+  return pushServiceInstance;
+}
+
+/**
+ * 重置推送服务实例
+ */
+export function resetPushService(): void {
+  pushServiceInstance = null;
+}
+
+// 推送目标类型
+export type PushTarget = string | string[];
+
+// 推送结果类型
+export interface PushResult {
+  success: boolean;
+  sentCount: number;
+  failedCount: number;
+}

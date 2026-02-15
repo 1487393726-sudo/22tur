@@ -141,3 +141,53 @@ export function createRateLimiter(options: {
     },
   };
 }
+
+// 预定义的速率限制器实例
+export const passwordResetRateLimiter = createRateLimiter({
+  maxAttempts: 3,
+  windowMs: 15 * 60 * 1000, // 15分钟
+});
+
+export const emailVerificationRateLimiter = createRateLimiter({
+  maxAttempts: 5,
+  windowMs: 60 * 60 * 1000, // 1小时
+});
+
+export const fileUploadRateLimiter = createRateLimiter({
+  maxAttempts: 10,
+  windowMs: 60 * 1000, // 1分钟
+});
+
+export const paymentCreateRateLimiter = createRateLimiter({
+  maxAttempts: 5,
+  windowMs: 60 * 1000, // 1分钟
+});
+
+/**
+ * 应用速率限制的辅助函数
+ */
+export async function applyRateLimit(
+  limiter: ReturnType<typeof createRateLimiter>,
+  key: string
+) {
+  const result = await limiter.check(key);
+  return result;
+}
+
+/**
+ * 从请求中获取客户端 IP
+ */
+export function getClientIp(request: Request): string {
+  const forwarded = request.headers.get('x-forwarded-for');
+  const realIp = request.headers.get('x-real-ip');
+  
+  if (forwarded) {
+    return forwarded.split(',')[0].trim();
+  }
+  
+  if (realIp) {
+    return realIp;
+  }
+  
+  return 'unknown';
+}

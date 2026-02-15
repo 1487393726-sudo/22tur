@@ -289,11 +289,11 @@ const caseStudies: CaseStudy[] = [
         improvement: "+180%"
       }
     ],
-    timeline: "3,
+    timeline: "3年",
     timelineEn: "3 years",
     investment: 1200000,
     roi: "180%",
-    services: ["", "", "", "", ""],
+    services: ["投资分析", "尽职调查", "风险评估", "项目管理", "退出策略"],
     servicesEn: ["Investment Analysis", "Due Diligence", "Risk Assessment", "Project Management", "Exit Strategy"],
     image: "/case-studies/clean-energy.jpg",
     icon: Zap,

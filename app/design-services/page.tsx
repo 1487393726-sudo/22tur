@@ -131,12 +131,12 @@ export default function DesignServicesPage() {
           <div className="container mx-auto max-w-7xl">
             <div className="text-center mb-16">
               <h2 className="purple-gradient-title text-3xl md:text-4xl font-bold mb-4">
-                {locale === "en"  "Our Design Services" : ""}
+                {locale === "en" ? "Our Design Services" : "我们的设计服务"}
               </h2>
               <p className="purple-gradient-subtitle text-lg max-w-2xl mx-auto">
                 {locale === "en" 
-                   "Comprehensive design solutions tailored to your business needs"
-                  : ""
+                  ? "Comprehensive design solutions tailored to your business needs"
+                  : "为您的业务需求量身定制的综合设计解决方案"
                 }
               </p>
             </div>
