@@ -200,13 +200,12 @@ export default function NotificationsPage() {
     }
   };
 
-  // ?  const updateNotificationSetting = (key: keyof typeof notificationSettings, value: any) => {
+  const updateNotificationSetting = (key: keyof typeof notificationSettings, value: any) => {
     const newSettings = {
       ...notificationSettings,
       [key]: value,
     };
     setNotificationSettings(newSettings);
-    // 
     saveNotificationPreferences(newSettings);
   };
 
@@ -237,12 +236,12 @@ export default function NotificationsPage() {
       if (response.ok) {
         setNotifications(data.notifications || []);
       } else {
-        console.error(':', data.error);
-        //  API ?        setNotifications(mockNotifications);
+        console.error('获取通知失败:', data.error);
+        setNotifications(mockNotifications);
       }
     } catch (error) {
-      console.error(':', error);
-      //  API ?      setNotifications(mockNotifications);
+      console.error('获取通知失败:', error);
+      setNotifications(mockNotifications);
     } finally {
       setLoading(false);
     }
@@ -359,9 +358,9 @@ export default function NotificationsPage() {
       });
 
       if (response.ok) {
-        // ?        setNotifications((prev) => prev.filter((n) => n.id !== id));
+        setNotifications((prev) => prev.filter((n) => n.id !== id));
       } else {
-        console.error('');
+        console.error('删除通知失败');
       }
     } catch (error) {
       console.error(':', error);
