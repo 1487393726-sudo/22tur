@@ -5,9 +5,12 @@ import { prisma } from "@/lib/prisma";
 import { logAudit } from "@/lib/audit-logger";
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-  apiVersion: "2023-10-16",
-});
+// 只在有 STRIPE_SECRET_KEY 时初始化 Stripe
+const stripe = process.env.STRIPE_SECRET_KEY 
+  ? new Stripe(process.env.STRIPE_SECRET_KEY, {
+      apiVersion: "2023-10-16",
+    })
+  : null;
 
 /**
  * 获取支付历史

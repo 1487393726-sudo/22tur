@@ -5,9 +5,12 @@ import { prisma } from "@/lib/prisma";
 import { logAudit } from "@/lib/audit-logger";
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-  apiVersion: "2023-10-16",
-});
+// 只在有 STRIPE_SECRET_KEY 时初始化 Stripe
+const stripe = process.env.STRIPE_SECRET_KEY 
+  ? new Stripe(process.env.STRIPE_SECRET_KEY, {
+      apiVersion: "2023-10-16",
+    })
+  : null;
 
 /**
  * 确认支付
@@ -15,6 +18,14 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
  */
 export async function POST(request: NextRequest) {
   try {
+    // 检查 Stripe 是否已配置
+    if (!stripe) {
+      return NextResponse.json(
+        { error: "支付服务未配置" },
+        { status: 503 }
+      );
+    }
+
     const { paymentIntentId, paymentId } = await request.json();
 
     if (!paymentIntentId || !paymentId) {
