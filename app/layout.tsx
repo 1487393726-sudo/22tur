@@ -1,6 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { JsonLd } from "@/components/ui/json-ld";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeInitializer } from "@/components/theme-initializer";
@@ -164,6 +165,7 @@ export default function RootLayout({
           <Toaster position="top-right" richColors />
         </ThemeProvider>
         <Analytics data-oid="7_3y33h" />
+        <SpeedInsights />
       </body>
     </html>
   );
